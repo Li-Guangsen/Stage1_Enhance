@@ -1,0 +1,17 @@
+{
+  "fusion": {},
+  "final": {
+    "mode": "homomorphic_entropy",
+    "gamma_low": 0.55,
+    "gamma_high": 1.7,
+    "cutoff_freq": 70,
+    "entropy": {
+      "p_low": 1.0,
+      "p_high": 99.0,
+      "clahe_clip": 1.25,
+      "mix_global": 0.35,
+      "mix_local": 0.2,
+      "chroma_gain": 1.02
+    }
+  }
+}

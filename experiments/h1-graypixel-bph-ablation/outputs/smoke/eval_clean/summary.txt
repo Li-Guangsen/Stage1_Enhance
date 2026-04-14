@@ -1,0 +1,36 @@
+# Protocol v2 image enhancement evaluation
+Created at: 2026-04-13T21:53:56
+Original dir: D:\Desktop\Stage1Codex\data\inputImg\Original
+Summary policy: complete_cases_across_all_methods
+Planned stems: 5
+Complete success stems: 5
+Failures: 0
+
+## bph00_baseline
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\smoke\runs\bph00_baseline\png\Final
+Count: 5
+EME: mean=19.973155, std=8.062859
+EMEE: mean=1.423193, std=0.455136
+Entropy: mean=6.518734, std=0.535780
+Contrast: mean=883.203790, std=313.476314
+AvgGra: mean=22.637980, std=7.736531
+SIFT_KP: mean=5260.600000, std=3100.419881
+MS_SSIM: mean=0.619429, std=0.183513
+PSNR: mean=12.680723, std=3.176402
+UCIQE: mean=4.818271, std=1.911663
+UIQM: mean=40.436094, std=14.523043
+
+## bph10_gp_strict
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\smoke\runs\bph10_gp_strict\png\Final
+Count: 5
+EME: mean=20.083376, std=8.290574
+EMEE: mean=1.429755, std=0.468571
+Entropy: mean=6.521448, std=0.526196
+Contrast: mean=879.793748, std=310.741646
+AvgGra: mean=22.562818, std=7.676378
+SIFT_KP: mean=5290.200000, std=3111.299111
+MS_SSIM: mean=0.619361, std=0.182411
+PSNR: mean=12.648828, std=3.246655
+UCIQE: mean=4.704695, std=1.969961
+UIQM: mean=40.475595, std=14.970905
+

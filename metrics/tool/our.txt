@@ -1,0 +1,9 @@
+# filename                     EME     EMEE     Entropy  Contrast   AvgGra  SIFT_KP  MS_SSIM  PSNR     UCIQE    UIQM
+donghaiyuanjia.10_Final.jpg    3.5490  0.5013   4.0563   252.7943   5.4078   674     0.9042  19.9612   1.6669  8.2820
+donghaiyuanjia.11_Final.jpg    5.1602  0.5914   4.1843   339.4646   6.8502   1062    0.9180  23.5029   1.8237  11.3536
+donghaiyuanjia.13_Final.jpg    5.1315  0.5908   4.1537   299.0997   6.4141   1016    0.8965  19.9517   1.8272  10.7875
+donghaiyuanjia.14_Final.jpg    4.8023  0.5731   4.2590   347.6700   6.3127   953     0.9069  23.6027   1.3876  9.9127
+donghaiyuanjia.15_Final.jpg    4.6638  0.5635   4.1034   320.7997   6.2680   983     0.9295  22.0879   0.9697  9.6242
+donghaiyuanjia.4_Final.jpg     4.2675  0.5396   4.3828   227.3732   6.0649   815     0.8711  18.7106   1.6853  9.8443
+donghaiyuanjia.8_Final.jpg     4.9485  0.5801   4.2010   299.8303   6.4648   1009    0.9133  22.6337   1.3235  10.1186
+donghaiyuanjia.9_Final.jpg     5.2150  0.5950   4.2174   287.2366   6.4388   1077    0.8976  22.7380   1.3007  10.5376

@@ -1,0 +1,121 @@
+{
+  "created_at": "2026-04-13T03:26:37",
+  "project_root": "D:\\Desktop\\Stage1Codex",
+  "original_dir": "D:\\Desktop\\Stage1Codex\\data\\inputImg\\Original",
+  "resize_to": [
+    320,
+    320
+  ],
+  "summary_policy": "complete_cases_across_all_methods",
+  "planned_stem_count": 506,
+  "complete_success_count": 506,
+  "failure_count": 0,
+  "methods": {
+    "c25_full506": {
+      "directory": "D:\\Desktop\\Stage1Codex\\results_optimized_c25\\png\\Final",
+      "complete_case_count": 506,
+      "metrics": {
+        "EME": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 12.592752079588163,
+          "std": 7.653575914784891,
+          "median": 10.51879800877159,
+          "min": 1.920436689429934,
+          "max": 47.24984366989843
+        },
+        "EMEE": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 1.0071987441220667,
+          "std": 0.43126201148373544,
+          "median": 0.8900314353676076,
+          "min": 0.4075400850130317,
+          "max": 2.992720814561679
+        },
+        "Entropy": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 5.893414051518762,
+          "std": 0.9134331818813499,
+          "median": 5.98478594705224,
+          "min": 3.0484445944931817,
+          "max": 7.619175503987557
+        },
+        "Contrast": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 570.586733405637,
+          "std": 359.6569093143904,
+          "median": 485.71175548589343,
+          "min": 43.383517829153604,
+          "max": 2884.029339733542
+        },
+        "AvgGra": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 15.38356568586826,
+          "std": 8.67482719871348,
+          "median": 12.886523512209893,
+          "min": 2.2664015312086745,
+          "max": 59.647917826791755
+        },
+        "SIFT_KP": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 3999.2687747035575,
+          "std": 3616.4133131973217,
+          "median": 2556.0,
+          "min": 263.0,
+          "max": 18132.0
+        },
+        "MS_SSIM": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 0.7266923709820382,
+          "std": 0.18349883616764187,
+          "median": 0.7921464741230011,
+          "min": 0.22198180854320526,
+          "max": 0.9584647417068481
+        },
+        "PSNR": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 16.101154718862084,
+          "std": 3.8006351726116767,
+          "median": 15.9615957499286,
+          "min": 3.7062823905611797,
+          "max": 26.225183605383513
+        },
+        "UCIQE": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 3.635265740039556,
+          "std": 2.323515213375134,
+          "median": 3.0875182151794434,
+          "min": 0.24762462079524994,
+          "max": 10.646533012390137
+        },
+        "UIQM": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 25.81348041521371,
+          "std": 14.80135337583042,
+          "median": 22.205362708902356,
+          "min": 4.079422070479392,
+          "max": 87.62500358390808
+        }
+      }
+    }
+  },
+  "outputs": {
+    "output_dir": "D:\\Desktop\\Stage1Codex\\metrics\\outputs\\evaluate_protocol_v2\\full506_c25",
+    "per_image_csv": "D:\\Desktop\\Stage1Codex\\metrics\\outputs\\evaluate_protocol_v2\\full506_c25\\per_image_metrics.csv",
+    "summary_txt": "D:\\Desktop\\Stage1Codex\\metrics\\outputs\\evaluate_protocol_v2\\full506_c25\\summary.txt",
+    "summary_json": "D:\\Desktop\\Stage1Codex\\metrics\\outputs\\evaluate_protocol_v2\\full506_c25\\summary.json",
+    "failed_csv": "D:\\Desktop\\Stage1Codex\\metrics\\outputs\\evaluate_protocol_v2\\full506_c25\\failed_files.csv",
+    "planned_manifest": "D:\\Desktop\\Stage1Codex\\metrics\\outputs\\evaluate_protocol_v2\\full506_c25\\planned_manifest.txt",
+    "complete_case_manifest": "D:\\Desktop\\Stage1Codex\\metrics\\outputs\\evaluate_protocol_v2\\full506_c25\\complete_case_manifest.txt"
+  },
+  "failures": []
+}

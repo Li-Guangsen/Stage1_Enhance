@@ -1,0 +1,44 @@
+# Large datasets and generated result trees
+data/
+results/
+results_optimized_c25/
+experiments/**/outputs/**
+metrics/outputs/**
+
+# Allow compact experiment summaries to be versioned
+!experiments/**/outputs/**/
+!experiments/**/outputs/**/selection.json
+!experiments/**/outputs/**/summary.json
+!experiments/**/outputs/**/summary.txt
+!experiments/**/outputs/**/composite_scores.csv
+!experiments/**/outputs/**/guardrail_scores.csv
+!experiments/**/outputs/**/per_image_metrics.csv
+!metrics/outputs/**/
+!metrics/outputs/**/summary.json
+!metrics/outputs/**/summary.txt
+!metrics/outputs/**/composite_scores.csv
+!metrics/outputs/**/guardrail_scores.csv
+!metrics/outputs/**/per_image_metrics.csv
+
+# IDE, caches, logs
+.idea/
+.vscode/
+__pycache__/
+*.pyc
+*.pyo
+*.log
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Generated reports and scratch space
+to_human/
+tetetete/
+experiments/optimization_v1/logs/
+experiments/optimization_v1/results/
+experiments/optimization_v1/smoke_main_r4_03/
+metrics/diagnostics/
+metrics/research_metrics.db
+
+# Keep extracted paper text, ignore large PDFs
+paper/*.pdf

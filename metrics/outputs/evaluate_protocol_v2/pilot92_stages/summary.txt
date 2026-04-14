@@ -1,0 +1,92 @@
+# Protocol v2 image enhancement evaluation
+Created at: 2026-04-12T23:05:20
+Original dir: D:\Desktop\Stage1Codex\data\inputImg\Original
+Summary policy: complete_cases_across_all_methods
+Planned stems: 92
+Complete success stems: 92
+Failures: 0
+
+## BPH
+Directory: D:\Desktop\Stage1Codex\results\png\BPH
+Count: 92
+EME: mean=2.506384, std=1.765963
+EMEE: mean=0.437712, std=0.097184
+Entropy: mean=4.000107, std=1.299204
+Contrast: mean=27.974750, std=26.539743
+AvgGra: mean=2.903286, std=2.109852
+SIFT_KP: mean=387.043478, std=349.204777
+MS_SSIM: mean=0.997765, std=0.006711
+PSNR: mean=48.574773, std=6.610982
+UCIQE: mean=2.946363, std=1.630735
+UIQM: mean=7.055110, std=5.023676
+
+## IMF1Ray
+Directory: D:\Desktop\Stage1Codex\results\png\IMF1Ray
+Count: 92
+EME: mean=5.270118, std=3.383726
+EMEE: mean=0.592537, std=0.188282
+Entropy: mean=4.553579, std=1.025450
+Contrast: mean=221.497041, std=159.335667
+AvgGra: mean=7.413767, std=5.030622
+SIFT_KP: mean=1669.021739, std=1968.998410
+MS_SSIM: mean=0.773742, std=0.074833
+PSNR: mean=21.270356, std=1.055185
+UCIQE: mean=2.904800, std=1.586144
+UIQM: mean=12.362839, std=7.839561
+
+## RGHS
+Directory: D:\Desktop\Stage1Codex\results\png\RGHS
+Count: 92
+EME: mean=10.718563, std=5.368566
+EMEE: mean=0.916965, std=0.306196
+Entropy: mean=5.928104, std=0.983662
+Contrast: mean=292.643289, std=177.228807
+AvgGra: mean=9.295992, std=5.761038
+SIFT_KP: mean=1640.478261, std=2064.237455
+MS_SSIM: mean=0.718947, std=0.098803
+PSNR: mean=14.853759, std=2.304481
+UCIQE: mean=2.554749, std=1.443290
+UIQM: mean=22.117716, std=10.855127
+
+## CLAHE
+Directory: D:\Desktop\Stage1Codex\results\png\CLAHE
+Count: 92
+EME: mean=9.646799, std=4.561293
+EMEE: mean=0.852603, std=0.256169
+Entropy: mean=5.871145, std=0.928374
+Contrast: mean=192.196528, std=122.165732
+AvgGra: mean=8.143901, std=5.188797
+SIFT_KP: mean=1492.706522, std=2082.817425
+MS_SSIM: mean=0.785831, std=0.072075
+PSNR: mean=18.208580, std=2.355292
+UCIQE: mean=2.878397, std=1.630460
+UIQM: mean=19.589510, std=9.868725
+
+## Fused
+Directory: D:\Desktop\Stage1Codex\results\png\Fused
+Count: 92
+EME: mean=7.649912, std=4.007945
+EMEE: mean=0.725650, std=0.222730
+Entropy: mean=5.877112, std=0.787427
+Contrast: mean=207.276432, std=131.330053
+AvgGra: mean=8.419155, std=5.088034
+SIFT_KP: mean=1632.500000, std=2073.625304
+MS_SSIM: mean=0.779077, std=0.084779
+PSNR: mean=19.504286, std=2.542374
+UCIQE: mean=2.509021, std=1.444835
+UIQM: mean=17.551273, std=8.715386
+
+## Final
+Directory: D:\Desktop\Stage1Codex\results\png\Final
+Count: 92
+EME: mean=7.960595, std=4.070060
+EMEE: mean=0.745843, std=0.226811
+Entropy: mean=5.112651, std=0.972051
+Contrast: mean=411.386946, std=204.172228
+AvgGra: mean=10.953874, std=5.582805
+SIFT_KP: mean=2612.826087, std=2652.633542
+MS_SSIM: mean=0.883977, std=0.040294
+PSNR: mean=20.855979, std=2.417049
+UCIQE: mean=4.456341, std=2.294132
+UIQM: mean=17.212975, std=9.064820
+

@@ -1,0 +1,572 @@
+{
+  "created_at": "2026-04-13T21:53:12",
+  "project_root": "D:\\Desktop\\Stage1Codex",
+  "original_dir": "D:\\Desktop\\Stage1Codex\\data\\inputImg\\Original",
+  "resize_to": [
+    320,
+    320
+  ],
+  "summary_policy": "complete_cases_across_all_methods",
+  "planned_stem_count": 5,
+  "complete_success_count": 5,
+  "failure_count": 59,
+  "methods": {
+    "bph00_baseline": {
+      "directory": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\smoke\\runs\\bph00_baseline\\png\\Final",
+      "complete_case_count": 5,
+      "metrics": {
+        "EME": {
+          "count": 5,
+          "nonfinite": 0,
+          "mean": 19.973155402748095,
+          "std": 8.06285879098927,
+          "median": 16.781213940543523,
+          "min": 10.679590087955365,
+          "max": 31.713455512250587
+        },
+        "EMEE": {
+          "count": 5,
+          "nonfinite": 0,
+          "mean": 1.423192763935464,
+          "std": 0.45513590365166073,
+          "median": 1.244791271500194,
+          "min": 0.8994199410316847,
+          "max": 2.0874374391259587
+        },
+        "Entropy": {
+          "count": 5,
+          "nonfinite": 0,
+          "mean": 6.518734103937521,
+          "std": 0.5357798944836658,
+          "median": 6.2313686911816015,
+          "min": 6.006564074175697,
+          "max": 7.295091635627869
+        },
+        "Contrast": {
+          "count": 5,
+          "nonfinite": 0,
+          "mean": 883.2037901645768,
+          "std": 313.4763143566475,
+          "median": 696.8209737460814,
+          "min": 605.7702880094043,
+          "max": 1453.353889106583
+        },
+        "AvgGra": {
+          "count": 5,
+          "nonfinite": 0,
+          "mean": 22.63797950144006,
+          "std": 7.736531065415424,
+          "median": 17.837095258193308,
+          "min": 16.120966994543124,
+          "max": 36.89947920310595
+        },
+        "SIFT_KP": {
+          "count": 5,
+          "nonfinite": 0,
+          "mean": 5260.6,
+          "std": 3100.419881241894,
+          "median": 3965.0,
+          "min": 2789.0,
+          "max": 11337.0
+        },
+        "MS_SSIM": {
+          "count": 5,
+          "nonfinite": 0,
+          "mean": 0.6194288313388825,
+          "std": 0.1835129710747797,
+          "median": 0.6279812455177307,
+          "min": 0.347444623708725,
+          "max": 0.8299487233161926
+        },
+        "PSNR": {
+          "count": 5,
+          "nonfinite": 0,
+          "mean": 12.680722858091633,
+          "std": 3.176402153300354,
+          "median": 14.107766965556563,
+          "min": 7.494971589424994,
+          "max": 15.725966677836087
+        },
+        "UCIQE": {
+          "count": 5,
+          "nonfinite": 0,
+          "mean": 4.818271160125732,
+          "std": 1.9116634842003195,
+          "median": 4.205960273742676,
+          "min": 2.3875160217285156,
+          "max": 7.776603698730469
+        },
+        "UIQM": {
+          "count": 5,
+          "nonfinite": 0,
+          "mean": 40.43609375086784,
+          "std": 14.523043308363723,
+          "median": 30.68925689458847,
+          "min": 25.294915649318696,
+          "max": 61.781375364208216
+        }
+      }
+    },
+    "bph10_gp_strict": {
+      "directory": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\smoke\\runs\\bph10_gp_strict\\png\\Final",
+      "complete_case_count": 5,
+      "metrics": {
+        "EME": {
+          "count": 5,
+          "nonfinite": 0,
+          "mean": 20.08337626414127,
+          "std": 8.290574111215513,
+          "median": 16.599706454447148,
+          "min": 10.682076929358821,
+          "max": 32.300047187902294
+        },
+        "EMEE": {
+          "count": 5,
+          "nonfinite": 0,
+          "mean": 1.4297554749042583,
+          "std": 0.46857083598820237,
+          "median": 1.2343446412543042,
+          "min": 0.8996307765177809,
+          "max": 2.122236463894837
+        },
+        "Entropy": {
+          "count": 5,
+          "nonfinite": 0,
+          "mean": 6.521447608599042,
+          "std": 0.5261961071723729,
+          "median": 6.250063085825826,
+          "min": 6.006597655216234,
+          "max": 7.285396725015089
+        },
+        "Contrast": {
+          "count": 5,
+          "nonfinite": 0,
+          "mean": 879.7937480407523,
+          "std": 310.74164587921877,
+          "median": 694.6206798589342,
+          "min": 606.0629996081504,
+          "max": 1446.0448226880878
+        },
+        "AvgGra": {
+          "count": 5,
+          "nonfinite": 0,
+          "mean": 22.562818099413654,
+          "std": 7.676377853921243,
+          "median": 17.722400482199667,
+          "min": 16.105180148991394,
+          "max": 36.71573313220939
+        },
+        "SIFT_KP": {
+          "count": 5,
+          "nonfinite": 0,
+          "mean": 5290.2,
+          "std": 3111.2991113038297,
+          "median": 3898.0,
+          "min": 2795.0,
+          "max": 11384.0
+        },
+        "MS_SSIM": {
+          "count": 5,
+          "nonfinite": 0,
+          "mean": 0.619360500574112,
+          "std": 0.18241093250206103,
+          "median": 0.6258751749992371,
+          "min": 0.3483229875564575,
+          "max": 0.8283552527427673
+        },
+        "PSNR": {
+          "count": 5,
+          "nonfinite": 0,
+          "mean": 12.648828210890713,
+          "std": 3.246654844170523,
+          "median": 14.11644688906768,
+          "min": 7.409369228795458,
+          "max": 15.81794538026939
+        },
+        "UCIQE": {
+          "count": 5,
+          "nonfinite": 0,
+          "mean": 4.7046948909759525,
+          "std": 1.9699613371795033,
+          "median": 4.0687432289123535,
+          "min": 2.3173558712005615,
+          "max": 7.731991291046143
+        },
+        "UIQM": {
+          "count": 5,
+          "nonfinite": 0,
+          "mean": 40.47559514945031,
+          "std": 14.970904920292334,
+          "median": 30.639294786930083,
+          "min": 24.913629686927795,
+          "max": 62.654605453777314
+        }
+      }
+    }
+  },
+  "outputs": {
+    "output_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\smoke\\eval",
+    "per_image_csv": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\smoke\\eval\\per_image_metrics.csv",
+    "summary_txt": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\smoke\\eval\\summary.txt",
+    "summary_json": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\smoke\\eval\\summary.json",
+    "failed_csv": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\smoke\\eval\\failed_files.csv",
+    "planned_manifest": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\smoke\\eval\\planned_manifest.txt",
+    "complete_case_manifest": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\smoke\\eval\\complete_case_manifest.txt"
+  },
+  "failures": [
+    {
+      "phase": "matching",
+      "stem": "suojiao.6",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "haiyangkadun.3",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "zhaixi.1",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "weiruan.6",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "chichaoyiwan.9",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "jiaomaozao.15",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "xuehong.3",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "lingxinghaixian.8",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "tama.21",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "yuanhai.11",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "chazhuang.9",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "hailianzao.11",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "sanjiaoji.10",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "lianzhuangluojia.4",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "qiangzhuang.31",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "limayuanjia.19",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "donghaiyuanjia.27",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "rouruo.1",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "jianci.3",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "haiyangkadun.1",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "gutiao.3",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "limayuanjia.15",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "haiyangyuanjia.2",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "chazhuang.2",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "mishikailun.10",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "qiangzhuang.8",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "weiruan.9",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "xinyue.4",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "donghaiyuanjia.20",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "suojiao.7",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "yuanhai.1",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "hailianzao.3",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "tiaowenhuangou.2",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "chazhuang.4",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "rouruo.4",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "duanjiao.11",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "sanjiaoji.6",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "redai.5",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "lianzhuangluojia.3",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "duowenqigou.2",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "haiyangyuanjia.3",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "sanjiaoji.12",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "duolie.10",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "weixiaoyuanjia.2",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "sanjiaoji.1",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "luoshijiaomao.2",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "limayuanjia.17",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "luojiazao.8",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "juciqigou.3",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "limayuanjia.16",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "donghaiyuanjia.4",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "qiuxing.2",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "xinyue.2",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "haiyangkadun.4",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "suojiao.3",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "duolie.7",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "jiaomaozao.24",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "chichaoyiwan.10",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "lingxinghaixian.6",
+      "method": "bph00_baseline,bph10_gp_strict",
+      "error": "missing image for manifest entry"
+    }
+  ]
+}

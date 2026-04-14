@@ -1,0 +1,36 @@
+# Protocol v2 image enhancement evaluation
+Created at: 2026-04-13T11:51:43
+Original dir: D:\Desktop\Stage1Codex\data\inputImg\Original
+Summary policy: complete_cases_across_all_methods
+Planned stems: 506
+Complete success stems: 506
+Failures: 0
+
+## c25
+Directory: D:\Desktop\Stage1Codex\results_optimized_c25\png\Final
+Count: 506
+EME: mean=12.592752, std=7.653576
+EMEE: mean=1.007199, std=0.431262
+Entropy: mean=5.893414, std=0.913433
+Contrast: mean=570.586733, std=359.656909
+AvgGra: mean=15.383566, std=8.674827
+SIFT_KP: mean=3999.268775, std=3616.413313
+MS_SSIM: mean=0.726692, std=0.183499
+PSNR: mean=16.101155, std=3.800635
+UCIQE: mean=3.635266, std=2.323515
+UIQM: mean=25.813480, std=14.801353
+
+## r4_03
+Directory: D:\Desktop\Stage1Codex\experiments\optimization_v1\results\full506_refine_round4\r4_03_gamma_050_210_48\Final
+Count: 506
+EME: mean=14.426550, std=9.016747
+EMEE: mean=1.112228, std=0.510997
+Entropy: mean=5.925994, std=0.932430
+Contrast: mean=689.688209, std=430.487357
+AvgGra: mean=17.498103, std=9.742325
+SIFT_KP: mean=4207.911067, std=3654.656017
+MS_SSIM: mean=0.699343, std=0.187463
+PSNR: mean=16.064164, std=3.695017
+UCIQE: mean=4.608884, std=2.732389
+UIQM: mean=28.972422, std=17.016169
+

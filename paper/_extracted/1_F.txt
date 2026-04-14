@@ -1,0 +1,1638 @@
+
+
+===== PAGE 1 =====
+Innovative underwater image enhancement algorithm: Combined
+application of adaptive white balance color compensation and pyramid
+image fusion to submarine algal microscopy
+Yi-Ning Fan
+a
+, Geng-Kun Wu
+a , b , *
+, Jia-Zheng Han
+a
+, Bei-Ping Zhang
+a
+, Jie Xu
+a
+a
+College of Computer Science and Engineering, Shandong University of Science and Technology, Qingdao 266590, China
+b
+Shandong Province Key Laboratory of Wisdom Mine Information Technology, Shandong University of Science and Technology, Qingdao 266590, China
+ARTICLE INFO
+Keywords:
+Image enhancement
+Underwater microscopic images
+Color compensation
+Image fusion
+Edge detection
+ABSTRACT
+Real-time collected microscopic images of harmful algal blooms (HABs) in coastal areas often suffer from sig-
+nificant color deviations and loss of fine cellular details. To address these issues, this paper proposes an inno-
+vative method for enhancing underwater marine algal microscopic images based on Adaptive White Balance
+Color Compensation (AWBCC) and Image Pyramid Fusion (IPF). Firstly, an effective Algorithm Adaptive Cyclic
+Channel Compensation (ACCC) is proposed based on the gray world assumption to enhance the color of un-
+derwater images. Then, the Maximum Color Channel Attention Guidance (MCCAG) method is employed to
+reduce color disturbance caused by ignoring light absorption. This paper introduces an Empirical Contrast
+Enhancement (ECH) module based on multi-scale IPF tailored for underwater microscopic images of algae, which
+is used for global contrast enhancement, texture detail enhancement, and noise control. Secondly, this paper
+proposes a network based on a diffusion probability model for edge detection in HABs, which simultaneously
+considers both high-order and low-order features extracted from images. This approach enriches the semantic
+information of the feature maps and enhances edge detection accuracy. This edge detection method achieves an
+ODS of 0.623 and an OIS of 0.683. Experimental evaluations demonstrate that our underwater algae microscopic
+image enhancement method amplifies local texture features while preserving the original image structure. This
+significantly improves the accuracy of edge detection and key point matching. Compared to several state-of-the-
+art underwater image enhancement methods, our approach achieves the highest values in contrast, average
+gradient, entropy, and Enhancement Measure Estimation (EME), and also delivers competitive results in terms of
+image noise control..
+1. Introduction
+With the continuous development of underwater image and video
+data acquisition technology [ 1 ], improving the quality of underwater
+images has become a key issue in underwater machine vision research
+and practical applications [ 2 ]. Due to the unique characteristics of the
+underwater environment [ 3 , 4 ], such as light refraction, impurity scat-
+tering, color distortion, and reduced contrast, underwater images are
+often subject to various interferences, resulting in loss of visual infor-
+mation [ 5 ]. In order to address these issues, this study proposes an
+innovative underwater image enhancement method aimed at improving
+the quality of underwater microscopic images [ 6 ] through color channel
+compensation [ 7 ] and image enhancement techniques [ 8 ]. This paper
+not only provides a detailed introduction to the theoretical foundation
+and implementation process of the method but also conducts a series of
+experiments to compare it with other advanced techniques, validating
+its superiority in color correction, detail preservation, and noise control.
+Moreover, by quantitatively analyzing the impact of this method on the
+edge detection [ 9 ] results of underwater algal microscopic images, this
+paper further demonstrates its ability to significantly enhance the local
+detail features of the images while preserving their original structure,
+providing crucial technical support for subsequent research on seg-
+mentation, identification, and classification of algal microscopic images
+in red tide studies.
+The main contributions of this paper are as follows:
+1. Based on the gray world assumption, an effective algorithm ACCC
+* Corresponding author at: College of Computer Science and Engineering, Shandong University of Science and Technology, Qingdao 266590, China.
+E-mail address: wugengkun@sdust.edu.cn (G.-K. Wu).
+Contents lists available at ScienceDirect
+Image and Vision Computing
+journal homep age: www.el sevier.com/l ocate/imavis
+https://doi.org/10.1016/j.imavis.2025.105466
+Received 5 July 2024; Received in revised form 5 February 2025; Accepted 14 February 2025
+Image and Vision Computing 156 (2025) 105466 
+Available online 16 February 2025 
+0262-8856/© 2025 Elsevier B.V. All rights are reserved, including those for text and data mining, AI training, and similar technologies. 
+
+===== PAGE 2 =====
+for enhancing the color of underwater images is proposed. This method
+considers the attenuation of each channel in different images and
+compensates by proposing a new channel compensation stop function,
+thereby improving the white balance effect of the image.
+2. Considering that the ACCC method cannot effectively improve the
+local details of images, we propose a new multi-scale IPF method that
+combines the ACCC method with the ECH module. This integration
+enables our method to perform more detailed local feature processing on
+images, ultimately improving their visual perception and various eval-
+uation indicators after image enhancement.
+3. Based on the above improvements, this paper proposes an un-
+derwater seaweed microscopic image enhancement method based on
+adaptive white balance color compensation (AWBCC) and image pyra-
+mid fusion (IPF). The experimental results show that the fused image has
+more significant colors, details, and contrast than the original image.
+In addition, the previously degraded contours in algal cells reap-
+peared in subsequent edge detection experiments.
+4. Proposes a network based on a diffusion probability model for
+edge detection in HABs, which simultaneously considers both high-
+order and low-order features extracted from images. This approach en-
+riches the semantic information of the feature maps and enhances edge
+detection accuracy.
+The organization of this paper is as follows. Related research on
+underwater image enhancement and restoration is introduced in Section
+2. The proposed method is detailed in Section 3. Quantitative evaluation
+and comparison with state-of-the-art methods are presented in Section
+4. The conclusion of this paper is provided in Section 5.
+2. Related work
+Preprocessing techniques for underwater images mainly involve
+physical methods for image restoration and non-physical methods for
+enhancing image quality, namely underwater image restoration and
+underwater image enhancement.
+2.1. Current research on underwater image enhancement and restoration
+The primary objective of underwater image restoration methods is to
+improve visibility by deriving a degradation model for underwater im-
+ages. Wu et al. proposed a two-stage progressive enhancement network
+(TPENet) [10] based on an encoder-decoder architecture to address
+color distortion in underwater images. Li et al. addressed the limitations
+of the classical dark channel prior algorithm in underwater image
+restoration by proposing a novel algorithm based on improved back-
+ground light estimation and automatic white balance [11]. Guan et al.
+achieved the restoration of degraded underwater images through their
+UIE method (DiffWater), which is based on a conditional denoising
+diffusion probabilistic model (DDPM) [12]. Alamsyah et al. proposed a
+color restoration method for underwater images based on polynomial
+equations and fog removal techniques to address the primary factors
+distorting underwater images, namely color shifting and light scattering
+[13]. These restoration methods often require complex physical models
+and prior information, and they are computationally intensive and lack
+generalizability.
+Underwater image enhancement methods aim to improve image
+quality by modifying pixel values and distributions. Liu et al. effectively
+enhanced the quality of turbid underwater images with non-uniform
+scattering using a pulse-coupled neural network (PCNN) and poly-
+nomial regression algorithm [14]. Yu et al. proposed a UIE method
+based on the maximum attenuation prior in the red channel, achieving
+enhancement for different underwater scene images [15]. Zhang et al.
+implemented the enhancement of degraded red tide microscopic images
+through homomorphic filtering, empirical mode feature extraction, and
+wavelet fusion [16]. Additionally, Chiang and Chen proposed a novel
+system approach that considers the influence of possible artificial light
+sources and enhances underwater images using a dehazing algorithm
+[17]. Although the enhancement/restoration methods have shown
+certain effectiveness for underwater images, the degradation factors for
+algae underwater microscopic images are different from general un-
+derwater images. Therefore, these methods may not be suitable for
+effectively enhancing algae underwater microscopic images.
+2.2. Current research on microscopic images of HABs
+Researchers have proposed various algorithms for enhancing HABs
+images. Wu et al. [16] introduced a HABs image enhancement method
+that combines empirical mode decomposition (EMD) and discrete
+wavelet transform. This approach highlights high-frequency informa-
+tion such as textures, hair, and edges by enhancing the high-pass filter.
+In terms of HABs image classification, Wu et al. [36] developed a
+Weighted Feature Fusion Dual Attention Convolutional Neural Network
+and Transformer Encoder Module (WFTC) specifically for marine HABs
+image classification. Through the design of an image enhancement al-
+gorithm [20] and the HABs classification network (WFTC), this method
+significantly improved image quality and achieved a maximum classi-
+fication accuracy of 87%. In the field of underwater image enhance-
+ment/restoration, Wu et al. [37] proposed a HABs edge detection
+method based on a Spatial Feature Mapping Encoder-Decoder Network,
+termed SFMnet. This method first enhances the quality of degraded
+images in the original HABs dataset by designing an image enhancement
+algorithm based on an underwater image restoration model, which in-
+cludes precise underwater scene depth estimation and transmission map
+fusion to effectively eliminate color distortion and enhance image edge
+details and contrast. Additionally, they introduced a deep learning
+model based on the VGG16 network, which integrates multi-scale fea-
+tures through a Spatial Feature Mapping (SFM) module to improve edge
+detection accuracy.
+3. Proposed method
+The flowchart of our method is detailed in Fig. 1. Our method con-
+sists of two main parts: adaptive white balance for underwater algae
+microscopic images and image pyramid fusion.
+In the first step, we perform channel compensation and balance in
+the RGB color space. The three channels are divided into the following
+types: large, medium, and small scales. The three channels are divided
+into large, medium, and small scales. The channels are divided into the
+following types: large, medium, and small. The large channel, with
+minimal color attenuation, is compensated using linear operations based
+on the maximum pixel values of the medium and small channels. Sub-
+sequently, the medium and small channels are cyclically compensated
+based on a channel loss function until the process is completed. Next, we
+select the image with the maximum color channel attenuation as the
+guidance image for color transfer. This approach effectively eliminates
+color cast but does not significantly improve contrast or address local
+detail blurring.
+In the second step, in the image pyramid fusion, we employ an
+improved Contrast Limited Adaptive Histogram Equalization (CLAHE)
+and contrast stretching to enhance the global contrast of the image. We
+also utilize Empirical Mode Decomposition (EMD [18]) to enrich local
+details, effectively addressing the issue of local detail blurring. Through
+these steps, we generate an enhanced underwater image.
+3.1. Motivation
+The colors and contrast of real-time captured underwater algae
+microscopic images are prone to degradation. Recent studies [19] have
+demonstrated the capability of underwater image color correction.
+However, these methods often introduce artifacts or unsatisfactory
+features in the context of underwater algae microscopic images, which
+hinders the recognition, extraction, and classification of algae features.
+In order to better utilize existing images for downstream tasks, we
+Y.-N. Fan et al. Image and Vision Computing 156 (2025) 105466 
+2 
+
+===== PAGE 3 =====
+propose an innovative enhancement method for underwater algae
+microscopic images, building upon existing image enhancement tech-
+niques [ 20 ]. Our goal is to enhance the features of algae images, facil-
+itating subsequent tasks such as edge detection, feature extraction, and
+algae identification and classification. It is worth noting that channel
+color compensation is a pioneering method for underwater image
+enhancement. Most existing channel color compensation methods are
+based on significant color loss in the red and blue channels, while pre-
+serving relatively intact color information in the green channel. How-
+ever, there is a lack of color balance methods suitable for underwater
+algae microscopic images in their original state. Additionally, fusion-
+based image enhancement methods have shown promising results in
+improving image details and contrast. On the other hand, deep learning-
+based methods rely on a large number of reference land images, which
+are not suitable for enhancing single underwater images with complex
+artifacts and diverse color loss categories. Therefore, we propose a
+creative enhancement method specifically designed for underwater
+algae microscopic images, combining cyclic channel compensation and
+image pyramid fusion.
+3.2. Adaptive Cyclic Channel compensation(ACCC) and attenuation map
+transfer
+Color deviation in underwater images is caused by the selective ab-
+sorption of light in the underwater environment [ 21 ]. We reference
+existing white balance methods, which typically estimate the color of
+the light source by making specific assumptions [ 22 ] and then correct
+the colors by multiplying each channel with the corresponding
+compensation coefficients. Among these methods, the Gray World [ 23 ]
+algorithm is based on the assumption that, for an image with significant
+color variations, the average values of the R, G, and B components tend
+to the same gray value (Gray). In other words, the Gray World
+assumption posits that the average reflectance of objects in the natural
+environment is “ gray ” in a global sense. By this assumption, the algo-
+rithm calculates the mean values of the RGB channels and attempts to
+eliminate the influence of ambient light. However, these methods often
+struggle to adaptively restore color deviations in complex and diverse
+underwater images.
+In our proposed method of adaptive cyclic channel compensation,
+underwater algae microscopic images are transformed into three color
+channels: red, green, and blue. Firstly, the average gray values of the
+red, green, and blue channels are computed, denoted as R_avg, G_avg,
+and B_avg, respectively. The channel evaluation values for the red,
+green, and blue channels are calculated as follows:
+I
+c
+=
+1
+HW
+∑
+H
+a = 1
+∑
+W
+b = 1
+I
+c
+( a , b ) , c ∈ { R , G , B } (1)
+Here, H and W represent the height and width of the input image I ,
+respectively. We define the color channels corresponding to the
+maximum average value, medium average value, and minimum average
+value as Channel A ( I
+a
+), Channel B ( I
+b
+), and Channel C ( I
+c
+), respectively.
+Considering that the color attenuation in the large color channel I
+a
+is
+smaller than in the other two color channels, and taking into account the
+grayscale values of each channel, we first perform compensation on each
+Fig. 1. Flowchart of the proposed method.
+Y.-N. Fan et al. Image and Vision Computing 156 (2025) 105466 
+3 
+
+===== PAGE 4 =====
+pixel of Channel I
+a
+as follows:
+I
+CR
+a
+=
+ 
+I
+a
+  I
+min
+a
+)
+I
+max
+a
+  I
+min
+a
+ 
+I
+max
+b
++ I
+max
+c
+)/
+2
+(2)
+Here, I
+CR
+a
+represents the corrected large color channel, and I
+min
+a
+and
+I
+max
+a
+are the minimum and maximum pixel values of the large channel in
+the input image. For the other two color channels I
+b
+and I
+c
+, which
+experience stronger color attenuation compared to the large color
+channel, we cyclically compensate them using the following formula:
+I
+CR
+b
+= I
+b
++ ( I
+a
+  I
+b
+)( 1   I
+a
+) I
+b
+(3)
+I
+CR
+c
+= I
+c
++ ( I
+a
+  I
+c
+)( 1   I
+a
+) I
+c
+(4)
+Here, I
+CR
+b
+and I
+CR
+c
+represent the color-compensated medium and small
+channels, respectively. In order to ensure that each color channel con-
+forms to the assumption of the gray world, which means that the mean
+value and histogram of each color channel approximately resemble
+“ gray, ” we iteratively use the formula above until the constraint con-
+ditions are met.
+Loss = min ( I
+a
+  I
+b
+)
+2
++ min ( I
+a
+  I
+c
+)
+2
+(5)
+We set the convergence threshold for the minimum Loss constraint as
+10
+  2
+and iteratively apply the formula for channel compensation until
+convergence is achieved. As a result, we obtain the I
+CR
+image with
+channel compensation completed. However, the gray world assumption
+ignores wavelength-dependent light absorption, and simple color
+channel compensation may introduce unnecessary color distortions.
+Therefore, in the subsequent step of guided image transfer, we fully
+consider the wavelength correlation in underwater algal microscopic
+images and refer to different methods of guided attenuation maps [ 24 ].
+The guided image can be represented as:
+A
+M
+max
+= max { 1   I
+R
+γ
+, 1   I
+G
+γ
+, 1   I
+B
+γ
+} (6)
+The guided image strategy utilizes the color transfer of the image to
+locally adjust the color of the input image. Among them, γ is the
+parameter that controls the intensity of the received light. Where γ > 2
+can lead to overexposure, and γ < 2 may cause darkened local details.
+We conducted chromatic aberration calibration experiments from 0 to 5,
+with increments of 0.1. We ultimately found that a control factor of γ = 2
+yielded the best chromatic aberration calibration results for the HABs
+dataset. Our algorithm is as follows:
+Algorithm 1 . Color Difference Calibration Experiment
+1: Input: gamma_min = 0, gamma_max = 5, gamma_step = 0.1
+2: Output: best_gamma
+3: Function: perform_colour_calibration_experiment(gamma)
+4: effect_score=CIE2000(gamma)
+5: Return effect_score
+6: Define Best_Gamma ():
+7: gamma = gamma_min
+8: while gamma <= gamma_max:
+9:
+current_effect = 
+perform_colour_calibration_experiment(gamma)
+10: If current_effect > best_colour_correction_effect:
+11: best_colour_correction_effect = current_effect
+12: best_gamma = gamma
+13: gamma = gamma + gamma_step
+14: Return best_gamma
+As a result, we obtain images with global and local color restoration.
+However, using this enhancement method alone cannot enhance the
+edge and texture features of underwater algal images. Therefore, in the
+next section, we propose a pyramid fusion-based image enhancement
+method to address the blur issue in underwater algal images. The
+following will focus on discussing the details of our approach.
+Through the study of Fig. 2 , it has been observed that most tradi-
+tional white balance methods are not effective in eliminating color
+biases. They tend to result in images that appear too bright or too dark. It
+is observed that the Perfect Reflector method still exhibits a greenish
+hue. The most effective methods for eliminating color biases are Max
+RGB and gray shadow, but it is noticed that these methods tend to make
+the overall image too bright or too dark due to excessive or insufficient
+compensation across the three channels. In contrast, our method ad-
+dresses these shortcomings.
+Fig. 3 demonstrates the results of our color channel compensation
+method on yellowish and purplish algal images. It can be observed that
+our adaptive cyclic color channel compensation method effectively
+corrects various color-biased images.
+3.3. ECH based on multi-scale image pyramid fusion
+In this section, we propose a solution for enhancing the details of
+single-frame underwater algal microscopic images based on image
+pyramid fusion. Image fusion has been widely applied in image
+enhancement and has demonstrated its practicality. We introduce a
+method that achieves better enhancement of edge and texture features in
+various underwater algal microscopic images. Specifically, our innova-
+tion in the ECH approach lies in using the results of empirical mode
+decomposition, contrast stretching, and improved CLAHE [ 25 ] as input
+components for the pyramid fusion method. Our image detail
+enhancement method consists of two steps: obtaining a white-balanced
+image with color channel compensation from the original image, and
+performing pyramid fusion [ 26 ] with input component images derived
+from the white-balanced image.
+3.3.1. Empirical mode decomposition (EMD)
+Empirical Mode Decomposition (EMD) is a signal decomposition
+method based on the time-scale characteristics of the data itself. It does
+not require predefined basis functions and is a time-frequency domain
+signal processing approach. EMD is particularly suitable for analyzing
+nonlinear and non-stationary signals.
+In the field of image processing, Empirical Mode Decomposition
+(EMD) can be utilized for feature extraction and edge preservation. EMD
+decomposes image signals into a series of Intrinsic Mode Functions
+(IMFs), which encompass various frequency components of the image.
+This approach effectively suppresses noise while preserving edge in-
+formation. Specifically, it can be implemented through the extraction of
+local extrema, selection of appropriate interpolation methods, and
+management of endpoint effects.
+1. During the decomposition of image signals using the EMD method,
+local extrema, including maxima and minima, are extracted. These
+extrema are crucial for capturing edge information in images. By
+employing the neighborhood comparison method, local extrema can
+be displayed, thereby preserving edge information throughout the
+decomposition process.
+2. In the EMD decomposition process, the use of surface fitting and
+interpolation methods transforms operator-detected edge images
+into probability distributions, which are then inversely mapped back
+to the range of edge intensity. This maximizes the retention of feature
+maps in both IMF images and residual images.
+3. The method based on boundary local feature extension involves
+determining whether the endpoints of the original signal can be
+inserted as extrema into new upper and lower envelopes. This
+effectively suppresses the generation of false components and
+distortion of boundary signals caused by endpoint effects in EMD.
+In our work, we propose a method for extracting empirical mode
+feature maps from algal images based on the EMD method. EMD can
+separate the high-frequency components in the image, resulting in
+Y.-N. Fan et al. Image and Vision Computing 156 (2025) 105466 
+4 
+
+===== PAGE 5 =====
+feature maps that retain the edge information of the algal image while
+effectively suppressing noise.
+We employ a two-dimensional EMD algorithm specifically designed
+for image processing, as described below:
+Algorithm 2 . Extraction procedure of Empirical Mode Feature Map
+1: Input: A two-dimensional signal S (x, y)
+2: Output: Intrinsic Mode Functions (IMFs)
+3: Define 2D_EMD(S):
+4: Initialize an empty list of IMFs
+5: Set the residual signal R (x, y) to be the input signal S (x, y)
+6: while R (x, y) has predefined number of IMFs is not reached:
+7: Set the current signal h (x, y) to R (x, y)
+8: repeat:
+9: Identify extrema of h (x, y)
+10: Create upper envelope U (x, y) and lower envelope L (x, y)
+11: Calculate mean envelope M (x, y) = (U (x, y) + L (x, y)) / 2
+12: Update h (x, y) = h (x, y) - M (x, y)
+13: until h (x, y) is an IMF
+14: Add h (x, y) to IMFs
+15: Update R (x, y) by removing h (x, y)
+16: Return IMFs
+In this study, we determine whether h
+k
+( x , y ) is an intrinsic mode
+function (IMF) based on the standard deviation ( SD ). When the SD is less
+than 0.2, we consider the sifting criteria to be satisfied, and we stop the
+sifting process.
+SD =
+∑
+( x , y )∈ Δ
+⃒
+⃒
+h
+( k   1 )
+( x , y )   h
+k
+( x , y )
+⃒
+⃒
+2
+h
+2
+( k   1 )
+( x , y )
+(7)
+3.3.2. Input components for image pyramid fusion
+After obtaining the IMF
+1
+of the underwater algal microscopic image,
+the overall brightness of the image is relatively dark, and the overall
+grayscale distribution of the image is at a lower level. To improve the
+brightness and contrast of IMF
+1
+, we apply a stretching formula to adjust
+the grayscale values of the entire image.
+IMF
+dst
+=
+IMF   IMF
+min
+IMF
+max
+  IMF
+min
+× 255 (8)
+IMF
+dst
+represents the pixel values after linear stretching, IMF repre-
+sents the original image pixel data, and IMF
+min
+and IMF
+max
+represent the
+minimum and maximum values of the original pixel data, respectively.
+After histogram stretching, in order to limit the number of pixels for a
+certain grayscale value, we apply clipping to the image histogram. As
+shown in Fig. 4 , the excess portion is evenly distributed among all
+grayscale levels, resulting in a uniform distribution of grayscale values
+throughout the image.
+Two-dimensional Empirical Mode Decomposition (EMD) yields clear
+image edges and texture details while effectively distinguishing between
+noise and image signals during decomposition, making it suitable for
+denoising while preserving key image features. This provides us with the
+first input component for image pyramid fusion; the methods for
+obtaining the remaining two input images are discussed next.
+In our algorithm, we employ a two-dimensional EMD, which has
+high computational complexity due to the need for decomposition along
+each dimension of the image. This may result in a significant compu-
+tational burden when processing large-scale images or in real-time ap-
+plications. When extracting local features, EMD may cause dispersion of
+features due to excessive decomposition, leading to a lack of coherence
+in subsequent enhancement processes and potentially diminishing the
+prominence of specific details. Additionally, EMD is primarily applied to
+grayscale values or individual color channels; processing directly in the
+RGB space may cause an imbalance or distortion of color information.
+To overcome these limitations, we integrate other image enhancement
+techniques, such as histogram equalization or adaptive contrast
+enhancement, to complement the deficiencies of EMD in image pro-
+cessing. The second and third input images aim to enhance image
+contrast and augment the difference between foreground and back-
+ground regions without introducing undesirable color changes that
+could compromise the white balance effect achieved in previous steps.
+After channel compensation, for the second input image, we
+employed a local adaptive contrast enhancement algorithm to improve
+the contrast of underwater images. Initially, the white-balanced image is
+converted to the Lab color space, which better simulates human color
+Fig. 2. Adaptive cyclic color channel compensation. Top row from left to right: original image, blue channel image of the original image, red channel image, green
+channel image, and image after compensation using our formula. Our compensated image is obtained through formulas (1), (2), (3), and (4) . Bottom row from left to
+right: several well-known white balance methods (Max RGB, gray world, gray shadow, perfect reflectance), and the image obtained using the white balance method
+proposed in this paper. (For interpretation of the references to color in this figure legend, the reader is referred to the web version of this article.)
+Y.-N. Fan et al. Image and Vision Computing 156 (2025) 105466 
+5 
+
+===== PAGE 6 =====
+perception, with L representing lightness and a and b representing color
+opponent dimensions. The Lab color space values are then normalized to
+facilitate subsequent processing. At this point, integral and squared in-
+tegral mappings are introduced to compute the mean and variance of
+local image blocks:
+μ
+B
+=
+∑
+H
+j = y
+∑
+W
+i = x
+L
+B
+( i , j )
+HW
+(9)
+σ
+B
+=
+∑
+H
+j = y
+∑
+W
+i = x
+L
+B
+( i , j )
+2
+HW
+  μ
+B
+2
+(10)
+μ
+B
+and σ
+B
+represent the mean and variance of the L channel for the
+local block (block B), respectively. To accelerate computation, integral
+images can be utilized. The overall mean μ and variance σ for the entire
+image are computed. Subsequently, the mean value of the total pixels in
+local block B is approximated as a low-frequency component, allowing
+Fig. 4. Illustration of clipping limitation applied.
+Fig. 3. Yellowish and purplish algal images, and the images after being processed with our adaptive cyclic color channel compensation method.
+Y.-N. Fan et al. Image and Vision Computing 156 (2025) 105466 
+6 
+
+===== PAGE 7 =====
+subtraction from the input image to appropriately enhance the high-
+frequency components, thereby increasing the contrast of the input
+image. The enhancement process for channel L is defined as:
+L
+E
+= μ
+B
++ α ( L
+B
+( i , j )   μ
+B
+) (11)
+The term α represents the control factor, with α =
+σ
+σ
+B
+being defined as
+a control factor while a cutoff value is set to prevent over-enhancement.
+For the images in the HABs dataset, we conducted contrast enhancement
+experiments using values ranging from 1 to 2, with increments of 0.1. It
+was observed that when α exceeds 1.5, over-sharpening issues arise.
+Therefore, setting the cutoff value of α at 1.5 yielded the most effective
+contrast enhancement results for the images. Our algorithm is as follows:
+Algorithm 3 . Control factor cutoff experiment
+1: Input: alpha_min = 1.0, alpha_max = 2.0, alpha_step = 0.1
+2: Output: best_alpha
+3: Define Best_ Alpha ():
+4: alpha = alpha_min
+5: While alpha <= alpha_max:
+6: (contrast_effect_score, is_oversharpened) = Contrast_test(α)
+7: If Not is_oversharpened And α > best_alpha:
+8: best_alpha = α
+9: alpha = alpha + alpha_step
+10: Return best_alpha
+Subsequent correction and enhancement are applied to the a and b
+channels, where the mean values of the a and b channels are calculated
+to adjust color balance and enhance image color saturation. If the mean
+value of a channel exceeds that of the b channel, then the b channel will
+be adjusted based on the difference between the means of the a and b
+channels, and vice versa.
+⎧
+⎪
+⎪
+⎪
+⎨
+⎪
+⎪
+⎪
+⎩
+I
+be
+= I
+b
++
+( I
+a
+  I
+b
+)
+( I
+a
++ I
+b
+)
+I
+b
+, I
+a
+> I
+b
+I
+ae
+= I
+a
++
+( I
+b
+  I
+a
+)
+( I
+a
++ I
+b
+)
+I
+a
+, I
+a
+< I
+b
+(12)
+The local adaptive contrast enhancement algorithm is employed to
+improve image visibility under suboptimal lighting conditions, enhance
+contrast, and adjust color balance, resulting in a more natural final
+image.
+For the third input image, Adaptive Contrast Limited Histogram
+Equalization (CLAHE) is applied to the white-balanced image. CLAHE
+enhances image contrast while increasing the differentiation between
+foreground and background regions.
+3.3.3. Image pyramid fusion process
+During image fusion, the use of weight maps allows pixels with
+higher weight values in the image to be more prominently displayed in
+the resultant image, thereby enhancing the image. We employed Canny
+weight maps ( W
+C
+), Butterworth weight maps ( W
+B
+), and weight maps
+based on gamma correction ( W
+Q
+).
+In practice, for each input image, we combine the three weights
+above maps into one. For each input image K , we first sum the values of
+W
+C
+, W
+B
+, and W
+Q
+to obtain W
+K
+. Subsequently, we normalize this by
+dividing the grayscale value of each pixel in W
+K
+by the sum of the
+grayscale values of the pixels at the corresponding positions in all weight
+maps, resulting in the normalized weight map W
+K
+. Each normalized
+weight map W
+K
+is defined as follows:
+W
+K
+=
+( W
+K
++ δ )
+∑
+K
+k = 1
+W
+k
++ δ ⋅ K
+(13)
+δ represents a regularization term to ensure each input has a
+corresponding normalized weight map. In our method, δ is set to 0.6.
+We utilize both Gaussian and Laplacian pyramids. Each level of the
+Gaussian pyramid is created by applying a Gaussian filter to the previous
+level ’ s image followed by downsampling. The Laplacian pyramid is
+obtained by subtracting the upsampled and Gaussian-smoothed version
+of an image of the previous level from the current layer of the Gaussian
+pyramid. Each input image is decomposed into a Laplacian pyramid, and
+the normalized weight map W
+K
+is decomposed into a Gaussian pyramid.
+Both pyramids have the same number of levels, and at each level, the
+Laplacian input and Gaussian weights are independently merged
+through normalized fusion:
+F
+l
+=
+∑
+K
+k = 1
+G
+l
+( W
+K
+) L
+l
+( I
+l
+) (14)
+Here, k denotes the number of input images, l represents the number
+of levels in the image pyramid (in this experiment, l = 4), G stands for the
+Gaussian pyramid, L for the Laplacian pyramid, and I for the input im-
+ages. After upsampling the fused images of each layer appropriately, the
+final enhanced fusion image is obtained by summing the images across
+all layers.
+The paper utilizes result images and their 3D-RGB color models as
+subjective metrics to measure the overall color range variation of the
+entire image before and after enhancement, as shown in Fig. 5 and
+Fig. 6 . Images enhanced by the HE and RD methods were generally
+rendered unusable, with overly saturated colors evident in their
+respective 3D models. While enhancement via methods such as CLAHE,
+GC, and UCM [ 31 ] highlighted cellular details to some degree, there was
+a low contrast between cell colors and the background, with some im-
+ages even exhibiting significant color deviations from the input image,
+which could interfere with subsequent edge detection processes. The
+proposed method, however, demonstrated superior white balance per-
+formance, rendering a clean overall tone that effectively distinguished
+between foreground cells and background, thus providing favorable
+conditions for edge detection.
+Fig. 5 and Fig. 6 showcase the efficacy of the proposed image
+enhancement method on underwater micro-images of algae with
+greenish and yellowish hues, indicating the method ’ s robustness in
+enhancing variably colored underwater algae images.
+3.4. The HDEnet edge detection network
+A multi-order feature fusion diffusion probability model method for
+edge detection in Harmful Algal Blooms (HABs) is proposed. This
+network simultaneously considers both high-order and low-order fea-
+tures extracted from the images. The fusion of low-order and high-order
+features enriches the semantic information of the feature maps.
+Fig. 7 depicts the overall architecture of the edge detection network
+for HAB microscopic images. Our backbone network is based on the
+Swin Transformer [ 41 ] and denoising diffusion network [ 42 ]. Initially,
+we train an autoencoder comprising an encoder and a decoder. The
+encoder compresses the edge ground truth into latent codes, while the
+decoder reconstructs the edge ground truth from these latent codes.
+Subsequently, during the denoising U-Net [ 43 ] training phase, to
+minimize information loss during the sampling process, the obtained
+feature maps are fed into the HAL module. This module facilitates the
+fusion of low-level features, high-level features, and the latent codes
+compressed by the autoencoder ’ s encoder. The denoising process is
+trained in the latent space by determining the encoder ’ s weights. This
+process can be represented as:
+f
+θ
+n
+θ
+= Net
+θ
+( z
+t
+, t )
+Z
+t
+= Z
+0
++
+∫
+t
+0
+f
+t
+dt +
+̅ ̅
+t
+√
+n
+(15)
+In this context, Net θ represents the denoising U-Net, and z 0 = E(e0)
+denotes the latent code compressed by the autoencoder ’ s encoder,
+Y.-N. Fan et al. Image and Vision Computing 156 (2025) 105466 
+7 
+
+===== PAGE 8 =====
+where t is the time step.
+3.4.1. HAL module
+The HAL module is proposed to extract and enhance multi-order
+features in edge detection networks. This module enhances the seman-
+tic information in feature maps and optimizes the feature fusion process.
+Fig. 8 illustrates the architecture of the HAL module. Within this mod-
+ule, beyond the fusion of low-order features Fa and high-order features
+Fig. 5. Image of Chattonella marina: (a) original image, with the remaining panels showing results enhanced by the following methods, respectively, (b) CLAHE, (c)
+GC, (d) HE, (e) ICM, (f) RD, (g) RGHS, (h) UCM, (i) our method.
+Y.-N. Fan et al. Image and Vision Computing 156 (2025) 105466 
+8 
+
+===== PAGE 9 =====
+Fc , a fusion mechanism between low-order features Fb and the already
+fused features ( Fa and Fc ) is introduced. The low-order features originate
+from the initial stages of feature extraction, while the high-order fea-
+tures are derived from the final stages of this process. Upon
+incorporating low-frequency features, an attention mechanism is
+employed to enhance the feature map, resulting in an attention feature
+map.
+Fig. 6. Image of Prorocentrum minutum: (a) original image, with the remaining panels showing results enhanced by the following methods, respectively, (b) CLAHE,
+(c) GC, (d) HE, (e) ICM, (f) RD, (g) RGHS, (h) UCM, (i) our method.
+Y.-N. Fan et al. Image and Vision Computing 156 (2025) 105466 
+9 
+
+===== PAGE 10 =====
+4. Experiments results and analysis
+In this section, the experimental results generated from the various
+stages of the proposed methods are compared with the latest method-
+ologies, and cutting-edge evaluation metrics are employed for qualita-
+tive and quantitative assessment of the enhanced images. Given our
+enhancement targets underwater algae microscopic imaging for further
+downstream tasks like classification and edge detection, advanced edge
+detection techniques have been applied to evaluate the effectiveness of
+our image enhancement approach.
+4.1. Dataset description
+This section summarizes the datasets used, experimental setup,
+experimental results, and provides a brief analysis of the network ar-
+chitecture ’ s performance. Currently, there is no publicly available HABs
+dataset; therefore, the HABs micrograph dataset utilized in this study
+was obtained from the Applied Microalgae Biology Laboratory at Ocean
+University of China. This dataset comprises 36 HABs categories, totaling
+676 images. For evaluation purposes, the images for each HABs category
+were divided into training and testing sets at a 7:3 ratio, with the
+training set containing 473 images and the validation set comprising
+203 images.
+4.2. Experimental setup
+To verify the effectiveness of the proposed underwater image
+enhancement method, experiments related to enhancement were con-
+ducted on a high-performance computer equipped with an Intel Core i5-
+12400F CPU and 32 GB of memory. The proposed method is based on
+Python 3.6 implementation and utilizes libraries such as NumPy,
+OpenCV, and SciPy for efficient image processing and numerical
+calculations.
+Our edge detection experiments were conducted using the PyTorch
+framework with Python 3.6 and PyTorch 1.7.1. For training the
+denoising U-Net, the minimum time step was set to 0.0001. The model
+was trained using the AdamW optimizer with a decayed learning rate
+ranging from 5e-5 to 5e-6 over 5000 iterations. All training was per-
+formed on a single RTX 3090 GPU, taking approximately 15 GPU hours
+per session. We employed exponential moving average (EMA) to miti-
+gate instability in model performance during training. For all experi-
+ments, we trained on datasets using randomly cropped patches of size
+320 × 320, with a batch size of 16. To ensure fair evaluation, we utilized
+identical metrics to assess the edge prediction maps generated by each
+method, including Average Precision (AP) [ 39 ], Optimal Dataset Scale
+(ODS), and Optimal Image Scale (OIS) F-measure. The generated edges
+were not refined during evaluation.
+4.3. Color Channel compensation assessment
+The images used in the experiments are all sourced from actual
+Fig. 7. The architecture of the edge detection network.
+Fig. 8. HAL module.
+Y.-N. Fan et al. Image and Vision Computing 156 (2025) 105466 
+10 
+
+===== PAGE 11 =====
+underwater microscopic imaging of algae in seawater. These images
+commonly present issues such as low contrast, color distortion, and
+blurred textural features. The effectiveness of our color channel
+compensation method was evaluated using the following techniques:
+Shades of Gray, GreyWorld, MaxRGB, PerfectReflector and Calibration
+fusion algorithm (CFA). To quantitatively assess the performance in
+correcting color deviations in underwater images, we employed the
+following metrics: CIEDE2000 [27], Pearson Correlation Coefficient
+(PCC), and the Qu index. CIEDE2000 is calculated using the color dif-
+ference formula, with values ranging from [0,100]; lower values indi-
+cate smaller color differences, with values less than 1 being visually
+indistinguishable. PCC measures the degree of linear correlation be-
+tween two images before and after white balance, ranging from [0,1],
+where 1 indicates perfect correlation and 0 no linear correlation. The Qu
+index, combining the advantages of the SSIM index [34,40] and the
+Euclidean color distance, effectively evaluates the efficacy of color
+channel compensation, with higher values (ranging from [0,1]) indi-
+cating better compensation results (See Table 1).
+Underwater algae microscopic images of different hues (yellow,
+gray, green, purple) demonstrate good performance after our channel
+compensation and white balance method. As seen in Fig. 9, the Shades of
+Gray method introduces artifacts of other colors in some images. The
+Gray World, Perfect Reflector and CPF methods still exhibit unexpected
+color biases, while the Max RGB method amplifies the grayscale values,
+resulting in overly bright images that do not accurately reflect the
+original image’s true details. In contrast, our method ensures that im-
+ages are suitable for various hues of underwater algae microscopy
+without introducing extraneous noise or excessively increasing bright-
+ness. It accurately represents the true color tones, preserving image
+details.
+To quantitatively assess the performance of color deviation correc-
+tion in underwater images, Table I presents the results obtained by the
+Shades of Gray, Gray World, Max RGB, Perfect Reflector and CFA
+methods using the CIEDE2000 index, Pearson Correlation Coefficient
+(PCC), and Qu index.
+Our method achieved the highest mean value on the Qu index, the
+highest values for nearly all images on the PCC index, and the lowest
+mean value on the CIEDE2000 index. This demonstrates that our method
+has smaller color differences, effective channel compensation, and
+minimal loss of image detail, aligning closely with the human eye’s
+actual perception of color discrepancies. Compared to the other two
+classical methods, Shades of Gray and Gray World, our channel
+compensation approach produces images that are closer to the original
+in terms of color deviation correction while better distinguishing be-
+tween foreground and background, resulting in clearer cellular struc-
+tures. Due to variations in lighting conditions, cell color, and structure in
+each algal image—such as the overall green color cast in images of
+Hematococcus pluvialis and the yellow color cast in images of Alexan-
+drium tamarense—our proposed method may not achieve optimal per-
+formance on individual metrics. However, when considering the overall
+visual effect and the average values across various metrics, our method
+proves to be superior. For the HABs dataset, our channel-compensated
+white balance method demonstrates effective correction for algal im-
+ages exhibiting different color casts. Our approach exhibits greater
+generalization capability compared to other methods. In conclusion,
+both qualitative and quantitative comparisons indicate that our method
+possesses superior color correction capabilities.
+4.4. Underwater image enhancement evaluation
+In this section, we continue to use actual collected microscopic algae
+images. The following image enhancement methods were applied:
+CLAHE, GC, HE, ICM [32], RD, RGHS, and UCM. These methods were
+compared with our improved image enhancement strategy. To evaluate
+enhancement effectiveness, we employed classic image quality metrics:
+Contrast, Enhancement Measure (EME [28]), Entropy of Enhancement
+Table 1
+Quantitative evaluation of channel compensation based on CIEDE2000, Pearson correlation coefficient, and Qu index. Note: Values in bold indicate the best results obtained in the comparison.
+Shades Of Gray Gray World Max RGB Perfect Reflector CFA Our Method
+CIE PCC Qu CIE PCC Qu CIE PCC Qu CIE PCC Qu CIE PCC Qu CIE PCC Qu
+heterosigma carterae 17.528 0.933 0.601 16.634 0.933 0.621 24.892 0.933 0.621 17.529 0.933 0.602 18.391 0.940 0.617 18.819 0.942 0.630
+leptocylindrus danicus 10.948 0.542 0.274 10.160 0.789 0.554 17.382 0.792 0.529 10.949 0.788 0.548 9.979 0.739 0.560 12.404 0.797 0.570
+p. donghaiense 20.036 0.498 0.230 24.942 0.793 0.548 21.439 0.912 0.618 20.036 0.827 0.617 21.046 0.972 0.616 21.529 0.966 0.627
+chattonella marina 18.083 0.503 0.306 18.915 0.938 0.644 18.503 0.954 0.630 18.084 0.900 0.652 17.873 0.955 0.635 17.860 0.956 0.622
+Gracilaria echinospora 21.496 0.575 0.291 5.119 0.782 0.671 6.318 0.799 0.500 4.186 0.704 0.623 4.527 0.767 0.647 3.991 0.800 0.549
+Prorocentrum lima 18.568 0.900 0.612 19.290 0.935 0.620 21.792 0.953 0.630 21.402 0.952 0.624 16.434 0.946 0.608 20.368 0.950 0.632
+k.mikimotoi 10.595 0.777 0.589 11.213 0.895 0.627 12.379 0.905 0.576 10.596 0.777 0.589 11.694 0.905 0.637 10.461 0.913 0.597
+Skeletonema tropicalis 9.176 0.533 0.271 11.080 0.820 0.546 18.877 0.826 0.530 9.177 0.823 0.553 9.149 0.831 0.505 9.702 0.828 0.553
+Prorocentrum tricornutum 17.893 0.893 0.598 15.675 0.898 0.618 22.653 0.903 0.617 17.893 0.894 0.598 15.757 0.874 0.625 17.220 0.921 0.641
+Fusoicornis trochoidea 5.369 0.828 0.644 5.941 0.879 0.728 12.517 0.877 0.565 5.370 0.829 0.645 5.549 0.856 0.743 6.390 0.888 0.658
+a. tamarense 13.378 0.785 0.599 17.900 0.688 0.604 25.580 0.893 0.611 13.378 0.785 0.600 15.687 0.913 0.590 23.390 0.947 0.624
+Thalassiosira flaccidus 9.929 0.776 0.590 10.346 0.886 0.621 10.068 0.894 0.592 9.930 0.776 0.590 10.293 0.886 0.626 9.765 0.898 0.600
+Prorocentrum minutum 17.119 0.795 0.568 19.607 0.777 0.570 21.817 0.896 0.620 17.120 0.795 0.568 16.058 0.908 0.600 19.932 0.964 0.655
+Prorocentrum 10.277 0.792 0.592 14.619 0.881 0.631 10.917 0.899 0.579 10.278 0.793 0.592 10.996 0.875 0.610 9.831 0.899 0.608
+Y.-N. Fan et al. Image and Vision Computing 156 (2025) 105466 
+11 
+
+===== PAGE 12 =====
+Measure (EMEE) [ 35 ], Mean Gradient, Entropy, and Peak Signal-to-
+Noise Ratio (PSNR) [ 33 ]. Contrast refers to the degree of difference
+between light and dark areas in an image. EME is a measure of the de-
+gree of contrast improvement in an enhanced image. EMEE is an
+extension of EME that considers entropy information in the image,
+providing a comprehensive reflection of visual quality post-
+enhancement. The Mean Gradient is an indicator of image sharpness
+and detail richness, reflecting the rate of brightness change. Entropy is a
+measure of the amount of information in an image, with higher values
+indicating more content. PSNR is used to evaluate the quality of an
+image after recovery or compression.
+Fig. 10 displays the outcomes of applying various renowned under-
+water image enhancement/restoration methods to microscopic algae
+images. It is observable that the processed images exhibit varying de-
+grees of quality improvement. Specifically, images processed with the
+HE and RD methods manifested increased noise, likely due to these
+methods amplifying existing noise in the image while enhancing
+contrast. Methods using GC and ICM resulted in reduced contrast,
+possibly due to over-suppression of high-contrast areas in an attempt to
+improve image dynamic range. Although CLAHE and UCM enhanced
+image contrast, they did not fully correct color deviations, leading to an
+unrealistic color rendition.
+In contrast, our method demonstrated better noise control and
+effectively corrected the color deviations in underwater microscopic
+algae images. It significantly enhanced local details and texture features
+without sacrificing image purity. This improvement is attributed to the
+inclusion of empirical mode decomposition feature maps as one of the
+inputs for fusion in our method, which suppresses noise during
+enhancement. Moreover, our method integrates a color channel
+compensation algorithm for more accurate restoration and preservation
+of the image ’ s original colors. This comprehensive approach not only
+improves the visual quality of images but also enhances their boundaries
+and internal structures, thereby providing high-quality image resources
+for the observation and study of algae cells.
+Table 2 presents quantitative metrics for image enhancement in
+terms of Contrast, Enhancement Measure (EME), Entropy of Enhance-
+ment Measure (EMEE), Average Gradient, Entropy, and Peak Signal-to-
+Noise Ratio (PSNR).
+Experimental results indicate that our method achieved the highest
+average scores in key metrics such as Contrast, Average Gradient (EME),
+Edge Preservation (EMEE), Image Gradient, and Entropy, with a per-
+formance just shy of the top in Peak Signal-to-Noise Ratio (PSNR). These
+metrics collectively reflect multiple aspects of image enhancement,
+including image clarity, texture details, and preservation of true
+information.
+Contrast is a metric for the difference between light and dark areas of
+an image, where higher contrast usually means the image is more vivid
+and objects are more recognizable. EME and EMEE assess the effec-
+tiveness of enhancement and edge preservation, where high values
+indicate important features and edges in the image are well maintained
+and enhanced, which is crucial for subsequent image analysis and pro-
+cessing. Image Gradient relates to local contrast in an image, with higher
+Fig. 9. Comparative results of different white balance methods: Shades of Gray, Gray World, Max RGB, Perfect Reflector and CFA.
+Y.-N. Fan et al. Image and Vision Computing 156 (2025) 105466 
+12 
+
+===== PAGE 13 =====
+gradient values indicating more pronounced texture and edge features.
+Entropy measures the richness of information in an image, with higher
+entropy indicating more information content. Although our method is
+not the highest in PSNR, it still performs commendably, suggesting that
+the enhanced image maintains high structural similarity to the original.
+In summary, our method achieves a good balance between visual
+enhancement effects and noise control, improving image quality and
+effectively controlling noise while preserving structural details and real
+information, which is particularly important in the enhancement of
+underwater microscopic algae images. By enhancing image quality
+while maintaining the original structure, our method provides favorable
+conditions for further image analysis and processing, such as the
+authenticity and accuracy of edge detection results.
+4.5. Image pyramid fusion ablation experiment
+In this section, we conducted ablation experiments on the algal
+dataset to validate the effectiveness of the proposed image pyramid
+fusion algorithm. As illustrated in Fig. 11 , the pyramid fusion images
+lacking the EMD component exhibit deficiencies in noise control, in-
+ternal cellular detail, and edge information compared to the images
+produced by our final method. The images missing the CLAHE compo-
+nent show substantial room for improvement in the visibility of local
+details, with some images even exhibiting artifacts. In contrast, the
+pyramid fusion images without the contrast stretching component are
+nearly incapable of distinguishing between foreground and background.
+Our image pyramid fusion algorithm demonstrates significant perfor-
+mance advantages in terms of global contrast enhancement, texture
+detail enhancement, and noise control.
+4.6. Key point matching
+As shown in Fig. 12 , compared to the original algal images, our
+enhanced version demonstrates a significant advantage in key point
+matching [ 20 ]. By employing the Scale-Invariant Feature Transform
+(SIFT) operator, the enhanced images excel in an important aspect. Our
+image enhancement technique improves local contrast and optimizes
+detail representation in images, making features that were difficult to
+discern under low contrast conditions, such as flagella and tiny bubbles,
+more apparent and easier to detect.
+Through comparative analysis of Fig. 12 and Table 3 , it is observed
+that the key point detection of algal underwater microscopic images has
+significantly improved following our image processing method. Specif-
+ically, the image enhancement technology substantially improves the
+distinction between target features and the background. Microscopic
+structures such as tiny bubbles around the cells are more clearly pre-
+sented after processing with our enhancement method. These structures
+were difficult to detect in the original images due to uneven lighting, low
+contrast, or resolution limitations. The enhancement technique provides
+the SIFT operator with finer texture and edge information by improving
+image quality, enabling accurate detection of these fine features. Our
+method can effectively identify key points on the flagella of algae and
+tiny bubbles around the cells, details that are undetectable in the orig-
+inal images. Furthermore, the processed images also display a greater
+number of key points, further validating the superiority of our approach.
+4.6.1. Key point matching ablation experiment
+As shown in Fig. 13 and Table 4 , the complete image pyramid fusion
+algorithm achieves the highest number of key points. Our image
+Fig. 10. Comparison with various underwater image enhancement techniques (CLAHE, GC, HE, ICM, RD, RGHS, UCM, and our method). Corresponding evaluative
+metrics for these images are presented in Table 2 .
+Y.-N. Fan et al. Image and Vision Computing 156 (2025) 105466 
+13 
+
+===== PAGE 14 =====
+pyramid fusion algorithm demonstrates significant performance ad-
+vantages in global contrast enhancement, texture detail enhancement,
+and noise control. These experimental results indicate the superiority of
+our method.
+4.7. Experiment and analysis of the HDEnet edge detection network model
+4.7.1. Ablation experiment
+Table 5 presents a comparison between networks with and without
+the HAL module. In the baseline configuration (without HAL), the F-
+measure ODS and OIS values are 0.576 and 0.633, respectively. Upon
+integration of the HAL module, these metrics improve significantly to
+0.623 (relative improvement of 8.16%) and 0.683 (relative improve-
+ment of 7.90%), demonstrating the statistically significant contribution
+of HAL to edge detection performance. These experimental results
+demonstrate that the introduction of the HAL module indeed enhances
+the edge detection accuracy of our HDEnet.
+4.7.2. Validation of network performance
+A comparative analysis of state-of-the-art edge detection meth-
+ods—BDCN [44], PIDNet [45], C-Net [36], and LDCnet [46]—is pre-
+sented in Fig. 14. Quantitative and qualitative evaluations reveal
+distinct strengths and limitations of each approach. BDCN employs a
+unique bidirectional cascade network structure, significantly enhancing
+Table 2
+Algal Image Enhancement Evaluation based on Contrast, EME, EMEE, Average Gradient, Entropy, and PSNR metrics, with higher values indicating better performance.
+Note: Optimal values are highlighted in red, while second-best values are in blue.
+Image Method Quantitative analysis
+Contrast EME EMEE Average gradient Entropy PSNR
+Curvularia brevicornis Original 11.6231 3.9485 0.5176 1.9409 10.6820 –
+CLAHE 20.8571 6.1720 0.6411 3.5305 13.3446 27.5845
+GC 9.7752 2.8408 0.4558 1.6777 9.9277 20.6270
+ICM 11.6908 3.9459 0.5168 1.9731 10.7322 43.8992
+RGHS 34.4707 4.2244 0.5164 3.8441 13.3123 20.6539
+UCM 18.3722 8.0483 0.7420 2.7025 13.2522 16.2341
+Our method 63.8405 9.2179 0.8121 6.5463 13.9785 22.1685
+gonyaulax polyedra Original 16.2228 7.6336 0.7240 3.7011 12.0627 –
+CLAHE 52.5594 13.8453 1.0637 8.2564 15.2976 24.8835
+GC 12.8390 5.3877 0.5970 3.1651 11.3643 19.4692
+ICM 16.2492 7.3649 0.7065 3.6998 12.0922 37.6649
+RGHS 69.1600 8.1477 0.7335 8.7627 15.1504 14.4636
+UCM 32.8788 8.5698 0.7645 5.5606 12.8319 19.9167
+Our method 164.0198 18.2707 1.3037 14.0257 16.5142 20.4017
+prorocentrum micans Original 54.9754 13.0170 1.0189 7.4535 7.7798 –
+CLAHE 112.2821 19.1440 1.3663 11.0082 7.8925 19.4282
+GC 43.7839 9.4506 0.8202 6.8479 7.7185 19.3380
+ICM 0.9585 0.5812 0.0450 0.9889 8.5850 8.0201
+RGHS 59.5583 12.9527 1.0094 7.7750 7.7831 41.6477
+UCM 57.2480 13.3000 1.0327 7.6369 8.7588 43.6471
+Our method 223.2621 27.0222 1.8166 14.9359 9.5068 21.1036
+pseudo-nitzschia pungens Original 13.4222 3.3256 0.4835 1.9655 8.2550 –
+CLAHE 21.9540 6.2173 0.6428 3.7436 11.2634 31.6090
+GC 10.5444 2.4049 0.4322 1.8183 7.8249 18.3693
+ICM 14.2176 3.7293 0.5064 2.0877 8.4301 37.5076
+RGHS 23.4143 4.6280 0.5465 2.6103 9.3773 16.9451
+UCM 16.2142 5.3276 0.5929 2.2099 10.3856 25.1774
+Our method 69.3828 9.4534 0.8191 6.9717 11.9198 25.3015
+chaetoceros mulleri Original 16.7340 12.7136 1.0074 3.2150 14.1258 –
+CLAHE 48.4699 18.9775 1.3563 6.0306 17.2401 21.4211
+GC 13.4262 9.3286 0.8147 2.9547 13.9657 17.6086
+ICM 28.5252 20.4300 1.4338 4.2169 15.3996 18.7332
+RGHS 80.2281 20.0376 1.3673 7.2606 17.4477 16.8236
+UCM 53.2758 16.9097 1.2343 5.6002 14.6405 14.5577
+Our method 142.8796 22.5497 1.5392 10.6569 17.6907 19.0325
+Strong front ditch algae Original 1.3894 6.5162 0.6592 0.7769 8.0628 –
+CLAHE 3.8082 6.9911 0.6848 1.7180 11.3294 29.8060
+GC 1.1146 3.0685 0.4687 0.7129 7.8295 17.0722
+ICM 2.9457 5.7600 0.6169 1.2885 11.4980 19.4401
+RGHS 13.5235 6.2490 0.6336 3.0271 13.8183 16.2408
+UCM 6.5342 7.8090 0.7274 2.0202 12.4966 17.2712
+Our method 38.9314 10.0982 0.8576 5.9786 14.7715 19.7081
+Prorocentrum minutum Original 0.5723 0.7912 0.3437 0.4703 3.5030 –
+CLAHE 1.5497 1.7996 0.3987 1.2649 6.7839 37.5390
+GC 0.9323 1.1704 0.3641 0.5974 6.0652 9.0527
+ICM 1.5286 2.2866 0.4252 0.7876 8.4487 10.4242
+RGHS 107.6046 17.5975 1.2707 11.2651 16.8559 15.7611
+UCM 4.6750 2.2979 0.4236 1.8470 9.2778 10.1214
+Our method 752.3913 25.9862 1.7477 26.7803 17.5699 14.0164
+thalassiosira rotula Original 0.4875 8.0659 0.7423 0.5756 8.3226 –
+CLAHE 1.8044 8.1327 0.7458 1.4873 12.0982 29.9697
+GC 0.5350 1.0927 0.3597 0.6115 6.5210 10.2612
+ICM 2.4382 3.1199 0.4712 1.4285 9.9872 11.9298
+RGHS 7.9975 3.8814 0.5047 2.9306 12.3816 10.7246
+UCM 7.7255 6.9781 0.6802 3.0053 13.0566 14.3579
+Our method 45.5987 9.9839 0.8483 7.4289 14.8769 12.7271
+Y.-N. Fan et al. Image and Vision Computing 156 (2025) 105466 
+14 
+
+===== PAGE 15 =====
+precision in edge detection, especially in capturing fine details. How-
+ever, it exhibits notable limitations when dealing with blurry or weak
+edges, which are more pronounced in complex backgrounds and may
+lead to the loss of edge information. PIDNet excels in both detection
+accuracy and computational speed. By leveraging parallel interactions,
+it effectively extracts multi-scale features, thus improving edge detec-
+tion performance. Nonetheless, PIDNet shows inadequacies when
+handling algal flagella and complex details, indicating constraints in
+detecting extremely fine structures. C-Net utilizes convolutional neural
+networks to extract image features, showcasing strong edge detection
+capabilities. However, C-Net is prone to missing detections when iden-
+tifying small algal flagella. LDCnet enhances edge detection perfor-
+mance through intermediate edge map prediction and context-aware
+fusion blocks but often encounters challenges with blurred edges in
+complex scenes, affecting detection accuracy. There remains room for
+improvement with complex backgrounds and weak edges. Our model
+significantly improves edge detection accuracy, particularly excelling in
+handling complex backgrounds and noise interference.
+To validate the effectiveness of HDEnet, we conducted a comparison
+on our dataset with both traditional methods and several recent deep
+learning-based approaches. This evaluation included classical edge
+detection algorithms such as Canny, as well as modern deep learning-
+based algorithms, including BDCN, PIDNet, and LDCnet. The compari-
+sons in terms of ODS [ 36 ], OIS [ 38 ], and AP are presented in Table 6 .
+Our method achieved an F-measure ODS of 0.623, outperforming
+several recently proposed methods by 7.7% over BDCN, 9.8% over
+PIDNet, and 13.6% over LDCnet.
+The experimental results presented above clearly demonstrate the
+significant advantages of the proposed HDEnet in the context of harmful
+algae edge detection. These findings underscore the efficacy of our
+network architecture design. As shown in Table 6 and Fig. 14 , HDEnet
+achieved outstanding scores of 0.623 and 0.683 for ODS and OIS,
+respectively. It not only surpasses traditional edge detection algorithms
+like the Canny operator but also outperforms other deep learning-based
+methods such as BDCN, PIDNET, and C-Net. Our network effectively
+extracts multi-scale features from images through a meticulously
+designed multi-scale encoder-decoder structure. This architecture pre-
+serves local detail information while capturing global contextual infor-
+mation, which is critical for accurately identifying and delineating the
+edges of algae cells. Furthermore, the integration of the HAL module
+enhances the network ’ s sensitivity to multi-order features, allowing it to
+focus more intently on significant feature information. This enhance-
+ment results in a more efficient training process and more accurate edge
+detection outcomes.
+The comparative results presented in Fig. 14 and Table 6 clearly
+demonstrate that our method surpasses other state-of-the-art edge
+detection techniques in terms of accuracy, robustness, and the ability to
+handle complex scenarios. This not only validates the practical
+Fig. 11. Comparison of Image Pyramid Fusion Results Between Images with Missing Components and Complete Images.
+Y.-N. Fan et al. Image and Vision Computing 156 (2025) 105466 
+15 
+
+===== PAGE 16 =====
+applicability of our model, particularly in tasks requiring high-precision
+edge detection, but also offers valuable insights for future research in the
+field of edge detection.
+4.7.3. Enhanced pre - and post image edge detection
+Edge detection is a fundamental task in the fields of computer vision
+and image processing, focused on identifying the boundaries or contours
+of objects within an image. In this study, the state-of-the-art edge
+detection method, LDC, was applied to three types of underwater algal
+microscopic images: unenhanced, enhanced using the CLAHE method,
+and enhanced using our proposed method.
+As shown in Fig. 15 , preprocessing underwater algal microscopic
+images with our enhancement method has improved the morphological
+feature representation of algal cells, such as spines, edges, and internal
+structures, in edge detection outcomes. This improvement is primarily
+attributed to the enhanced contrast of cell boundaries, significantly
+increasing edge detection accuracy.
+To comprehensively evaluate the effectiveness of our method,
+Fig. 12. Key Point Matching. The matching results using the SIFT operator on the original algal image (left) and on our enhanced version (right).
+Table 3
+Average number of key points for various types of algal images processed by different image enhancement/restoration methods, based on the SIFT operator. The
+methods are consistent with those listed in Table 2 .
+Algae image category Method
+Original CLAHE GC ICM RGHS UCM OurMethod
+Curvularia brevicornis 692.08 1701.67 660.50 1193.00 4616.92 2502.58 6319.75
+Gonyaulax polyedra 1272.00 10,305.20 902.60 1547.00 10,053.40 6314.60 16,651.00
+Prorocentrum sigmoides 853.50 1664.75 696.00 903.50 1226.25 1324.25 2547.00
+Thalassiosira flaccidus 1137.38 1828.92 820.08 1348.69 2166.92 1857.46 3943.38
+Gracilaria echinospora 706.20 3264.00 588.00 723.80 3356.20 2564.00 5860.00
+Prorocentrum lima 393.36 667.23 386.00 544.41 734.82 687.73 1359.59
+Asterionella japonica 266.50 556.25 208.00 317.50 1695.25 754.00 1977.25
+Fusoicornis trochoidea 709.22 938.89 457.33 651.89 1216.89 929.11 2052.22
+Thalassiosira rotunda 128.92 275.08 162.69 264.23 474.15 392.31 1161.92
+Ceratium furca 739.58 921.75 581.08 586.42 1361.17 979.50 2506.17
+Prorocentrum sigmoides 853.50 1664.75 696.00 903.50 1226.25 1324.25 2547.00
+Thalassiosira rotula 1137.38 1828.92 820.08 1348.69 2166.92 1857.46 3943.38
+Chattonella marina 185.00 375.17 163.96 275.96 602.92 443.04 1265.62
+Gymnodinium catenatum 455.12 841.38 385.38 614.12 1186.62 980.25 2611.75
+Y.-N. Fan et al. Image and Vision Computing 156 (2025) 105466 
+16 
+
+===== PAGE 17 =====
+images of algae processed by common image enhancement techniques
+such as CLAHE, GC, ICM, RD, RGHS, and UCM were also included in the
+comparative experiments for edge detection. The performance of these
+methods was evaluated using Precision-Recall (PR) curves [ 29 ] and
+Receiver Operating Characteristic (ROC) curves [ 30 ]. Due to the
+absence of actual ground truth images, a credible GroundTruth for
+quantitative analysis was manually created using labelme software.
+Fig. 16 and Fig. 17 , featuring PR and ROC curves, indicate that our
+method had achieved the largest AUC (Area Under the Curve) on a test
+set of 200 images for edge detection. This suggests an optimal balance
+between the True and False Positive rates, demonstrating superior per-
+formance. The AUC, as a composite metric, reflects the model ’ s ability to
+distinguish positive cases; hence, a larger AUC signifies high reliability
+and accuracy in our edge detection method.
+These experimental results suggest that our method not only visually
+enhances images but also technically improves edge detection perfor-
+mance, proving highly beneficial for subsequent analysis and interpre-
+tation of algal imagery.
+5. Conclusion
+In this study, we propose a novel underwater image processing
+method aimed at improving the quality of underwater microscopic im-
+ages of algae in seawater through color channel compensation and
+image enhancement techniques. Our method is carefully designed to
+address the common issues of low contrast, color deviation, and blurred
+texture features in underwater images.
+Through extensive experimental evaluations, including application
+to underwater algal microscopic images with various color tones, our
+method demonstrates significant advantages in color correction, pres-
+ervation of image details, and noise control. Furthermore, we further
+validate that the proposed image enhancement algorithm effectively
+enhances the visual quality of underwater algal microscopic images.
+This enhancement not only significantly improves the local details and
+texture features of the images but also preserves the original structure
+and purity of the images. The results of key point matching and edge
+detection further demonstrate the effectiveness of our method in
+improving the quality of underwater microscopic images. By utilizing
+edge detection, we are able to identify the morphological features of
+algal cells more clearly, which is of great significance for scientific
+research and applications.
+In conclusion, this paper presents an innovative underwater micro-
+scopic image enhancement method based on adaptive white balance
+Fig. 13. Ablation Experiment on Key Point Matching: The matching results on the original algal images (left side of each column) are compared with the matching
+results on the image pyramid fusion results missing different components (right side of each column, with the rightmost column showing the results from the
+complete image pyramid fusion algorithm).
+Table 4
+The average number of key points between the image pyramid fusion with
+missing components and the complete image pyramid fusion.
+noEMD noCLAHE noStretch ourMethod
+key points 127.500 124.267 112.467 132.767
+Table 5
+Comparison of Network Models with and without the HAL Module.
+Method ODS OIS
+NoHAL 0.576 0.633
+HDEnet 0.623 0.683
+Y.-N. Fan et al. Image and Vision Computing 156 (2025) 105466 
+17 
+
+===== PAGE 18 =====
+color compensation and pyramid image fusion. We creatively propose
+an adaptive white balance strategy based on the gray world assumption
+and a new approach to pyramid image fusion. The proposed method
+exhibits excellent robustness and efficient performance, providing a new
+research direction in the field of underwater image processing. Future
+work will focus on further optimizing the algorithm to better adapt to
+the requirements of underwater image processing under different water
+quality and lighting conditions, as well as exploring the potential of this
+method in other underwater image application scenarios.
+Fig. 14. Comparison of Edge Detection Results (from left to right: Original Image, Ground Truth, BDCN, C-Net, PIDNet, LDCnet, and Our Method).
+Table 6
+Comparison of edge detection network models on the HABs dataset.
+METHOD ODS OIS AP
+CANNY 0.504 0.627 0.480
+BDCN 0.578 0.665 0.503
+Cnet 0.592 0.674 0.505
+PIDNET-L 0.567 0.651 0.540
+LDCnet 0.548 0.631 –
+HDEnet 0.623 0.683 0.597
+Y.-N. Fan et al. Image and Vision Computing 156 (2025) 105466 
+18 
+
+===== PAGE 19 =====
+Fig. 15. Edge Detection. From left to right: the original algal image, edge detection image of the original algae, image processed with the CLAHE underwater image
+enhancement method and its edge detection image, and the algal image processed with our method along with its edge detection image.
+Y.-N. Fan et al. Image and Vision Computing 156 (2025) 105466 
+19 
+
+===== PAGE 20 =====
+Funding
+This work was supported by the Shandong Natural Science Foun-
+dation of China (ZR2021MD063), the Ministry of education, humanities
+and social sciences research project (23YJAZH156), and the University
+Youth Innovation Team Foundation of Shandong Province
+(2022KJ319).
+CRediT authorship contribution statement
+Yi-Ning Fan: Writing – review & editing, Writing – original draft,
+Visualization, Validation, Software, Project administration, Methodol-
+ogy, Investigation, Formal analysis, Data curation. Geng-Kun Wu:
+Writing – review & editing, Funding acquisition, Formal analysis. Jia-
+Zheng Han: Validation, Data curation, Conceptualization. Bei-Ping
+Zhang: Visualization, Formal analysis, Conceptualization. Jie Xu: Su-
+pervision, Conceptualization.
+Fig. 16. PR curves for edge detection images. The AUC represents the area under the curve bounded by the lower left corner and the coordinate axes; a larger AUC
+indicates higher accuracy of edge detection images. The dataset consists of 200 edge detection images used for testing.
+Fig. 17. ROC curves for edge detection images. The AUC represents the area under the curve within the lower right quadrant formed with the coordinate axes, with a
+larger AUC indicating higher edge detection image accuracy. The dataset is the same as in Fig. 16 .
+Y.-N. Fan et al. Image and Vision Computing 156 (2025) 105466 
+20 
+
+===== PAGE 21 =====
+Declaration of competing interest
+The authors declare that they have no known competing financial
+interests or personal relationships that could have appeared to influence
+the work reported in this paper.
+Acknowledgment
+The authors are grateful for the collaborative funding support from
+the Shandong Natural Science Foundation of China (ZR2021MD063),
+the Ministry of education, humanities and social sciences research
+project (23YJAZH156), and the University Youth Innovation Team
+Foundation of Shandong Province (2022KJ319).
+Data availability
+The datasets generated during and/or analyzed during the current
+study are available from the corresponding author on reasonable
+request.
+References
+[1] K. Liu, Y. Liang, Enhancement method for non-uniform scattering images of turbid
+underwater based on neural network, Image Vis. Comput. 138 (2023) 104813 .
+[2] X. Yang, S. Sun, W. Chen, J. Liu, Underwater bubble plume image generative model
+based on noise prior and multi conditional labels, Image Vis. Comput. 119 (2022)
+104373 .
+[3] Y. Liao, Q. Yang, Research hotspots and trends of maritime emergencies in China-a
+bibliometric analysis based on CiteSpace, in: In 2023 IEEE International
+Conference on Image Processing and Computer Applications (ICIPCA), IEEE, 2023,
+August, pp. 1294 – 1299 .
+[4] S. Tavakoli, D. Khojasteh, M. Haghani, S. Hirdaris, A review on the progress and
+research directions of ocean engineering, Ocean Eng. 272 (2023) 113617 .
+[5] M. Jian, X. Liu, H. Luo, X. Lu, H. Yu, J. Dong, Underwater image processing and
+analysis: a review, Signal Process. Image Commun. 91 (2021) 116088 .
+[6] T. Akiba, Y. Kakui, Design and testing of an underwater microscope and image
+processing system for the study of zooplankton distribution, IEEE J. Ocean. Eng. 25
+(1) (2000) 97 – 104 .
+[7] Codruta O. Ancuti, et al., Colour channel compensation (3C): a fundamental pre-
+processing step for image enhancement, IEEE Trans. Image Process. 29 (2019)
+2653 – 2665 .
+[8] Gursharn Singh, Anand Mittal, Various image enhancement techniques-a critical
+review, Int. J. Innovat. Sci. Res. 10 (2) (2014) 267 – 274 .
+[9] D. Yang, B. Peng, Z. Al-Huda, A. Malik, D. Zhai, An overview of edge and object
+contour detection, Neurocomputing 488 (2022) 470 – 493 .
+[10] J. Wu, X. Liu, N. Qin, Q. Lu, X. Zhu, Two-stage progressive underwater image
+enhancement, IEEE Trans. Instrum. Meas. 73 (2024) 1 – 18 .
+[11] C. Li, X. Zhang, Underwater image restoration based on improved background light
+estimation and automatic white balance, in: 2018 11th International Congress on
+Image and Signal Processing, BioMedical Engineering and Informatics (CISP-
+BMEI), IEEE, 2018, October, pp. 1 – 5 .
+[12] M. Guan, H. Xu, G. Jiang, M. Yu, Y. Chen, T. Luo, X. Zhang, DiffWater: underwater
+image enhancement based on conditional Denoising diffusion probabilistic model,
+in: IEEE Journal of Selected Topics in Applied Earth Observations and Remote
+Sensing, 2023 .
+[13] R. Alamsyah, M.A. Soeleman, Colour improvement in underwater image using
+polynomial equation and image Dehazing algorithm, in: 2023 International
+Seminar on Application for Technology of Information and Communication
+(iSemantic), IEEE, 2023, September, pp. 406 – 411 .
+[14] K. Liu, Y. Liang, Enhancement method for non-uniform scattering images of turbid
+underwater based on neural network, Image Vis. Comput. 138 (2023) 104813 .
+[15] Y. Tao, H. Chen, Z. Peng, R. Tan, Underwater image enhancement via red channel
+maximum attenuation prior and multi-scale detail fusion, Opt. Express 31 (16)
+(2023) 26697 – 26723 .
+[16] G.K. Wu, B.P. Zhang, J. Xu, Numerical computation of ocean HABs image
+enhancement based on empirical mode decomposition and wavelet fusion, Appl.
+Intell. 53 (16) (2023) 19338 – 19355 .
+[17] J.Y. Chiang, Y.C. Chen, Underwater image enhancement by wavelength
+compensation and dehazing, IEEE Trans. Image Process. 21 (4) (2011) 1756 – 1769 .
+[18] Y. Huang, N. Hasan, C. Deng, Y. Bao, Multivariate empirical mode decomposition
+based hybrid model for day-ahead peak load forecasting, Energy 239 (2022)
+122245 .
+[19] S. Raveendran, M.D. Patil, G.K. Birajdar, Underwater image enhancement: a
+comprehensive review, recent trends, challenges and applications, Artif. Intell.
+Rev. 54 (2021) 5413 – 5467 .
+[20] G.K. Wu, J. Xu, Y.D. Zhang, B.P. Zhang, Underwater enhancement computing of
+ocean HABs based on cyclic colour compensation and multi-scale fusion, Multimed.
+Tools Appl. 83 (6) (2024) 16657 – 16681 .
+[21] Y. Li, B. Wang, Y. Li, Z. Liu, W. Huo, Y. Li, J. Cao, Underwater object tracker:
+UOSTrack for marine organism grasping of underwater vehicles, Ocean Eng. 285
+(2023) 115449 .
+[22] H.G. Kim, J.M. Seo, S.M. Kim, Comparison of GAN deep learning methods for
+underwater optical image enhancement, J. Ocean Eng. Technol. 36 (1) (2022)
+32 – 40 .
+[23] X. Mengda, S. Peng, L. Yubo, W. Qianjie, S. Daguo, Improving gray world algorithm
+guided by scene semantics, J. Comput.-Aided Design & Comput. Graph. 34 (1)
+(2022) 152 – 162 .
+[24] Z. Liang, Y. Wang, X. Ding, Z. Mi, X. Fu, Single underwater image enhancement by
+attenuation map guided colour correction and detail preserved dehazing,
+Neurocomputing 425 (2021) 160 – 172 .
+[25] M. Opoku, B.A. Weyori, A.F. Adekoya, K. Adu, CLAHE-CapsNet: efficient retina
+optical coherence tomography classification using capsule networks with contrast
+limited adaptive histogram equalization, PLoS One 18 (11) (2023) e0288663 .
+[26] W. Zhao, F. Han, X. Qiu, X. Peng, Y. Zhao, J. Zhang, Research on the identification
+and distribution of biofouling using underwater cleaning robot based on deep
+learning, Ocean Eng. 273 (2023) 113909 .
+[27] M. Tejada-Casado, M.M. P ´erez, A. Della Bona, H. Lübbe, R. Ghinea, L.J. Herrera,
+Chroma-dependence of CIEDE2000 acceptability thresholds for dentistry, J. Esthet.
+Restor. Dent. 36 (3) (2024) 469 – 476 .
+[28] A.H. Sheer, H.H. Kareem, H.G. Daway, Lung computed tomography image
+enhancement using U-net segmentation, Int. J. Imaging Syst. Technol. 34 (3)
+(2024) e23078 .
+[29] L. Ma, T. Ma, R. Liu, X. Fan, Z. Luo, Toward fast, flexible, and robust low-light
+image enhancement, in: Proceedings of the IEEE/CVF conference on computer
+vision and pattern recognition, 2022, pp. 5637 – 5646 .
+[30] R. Liu, Z. Jiang, S. Yang, X. Fan, Twin adversarial contrastive learning for
+underwater image enhancement and beyond, IEEE Trans. Image Process. 31 (2022)
+4922 – 4936 .
+[31] A. Saleh, M. Sheaves, D. Jerry, M.R. Azghadi, Adaptive uncertainty distribution in
+deep learning for unsupervised underwater image enhancement, arXiv preprint
+(2022) arXiv:2212.0893 .
+[32] H.G. Daway, E.G. Daway, Underwater image enhancement using colour restoration
+based on YCbCr colour model, in: IOP Conference Series: Materials Science and
+Engineering vol. 571, no 1, IOP Publishing, 2019, p. 012125 .
+[33] Xu, X., Wang, R., Fu, C. W., & Jia, J. (2022). SNR-aware low-light image
+enhancement. In proceedings of the IEEE/CVF conference on computer vision and
+pattern recognition (pp. 17714-17724).
+[34] J. Hai, Z. Xuan, R. Yang, Y. Hao, F. Zou, F. Lin, S. Han, R2rnet: low-light image
+enhancement via real-low to real-normal network, J. Vis. Commun. Image
+Represent. 90 (2023) 103712 .
+[35] P. Zhuang, J. Wu, F. Porikli, C. Li, Underwater image enhancement with hyper-
+laplacian reflectance priors, IEEE Trans. Image Process. 31 (2022) 5442 – 5455 .
+[36] G.K. Wu, J. Xu, Y.D. Zhang, B.Y. Wen, B.P. Zhang, Weighted feature fusion of dual
+attention convolutional neural network and transformer encoder module for ocean
+HABs classification, Expert Syst. Appl. 243 (2024) 122879 .
+[37] G.K. Wu, Q.X. Sun, B.P. Zhang, J. Xu, SFMnet: edge detection of HABs based on
+spatial feature mapping encoder-decoder network, Ocean Eng. 309 (2024) 118547 .
+[38] Y. Ye, K. Xu, Y. Huang, R. Yi, Z. Cai, DiffusionEdge: diffusion probabilistic model
+for crisp edge detection, in: Proceedings of the AAAI conference on artificial
+intelligence 38, no. 7, 2024, March, pp. 6675 – 6683 .
+[39] O. Elharrouss, Y. Hmamouche, A.K. Idrissi, B. El Khamlichi, A. El Fallah-
+Seghrouchni, Refined edge detection with cascaded and high-resolution
+convolutional network, Pattern Recogn. 138 (2023) 109361 .
+[40] Y. Wu, C. Pan, G. Wang, Y. Yang, J. Wei, C. Li, H.T. Shen, Learning semantic-aware
+knowledge guidance for low-light image enhancement, in: Proceedings of the
+IEEE/CVF conference on computer vision and pattern recognition, 2023,
+pp. 1662 – 1671 .
+[41] Z. Ma, X. Wu, A. Chu, L. Huang, Z. Wei, SwinFG: a fine-grained recognition scheme
+based on swin transformer, Expert Syst. Appl. 244 (2024) 123021 .
+[42] P. Shao, J. Feng, J. Lu, P. Zhang, C. Zou, Data-driven and knowledge-guided
+denoising diffusion model for flood forecasting, Expert Syst. Appl. 244 (2024)
+122908 .
+[43] Y. Chen, R. Xia, K. Yang, K. Zou, MICU: image super-resolution via multi-level
+information compensation and U-net, Expert Syst. Appl. 245 (2024) 123111 .
+[44] J. He, S. Zhang, M. Yang, Y. Shan, T. Huang, BDCN: bi-directional Cascade network
+for perceptual edge detection, IEEE Trans. Pattern Anal. Mach. Intell. 44 (1) (2022)
+100 – 113 .
+[45] Z. Su, W. Liu, Z. Yu, D. Hu, Q. Liao, Q. Tian, L. Liu, Pixel difference networks for
+efficient edge detection, in: Proceedings of the IEEE/CVF international conference
+on computer vision, 2021, pp. 5117 – 5127 .
+[46] X. Soria, G. Pomboza-Junez, A.D. Sappa, Ldc: lightweight dense cnn for edge
+detection, IEEE Access 10 (2022) 68281 – 68290 .
+Y.-N. Fan et al. Image and Vision Computing 156 (2025) 105466 
+21 

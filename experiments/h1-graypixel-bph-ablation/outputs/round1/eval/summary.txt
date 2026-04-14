@@ -1,0 +1,190 @@
+# Protocol v2 image enhancement evaluation
+Created at: 2026-04-14T07:03:00
+Original dir: D:\Desktop\Stage1Codex\data\inputImg\Original
+Summary policy: complete_cases_across_all_methods
+Planned stems: 64
+Complete success stems: 64
+Failures: 0
+
+## bph00_baseline
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\round1\runs\bph00_baseline\png\Final
+Count: 64
+EME: mean=14.224940, std=9.070713
+EMEE: mean=1.099656, std=0.511733
+Entropy: mean=5.828456, std=1.107885
+Contrast: mean=682.667332, std=414.483326
+AvgGra: mean=17.595160, std=10.370563
+SIFT_KP: mean=4435.546875, std=4246.349524
+MS_SSIM: mean=0.706765, std=0.179767
+PSNR: mean=15.430542, std=4.163686
+UCIQE: mean=4.594963, std=2.608768
+UIQM: mean=28.866195, std=17.438320
+
+## bph10_gp_strict
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\round1\runs\bph10_gp_strict\png\Final
+Count: 64
+EME: mean=14.212876, std=9.108907
+EMEE: mean=1.099153, std=0.514123
+Entropy: mean=5.820610, std=1.101794
+Contrast: mean=679.594787, std=412.659783
+AvgGra: mean=17.526277, std=10.286561
+SIFT_KP: mean=4428.328125, std=4245.940149
+MS_SSIM: mean=0.707901, std=0.180559
+PSNR: mean=15.390093, std=4.165306
+UCIQE: mean=4.549293, std=2.617627
+UIQM: mean=28.808638, std=17.502953
+
+## bph11_gp_mid
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\round1\runs\bph11_gp_mid\png\Final
+Count: 64
+EME: mean=14.250271, std=9.072464
+EMEE: mean=1.101140, std=0.511802
+Entropy: mean=5.829438, std=1.108883
+Contrast: mean=682.809315, std=414.681970
+AvgGra: mean=17.611165, std=10.366626
+SIFT_KP: mean=4445.281250, std=4251.586548
+MS_SSIM: mean=0.706582, std=0.179964
+PSNR: mean=15.433528, std=4.172219
+UCIQE: mean=4.598690, std=2.629910
+UIQM: mean=28.924070, std=17.471066
+
+## bph12_gp_loose
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\round1\runs\bph12_gp_loose\png\Final
+Count: 64
+EME: mean=14.211168, std=9.060733
+EMEE: mean=1.098815, std=0.511213
+Entropy: mean=5.841236, std=1.088525
+Contrast: mean=682.933944, std=415.968108
+AvgGra: mean=17.610670, std=10.375563
+SIFT_KP: mean=4444.640625, std=4265.986709
+MS_SSIM: mean=0.707191, std=0.179494
+PSNR: mean=15.449645, std=4.166230
+UCIQE: mean=4.605304, std=2.604567
+UIQM: mean=28.827600, std=17.449529
+
+## bph13_gp_narrow_mid
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\round1\runs\bph13_gp_narrow_mid\png\Final
+Count: 64
+EME: mean=14.232499, std=9.077805
+EMEE: mean=1.100006, std=0.512113
+Entropy: mean=5.843342, std=1.099629
+Contrast: mean=683.265058, std=415.169416
+AvgGra: mean=17.617440, std=10.374071
+SIFT_KP: mean=4444.078125, std=4259.294041
+MS_SSIM: mean=0.706045, std=0.179747
+PSNR: mean=15.421944, std=4.160843
+UCIQE: mean=4.606121, std=2.625940
+UIQM: mean=28.897158, std=17.472212
+
+## bph20_pregain_conservative
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\round1\runs\bph20_pregain_conservative\png\Final
+Count: 64
+EME: mean=14.259222, std=9.044874
+EMEE: mean=1.101525, std=0.510323
+Entropy: mean=5.833796, std=1.118350
+Contrast: mean=681.735220, std=415.057321
+AvgGra: mean=17.612043, std=10.348322
+SIFT_KP: mean=4438.734375, std=4239.981995
+MS_SSIM: mean=0.706353, std=0.178831
+PSNR: mean=15.562471, std=4.206038
+UCIQE: mean=4.632327, std=2.644150
+UIQM: mean=28.965726, std=17.391797
+
+## bph21_pregain_mid
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\round1\runs\bph21_pregain_mid\png\Final
+Count: 64
+EME: mean=14.238017, std=9.054660
+EMEE: mean=1.100371, std=0.510846
+Entropy: mean=5.834894, std=1.106180
+Contrast: mean=682.502327, std=414.423549
+AvgGra: mean=17.610461, std=10.352968
+SIFT_KP: mean=4434.953125, std=4243.647416
+MS_SSIM: mean=0.706631, std=0.179509
+PSNR: mean=15.467823, std=4.152390
+UCIQE: mean=4.618398, std=2.640825
+UIQM: mean=28.905822, std=17.396215
+
+## bph22_pregain_aggressive
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\round1\runs\bph22_pregain_aggressive\png\Final
+Count: 64
+EME: mean=14.186951, std=9.113404
+EMEE: mean=1.097570, std=0.514096
+Entropy: mean=5.821061, std=1.107974
+Contrast: mean=682.453728, std=415.175563
+AvgGra: mean=17.542681, std=10.424072
+SIFT_KP: mean=4426.531250, std=4255.723359
+MS_SSIM: mean=0.707057, std=0.180216
+PSNR: mean=15.391306, std=4.194011
+UCIQE: mean=4.568781, std=2.591742
+UIQM: mean=28.776431, std=17.536505
+
+## bph30_accc_conservative
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\round1\runs\bph30_accc_conservative\png\Final
+Count: 64
+EME: mean=14.154001, std=9.065066
+EMEE: mean=1.095621, std=0.511425
+Entropy: mean=5.812597, std=1.123710
+Contrast: mean=679.169510, std=414.844802
+AvgGra: mean=17.503493, std=10.380660
+SIFT_KP: mean=4413.390625, std=4231.780250
+MS_SSIM: mean=0.709976, std=0.178173
+PSNR: mean=15.471436, std=4.169352
+UCIQE: mean=4.641053, std=2.623099
+UIQM: mean=28.784907, std=17.435523
+
+## bph31_accc_mid
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\round1\runs\bph31_accc_mid\png\Final
+Count: 64
+EME: mean=14.205769, std=9.091229
+EMEE: mean=1.098534, std=0.513002
+Entropy: mean=5.836303, std=1.110122
+Contrast: mean=681.430440, std=414.343315
+AvgGra: mean=17.601787, std=10.352620
+SIFT_KP: mean=4434.078125, std=4248.549220
+MS_SSIM: mean=0.706585, std=0.179316
+PSNR: mean=15.447319, std=4.158642
+UCIQE: mean=4.606990, std=2.618608
+UIQM: mean=28.879123, std=17.482060
+
+## bph32_accc_aggressive
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\round1\runs\bph32_accc_aggressive\png\Final
+Count: 64
+EME: mean=14.207882, std=9.072153
+EMEE: mean=1.098772, std=0.511786
+Entropy: mean=5.856029, std=1.072205
+Contrast: mean=683.441308, std=416.463099
+AvgGra: mean=17.617454, std=10.372916
+SIFT_KP: mean=4434.281250, std=4255.096615
+MS_SSIM: mean=0.706808, std=0.179170
+PSNR: mean=15.421727, std=4.154668
+UCIQE: mean=4.569242, std=2.603930
+UIQM: mean=28.847003, std=17.422628
+
+## bph40_brightness_tight
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\round1\runs\bph40_brightness_tight\png\Final
+Count: 64
+EME: mean=14.203777, std=9.070249
+EMEE: mean=1.098471, std=0.511702
+Entropy: mean=5.819572, std=1.116214
+Contrast: mean=682.519654, std=414.175484
+AvgGra: mean=17.577247, std=10.364041
+SIFT_KP: mean=4435.234375, std=4240.892288
+MS_SSIM: mean=0.707304, std=0.179516
+PSNR: mean=15.456665, std=4.154485
+UCIQE: mean=4.600729, std=2.600652
+UIQM: mean=28.813541, std=17.450058
+
+## bph41_brightness_loose
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\round1\runs\bph41_brightness_loose\png\Final
+Count: 64
+EME: mean=14.218394, std=9.077402
+EMEE: mean=1.099279, std=0.512124
+Entropy: mean=5.830737, std=1.098597
+Contrast: mean=682.552347, std=414.562111
+AvgGra: mean=17.599576, std=10.362630
+SIFT_KP: mean=4433.031250, std=4245.137851
+MS_SSIM: mean=0.706590, std=0.179795
+PSNR: mean=15.423079, std=4.166649
+UCIQE: mean=4.593712, std=2.606627
+UIQM: mean=28.856248, std=17.449635
+

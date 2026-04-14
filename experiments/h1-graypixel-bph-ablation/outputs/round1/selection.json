@@ -1,0 +1,25 @@
+{
+  "created_at": "2026-04-14T07:03:16",
+  "baseline_method": "bph00_baseline",
+  "summary_json": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\round1\\eval\\summary.json",
+  "score_csv": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\round1\\eval\\composite_scores.csv",
+  "guardrail_csv": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\round1\\eval\\guardrail_scores.csv",
+  "family_winners": {
+    "G": "bph13_gp_narrow_mid",
+    "P": "bph20_pregain_conservative",
+    "A": "bph31_accc_mid",
+    "B": "bph41_brightness_loose"
+  },
+  "family_secondaries": {
+    "G": "bph11_gp_mid",
+    "P": "bph21_pregain_mid",
+    "A": "bph32_accc_aggressive",
+    "B": "bph40_brightness_tight"
+  },
+  "diagnostic_methods": [
+    "bph20_pregain_conservative",
+    "bph13_gp_narrow_mid",
+    "bph11_gp_mid",
+    "bph21_pregain_mid"
+  ]
+}

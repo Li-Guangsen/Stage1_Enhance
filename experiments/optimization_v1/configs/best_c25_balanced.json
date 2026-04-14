@@ -1,0 +1,21 @@
+{
+  "fusion": {
+    "rghs_low_boost": 1.8,
+    "rgh_fg_bias": 0.6,
+    "post_sigmoid_alpha": 0.22
+  },
+  "final": {
+    "mode": "homomorphic_entropy",
+    "gamma_low": 0.5,
+    "gamma_high": 1.8,
+    "cutoff_freq": 65,
+    "entropy": {
+      "p_low": 1.0,
+      "p_high": 99.0,
+      "clahe_clip": 1.18,
+      "mix_global": 0.25,
+      "mix_local": 0.15,
+      "chroma_gain": 1.015
+    }
+  }
+}

@@ -1,0 +1,134 @@
+# Protocol v2 image enhancement evaluation
+Created at: 2026-04-13T11:43:53
+Original dir: D:\Desktop\Stage1Codex\data\inputImg\Original
+Summary policy: complete_cases_across_all_methods
+Planned stems: 506
+Complete success stems: 506
+Failures: 0
+
+## r4_00_r3_03_base
+Directory: D:\Desktop\Stage1Codex\experiments\optimization_v1\results\full506_refine_round4\r4_00_r3_03_base\Final
+Count: 506
+EME: mean=13.881874, std=8.519134
+EMEE: mean=1.080781, std=0.481583
+Entropy: mean=5.972056, std=0.911871
+Contrast: mean=654.212708, std=407.111243
+AvgGra: mean=16.915198, std=9.430418
+SIFT_KP: mean=4227.790514, std=3716.507060
+MS_SSIM: mean=0.706557, std=0.185500
+PSNR: mean=16.093669, std=3.738605
+UCIQE: mean=4.012007, std=2.486911
+UIQM: mean=28.131789, std=16.212873
+
+## r4_01_gamma_050_200_52
+Directory: D:\Desktop\Stage1Codex\experiments\optimization_v1\results\full506_refine_round4\r4_01_gamma_050_200_52\Final
+Count: 506
+EME: mean=14.088429, std=8.699093
+EMEE: mean=1.092745, std=0.492250
+Entropy: mean=5.959154, std=0.909514
+Contrast: mean=667.509646, std=414.996829
+AvgGra: mean=17.137463, std=9.532299
+SIFT_KP: mean=4213.464427, std=3687.506216
+MS_SSIM: mean=0.705000, std=0.184443
+PSNR: mean=16.082328, std=3.721923
+UCIQE: mean=4.218100, std=2.575176
+UIQM: mean=28.464098, std=16.505103
+
+## r4_02_gamma_050_205_50
+Directory: D:\Desktop\Stage1Codex\experiments\optimization_v1\results\full506_refine_round4\r4_02_gamma_050_205_50\Final
+Count: 506
+EME: mean=14.249602, std=8.860121
+EMEE: mean=1.102074, std=0.501751
+Entropy: mean=5.938537, std=0.924897
+Contrast: mean=678.411978, std=422.372599
+AvgGra: mean=17.306333, std=9.629853
+SIFT_KP: mean=4211.369565, std=3673.146957
+MS_SSIM: mean=0.702584, std=0.186287
+PSNR: mean=16.074802, std=3.709682
+UCIQE: mean=4.409459, std=2.651403
+UIQM: mean=28.703572, std=16.768984
+
+## r4_03_gamma_050_210_48
+Directory: D:\Desktop\Stage1Codex\experiments\optimization_v1\results\full506_refine_round4\r4_03_gamma_050_210_48\Final
+Count: 506
+EME: mean=14.426550, std=9.016747
+EMEE: mean=1.112228, std=0.510997
+Entropy: mean=5.925994, std=0.932430
+Contrast: mean=689.688209, std=430.487357
+AvgGra: mean=17.498103, std=9.742325
+SIFT_KP: mean=4207.911067, std=3654.656017
+MS_SSIM: mean=0.699343, std=0.187463
+PSNR: mean=16.064164, std=3.695017
+UCIQE: mean=4.608884, std=2.732389
+UIQM: mean=28.972422, std=17.016169
+
+## r4_04_gamma_low_048
+Directory: D:\Desktop\Stage1Codex\experiments\optimization_v1\results\full506_refine_round4\r4_04_gamma_low_048\Final
+Count: 506
+EME: mean=13.808885, std=8.483452
+EMEE: mean=1.076473, std=0.479460
+Entropy: mean=5.936250, std=0.926291
+Contrast: mean=655.274477, std=405.142905
+AvgGra: mean=16.932078, std=9.395488
+SIFT_KP: mean=4244.361660, std=3720.443939
+MS_SSIM: mean=0.711055, std=0.184005
+PSNR: mean=16.144536, std=3.753938
+UCIQE: mean=4.052599, std=2.508705
+UIQM: mean=28.005379, std=16.148777
+
+## r4_05_gamma_low_052
+Directory: D:\Desktop\Stage1Codex\experiments\optimization_v1\results\full506_refine_round4\r4_05_gamma_low_052\Final
+Count: 506
+EME: mean=13.954127, std=8.554086
+EMEE: mean=1.085060, std=0.483674
+Entropy: mean=6.001207, std=0.902568
+Contrast: mean=653.247927, std=408.954890
+AvgGra: mean=16.897704, std=9.470486
+SIFT_KP: mean=4209.312253, std=3705.373006
+MS_SSIM: mean=0.702349, std=0.186931
+PSNR: mean=16.042832, std=3.720570
+UCIQE: mean=3.972475, std=2.465443
+UIQM: mean=28.272433, std=16.266569
+
+## r4_06_gamma_050_200_55_soft_entropy
+Directory: D:\Desktop\Stage1Codex\experiments\optimization_v1\results\full506_refine_round4\r4_06_gamma_050_200_55_soft_entropy\Final
+Count: 506
+EME: mean=13.681627, std=8.414310
+EMEE: mean=1.069167, std=0.475423
+Entropy: mean=5.925719, std=0.919052
+Contrast: mean=648.522406, std=403.656596
+AvgGra: mean=16.793196, std=9.343929
+SIFT_KP: mean=4205.023715, std=3700.663956
+MS_SSIM: mean=0.712609, std=0.183768
+PSNR: mean=16.143015, std=3.757189
+UCIQE: mean=4.135502, std=2.544048
+UIQM: mean=27.740678, std=16.034835
+
+## r4_07_gamma_050_200_55_strong_entropy
+Directory: D:\Desktop\Stage1Codex\experiments\optimization_v1\results\full506_refine_round4\r4_07_gamma_050_200_55_strong_entropy\Final
+Count: 506
+EME: mean=14.416426, std=8.845001
+EMEE: mean=1.111683, std=0.500732
+Entropy: mean=6.020486, std=0.901160
+Contrast: mean=684.022920, std=422.862479
+AvgGra: mean=17.475141, std=9.682311
+SIFT_KP: mean=4361.079051, std=3794.695672
+MS_SSIM: mean=0.697448, std=0.186209
+PSNR: mean=16.018605, std=3.705590
+UCIQE: mean=4.111257, std=2.521174
+UIQM: mean=29.114364, std=16.749913
+
+## r4_08_gamma_050_200_55_tight_entropy
+Directory: D:\Desktop\Stage1Codex\experiments\optimization_v1\results\full506_refine_round4\r4_08_gamma_050_200_55_tight_entropy\Final
+Count: 506
+EME: mean=14.076191, std=8.672973
+EMEE: mean=1.091787, std=0.490445
+Entropy: mean=5.978968, std=0.920026
+Contrast: mean=674.376640, std=418.914937
+AvgGra: mean=17.267542, std=9.606767
+SIFT_KP: mean=4313.760870, std=3765.036457
+MS_SSIM: mean=0.701852, std=0.186827
+PSNR: mean=16.008488, std=3.690372
+UCIQE: mean=4.123431, std=2.534544
+UIQM: mean=28.472942, std=16.454841
+

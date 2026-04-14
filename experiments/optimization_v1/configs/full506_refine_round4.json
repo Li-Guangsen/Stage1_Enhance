@@ -1,0 +1,164 @@
+[
+  {
+    "name": "r4_00_r3_03_base",
+    "fusion": {},
+    "final": {
+      "mode": "homomorphic_entropy",
+      "gamma_low": 0.5,
+      "gamma_high": 1.95,
+      "cutoff_freq": 55,
+      "entropy": {
+        "p_low": 1.0,
+        "p_high": 99.0,
+        "clahe_clip": 1.25,
+        "mix_global": 0.35,
+        "mix_local": 0.2,
+        "chroma_gain": 1.02
+      }
+    }
+  },
+  {
+    "name": "r4_01_gamma_050_200_52",
+    "fusion": {},
+    "final": {
+      "mode": "homomorphic_entropy",
+      "gamma_low": 0.5,
+      "gamma_high": 2.0,
+      "cutoff_freq": 52,
+      "entropy": {
+        "p_low": 1.0,
+        "p_high": 99.0,
+        "clahe_clip": 1.25,
+        "mix_global": 0.35,
+        "mix_local": 0.2,
+        "chroma_gain": 1.02
+      }
+    }
+  },
+  {
+    "name": "r4_02_gamma_050_205_50",
+    "fusion": {},
+    "final": {
+      "mode": "homomorphic_entropy",
+      "gamma_low": 0.5,
+      "gamma_high": 2.05,
+      "cutoff_freq": 50,
+      "entropy": {
+        "p_low": 1.0,
+        "p_high": 99.0,
+        "clahe_clip": 1.25,
+        "mix_global": 0.35,
+        "mix_local": 0.2,
+        "chroma_gain": 1.02
+      }
+    }
+  },
+  {
+    "name": "r4_03_gamma_050_210_48",
+    "fusion": {},
+    "final": {
+      "mode": "homomorphic_entropy",
+      "gamma_low": 0.5,
+      "gamma_high": 2.1,
+      "cutoff_freq": 48,
+      "entropy": {
+        "p_low": 1.0,
+        "p_high": 99.0,
+        "clahe_clip": 1.25,
+        "mix_global": 0.35,
+        "mix_local": 0.2,
+        "chroma_gain": 1.02
+      }
+    }
+  },
+  {
+    "name": "r4_04_gamma_low_048",
+    "fusion": {},
+    "final": {
+      "mode": "homomorphic_entropy",
+      "gamma_low": 0.48,
+      "gamma_high": 1.95,
+      "cutoff_freq": 55,
+      "entropy": {
+        "p_low": 1.0,
+        "p_high": 99.0,
+        "clahe_clip": 1.25,
+        "mix_global": 0.35,
+        "mix_local": 0.2,
+        "chroma_gain": 1.02
+      }
+    }
+  },
+  {
+    "name": "r4_05_gamma_low_052",
+    "fusion": {},
+    "final": {
+      "mode": "homomorphic_entropy",
+      "gamma_low": 0.52,
+      "gamma_high": 1.95,
+      "cutoff_freq": 55,
+      "entropy": {
+        "p_low": 1.0,
+        "p_high": 99.0,
+        "clahe_clip": 1.25,
+        "mix_global": 0.35,
+        "mix_local": 0.2,
+        "chroma_gain": 1.02
+      }
+    }
+  },
+  {
+    "name": "r4_06_gamma_050_200_55_soft_entropy",
+    "fusion": {},
+    "final": {
+      "mode": "homomorphic_entropy",
+      "gamma_low": 0.5,
+      "gamma_high": 2.0,
+      "cutoff_freq": 55,
+      "entropy": {
+        "p_low": 1.0,
+        "p_high": 99.0,
+        "clahe_clip": 1.22,
+        "mix_global": 0.32,
+        "mix_local": 0.18,
+        "chroma_gain": 1.018
+      }
+    }
+  },
+  {
+    "name": "r4_07_gamma_050_200_55_strong_entropy",
+    "fusion": {},
+    "final": {
+      "mode": "homomorphic_entropy",
+      "gamma_low": 0.5,
+      "gamma_high": 2.0,
+      "cutoff_freq": 55,
+      "entropy": {
+        "p_low": 1.0,
+        "p_high": 99.0,
+        "clahe_clip": 1.3,
+        "mix_global": 0.4,
+        "mix_local": 0.22,
+        "chroma_gain": 1.02
+      }
+    }
+  },
+  {
+    "name": "r4_08_gamma_050_200_55_tight_entropy",
+    "fusion": {},
+    "final": {
+      "mode": "homomorphic_entropy",
+      "gamma_low": 0.5,
+      "gamma_high": 2.0,
+      "cutoff_freq": 55,
+      "entropy": {
+        "p_low": 1.2,
+        "p_high": 98.8,
+        "clahe_clip": 1.25,
+        "mix_global": 0.35,
+        "mix_local": 0.2,
+        "chroma_gain": 1.02
+      }
+    }
+  }
+]

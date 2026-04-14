@@ -1,0 +1,121 @@
+{
+  "created_at": "2026-04-12T22:50:47",
+  "project_root": "D:\\Desktop\\Stage1Codex",
+  "original_dir": "D:\\Desktop\\Stage1Codex\\data\\inputImg\\Original",
+  "resize_to": [
+    320,
+    320
+  ],
+  "summary_policy": "complete_cases_across_all_methods",
+  "planned_stem_count": 92,
+  "complete_success_count": 92,
+  "failure_count": 0,
+  "methods": {
+    "OursFinalPNG": {
+      "directory": "D:\\Desktop\\Stage1Codex\\results\\png\\Final",
+      "complete_case_count": 92,
+      "metrics": {
+        "EME": {
+          "count": 92,
+          "nonfinite": 0,
+          "mean": 7.960594557233267,
+          "std": 4.070059995802435,
+          "median": 6.402196515272973,
+          "min": 3.414973945232703,
+          "max": 24.285256609672906
+        },
+        "EMEE": {
+          "count": 92,
+          "nonfinite": 0,
+          "mean": 0.7458433257111478,
+          "std": 0.22681119034464056,
+          "median": 0.6576176980245917,
+          "min": 0.4937179639392073,
+          "max": 1.6575386232068208
+        },
+        "Entropy": {
+          "count": 92,
+          "nonfinite": 0,
+          "mean": 5.112651194785886,
+          "std": 0.9720511572072896,
+          "median": 4.8547071529390635,
+          "min": 3.3769522978675255,
+          "max": 7.162784130560238
+        },
+        "Contrast": {
+          "count": 92,
+          "nonfinite": 0,
+          "mean": 411.38694566069245,
+          "std": 204.17222786159843,
+          "median": 343.7840541731975,
+          "min": 96.94538597178683,
+          "max": 1233.9303879310344
+        },
+        "AvgGra": {
+          "count": 92,
+          "nonfinite": 0,
+          "mean": 10.95387449885272,
+          "std": 5.582805418055003,
+          "median": 8.787322828073652,
+          "min": 5.330029323868181,
+          "max": 34.123611148850685
+        },
+        "SIFT_KP": {
+          "count": 92,
+          "nonfinite": 0,
+          "mean": 2612.8260869565215,
+          "std": 2652.633542139715,
+          "median": 1621.0,
+          "min": 797.0,
+          "max": 16068.0
+        },
+        "MS_SSIM": {
+          "count": 92,
+          "nonfinite": 0,
+          "mean": 0.883976984931075,
+          "std": 0.040294081068619626,
+          "median": 0.888773113489151,
+          "min": 0.7806107401847839,
+          "max": 0.9610040783882141
+        },
+        "PSNR": {
+          "count": 92,
+          "nonfinite": 0,
+          "mean": 20.85597918381888,
+          "std": 2.4170493796590806,
+          "median": 21.15784805373832,
+          "min": 14.847408929745322,
+          "max": 25.705678306593605
+        },
+        "UCIQE": {
+          "count": 92,
+          "nonfinite": 0,
+          "mean": 4.456341297730155,
+          "std": 2.294132234494203,
+          "median": 3.8074084520339966,
+          "min": 1.0409847497940063,
+          "max": 9.946945190429688
+        },
+        "UIQM": {
+          "count": 92,
+          "nonfinite": 0,
+          "mean": 17.212974973039003,
+          "std": 9.064819564958945,
+          "median": 14.017025348997116,
+          "min": 6.636426777756213,
+          "max": 49.96792885808945
+        }
+      }
+    }
+  },
+  "outputs": {
+    "output_dir": "D:\\Desktop\\Stage1Codex\\metrics\\outputs\\evaluate_protocol_v2\\pilot92_verify",
+    "per_image_csv": "D:\\Desktop\\Stage1Codex\\metrics\\outputs\\evaluate_protocol_v2\\pilot92_verify\\per_image_metrics.csv",
+    "summary_txt": "D:\\Desktop\\Stage1Codex\\metrics\\outputs\\evaluate_protocol_v2\\pilot92_verify\\summary.txt",
+    "summary_json": "D:\\Desktop\\Stage1Codex\\metrics\\outputs\\evaluate_protocol_v2\\pilot92_verify\\summary.json",
+    "failed_csv": "D:\\Desktop\\Stage1Codex\\metrics\\outputs\\evaluate_protocol_v2\\pilot92_verify\\failed_files.csv",
+    "planned_manifest": "D:\\Desktop\\Stage1Codex\\metrics\\outputs\\evaluate_protocol_v2\\pilot92_verify\\planned_manifest.txt",
+    "complete_case_manifest": "D:\\Desktop\\Stage1Codex\\metrics\\outputs\\evaluate_protocol_v2\\pilot92_verify\\complete_case_manifest.txt"
+  },
+  "failures": []
+}

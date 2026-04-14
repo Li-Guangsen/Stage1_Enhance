@@ -1,0 +1,134 @@
+# Protocol v2 image enhancement evaluation
+Created at: 2026-04-14T13:06:03
+Original dir: D:\Desktop\Stage1Codex\data\inputImg\Original
+Summary policy: complete_cases_across_all_methods
+Planned stems: 64
+Complete success stems: 64
+Failures: 0
+
+## r2_00_baseline
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\round2\runs\r2_00_baseline\png\Final
+Count: 64
+EME: mean=14.224940, std=9.070713
+EMEE: mean=1.099656, std=0.511733
+Entropy: mean=5.828456, std=1.107885
+Contrast: mean=682.667332, std=414.483326
+AvgGra: mean=17.595160, std=10.370563
+SIFT_KP: mean=4435.546875, std=4246.349524
+MS_SSIM: mean=0.706765, std=0.179767
+PSNR: mean=15.430542, std=4.163686
+UCIQE: mean=4.594963, std=2.608768
+UIQM: mean=28.866195, std=17.438320
+
+## r2_01_G
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\round2\runs\r2_01_G\png\Final
+Count: 64
+EME: mean=14.232499, std=9.077805
+EMEE: mean=1.100006, std=0.512113
+Entropy: mean=5.843342, std=1.099629
+Contrast: mean=683.265058, std=415.169416
+AvgGra: mean=17.617440, std=10.374071
+SIFT_KP: mean=4444.078125, std=4259.294041
+MS_SSIM: mean=0.706045, std=0.179747
+PSNR: mean=15.421944, std=4.160843
+UCIQE: mean=4.606121, std=2.625940
+UIQM: mean=28.897158, std=17.472212
+
+## r2_02_G_P
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\round2\runs\r2_02_G_P\png\Final
+Count: 64
+EME: mean=14.274535, std=9.056362
+EMEE: mean=1.102340, std=0.510965
+Entropy: mean=5.848200, std=1.109923
+Contrast: mean=682.434002, std=415.774902
+AvgGra: mean=17.636971, std=10.352302
+SIFT_KP: mean=4445.906250, std=4253.322821
+MS_SSIM: mean=0.705629, std=0.178703
+PSNR: mean=15.551453, std=4.202080
+UCIQE: mean=4.640619, std=2.658051
+UIQM: mean=29.007272, std=17.429160
+
+## r2_03_G_A
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\round2\runs\r2_03_G_A\png\Final
+Count: 64
+EME: mean=14.215208, std=9.091116
+EMEE: mean=1.099004, std=0.512927
+Entropy: mean=5.844804, std=1.105295
+Contrast: mean=681.995717, std=414.265672
+AvgGra: mean=17.611533, std=10.353926
+SIFT_KP: mean=4435.468750, std=4252.541846
+MS_SSIM: mean=0.706040, std=0.179524
+PSNR: mean=15.439330, std=4.152871
+UCIQE: mean=4.616349, std=2.639680
+UIQM: mean=28.897100, std=17.505023
+
+## r2_04_G_P_A
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\round2\runs\r2_04_G_P_A\png\Final
+Count: 64
+EME: mean=14.258912, std=9.069683
+EMEE: mean=1.101430, std=0.511770
+Entropy: mean=5.851894, std=1.107374
+Contrast: mean=680.970246, std=414.615413
+AvgGra: mean=17.617065, std=10.333867
+SIFT_KP: mean=4437.890625, std=4244.512741
+MS_SSIM: mean=0.705770, std=0.178206
+PSNR: mean=15.577332, std=4.207982
+UCIQE: mean=4.646347, std=2.662780
+UIQM: mean=28.985918, std=17.457310
+
+## r2_05_G_P_A_B
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\round2\runs\r2_05_G_P_A_B\png\Final
+Count: 64
+EME: mean=14.265510, std=9.067334
+EMEE: mean=1.101783, std=0.511651
+Entropy: mean=5.852080, std=1.107753
+Contrast: mean=681.240764, std=414.505000
+AvgGra: mean=17.626796, std=10.328517
+SIFT_KP: mean=4440.687500, std=4245.231096
+MS_SSIM: mean=0.705531, std=0.178462
+PSNR: mean=15.576793, std=4.206647
+UCIQE: mean=4.645755, std=2.662394
+UIQM: mean=28.996386, std=17.454100
+
+## r2_06_G2_P_A_B
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\round2\runs\r2_06_G2_P_A_B\png\Final
+Count: 64
+EME: mean=14.253411, std=9.052318
+EMEE: mean=1.101099, std=0.510744
+Entropy: mean=5.848289, std=1.108673
+Contrast: mean=680.992428, std=414.993409
+AvgGra: mean=17.614788, std=10.339815
+SIFT_KP: mean=4440.875000, std=4245.102894
+MS_SSIM: mean=0.705939, std=0.178462
+PSNR: mean=15.579875, std=4.227730
+UCIQE: mean=4.634882, std=2.636606
+UIQM: mean=29.018300, std=17.445823
+
+## r2_07_G_P2_A_B
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\round2\runs\r2_07_G_P2_A_B\png\Final
+Count: 64
+EME: mean=14.237325, std=9.074852
+EMEE: mean=1.100204, std=0.512035
+Entropy: mean=5.852699, std=1.102924
+Contrast: mean=682.083226, std=414.155657
+AvgGra: mean=17.629656, std=10.338878
+SIFT_KP: mean=4439.765625, std=4251.511451
+MS_SSIM: mean=0.705373, std=0.179305
+PSNR: mean=15.472915, std=4.145742
+UCIQE: mean=4.639642, std=2.663698
+UIQM: mean=28.954048, std=17.474543
+
+## r2_08_G_P_A2_B
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\round2\runs\r2_08_G_P_A2_B\png\Final
+Count: 64
+EME: mean=14.275883, std=9.067161
+EMEE: mean=1.102451, std=0.511557
+Entropy: mean=5.873553, std=1.067713
+Contrast: mean=683.265955, std=417.476530
+AvgGra: mean=17.638623, std=10.385926
+SIFT_KP: mean=4451.562500, std=4257.382786
+MS_SSIM: mean=0.706571, std=0.179818
+PSNR: mean=15.554617, std=4.198067
+UCIQE: mean=4.605968, std=2.630040
+UIQM: mean=29.026257, std=17.431320
+

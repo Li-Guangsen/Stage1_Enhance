@@ -1,0 +1,922 @@
+
+
+===== PAGE 1 =====
+Vol.:(0123456789)
+Multimedia Tools and Applications
+https://doi.org/10.1007/s11042-023-16258-0
+1 3
+Underwater enhancement computing of ocean HABs based 
+on cyclic color compensation and multi-scale fusion
+Geng‑Kun Wu1,2  · Jie Xu1 · Yi‑Dan Zhang1 · Bei‑Ping Zhang1
+Received: 23 November 2022 / Revised: 25 April 2023 / Accepted: 4 July 2023 
+© The Author(s), under exclusive licence to Springer Science+Business Media, LLC, part of Springer Nature 2023
+Abstract
+The clarity of algal images is crucial for solving problems such as harmful algal blooms 
+(HABs) classification and red tide warning. However, the original underwater microscopic 
+images of HABs often produce color distortion and blurred details due to the effects of sea-
+water quality, illumination and image extraction techniques. To deal with the above prob-
+lems, an enhancement computing method based on cyclic color compensation and three-
+image Multi-scale fusion is proposed in this paper. In this method, first, we propose a novel 
+cyclic color compensation method to correct the color of the microscopic images of HABs. 
+Then, with the input of three images derived from the color compensation versions of the 
+original images of the algae, the correlation weight maps of the three inputs are redefined 
+to facilitate the transfer of texture features and color contrast to the output images. Finally, 
+to avoid image artifacts in the low-frequency components of the output image after the 
+weight map transformation, a novel image Multi-scale fusion strategy is used in this paper. 
+Qualitative and quantitative experimental results show that the underwater microscopic 
+images of HABs enhanced with the method proposed in this paper have the best texture 
+clarity and global contrast, and the method significantly improves the accuracy of transmis-
+sion map estimation, edge detection and key point matching in processing algal images.
+Keywords Harmful algal blooms · Enhancement computing · Cyclic color compensation · 
+Multi-scale fusion
+1 Introduction
+Ocean is the general title of the most extensive body of water on earth, and the chemi-
+cal, mineral, power and biological resources in the ocean bring great convenience to 
+human production and daily life. However, due to the development of industry in recent 
+ * Geng-Kun Wu 
+ wugengkun@sdust.edu.cn
+1 College of Computer Science and Engineering, Shandong University of Science and Technology, 
+Qingdao 266590, China
+2 Shandong Province Key Laboratory of Wisdom Mine Information Technology, Shandong 
+University of Science and Technology, Qingdao 266590, China
+
+===== PAGE 2 =====
+ Multimedia Tools and Applications
+1 3
+decades, a large amount of municipal industrial wastewater and sewage is discharged 
+into the sea, which promotes the reproduction of red tide organisms and triggers the red 
+tide phenomenon [19]. The frequent occurrence of red tides has caused serious impacts 
+on human health [15], aquaculture [3 ], tourism, and the economy of coastal areas [20]. 
+In order to reduce the impact of harmful red tides on the Marine environment, it is 
+important for the rapid and automatic identification of harmful algal blooms to effec-
+tively prevent red tides [2 ]. With the rapid development of computer technology, feature 
+extraction techniques and deep learning models are widely used in image processing. 
+All of them play a crucial role in computer vision, image retrieval [6 ], thermal image 
+denoising [40] and EMG signal denoising [39].
+At present, the existing HABs automatic identification systems are used to process 
+HABs underwater microscopic images with clear texture detail. But in the process of 
+monitoring marine engineering of red tide, a large number of underwater images col-
+lected in real time are not clear. Some of the microscopic images may be degraded due 
+to factors such as seawater quality, lighting and image extraction techniques, such as 
+color deviation, loss of details (flagella and other algal features), and blurred images. 
+Therefore, it is crucial to preprocess degraded underwater microscopic images of HABs 
+to improve the image quality. However, there is no effective image enhancement/restora-
+tion method for preprocessing HABs microscopic images.
+Since underwater microscopic images of HABs have many similarities with the 
+causes of degradation of underwater images. Therefore, in this paper, we propose a 
+new method to enhance the image details based on a single underwater microscopic 
+image of HABs taken under a microscope based on the underwater image enhancement 
+method. As shown in Fig.  1, our image enhancement method consists of three main 
+steps. Firstly, we used the cyclic color compensation method to correct the color of the 
+original underwater microscopic image of the HABs, and then we used three different 
+processing methods to obtain three images based on the color compensation version of 
+the underwater microscopic image of the HABs for the input of the Multi-scale fusion. 
+Finally, a novel multi-scale image fusion strategy is proposed to fuse three input images 
+to obtain the final result image. In our approach, the color compensation removes the 
+color bias of the images to produce a normal appearance of the underwater microscopic 
+images of HABs. Multi-scale fusion, on the other hand, is used to enhance the textural 
+Fig. 1  Overview of the method: The three images in the middle are color-compensation versions from a 
+single input image and are merged based on an image Multi-scale fusion algorithm. The novelty of this 
+method is that the cyclic color compensation method of HABs underwater microscopic images are defined, 
+and three images are used as the input of Multi-scale fusion process for the first time
+
+===== PAGE 3 =====
+Multimedia Tools and Applications 
+1 3
+and edge features of the underwater microscopic images of the HABs to achieve an 
+image enhancement effect.
+The rest of this paper is organized as follows: Section  2 summarizes the current state of 
+research in underwater image enhancement. Section 3 proposes a novel color compensation 
+method based on the cyclic compensation strategy. Then Section  4 presents our proposed 
+novel multi-scale fusion based on three images for underwater microscopic image enhance-
+ment of red tide algae, including the fused input images and the three weight maps of the 
+input images. Finally, the proposed cyclic color compensation method and image enhance-
+ment technique are evaluated qualitatively and quantitatively to validate their advantages 
+in solving the correlation of subsequent HABs species classification problems (i.e., image 
+segmentation and target extraction). The main contributions of this paper are summarized 
+as follows:
+(1) We propose a novel cyclic white balance algorithm that can compensate for HABs 
+microscopic images with various chromatic aberration problems.
+(2) In defining the association weights for the three input images of the Multi-scale fusion 
+process, we innovatively use the normalized results of gamma correction and Butter -
+worth high-pass filtering as the weight maps to extract the image contrast features.
+(3) Based on the image pyramid decomposition technique and Multi-scale fusion strategy, 
+we propose an enhancement algorithm specifically applied to the HABs microscopic 
+images.
+2  Related work
+This section focuses on the current research in underwater image enhancement/restora-
+tion. The methods for underwater image processing are classified into underwater image 
+enhancement (IFM-FREE) and underwater image restoration (IFM) based on whether they 
+are based on an image formation model (IFM) or not [32].
+2.1  Underwater image recovery
+Recovering underwater images by building an underwater imaging model, calculating 
+the model parameters, and solving the underwater imaging model inverse to recover the 
+underwater images is called underwater image recovery [34]. Lu et al. [27] proposed an 
+adaptive underwater image recovery method based on Multi-scale cyclic generative adver -
+sarial network (MCycleGAN) and dark channel prior (DCP). In Lu′s method, the contrast 
+of the image is improved by using the multi-scale structural similarity index measurement 
+(SSIM) loss. Li et al. [22] proposed a Retinex model with robustness, which additionally 
+considers the noise figure to enhance the quality of low-light images compared to the con-
+ventional Retinex model. The method can also be used for remote sensing applications and 
+in hazy and dusty environmental conditions. Emberton et al. [9] proposed a novel defog-
+ging method that improves the quality of underwater images by segmenting the image 
+region containing only water. A semantic white balance method for light source estimation 
+was also proposed, which was used to address the spectral distortion present in underwater 
+scenes. Li et al. [23] proposed a two-stage underwater image defogging method. The first 
+stage removes fine dust using underwater red and green minimum channel a priori de-scat-
+tering, and the second stage uses a deep convolutional neural network to further remove 
+
+===== PAGE 4 =====
+ Multimedia Tools and Applications
+1 3
+dust. Galdran et al. [11] proposed a method similar to the dark channel a priori to compen-
+sate for the most lost red channel and thus improve the image contrast. Akkaynak et al. [4] 
+used RGB images to directly obtain the shooting distance d for each pixel, which was then 
+brought into an underwater imaging model to obtain a recovered underwater image.
+2.2  Underwater image enhancement
+The direct application of graphic image processing techniques to enhance underwater 
+images without considering specific underwater imaging models was called underwater 
+image enhancement. Underwater image enhancement methods can be further divided into 
+two main approaches: hardware-based and software-based methods. The software-based 
+methods can be further divided into three categories: contrast enhancement, color correc-
+tion, and hybrid methods. Hybrid methods combine contrast enhancement, defogging, and 
+color correction [41].
+Hardware-based There are four main hardware-based methods for underwater image 
+enhancement, namely, polarization, distance-gated imaging, fluorescence imaging, and 
+stereo imaging [26]. However, a disadvantage of hardware-based enhancement methods is 
+that they are very expensive and relatively power-consuming.
+Software-based Arpit et al. [26] proposed a deep learning architecture consisting of an 
+integrated encoder and decoder to correct the color of underwater images. This approach 
+solves the underwater image color correction problem as a coloring task. To improve the 
+image contrast and correct the color bias of underwater images, Huo et al. [16] proposed an 
+underwater image enhancement algorithm based on a deep learning network and a wavelet 
+enhancement learning strategy (PRWNet). The method uses a multi-stage refinement strat-
+egy to effectively enhance the degradation of spatial variations in a coarse-to-fine manner. 
+The image is enhanced from the low and high frequency components of the image, respec-
+tively. Luchman et  al. [28] proposed a dark channel prior (ADCP) adaptive defogging 
+algorithm combined with image enhancement. Shi et al. [37] designed an encoder-aggre-
+gator-decoder architecture for underwater image enhancement. And a multiscale feature 
+transformation module was introduced to transform the extracted multiscale semantic-level 
+features to improve the robustness of the encoder-aggregator-decoder network. Azmi et al. 
+[7] proposed a nature-based underwater image color enhancement (NUCE) method that 
+can significantly correct chromatic aberrations. A population intelligence-based equali-
+zation algorithm was also proposed to improve the naturalness of the output image, and 
+finally an inverse sharpening mask was applied to improve the sharpness of the image. 
+Li et  al. [24] proposed an underwater image enhancement network (Ucolor) with multi-
+color space embedding guided by media transport. This method takes advantage of multi-
+ple color space embedding as well as physical model-based and learning-based approaches 
+to improve the visual quality of underwater images. Gao et al. [12] proposed an underwater 
+image enhancement model inspired by the morphology and function of the scleractinian 
+retina. The method can enhance the edge and contrast of underwater images well.
+Although the above enhancement/restoration methods are effective for underwater 
+images, there are still some differences between the degradation causes of underwater 
+microscopic images of HABs and general underwater images, so the above methods are not 
+well suited for underwater microscopic images of HABs.
+
+===== PAGE 5 =====
+Multimedia Tools and Applications 
+1 3
+3  Proposed method
+3.1  Cyclic color compensation
+When taking underwater microscopic images of HABs, some images will be affected by 
+seawater quality, lighting, and other factors leading to degradation in quality, a critical 
+manifestation of which is the deviation of the image color. To correct the color deviation of 
+the image, we propose a novel cyclic color compensation method to process the image. The 
+purpose of cyclic color compensation is to compensate for the loss of color channels and to 
+correct the hue of the image.
+We refer to the most currently available white balance methods, most of which estimate 
+the color of a light source by making specific assumptions and then multiply each color 
+channel by the corresponding compensation factor to achieve color correction. In these 
+methods, Gray World algorithms assume that the mean value of the average reflection of 
+natural scenery to light is a constant value in general. Therefore, the Gray World algorithm 
+estimates the color distribution of the light source by averaging the pixel values of each 
+channel independently. Max RGB assumes that the maximum response of the RGB color 
+channels in the image is caused by the white surfaces in the scene. Therefore, the larg-
+est value in the RGB channel will be used as the light color of the image. To make Gray 
+World more general, Finalayson et  al. introduced the Minkowski paradigm (Minkowski 
+norm) based on Gray World and proposed the Shades of Gray algorithm. This algorithm 
+uses the Minkowski norm distance instead of the simple averaging method. Weijer et al. 
+propose a new Gray Edge hypothesis: the difference in the average reflection of all physical 
+surfaces in the scene is colorless. Also, to be compatible with several basic algorithms, the 
+Minkowski paradigm was introduced to obtain a more general algorithmic framework for 
+calculating color constancy.
+In this paper, we propose a novel cyclic color compensation strategy that is effective and 
+suitable for solving the chromatic aberration problem of HABs microscopic images. We 
+will explain the method in detail in the following.
+In the method of this paper, the underwater microscopic images of greenish HABs are 
+used as an example. We based the following five observations on compensating for the loss 
+of the red and blue channels.
+(1) The greenish HABs images have lower average grey values for the red and blue chan-
+nels, while the green channel has the highest average grey value.
+(2) The green channel contains the color information that is lost in the red and blue chan-
+nels. Because of this, we compensate for the red and blue channels by using the green 
+channel.
+(3) After a lot of experiments, we found that the compensation of the red channel should 
+be proportional to the difference between the average grey value of the green channel 
+and the red channel. The same is true for the compensation of the blue channel. This 
+difference in average value reflects the degree of attenuation of the channel.
+(4) To avoid the artifacts in the HABs image, the red and blue channels should be com-
+pensated in places where the attenuation is high, and compensation is not needed for 
+areas where the red and blue channel values are already high.
+(5) Since the attenuation degree of the red and blue channels of HABs images is different, 
+we cannot find the suitable parameters to make all images achieve the best effect in 
+one compensation process. In order to solve this problem, we propose a cyclic com-
+
+===== PAGE 6 =====
+ Multimedia Tools and Applications
+1 3
+pensation strategy and experimentally prove that the best compensation effect can be 
+achieved when the number of cyclic compensation is 6.
+Mathematically, to solve the problems arising from the above observations, we propose 
+a compensation formula for the red channel Irc at each pixel point (x), as follows:
+Where Ir, Ig denote the red channel and the green channel of image I, and the grey scale 
+values of Ir, Ig are in the interval [0,1], which is a representation of the pixel values after 
+linear normalization. Ir , Ig denote the average grayscale values of Ir, Ig, respectively. In 
+Eq. (1), The second item addresses the issues mentioned in the five observations above 
+well and α is a constant. In practice, after extensive experiments, it has been shown that 
+the value of α = 1.2 is most suitable for underwater microscopic images of various greenish 
+HABs when the value of Ir is less than 0.15. When the value of Ir is greater than 0.15, the 
+value of α = 1.95 is the most suitable for all kinds of greenish HABs underwater micro-
+scopic images.
+Similarly, the compensation formula for the blue channel Ibc at each pixel point (x) is 
+shown below:
+Where Ib, Ig denote the blue channel and green channel of image I, respectively. In prac-
+tice, numerous experiments have shown that when the value of Ib is less than 0.15, the 
+value of α = 1.2 is the most suitable for all kinds of underwater microscopic images of 
+greenish HABs. When the value of Ib is greater than 0.15, then the value of α = 2.3 is the 
+most suitable for various greenish microscopic images of HABs.
+The color correction process for the reddish and bluish HABs images is similar to the 
+above steps, except for the value of the parameter α.
+When the average grey value of the red channel of the HABs underwater micrograph is 
+the largest, the value of the parameter α is set as follows:
+(1) Compensation for the blue channel: When the value of Ib is less than 0.15, the best 
+compensation effect can be achieved when the value of α is set to 1.2. When the value 
+of Ib is greater than 0.15, then the value of α is set to 2.05 to achieve the best compen-
+sation effect.
+(2) Compensation for the green channel: When the value of Ig is less than 0.15, a value 
+of α = 1.2 achieves the best compensation. When the value of Ig is greater than 0.15, 
+a value of α = 2.05 achieves the best compensation.
+When the average grayscale value of the blue channel of the underwater micrograph of 
+the HABs is maximum, the value of the parameter α is set as follows:
+The same is true for the blue channel as for the red channel, when the value of Ib , Ir is 
+less than 0.15, the value of α = 1.2 achieves the best compensation. When the value of Ib , 
+Ir is greater than 0.15, then the value of α = 2.05 achieves the best compensation.
+The study in Fig.  2 and Table  1 reveals that most conventional white balance methods 
+are less effective; they do not eliminate color bias and often look greenish. We observed 
+that Gray World even showed red artifacts. Although Max RGB and Shades of Gray can 
+(1)Irc(x)=Ir (x)+/u1D6FC∗
+/parenleft.s2
+Ig − Ir
+/parenright.s2
+∗ (1 − Ir(x))∗ Ig(x)
+(2)Ibc(x)= Ib(x)+ /u1D6FC∗
+/parenleft.s2
+Ig − Ib
+/parenright.s2
+∗ (1 − Ib(x))∗ Ig(x)
+
+===== PAGE 7 =====
+Multimedia Tools and Applications 
+1 3
+reduce color deviation to a certain extent, we have observed that Max RGB makes the 
+image brighter and Shades of Gray darker. This overall brightness/darkness is due to 
+over/under compensation of the three channels. In contrast, our method compensates for 
+the above deficiencies.
+Figure  3 shows the results of the cyclic color compensation method in this paper for 
+the yellowish and purplish algae images. We found that the cyclic color compensation 
+method can correct various off-color HABs images well.
+Figure  4 shows that our cyclic color compensation approach significantly improves 
+the DCP-based transmission maps. As shown in the first six columns of Fig.  4, the DCP-
+based transmission maps yielded relatively poor estimates using the initial HABs under -
+water microscopic images and the processed versions using several well-known white 
+balance methods (Max RGB, Gray World, Shades of Gray, Gray Edge). In contrast, we 
+obtained comparable or even better transmission estimates by simply applying DCP 
+transmission estimates in our version of the color compensation image than the under -
+water image enhancement techniques of MIP, ULAP, and UDCP.
+Although our cyclic color compensation method can recover the color of the image 
+very well, using this correction step does not enhance the edge and texture features 
+of the image. Therefore, in the next section this paper proposes an image Multi-scale 
+fusion-based method that relies on sharpening and contrast correction to solve the blur -
+ring problem of color compensation images.
+Taking the green-toned HABs image as an example, the whole cyclic color compen-
+sation algorithm is summarized in Algorithm 1, also known as the Cyclic CC algorithm. 
+In Algorithm 1, the compensation for the red channel is calculated according to Eq. (1 ), 
+and the compensation for the blue channel is calculated according to Eq. (2 ).
+Original imageB lue channelB lue channel Equalized Original with Blue 
+channel Eq. Compensate image
+Max RGBG rey World Shades of GrayG rey Edge Our Cyclic WB
+Fig. 2  Cyclic color compensation. Top row from left to right: the original algae image with highly attenu-
+ated red and blue channels, the original blue channel and the blue channel after histogram equalization, the 
+original image after the equalization of the blue channel and the image after compensation using Eq.  2. Our 
+compensated image is obtained by simply replacing the blue channel in the original underwater image. Bot-
+tom row from left to right: several well-known white balance methods (Max RGB [17], Gray World [29], 
+Shades of Gray [10], Gray Edge [30]) and the image obtained using the cyclic color compensation method 
+in this paper
+
+===== PAGE 8 =====
+ Multimedia Tools and Applications
+1 3
+Table 1  Quantitative evaluation of various white balance methods based on CIEDE2000, PCC, and Qu index
+Gray Edge Shades of Gray Max RGB Gray World Our Cyclic WB
+CIE2000 Qu PCC CIE2000 Qu PCC CIE2000 Qu PCC CIE2000 Qu PCC CIE2000 Qu PCC
+Image 1 22.325 0.725 0.996 22.936 0.671 0.995 3.769 0.509 0.996 2.509 0.577 0.976 1.564 0.881 0.997
+Image 2 21.990 0.645 0.996 23.123 0.671 0.993 3.341 0.583 0.988 2.529 0.569 0.602 1.495 0.882 0.996
+Image 3 19.647 0.805 0.996 20.703 0.671 0.994 3.149 0.591 0.987 2.433 0.567 0.622 1.459 0.882 0.997
+Image 4 18.141 0.882 0.994 23.532 0.671 0.991 3.879 0.505 0.979 2.609 0.572 0.704 1.617 0.882 0.995
+Image 5 17.306 0.797 0.996 23.522 0.670 0.995 3.367 0.587 0.990 2.562 0.571 0.644 1.569 0.882 0.997
+Average 19.882 0.771 0.995 22.763 0.671 0.994 3.501 0.555 0.988 2.528 0.571 0.710 1.541 0.882 0.996
+Note: The values in bold typeface represent the best result obtained in the comparison
+
+===== PAGE 9 =====
+Multimedia Tools and Applications 
+1 3
+Yellowish algae Image Our Color Compensation 
+Image
+Purplish algae Image Our Color Compensation
+Image
+Fig. 3  Yellowish and purplish HABs images and images after processing with our color compensation 
+Image balance method
+Input image DCP˄Input 
+image˅
+DCP(Max
+RGB)
+DCP(Gray 
+World)
+DCP(Shades of 
+Gray)
+DCP(Gray 
+Edge)
+MIP(Original 
+image)
+ULAP (Original 
+image)
+UDCP(Original 
+image)
+DCP(Our 
+method)
+Fig. 4  Transmission estimation maps. Columns 2 to 6 show the DCP-based transmission maps based on the 
+initial HABs underwater microscopic images and the versions processed using several well-known white 
+balance methods (Max RGB, Gray World, Shades of Gray, Gray Edge), and it can be noticed that the esti-
+mates of these images are poor. In contrast, the transmission maps obtained by simply applying DCP on our 
+cyclic color compensation images (last column) give comparable or even better estimates compared to the 
+classical underwater image enhancement techniques corresponding to MIP [25], ULAP [38], and UDCP
+
+===== PAGE 10 =====
+ Multimedia Tools and Applications
+1 3
+3.2  Image multi‑scale fusion
+In this section, we propose a solution for the defogging of a single underwater microscopic 
+image of HABs based on the image Multi-scale fusion principle. Image fusion has been 
+widely applied to many applications (e.g., defogging, image synthesis, HDR imaging, and 
+multispectral video enhancement) and has demonstrated its utility. In this paper, we propose 
+a simple and fast method based on image Multi-scale fusion that can enhance the edge and 
+texture features of various underwater microscopic images of HABs. Our framework is built 
+based on of a set of input and weight maps derived from cyclic color compensation images. 
+Specifically, as shown in Fig. 1, an input image that increases the edge sharpness of the cyclic 
+color compensation image and two input images that increase the contrast of the cyclic color 
+compensation image are introduced, and the associated weight maps are defined to make the 
+edge and texture features of the underwater microscopic images of HABs more significant. 
+As shown in Fig. 6, our underwater microscopic image enhancement technique of HABs con-
+sists of three steps. First, a color-corrected cyclic color compensation image is obtained from 
+the initial underwater microscopic image of HABs. Then, the input image and its associated 
+weight map are derived from the cyclic color compensation image. Finally, we fuse the input 
+images and their weight maps using a Multi-scale fusion strategy.
+3.2.1  Input image for fusion process
+In the previous section, to correct the color of HABs images, we propose a cyclic color 
+compensation method that applies to the original images. Experiments revealed that the 
+Algorithm1: Cyclic Color Compensation (Cyclic CC)
+
+===== PAGE 11 =====
+Multimedia Tools and Applications 
+1 3
+color of the cyclic color compensation images usually appears monotonous. Still, we aim to 
+distinguish the foreground from the background of the underwater microscopic images of 
+HABs. Therefore, we performed contrast-limited adaptive histogram equalization (CLAHE 
+[35]) on the cyclic color compensation image version to obtain the first input image. The 
+purpose of CLAHE is to enhance the contrast of the image and increase the difference 
+between the foreground and background areas.
+However, the first input alone does not distinguish well between the foreground and 
+background of the HABs images, so we introduced the second input image, the relative 
+global histogram stretching (RGHS) [14] version of the cyclic color-compensated image, 
+as a complement to the first input.
+The first two inputs can be excellent at enhancing the contrast of the image and distin-
+guishing the foreground from the background of the HABs image. But one drawback is 
+that it can blur the details of under-exposed/over-exposed areas of the image. Therefore, 
+to compensate for this loss, we introduce a third input image to enhance the edge and tex-
+ture features of the HABs image by processing the cyclic color compensation image with 
+unsharp masking. A typical formula for the unsharp masking defines the sharpened image 
+S as the following:
+Where I is the image to be sharpened, G*I is the Gaussian filtered version of I, and β is the 
+correction factor. Experiments show that the best sharpening effect can be achieved when 
+the value of β is 9.
+3.2.2  Weight maps of input images
+By using weight maps in the process of Multi-scale fusion, pixels with high weight values 
+in the image can be shown more in the resultant image. We used three types of weight: 
+Canny weight, Butterworth weight and Gamma weight.
+Canny weight (Wc):The Canny weight map is obtained by applying the Canny opera-
+tor on three inputs, which is widely used in medical imaging and image segmentation. 
+The canny operator assigns higher values to the edges and thus can segment the edge 
+features of an image well. However, this weight will somewhat blur some of the texture 
+features of HABs images. To solve this problem, we introduce a second weight, the But-
+terworth weight, to enhance the texture features of the image.
+Butterworth weight (Wb): The Butterworth weight map is obtained by applying But-
+terworth high-pass filtering to the three inputs. The role of Butterworth high weights is 
+to enhance the image’s high-frequency information, so the image’s texture features can 
+be well preserved after Butterworth high-pass filtering. Because of this, we introduce 
+this weight to make up for the deficiency caused by the Canny weight.
+Gamma weight (Wg): The first two weights are intended to enhance the edge and tex-
+ture features of the HABs images but neglect the enhancement of contrast. Therefore we 
+introduce the last weight, gamma weight, to enhance the contrast of HABs images.
+In practice, we combine the above three weight maps into one weight map for each 
+input. For each input k, we first sum Wc, Wb, and Wg  to obtain Wk. Then we divide the 
+gray value of each pixel of each weight map Wk by the sum of the gray values of the pixels 
+(3)S = I + /u1D6FD(I − G ∗ I)
+
+===== PAGE 12 =====
+ Multimedia Tools and Applications
+1 3
+at the same position on all weight maps to obtain the normalized weight map Wk . Each 
+normalized weight map Wk is defined as:
+Where δ denotes a relatively small regularization term to ensure that each input has a cor -
+responding normalized weight map. In our experiments, the value of δ is set to 0.6. The 
+corresponding weight map is shown in Fig. 5.
+3.2.3  Initial fusion process
+For each input and its normalized weight map, the fused image R(x) can usually be 
+obtained by fusing the input image with the weight metric at each pixel location (x):
+Where Ik denotes the input image (in this paper, k = 3) and Wk denotes the normalized 
+weight map. In fact, this primitive fusion process introduces some unwanted halos [10]. 
+Therefore, to overcome this limitation, we used the Multi-scale fusion strategy.
+3.2.4  Multi-scale fusion process
+In this paper, the proposed multi-scale fusion is based on the Gaussian pyramid and the 
+Laplacian pyramid. First, we decompose the images into different spatial bands using the 
+pyramid decomposition technique. Then, we fuse the images on different bands separately. 
+Finally, the images on all bands are summed to obtain the resultant image. Each pyramid 
+layer is processed using Gaussian low-pass filtering G. Therefore, during the Gaussian pyr-
+amid operation, the image loses some high-frequency detail information after convolution 
+and secondary sampling. To characterize this high-frequency information, we decompose 
+the input using a Laplace pyramid to preserve the high-frequency features of the input. 
+Formally, we define the N-layer pyramid of the image as follows:
+(4)Wk = /parenleft.s1Wk + /u1D6FF/parenright.s1∕
+/parenleft.s2/uni2211.s1K
+k= 1Wk + K ·/u1D6FF
+/parenright.s2
+(5)R(x)=
+K/uni2211.s1
+k= 1
+Wk(x)Ik(x)
+OriginalI nput Image Our ResultbW cW gW
+kW
+Fig. 5  The three input images from our version of the cyclic color compensation image, the three corre-
+sponding weight maps, the normalized weight map, and our final results
+
+===== PAGE 13 =====
+Multimedia Tools and Applications 
+1 3
+As shown in Eq. (6), all images are upsampling to the same dimension as the original 
+image I(x). In our method, we decompose each input image Ik into a Laplace pyramid and 
+then decompose the normalized weight map Wk into a Gaussian pyramid. Both pyramids 
+have the same number of layers and the normalized fusion of Laplace inputs with Gaussian 
+weights is performed independently on each layer as:
+Where k is the number of input images and l is the number of layers of the pyramid (in our 
+experiments l = 4). In practice, the number of layers N depends on the image size and can 
+affect the visual quality of the image. After proper upsampling of the fused images of each 
+layer, the final enhanced image is obtained by summing the images of all layers. As Fig.  5 
+shows, the image after fusion using our image Multi-scale fusion method not only enhances 
+the contrast but also the edge and texture features of the image is well enhanced (Fig. 6).
+(6)
+I(x)= I(x)−G 1{I(x)} + G1{I(x)} ≜ L1{I(x)} + G1{I(x)}
+= L1{I(x)} + G1{I(x)} − G2{I(x)} + G2{I(x)}
+= L1{I(x)} + L2{I(x)} + G2{I(x)}
+= ⋯
+=
+N∑
+l=1
+�Ll{I(x)}
+�
+(7)Rl(x)=
+K/uni2211.s1
+k= 1
+Gl
+/braceleft.s2
+Wk(x)
+/braceright.s2
+Ll
+/braceleft.s1Il(x)/braceright.s1
+Fig. 6  Overview of our HABs image enhancement technique. Three images are derived from the cyclic color 
+compensation images using CLAHE, RGHS, and the unsharp masking, respectively, and denoted as Input 1, 
+Input 2, and Input 3. The normalized weight map is then derived from the three input images as the other input 
+for the Multi-scale fusion. Within the framework of the fusion process, the left half of each set of fusions rep-
+resents the Gaussian pyramid of the normalized weight map and the right half represents the Laplace pyramid 
+of the input images. Only an example of the three-layer image Multi-scale fusion process is given here
+
+===== PAGE 14 =====
+ Multimedia Tools and Applications
+1 3
+The whole image Multi-scale fusion algorithm is summarized in Algorithm 2. In Algo-
+rithm 2, Input3 comes from Eq. (3), Step 2 is based on Eq. (4), and the fused image of each 
+layer is calculated using Eq. (7).
+4  Results
+In this section, we first validate the cyclic color compensation. Then, the HABs image 
+enhancement method in this paper is compared with the existing underwater enhancement 
+method.
+4.1  Cyclic color compensation evaluation
+The images used in the experiments were all derived from underwater microscopic 
+images of HABs collected in actual seawater. Most of these images have problems such 
+as color deviation and blurred texture features. We selected five more classical images 
+to evaluate the cyclic color compensation method proposed in this paper. On these five 
+images, we applied the following methods: Max RGB, Gray World, Shades of Gray, 
+and Gray Edge. To evaluate the effectiveness of our color compensation algorithm, we 
+used the evaluation index Qu [ 21], Pearson correlation coefficient (PCC) [1 , 18] and 
+the color difference of the image CIE2000. Qu is an index that combines the advan-
+tages of the SSIM index and Euclidean color distance, which can effectively evaluate 
+the effectiveness of the color compensation method. Qu produces values between [0,1], 
+and the higher the value, the better the color compensation. CIE2000 based on the color 
+difference formula CIEDE2000 calculated and obtained, CIEDE2000 produces values 
+between [0,100], smaller values indicate more minor color differences, and values less 
+Algorithm2: Image Multi-scale Fusion
+
+===== PAGE 15 =====
+Multimedia Tools and Applications 
+1 3
+than one are difficult to detect the color differences between pictures visually. The Pear -
+son correlation coefficient determines the degree of association between the pixels of 
+two images. The Pearson correlation coefficient takes values in the range of [−1, 1]. 
+When PCC = 1, the two variables are positively correlated; when PCC = −1, the two 
+variables are entirely negatively correlated.
+Table  1 shows the quantitative evaluation results obtained using the CIEDE2000 
+color difference formula, Pearson correlation coefficient and the index Qu. It can be 
+seen that the method proposed in this paper has the highest average value in Qu-index 
+and PCC, and also has the lowest average value in CIE2000 index, which indicates that 
+our cyclic color compensation algorithm achieves the best compensation effect.
+Figure  7 shows that the image after Gray Edge processing has no change relative to 
+the original image. It is obvious that this is not the ideal outcome. The effect of Gray 
+World is worse because the image after Gray World processing is not only color uncor -
+rected but also has noticeable red artifacts. Our cyclic color compensation has a minor 
+color difference compared to Shades of Gray and Max RGB. In summary, our cyclic 
+color compensation method showed the highest robustness.
+Original imageG ray Edge Shades of Gray Max RGBG ray WorldO ur Cyclic WB
+Fig. 7  Comparison results of different white balance methods (Gray Edge, Shades of Gray, Max RGB, Gray 
+World, and Our Cyclic WB). The quantitative evaluation associated with these images is shown in Table 1
+
+===== PAGE 16 =====
+ Multimedia Tools and Applications
+1 3
+4.2  HABs image enhancement evaluation
+The HABs images used in this section are still the five images in the cyclic color com-
+pensation evaluation. On these five images, we applied the following image enhance-
+ment/restoration methods: UCM [36], ICM [8 ], ULAP [38], RGHS [14], CLAHE [35], 
+GC, MIP [25], and Ancuti, et al. [5 ] method. We compare all the image enhancement 
+methods mentioned above with our method and use the resultant images produced by all 
+enhancement methods and their 3D-RGB color models as a subjective measure of the 
+overall color range change of the entire image before and after image enhancement, as 
+shown in Fig.  8. We found that the images obtained by our method have a uniform color 
+distribution and a broader range of color representation.
+To evaluate the effectiveness of enhancement, we used six classical image quality 
+evaluation metrics to evaluate the method proposed in this paper. The first parameter is 
+the information entropy (Entropy), which is the entropy used to describe the information 
+content of an image. The second parameter is the contrast of the image (Contrast). The 
+third parameter is the average gradient of the image, which is used to represent the fine 
+contrast, texture features and sharpness of the image for the quantitative measurement. 
+The fourth and fifth parameters are the enhanced measurement (EME) and the entropy 
+of the enhanced measurement (EMEE) to test the output-enhanced images. The sixth 
+parameter is the mean structural similarity mean (MSSIM) to measure the similarity of 
+the output image to the original image. The value of MSSIM is between 0 and one, and 
+closer to one indicates that the resultant image is more similar to the original image.
+Figure  9 shows the results of applying several well-known underwater image 
+enhancement/restoration methods to degraded HABs microscopic images from our 
+HABs dataset. Due to space limitations, we only show five more classical degraded 
+images. The experimental results show that the chromatic aberrations of the images pro-
+cessed by RGHS, CLAHE, MIP, UCM, ULAP, and Aucuti et al. were not eliminated. 
+The images processed by GC and ICM eliminated the color deviation, but the edge and 
+texture features were not enhanced (e.g., the flagellar features of HABs did not become 
+very clear). In contrast, the method proposed in this paper not only corrects the color 
+bias of the underwater microscopic images of HABs but also significantly enhances the 
+texture and edge features of the HABs images.
+Table  2 shows the quantitative evaluation of the five images in terms of entropy, con-
+trast, mean gradient, MSSIM, EMEE, and EME. By observing the experimental results 
+in Table  2, the method in this paper has the highest mean values on entropy, contrast, 
+mean gradient, EME and EMEE metrics, which indicates that the proposed method in 
+this paper can maximize the contrast, edge features, texture features and the best visual 
+quality of the images. Meanwhile, we found that the HABs image enhancement method 
+proposed in this paper has the lowest value on MSSIM because the value of MSSIM 
+is very closely related to the original image. The purpose of image enhancement is to 
+improve the contrast of the image and enhance the edge and texture features of HABs 
+cells, so the resulting image is bound to have some deviation from the original image. 
+The purpose of introducing MSSIM is to detect whether our enhanced HABs images are 
+distorted. As shown in Table  2, we found that the MSSIM values of the HABs images 
+processed by our method were above 0.75, which indicates that the images processed by 
+our method have strong similarities with the original images and do not show distortion. 
+In summary, the method proposed in this paper has the best enhancement effect and the 
+highest robustness.
+
+===== PAGE 17 =====
+Multimedia Tools and Applications 
+1 3
+5  Discussion
+In this section, we test the validity of the HABs image enhancement method proposed in this 
+paper to demonstrate that the method significantly enhances the underwater microscopic images 
+of HABs. Also, we perform a complexity analysis of the method proposed in this paper.
+(a) Original image( b) UCM
+(c) ICM( d) ULAP
+(e) RGHS (f) CLAHE
+(g) GC (h) MIP
+(i) Ancuti et al. (j) Our method
+Fig. 8  3D-RGB color model of the Image 2, a Original image, the rest are the results of enhancement using 
+the following methods, b UCM, c ICM, d ULAP, e RGHS, f CLAHE, g GC, h MIP, i Ancuti et al., and j 
+Our method
+
+===== PAGE 18 =====
+ Multimedia Tools and Applications
+1 3
+5.1  Key points matching
+Key point matching is a fundamental task for many image-processing applications. We 
+compute key points using the SIFT operator and compare the key point computation and 
+matching process of three original images with the images after enhancement utilising the 
+method of this paper (see Fig. 10).
+Table  3 shows the number of key points in the resulting images obtained by apply -
+ing various underwater image enhancement methods using the methods of this paper. As 
+shown in Fig.  10, the HABs images processed using our method can detect key points on 
+the flagella of HABs, which is impossible with the original images. In summary, our HABs 
+image enhancement method can maximize the edge and texture features of the image.
+5.2  Edge detection
+Edge detection was used to detect the edges and texture features of HABs images. In this 
+work, we used the method of Soria et al. [33]. Figure  11 shows the effects of edge detec-
+tion. It can be observed that our edge detection image shows more details (an important 
+manifestation is that the flagellar features of algal cells become clearly visible) compared 
+to the edge detection image of the original image.
+To verify that our method gives better results in edge detection, we use PR curves [13] 
+and ROC curves [31] to measure the quality of edge detection images. The ROC and PR 
+curves are used to evaluate the accuracy of edge detection, where AUC indicates the area 
+of the ROC curve. The larger the AUC, the higher the edge detection accuracy. As shown 
+in Fig.  12, the edge detection images of HABs images processed by our method have the 
+highest AUC values. However, the performance on the PR curve is poor, which is because 
+Original UCM ICMU LAP RGHS CLAHE GC MIP Ancuti et al. Our results
+Fig. 9  Comparison with different underwater image enhancements (UCM, ICM, ULAP, RGHS, CLAHE, 
+GC, MIP and Ancuti et  al. methods). The evaluation metrics associated with these images are shown in 
+Table 2
+
+===== PAGE 19 =====
+Multimedia Tools and Applications 
+1 3
+Table 2  HABs image enhancement evaluation based on Entropy, Contrast, Average gradient, EME, EMEE 
+metrics, the larger the metric the better
+Image Method Quantitative analysis
+Entropy Contrast Average gradient EME EMEE MSSIM
+Image 1 Original 3.059 1.974 1.029 0.888 0.551 –
+UCM 4.241 7.568 2.171 1.772 0.611 0.959
+ICM 3.699 4.065 1.479 1.301 0.576 0.986
+ULAP 3.053 4.481 1.133 1.17 0.572 0.991
+RGHS 4.804 13.478 3.237 3.172 0.701 0.902
+CLAHE 4.889 4.712 2.148 1.818 0.605 0.959
+GC 2.962 2.009 0.917 0.647 0.537 0.993
+MIP 3.382 2.579 1.163 1.095 0.563 0.997
+Ancuti et al. 4.355 9.785 2.349 1.521 0.589 0.993
+Our results 5.292 30.107 5.664 3.377 0.703 0.816
+Image 2 Original 3.355 3.648 1.154 1.076 0.563 –
+UCM 4.358 11.781 2.132 2.305 0.652 0.964
+ICM 3.821 5.475 1.501 1.634 0.595 0.994
+ULAP 3.395 7.694 1.351 1.332 0.581 0.988
+RGHS 5.131 24.391 3.512 4.036 0.772 0.885
+CLAHE 4.928 8.944 2.277 2.213 0.652 0.951
+GC 3.089 2.787 0.964 0.798 0.545 0.996
+MIP 3.678 4.973 1.372 1.435 0.583 0.996
+Ancuti et al. 4.721 10.771 2.248 1.506 0.587 0.914
+Our results 5.675 39.251 5.843 4.273 0.759 0.759
+Image 3 Original 3.484 6.605 1.301 1.252 0.598 –
+UCM 4.554 19.945 2.419 3.059 0.704 0.957
+ICM 3.735 8.399 1.481 1.546 0.592 0.997
+ULAP 3.503 15.542 1.576 1.784 0.618 0.987
+RGHS 5.191 33.275 3.596 4.041 0.764 0.881
+CLAHE 4.941 14.131 2.478 2.551 0.651 0.943
+GC 3.198 5.273 1.096 0.921 0.536 0.995
+MIP 3.825 9.377 1.521 1.365 0.581 0.994
+Ancuti et al. 4.696 16.098 2.441 1.681 0.598 0.909
+Our results 5.774 52.164 6.211 4.614 0.783 0.767
+Image 4 Original 2.957 3.872 0.996 0.827 0.551 –
+UCM 4.492 19.979 2.546 2.595 0.672 0.932
+ICM 3.205= 4.947 1.131 0.992 0.558 0.998
+ULAP 3.659 9.668 1.528 1.455 0.591 0.983
+RGHS 5.049 34.227 3.781 3.328 0.715 0.836
+CLAHE 4.512 8.898 2.023 1.765 0.604 0.957
+GC 2.781 3.087 0.866 0.633 0.536 0.996
+MIP 3.274 5.236 1.175 1.132 0.566 0.997
+Ancuti et al. 4.118 6.313 1.808 1.083 0.562 0.936
+Our results 5.398 42.667 5.369 3.524 0.716 0.759
+
+===== PAGE 20 =====
+ Multimedia Tools and Applications
+1 3
+Table 2  (continued)
+Image Method Quantitative analysis
+Entropy Contrast Average gradient EME EMEE MSSIM
+Image 5 Original 3.479 4.05 1.087 0.979 0.558 –
+UCM 4.721 16.057 2.305 2.819 0.685 0.943
+ICM 3.826 5.922 1.328 1.314 0.576 0.996
+ULAP 3.491 11.261 1.401 1.561 0.595 0.985
+RGHS 5.203 24.576 3.227 3.498 0.725 0.878
+CLAHE 5.014 9.088 2.117 2.038 0.619 0.947
+GC 3.265 3.257 0.947 0.732 0.541 0.99
+MIP 3.703 5.536 1.238 1.101 0.563 0.997
+Ancuti et al. 4.571 10.487 2.235 1.424 0.582 0.918
+Our results 5.772 42.721 6.014 4.185 0.753 0.771
+Note: The values in bold typeface represent the best result obtained in the comparison
+Original algae pair of images + SIFT matches Enhanced pair of images + SIFT matches
+Fig. 10  Key points matching. The SIFT operator is applied on the initial microscopic image of the HABs 
+(left) and on the enhanced image (right) using the enhancement method of this paper, respectively. It can be 
+observed that the enhanced image significantly improves the key points matching process, and one of the 
+important manifestations is that the flagellar features of the HABs can be clearly detected
+
+===== PAGE 21 =====
+Multimedia Tools and Applications 
+1 3
+the truth map we use in the process of plotting the PR curve is our manual hand-drawn 
+HABs edge detection truth map, ignoring the background information, so it will cause our 
+PR curve not to achieve the desired effect (Fig. 13).
+Table 3  The number of 
+key points of HABs images 
+processed using various image 
+enhancement/restoration methods 
+based on the SIFT operator. The 
+image enhancement/restoration 
+methods are the same as in 
+Table 2
+Method Image
+Image 1 Image 2 Image 3 Image 4 Image 5
+Original 156 278 543 334 324
+UCM 247 546 745 539 574
+ICM 194 356 598 367 392
+ULAP 158 258 630 433 462
+RGHS 327 685 868 614 647
+CLAHE 221 531 725 460 509
+GC 145 225 462 273 299
+MIP 196 288 705 335 477
+Ancuti et al. 178 341 620 367 364
+Our results 399 903 1137 740 957
+Original DexiNed(Original) Our Method DexiNed(Our Method)
+Fig. 11  Edge detection. We used the edge detection method of Soria et al. [33] to evaluate the effectiveness 
+of our algae image enhancement. From left to right: original algae image, edge detection image of the origi-
+nal HABs, image processed using the underwater image enhancement method of Ancuti et al. and the edge 
+detection image, algae image processed using our method and the edge detection image
+
+===== PAGE 22 =====
+ Multimedia Tools and Applications
+1 3
+5.3  Complexity analysis
+In this subsection, we analyze the complexity of the HABs microscopic image enhance-
+ment algorithm proposed in this paper. Since the size of the HABs microscopic images 
+we use is small and the program takes up only a little memory during operation, space 
+complexity is not our primary consideration. We only consider the time complexity of 
+the method, so we compared the running time of the image enhancement methods used 
+for comparison in the experiments and the proposed method in this paper, respectively, as 
+shown in Table 4.
+As shown in Table  4, CLAHE, GC and ULAP have a relatively fast runtime, however 
+the results in Fig.  9 show that they produce resultant images in which edge and texture 
+features are still blurred, which is not what we expect. Also, compared with some image 
+enhancement algorithms with the ability to produce competitive results, such as UCM, 
+RGHS, MIP and ICM, the runtime for our method is only 13.826 seconds, which is roughly 
+similar to the time for RGHS and ICM, about 19 s faster than MIP and about 6 s faster than 
+UCM. Overall, the HABs image enhancement algorithm proposed in this paper achieves 
+the best enhancement effect and is also competitive in runtime.
+Fig. 12  The ROC curve of the edge detection image. The AUC represents the area enclosed by the curve 
+and the coordinate axis. The larger the AUC, the higher the accuracy of the edge detection image
+Image 3P RI mage PR
+Fig. 13  The PR curve of the edge detection image
+Table 4  Runtime of various image enhancement methods
+Method UCM ICM ULAP RGHS CLAHE GC MIP Ancuti et al. Our method
+Runtime(s) 19.146 9.658 4.625 12.449 0.46 0.188 32.561 15.632 13.826
+
+===== PAGE 23 =====
+Multimedia Tools and Applications 
+1 3
+6  Conclusion
+In this paper, we propose an enhancement method for underwater microscopic images of 
+HABs. Our method is based on multi-scale fusion and corrects the chromatic aberration of 
+the image by cyclic white balance. Experimental results show that the method proposed in 
+this paper can maximize the correction of color deviation of HABs microscopic images and 
+enhance the edge and texture features of the images well. In addition, we further demon-
+strate the effectiveness of the image enhancement method in this paper using SIFT operator 
+and edge detection. We have conducted sufficient experiments on publicly available under-
+water image datasets. We found that our method performs better on underwater images 
+with large chromatic aberrations, coarse texture features and shallow scattering depths. The 
+reader can use the following link to the underwater image dataset for validation: https:// 
+github. com/ xahid buffon/ Aweso me_ Under water_ Datas ets. Our future work will further uti-
+lize the enhanced HABs microscopic images for classification.
+Acknowledgments The authors are grateful for the collaborative funding support from the Shandong Natu-
+ral Science Foundation of China (ZR2021MD063).
+Funding This work was supported by Shandong Natural Science Foundation of China (ZR2021MD063).
+Data availability The datasets generated during and/or analysed during the current study are available from 
+the corresponding author on reasonable request.
+References
+ 1. Aggarwal AK, Jaidka P (2022) Segmentation of crop images for crop yield prediction. Int J Biol 
+Biomed 7
+ 2. Aguirre-Castro OA, García-Guerrero EE, López-Bonilla OR, Tlelo-Cuautle E, López-Mancilla 
+D, Cárdenas-Valdez JR, ... Inzunza-González E (2022) Evaluation of underwater image enhance-
+ment algorithms based on Retinex and its implementation on embedded systems. Neurocomputing 
+494:148-159
+ 3. Agusa Y, Endo K, Kuroda H, Kobayashi S (2021) Examination of water temperature interpolation 
+method for prediction. In: Progress in image processing, pattern recognition and communication sys-
+tems. Springer, Cham, pp 339–350
+ 4. Akkaynak D, Treibitz T (2019) Sea-thru: a method for removing water from underwater images. In: 
+Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pp 1682–1691
+ 5. Ancuti CO, Ancuti C, De Vleeschouwer C, Bekaert P (2017) Color balance and fusion for underwater 
+image enhancement. IEEE Trans Image Process 27(1):379–393
+ 6. Arora K, Aggarwal AK (2018) Approaches for image database retrieval based on color, texture, and 
+shape features. In: Handbook of research on advanced concepts in real-time image and video process-
+ing. IGI Global, pp 28–50
+ 7. Azmi KZM, Ghani ASA, Yusof ZM, Ibrahim Z (2019) Natural-based underwater image color enhance-
+ment through fusion of swarm-intelligence algorithm. Appl Soft Comput 85:105810
+ 8. Daway HG, Daway EG (2019) Underwater image enhancement using colour restoration based on 
+YCbCr colour model. In: IOP conference series: materials science and engineering (vol 571, no 1, p. 
+012125). IOP Publishing
+ 9. Emberton S, Chittka L, Cavallaro A (2018) Underwater image and video dehazing with pure haze 
+region segmentation. Comput Vis Image Underst 168:145–156
+ 10. Finlayson GD, Trezzi E (2004) Shades of gray and colour constancy. In: Color and imaging conference 
+vol. 2004, no. 1. Society for Imaging Science and Technology, pp 37–41
+ 11. Galdran A, Pardo D, Picón A, Alvarez-Gila A (2015) Automatic red-channel underwater image resto-
+ration. J Vis Commun Image Represent 26:132–145
+ 12. Gao SB, Zhang M, Zhao Q, Zhang XS, Li YJ (2019) Underwater image enhancement using adaptive 
+retinal mechanisms. IEEE Trans Image Process 28(11):5580–5595
+
+===== PAGE 24 =====
+ Multimedia Tools and Applications
+1 3
+ 13. He J, Zhang S, Yang M, Shan Y, Huang T (2019) Bi-directional cascade network for perceptual edge 
+detection. In: Proceedings of the IEEE/CVF conference on computer vision and pattern recognition, pp 
+3828–3837
+ 14. Huang D, Wang Y, Song W, Sequeira J, Mavromatis S (2018) Shallow-water image enhancement 
+using relative global histogram stretching based on adaptive parameter acquisition. In: International 
+conference on multimedia modeling. Springer, Cham, pp 453–465
+ 15. Huang R, Yu K, Huang X, Zou W, Wang Y (2019) Combining Landsat images with historic records to 
+estimate the live coral cover of Luhuitou fringing reef in northern South China Sea. Image Vis Comput 
+92:103812
+ 16. Huo F, Li B, Zhu X (2021) Efficient wavelet boost learning-based multi-stage progressive refinement 
+network for underwater image enhancement. In: Proceedings of the IEEE/CVF international confer -
+ence on computer vision, pp 1944–1952
+ 17. Hussain MA, Akbari AS (2016) Max-RGB based colour constancy using the sub-blocks of the image. 
+In: 2016 9th international conference on developments in eSystems engineering (DeSE). IEEE, pp 
+289–294
+ 18. Kumari T, Guleria V, Syal P, Aggarwal AK (2021) A feature cum intensity based SSIM optimised 
+hybrid image registration technique. In: 2021 international conference on computing, communication 
+and green engineering (CCGE). IEEE, pp 1–8
+ 19. Lee MS, Park KA, Chae J, Park JE, Lee JS, Lee JH (2020) Red tide detection using deep learning and 
+high-spatial resolution optical satellite imagery. Int J Remote Sens 41(15):5838–5860
+ 20. Lee MS, Park KA, Micheli F (2021) Derivation of red tide index and density using geostationary 
+ocean color imager (GOCI) data. Remote Sens 13(2):298
+ 21. Li Y, Lu H, Li J, Li X, Li Y, Serikawa S (2016) Underwater image de-scattering and classification by 
+deep neural network. Comput Electr Eng 54:68–77
+ 22. Li M, Liu J, Yang W, Sun X, Guo Z (2018) Structure-revealing low-light image enhancement via 
+robust retinex model. IEEE Trans Image Process 27(6):2828–2841
+ 23. Li Y, Zhang Y, Xu X, He L, Serikawa S, Kim H (2019) Dust removal from high turbid underwater 
+images using convolutional neural networks. Opt Laser Technol 110:2–6
+ 24. Li C, Anwar S, Hou J, Cong R, Guo C, Ren W (2021) Underwater image enhancement via medium 
+transmission-guided multi-color space embedding. IEEE Trans Image Process 30:4985–5000
+ 25. Liu Y, Rong S, Cao X, Li T, He B (2020) Underwater single image dehazing using the color space 
+dimensionality reduction prior. IEEE Access 8:91116–91128
+ 26. Lu H, Li Y, Zhang Y, Chen M, Serikawa S, Kim H (2017) Underwater optical image processing: a 
+comprehensive review. Mob Netw Appl 22(6):1204–1211
+ 27. Lu J, Li N, Zhang S, Yu Z, Zheng H, Zheng B (2019) Multi-scale adversarial network for underwater 
+image restoration. Opt Laser Technol 110:105–113
+ 28. Luchman S, Viriri S (2021) Underwater image enhancement using adaptive algorithms. In: Interna-
+tional workshop on artificial intelligence and pattern recognition. Springer, Cham, pp 316–326
+ 29. Ma X, Chen Z, Feng Z (2019) Underwater image restoration through a combination of improved dark 
+channel prior and gray world algorithms. J Electronic Imaging 28(5):053033–053033
+ 30. Malik S, Kumar T (2016) Comparative analysis of edge detection between gray scale and color image. 
+Communications on Applied Electronics (CAE)–ISSN, 2394–4714
+ 31. Matos F, Menkovski V, Felici F, Pau A, Jenko F, TCV Team, & EUROfusion MST1 Team (2020) 
+Classification of tokamak plasma confinement states with convolutional recurrent neural networks. 
+Nuclear Fusion 60(3):036022
+ 32. Muniraj M, Dhandapani V (2021) Underwater image enhancement by combining color constancy and 
+dehazing based on depth estimation. Neurocomputing 460:211–230
+ 33. Poma XS, Riba E, Sappa A (2020) Dense extreme inception network: towards a robust cnn model 
+for edge detection. In: Proceedings of the IEEE/CVF winter conference on applications of computer 
+vision, pp 1923–1932
+ 34. Raveendran S, Patil MD, Birajdar GK (2021) Underwater image enhancement: a comprehensive 
+review, recent trends, challenges and applications. Artif Intell Rev 54(7):5413–5467
+ 35. Sahu S, Singh AK, Ghrera SP, Elhoseny M (2019) An approach for de-noising and contrast enhance-
+ment of retinal fundus image using CLAHE. Opt Laser Technol 110:87–98
+ 36. Saleh A, Sheaves M, Jerry D, Azghadi MR (2022) Adaptive uncertainty distribution in deep learning 
+for unsupervised underwater image enhancement. arXiv preprint arXiv:2212.08983
+ 37. Shi D, Ma L, Liu R, Fan X, Luo Z (2021) Semantic-driven context aggregation network for underwa-
+ter image enhancement. In: Chinese conference on pattern recognition and computer vision (PRCV). 
+Springer, Cham, pp 29–40
+
+===== PAGE 25 =====
+Multimedia Tools and Applications 
+1 3
+ 38. Song W, Wang Y, Huang D, Tjondronegoro D (2018) A rapid scene depth estimation model based on 
+underwater light attenuation prior for underwater image restoration. In: Pacific rim conference on mul-
+timedia. Springer, Cham, pp 678–688
+ 39. Thukral R, Kumar A, Arora AS (2019) Effect of different thresholding techniques for denoising of emg 
+signals by using different wavelets. In: 2019 2nd international conference on intelligent communica-
+tion and computational techniques (ICCT). IEEE, pp 161–165
+ 40. Thukral R, Arora AS, Kumar A (2022) Denoising of thermal images using deep neural network. In: 
+Proceedings of international conference on recent trends in computing: ICRTC 2021. Springer Nature 
+Singapore, Singapore, pp 827–833
+ 41. Yang M, Hu K, Du Y, Wei Z, Sheng Z, Hu J (2020) Underwater image enhancement based on condi-
+tional generative adversarial network. Signal Process Image Commun 81:115723
+Publisher’s note Springer Nature remains neutral with regard to jurisdictional claims in published maps and 
+institutional affiliations.
+Springer Nature or its licensor (e.g. a society or other partner) holds exclusive rights to this article under 
+a publishing agreement with the author(s) or other rightsholder(s); author self-archiving of the accepted 
+manuscript version of this article is solely governed by the terms of such publishing agreement and applicable 
+law.

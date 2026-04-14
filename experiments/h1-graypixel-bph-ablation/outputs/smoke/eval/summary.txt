@@ -1,0 +1,96 @@
+# Protocol v2 image enhancement evaluation
+Created at: 2026-04-13T21:53:12
+Original dir: D:\Desktop\Stage1Codex\data\inputImg\Original
+Summary policy: complete_cases_across_all_methods
+Planned stems: 5
+Complete success stems: 5
+Failures: 59
+
+## bph00_baseline
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\smoke\runs\bph00_baseline\png\Final
+Count: 5
+EME: mean=19.973155, std=8.062859
+EMEE: mean=1.423193, std=0.455136
+Entropy: mean=6.518734, std=0.535780
+Contrast: mean=883.203790, std=313.476314
+AvgGra: mean=22.637980, std=7.736531
+SIFT_KP: mean=5260.600000, std=3100.419881
+MS_SSIM: mean=0.619429, std=0.183513
+PSNR: mean=12.680723, std=3.176402
+UCIQE: mean=4.818271, std=1.911663
+UIQM: mean=40.436094, std=14.523043
+
+## bph10_gp_strict
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\smoke\runs\bph10_gp_strict\png\Final
+Count: 5
+EME: mean=20.083376, std=8.290574
+EMEE: mean=1.429755, std=0.468571
+Entropy: mean=6.521448, std=0.526196
+Contrast: mean=879.793748, std=310.741646
+AvgGra: mean=22.562818, std=7.676378
+SIFT_KP: mean=5290.200000, std=3111.299111
+MS_SSIM: mean=0.619361, std=0.182411
+PSNR: mean=12.648828, std=3.246655
+UCIQE: mean=4.704695, std=1.969961
+UIQM: mean=40.475595, std=14.970905
+
+## Failed files
+matching	bph00_baseline,bph10_gp_strict	suojiao.6	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	haiyangkadun.3	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	zhaixi.1	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	weiruan.6	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	chichaoyiwan.9	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	jiaomaozao.15	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	xuehong.3	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	lingxinghaixian.8	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	tama.21	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	yuanhai.11	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	chazhuang.9	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	hailianzao.11	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	sanjiaoji.10	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	lianzhuangluojia.4	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	qiangzhuang.31	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	limayuanjia.19	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	donghaiyuanjia.27	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	rouruo.1	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	jianci.3	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	haiyangkadun.1	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	gutiao.3	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	limayuanjia.15	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	haiyangyuanjia.2	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	chazhuang.2	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	mishikailun.10	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	qiangzhuang.8	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	weiruan.9	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	xinyue.4	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	donghaiyuanjia.20	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	suojiao.7	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	yuanhai.1	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	hailianzao.3	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	tiaowenhuangou.2	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	chazhuang.4	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	rouruo.4	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	duanjiao.11	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	sanjiaoji.6	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	redai.5	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	lianzhuangluojia.3	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	duowenqigou.2	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	haiyangyuanjia.3	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	sanjiaoji.12	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	duolie.10	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	weixiaoyuanjia.2	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	sanjiaoji.1	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	luoshijiaomao.2	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	limayuanjia.17	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	luojiazao.8	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	juciqigou.3	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	limayuanjia.16	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	donghaiyuanjia.4	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	qiuxing.2	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	xinyue.2	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	haiyangkadun.4	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	suojiao.3	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	duolie.7	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	jiaomaozao.24	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	chichaoyiwan.10	missing image for manifest entry
+matching	bph00_baseline,bph10_gp_strict	lingxinghaixian.6	missing image for manifest entry

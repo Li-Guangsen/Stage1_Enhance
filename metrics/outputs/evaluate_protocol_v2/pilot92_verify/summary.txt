@@ -1,0 +1,22 @@
+# Protocol v2 image enhancement evaluation
+Created at: 2026-04-12T22:50:47
+Original dir: D:\Desktop\Stage1Codex\data\inputImg\Original
+Summary policy: complete_cases_across_all_methods
+Planned stems: 92
+Complete success stems: 92
+Failures: 0
+
+## OursFinalPNG
+Directory: D:\Desktop\Stage1Codex\results\png\Final
+Count: 92
+EME: mean=7.960595, std=4.070060
+EMEE: mean=0.745843, std=0.226811
+Entropy: mean=5.112651, std=0.972051
+Contrast: mean=411.386946, std=204.172228
+AvgGra: mean=10.953874, std=5.582805
+SIFT_KP: mean=2612.826087, std=2652.633542
+MS_SSIM: mean=0.883977, std=0.040294
+PSNR: mean=20.855979, std=2.417049
+UCIQE: mean=4.456341, std=2.294132
+UIQM: mean=17.212975, std=9.064820
+

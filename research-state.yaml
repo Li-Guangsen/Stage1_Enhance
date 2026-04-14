@@ -1,0 +1,141 @@
+project:
+  title: "HAB Microscopic Image Enhancement and Edge-Detection-Oriented Validation"
+  question: "How can we improve underwater harmful algal bloom microscopic image enhancement so that color recovery, fine texture visibility, and downstream edge extractability all improve in a measurable and publishable way?"
+  status: active
+  started: "2026-04-11"
+  domain: "underwater microscopic image enhancement and edge-oriented computer vision"
+
+literature:
+  key_papers:
+    - id: "fan2025_awbcc_ipf_hdenet"
+      title: "Innovative underwater image enhancement algorithm: Combined application of adaptive white balance color compensation and pyramid image fusion to submarine algal microscopy"
+      authors: "Fan et al."
+      year: 2025
+      relevance: "Closest reference for enhancement pipeline organization, ablation design, and enhancement-to-edge-detection validation."
+    - id: "wu2023_cyclic_cc_multiscale_fusion"
+      title: "Underwater enhancement computing of ocean HABs based on cyclic color compensation and multi-scale fusion"
+      authors: "Wu et al."
+      year: 2023
+      relevance: "Earlier enhancement-only reference using cyclic color compensation and three-image multi-scale fusion."
+    - id: "wu2023_emd_wavelet_fusion"
+      title: "Numerical computation of ocean HABs image enhancement based on empirical mode decomposition and wavelet fusion"
+      authors: "Wu et al."
+      year: 2023
+      relevance: "Useful precursor for decomposition-driven enhancement and a direct literature anchor for the repository's IMF1/EMD branch."
+    - id: "frontiers2024_hab_edge_detection"
+      title: "Enhanced edge detection of harmful algal Blooms using diffusion probability models and Sobel-convolutional attention mechanisms"
+      authors: "Frontiers Marine Science article"
+      year: 2024
+      relevance: "Relevant downstream reference showing that HAB microscopy enhancement and edge-sensitive processing can be argued as a unified application line."
+  open_problems:
+    - "Current references validate downstream edge extraction, but the exact enhancement design in this project already differs from the published AWBCC/IPF and cyclic fusion formulations."
+    - "Existing metrics in the repository were computed on inconsistent sample subsets and currently cannot serve as the final paper table without standardization."
+    - "The best paper framing must separate the mature enhancement contribution from any future edge-detection-network contribution."
+  evidence_gaps:
+    - "Need a fixed evaluation subset and locked comparison protocol for all methods."
+    - "Need explicit ablation evidence for IMF1 branch, RGHS branch, CLAHE branch, gated fusion, and homomorphic refinement."
+    - "Need stronger downstream edge-validation evidence on enhanced vs non-enhanced images."
+
+hypotheses:
+  - id: H1
+    statement: "Gray-pixel-guided pre-white-balance plus clipped ACCC yields more stable color recovery and better downstream edge extractability than plain cyclic compensation."
+    status: pending
+    motivation: "The current lgsbph implementation already departs from the published ACCC design and appears to be one of the project's most defensible task-specific modifications."
+    parent: null
+    priority: high
+  - id: H2
+    statement: "The three-branch IMF1Ray/RGHS/CLAHE feature-gated fusion produces better edge-visible enhancement than any single branch or naive equal-weight fusion."
+    status: pending
+    motivation: "The fusion module is the strongest code-level innovation in the current repository and is the most likely source of publishable differentiation."
+    parent: null
+    priority: high
+  - id: H3
+    statement: "L-channel homomorphic refinement improves illumination uniformity and final edge readability, but should be treated as a refinement module rather than the main innovation."
+    status: pending
+    motivation: "This stage is likely useful, but its scientific role must be demonstrated with ablation rather than over-claimed."
+    parent: null
+    priority: medium
+
+experiments:
+  proxy_metric: "Weighted comprehensive score from metrics/score_protocol_v2.py on the full 506-image Original dataset, interpreted with MS-SSIM/PSNR as structure-preservation references because the paper target is edge/structure extraction rather than PSNR-only restoration."
+  baseline_value: 0.0
+  best_value: 11.3829
+  total_runs: 58
+  trajectory:
+    - experiment_id: "optimization_v1_c00"
+      hypothesis: "H3/H2"
+      metric_value: 0.0
+      baseline: 0.0
+      delta: "+0.0000"
+      change_summary: "Current default fusion plus homomorphic refinement, evaluated as the search reference."
+    - experiment_id: "optimization_v1_c25"
+      hypothesis: "H3/H2"
+      metric_value: 10.1240
+      baseline: 0.0
+      delta: "+10.1240"
+      change_summary: "RGHS-biased fusion plus mild homomorphic-entropy refinement; selected as balanced pilot winner with Mean_MS_SSIM >= 0.85."
+    - experiment_id: "optimization_v1_full506_r4_03"
+      hypothesis: "H3/H2"
+      metric_value: 11.3829
+      baseline: 0.0
+      delta: "+11.3829 vs full506 c25"
+      change_summary: "Default fusion plus stronger homomorphic-entropy refinement (gamma_low=0.5, gamma_high=2.1, cutoff_freq=48); selected as the current full506 comprehensive-metric winner."
+
+evaluation:
+  locked_full_dataset:
+    id: "full506-original-v1"
+    manifest: "metrics/outputs/evaluate_protocol_v2/full506_c25/complete_case_manifest.txt"
+    count: 506
+    source_original_dir: "data/inputImg/Original"
+    current_best_dir: "experiments/optimization_v1/results/full506_refine_round4/r4_03_gamma_050_210_48/Final"
+    current_best_config: "experiments/optimization_v1/configs/best_full506_r4_03.json"
+    final_compare_output: "metrics/outputs/evaluate_protocol_v2/full506_final_compare_c25_r4_03"
+    rationale: "This is now the formal tuning dataset; pilot92-v1 remains a debugging/historical subset only."
+  locked_subset:
+    id: "pilot92-v1"
+    manifest: "data/eval_subset_pilot92_v1.txt"
+    count: 92
+    source_original_dir: "data/inputImg/Original"
+    source_eval_dir: "results/png/Final"
+    rationale: "This is the current fully produced intersection and is sufficient for the first controlled ablation cycle."
+  primary_metrics:
+    - "Mean_SIFT_KP"
+    - "Mean_AvgGra"
+    - "Mean_MS_SSIM"
+  secondary_metrics:
+    - "Mean_Contrast"
+    - "Mean_EME"
+    - "Mean_EMEE"
+    - "Mean_UCIQE"
+    - "Mean_UIQM"
+    - "Mean_PSNR"
+    - "Mean_Entropy"
+  decision_rules:
+    - "Treat H1 and H2 as positive only if SIFT_KP and AvgGra improve without unacceptable MS_SSIM collapse or obvious visual artifacts."
+    - "Treat H3 as positive only if it adds illumination/readability improvement beyond the fused image and remains a secondary refinement, not the primary gain source."
+  provisional_baseline:
+    source: "metrics/Txt/our.txt"
+    note: "Legacy 92-image JPG summary used only as orientation. A standardized PNG rerun on pilot92-v1 is still required before any paper table is frozen."
+    mean_sift_kp: 2102.2283
+    mean_avggra: 10.8460
+    mean_ms_ssim: 0.8839
+    mean_uiqm: 18.9340
+    mean_uciqe: 4.3491
+
+execution_priority:
+  - "H2"
+  - "H1"
+  - "H3"
+
+outer_loop:
+  cycle: 0
+  last_direction: null
+  last_reflection: "Bootstrap initialized from existing codebase, adjacent paper lineage, a locked 92-image pilot subset, and a first-pass ablation queue prioritizing fusion before white-balance and post-refinement."
+
+workspace:
+  findings: "findings.md"
+  log: "research-log.md"
+  literature_dir: "literature/"
+  experiments_dir: "experiments/"
+  to_human_dir: "to_human/"
+  paper_dir: "paper/"
