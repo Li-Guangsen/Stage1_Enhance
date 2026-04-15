@@ -84,6 +84,28 @@
 
 因此，本项目当前人工最终锁定 `r2_05_G_P_A_B` 为 H1 白平衡正式胜者；后续若继续做上游白平衡相关调参，默认以该配置作为前置白平衡基线。
 
+## 主链路锁定配置
+
+为避免后续继续推进时反复手动拼接“上游白平衡 + 下游细化”参数，当前已补充显式锁定的主链路配置文件：
+
+- `experiments/optimization_v1/configs/locked_full506_mainline.json`
+
+同时，已将当前确认结果复制到正式命名的结果目录：
+
+- `experiments/h1-graypixel-bph-ablation/outputs/full506/runs/full506_locked_mainline`
+- `experiments/h1-graypixel-bph-ablation/outputs/full506/candidate_params/full506_locked_mainline.json`
+
+该文件表示的组合是：
+
+- `bph`：采用 H1 人工最终锁定 winner `r2_05_G_P_A_B`
+- `fusion/final`：采用当前 full506 下游固定配置 `r4_03`
+
+补充说明：
+
+- 该锁定文件与正式命名的结果副本用于主线复现与后续文档统一引用，不代表新增实验结论
+- 历史候选名 `r2_05_G_P_A_B` 仍保留在评测表、诊断索引和原始结果树中，用于审计与回溯
+- 当前不会自动修改 `main.py` 的默认参数入口；如需按主线锁定组合运行，应显式传入该 `params-json`
+
 ## smoke 观察
 
 - `bph10_gp_strict` 在 5 张 smoke 样本上相对 baseline 的综合分为 `-0.1750`

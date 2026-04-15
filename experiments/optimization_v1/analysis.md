@@ -93,6 +93,25 @@ metrics/outputs/evaluate_protocol_v2/full506_final_compare_c25_r4_03
 experiments/optimization_v1/configs/best_full506_r4_03.json
 ```
 
+考虑到当前主线已经完成 H1 白平衡正式锁定，现同步补充显式的组合锁定配置：
+
+```text
+experiments/optimization_v1/configs/locked_full506_mainline.json
+```
+
+其含义是：
+
+- `bph` 使用 H1 人工最终锁定的 `r2_05_G_P_A_B`
+- `fusion/final` 使用当前 full506 下游固定配置 `r4_03`
+
+对应的正式命名结果副本位于：
+
+```text
+experiments/h1-graypixel-bph-ablation/outputs/full506/runs/full506_locked_mainline
+```
+
+该配置文件和正式命名结果副本用于主线复现与后续统一引用；当前不自动改写 `main.py` 的默认 `--params-json`，避免在调参尚未完全收口前把默认运行入口提前固化。
+
 视觉诊断抽样输出：
 
 ```text

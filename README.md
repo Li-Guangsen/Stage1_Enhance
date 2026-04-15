@@ -38,6 +38,13 @@
 - 在“同时双增”的候选里，它的综合分回撤最小
 - 抽样诊断图未见明显系统性偏红、偏黄、偏紫等偏色
 
+当前已完成的主线收口工作包括：
+
+- 已将 “H1 `r2_05_G_P_A_B` + 下游 `r4_03`” 整理为正式锁定配置 `experiments/optimization_v1/configs/locked_full506_mainline.json`
+- 已将这套已确认结果复制到正式展示目录 `experiments/h1-graypixel-bph-ablation/outputs/full506/runs/full506_locked_mainline`
+- 已同步更新 README、H1 分析文档、优化分析文档、`selection.json` 和研究日志，统一当前主线命名
+- 当前仍不改写 `main.py` 默认入口，避免在后续调参尚未完全收口前过早固化默认运行配置
+
 ## 3. H1 full506 当前结论
 
 `experiments/h1-graypixel-bph-ablation/outputs/full506/eval` 中的核心结果如下：
@@ -113,6 +120,18 @@ cmd.exe /D /S /C "call D:\miniconda3\Scripts\activate.bat D:\miniconda3 && call 
 cmd.exe /D /S /C "call D:\miniconda3\Scripts\activate.bat D:\miniconda3 && call conda activate D:\Desktop\EdgeDetection\my_env && python main.py"
 ```
 
+当前已经确认的主线结果副本位于：
+
+```text
+experiments/h1-graypixel-bph-ablation/outputs/full506/runs/full506_locked_mainline
+```
+
+只有在确实需要从原图重新复现这套锁定组合时，才显式传入锁定配置文件：
+
+```bat
+cmd.exe /D /S /C "call D:\miniconda3\Scripts\activate.bat D:\miniconda3 && call conda activate D:\Desktop\EdgeDetection\my_env && python main.py --params-json experiments\optimization_v1\configs\locked_full506_mainline.json"
+```
+
 常见参数：
 
 - `--input-dir`
@@ -144,18 +163,28 @@ cmd.exe /D /S /C "call D:\miniconda3\Scripts\activate.bat D:\miniconda3 && call 
 - `full506` 阶段内部调用 `main.py` 时带 `--skip-existing`
 - 已完成的 baseline 不会被重复重算
 
-## 6. 当前默认配置
+## 6. 当前建议组合与锁定配置
 
-如果后续要继续基于当前结论推进，默认基线如下：
+如果后续要继续基于当前结论推进，当前建议锁定的主链路组合如下：
 
 - 前置白平衡 winner：`r2_05_G_P_A_B`
-- 参数文件：`experiments/h1-graypixel-bph-ablation/outputs/full506/candidate_params/r2_05_G_P_A_B.json`
+- 历史候选参数文件：`experiments/h1-graypixel-bph-ablation/outputs/full506/candidate_params/r2_05_G_P_A_B.json`
 - 下游固定配置：`experiments/optimization_v1/configs/best_full506_r4_03.json`
+- 主线锁定配置：`experiments/optimization_v1/configs/locked_full506_mainline.json`
+- 主线结果参数副本：`experiments/h1-graypixel-bph-ablation/outputs/full506/candidate_params/full506_locked_mainline.json`
+- 主线结果副本目录：`experiments/h1-graypixel-bph-ablation/outputs/full506/runs/full506_locked_mainline`
 
 换句话说，当前建议的组合是：
 
 - 前面白平衡用 `r2_05_G_P_A_B`
 - 后面融合与最终细化沿用 `r4_03`
+
+补充说明：
+
+- `locked_full506_mainline.json` 是当前主线的正式锁定配置名，便于后续复现、调用和文档统一引用
+- `full506_locked_mainline` 是当前已确认结果的正式展示名；其结果副本位于 `runs/full506_locked_mainline`
+- 当前不会自动改写 `main.py` 的默认 `--params-json`；如需重新复现该锁定组合，请显式传入 `--params-json`
+- 历史结果树和评测表中仍保留 `r2_05_G_P_A_B` 等候选名，用于审计与回溯；正式展示和文档引用统一走锁定命名
 
 ## 7. 关键结果文件
 
@@ -174,6 +203,8 @@ experiments/h1-graypixel-bph-ablation/outputs/full506/
 - `eval/guardrail_scores.csv`
 - `selection.json`
 - `candidate_params/r2_05_G_P_A_B.json`
+- `candidate_params/full506_locked_mainline.json`
+- `runs/full506_locked_mainline`
 
 补充说明：
 
@@ -213,15 +244,32 @@ experiments/h1-graypixel-bph-ablation/outputs/full506/
 - 大图像结果目录通常不进 Git
 - 关键评测结论和实验收口状态会进 Git，便于追踪
 
-## 10. 下一步建议
+## 10. 下一步计划
 
-如果继续沿当前主线推进，建议顺序如下：
+当前下一步只规划，不立即执行。若继续沿当前主线推进，建议顺序如下：
 
-1. 以后续调参统一以 `r2_05_G_P_A_B` 作为前置白平衡基线
-2. 不要混入新的大规模实验线，先在现有主链路上做受控增量修改
-3. 每完成一轮正式评测，就同步更新：
+1. 锁定当前基线：
+   - 前置白平衡固定为 `r2_05_G_P_A_B`
+   - `IMF1Ray` 本轮不调，继续作为高频增强分支
+   - `Final` / 后续滤波固定为当前已确认方案，不在本轮继续搜索
+2. 先做 `RGHS / CLAHE / fusion` 的问题拆解：
+   - 先判断当前问题主要来自 `RGHS` 输出、`CLAHE` 输出，还是融合权重与门控本身
+   - 避免把“分支质量问题”和“融合过程问题”混在一起调
+3. 单独优化 `RGHS` 分支：
+   - 目标是提升主体层次、对比和可见性，同时控制偏色、硬边和脏纹理
+4. 单独优化 `CLAHE` 分支：
+   - 目标是提升中间层与暗部可见性，同时抑制块感、光晕和发灰
+5. 在 `RGHS` 与 `CLAHE` 各自拿到满意版本后，再调 `fusion_three.py` 对应的融合过程参数：
+   - 重点看 `RGHS` 托底、`CLAHE` 中层补偿、`IMF1Ray` 高频增强三者的分工是否平衡
+6. 评测顺序采用“小样本诊断 -> pilot92 筛选 -> full506 最终确认”，不提前重跑大规模全量实验
+7. 每完成一轮正式评测或人工锁定，就同步更新：
    - `experiments/h1-graypixel-bph-ablation/analysis.md`
+   - `experiments/optimization_v1/analysis.md`
    - `research-log.md`
    - 对应实验目录下的 `selection.json` 和汇总文件
 
-如果后续把本仓库接到远程仓库，建议优先保持这个 README、`analysis.md`、`research-log.md` 和各阶段小型评测汇总文件同步更新。
+当前阶段的直接目标是：
+
+- 暂停 `IMF1Ray` 调参
+- 优先优化另外两张融合输入图像，即 `RGHS` 和 `CLAHE`
+- 在此基础上再优化融合过程本身

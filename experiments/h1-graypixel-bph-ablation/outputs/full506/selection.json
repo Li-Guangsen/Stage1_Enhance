@@ -19,6 +19,12 @@
   "winner_lock_reason": "Manual decision after review: prefer the candidate that improves both MS-SSIM and PSNR over baseline while keeping the composite-score regression acceptable for downstream white-balance use.",
   "manual_decision_at": "2026-04-15",
   "selected_params_json": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\full506\\candidate_params\\r2_05_G_P_A_B.json",
+  "final_display_name": "full506_locked_mainline",
+  "final_display_label_zh": "full506 主线锁定结果",
+  "locked_params_json": "D:\\Desktop\\Stage1Codex\\experiments\\optimization_v1\\configs\\locked_full506_mainline.json",
+  "locked_result_params_json": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\full506\\candidate_params\\full506_locked_mainline.json",
+  "locked_result_run_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\full506\\runs\\full506_locked_mainline",
+  "historical_candidate_name": "r2_05_G_P_A_B",
   "manual_color_review_required": false,
   "winner_locked": true
 }
