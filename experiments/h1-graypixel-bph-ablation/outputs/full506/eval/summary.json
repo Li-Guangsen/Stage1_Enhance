@@ -1,0 +1,409 @@
+{
+  "created_at": "2026-04-15T12:16:29",
+  "project_root": "D:\\Desktop\\Stage1Codex",
+  "original_dir": "D:\\Desktop\\Stage1Codex\\data\\inputImg\\Original",
+  "resize_to": [
+    320,
+    320
+  ],
+  "summary_policy": "complete_cases_across_all_methods",
+  "planned_stem_count": 506,
+  "complete_success_count": 506,
+  "failure_count": 0,
+  "methods": {
+    "r2_00_baseline": {
+      "directory": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\full506\\runs\\r2_00_baseline\\png\\Final",
+      "complete_case_count": 506,
+      "metrics": {
+        "EME": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 14.423568336739635,
+          "std": 9.023981094131132,
+          "median": 11.794290647531131,
+          "min": 2.2025945679226955,
+          "max": 54.56262266766806
+        },
+        "EMEE": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 1.1121796708385723,
+          "std": 0.5115013205633143,
+          "median": 0.9644443349872602,
+          "min": 0.4236389555653242,
+          "max": 3.4318796455740643
+        },
+        "Entropy": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 5.9073807699649965,
+          "std": 0.9427126122818612,
+          "median": 6.024487911091523,
+          "min": 2.1632277368661756,
+          "max": 7.746416554286599
+        },
+        "Contrast": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 686.8079156218637,
+          "std": 427.5313779792695,
+          "median": 593.8529854036051,
+          "min": 58.05618632445141,
+          "max": 3624.1762588166143
+        },
+        "AvgGra": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 17.42375476269773,
+          "std": 9.687574237087658,
+          "median": 14.632753552009076,
+          "min": 2.8290041017608143,
+          "max": 67.88962470489739
+        },
+        "SIFT_KP": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 4189.033596837945,
+          "std": 3642.9328964179476,
+          "median": 2796.0,
+          "min": 296.0,
+          "max": 17802.0
+        },
+        "MS_SSIM": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 0.7001218481850718,
+          "std": 0.18680250679104735,
+          "median": 0.7622239589691162,
+          "min": 0.0,
+          "max": 0.9381871223449707
+        },
+        "PSNR": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 16.08440557086117,
+          "std": 3.718505472484303,
+          "median": 16.179637832254326,
+          "min": 3.6562585965478664,
+          "max": 23.704879325010747
+        },
+        "UCIQE": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 4.675813151147997,
+          "std": 2.7520007156412385,
+          "median": 4.166071891784668,
+          "min": 0.3034633994102478,
+          "max": 13.486010551452637
+        },
+        "UIQM": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 28.92634689128293,
+          "std": 17.01375270689366,
+          "median": 24.757333396649358,
+          "min": 4.67103936958313,
+          "max": 98.9791353029251
+        }
+      }
+    },
+    "r2_02_G_P": {
+      "directory": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\full506\\runs\\r2_02_G_P\\png\\Final",
+      "complete_case_count": 506,
+      "metrics": {
+        "EME": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 14.421486875969245,
+          "std": 9.016684003075426,
+          "median": 11.793167073277605,
+          "min": 2.2025945679226955,
+          "max": 54.52902960137221
+        },
+        "EMEE": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 1.1120202899326532,
+          "std": 0.5111099084762545,
+          "median": 0.961948943739698,
+          "min": 0.4236389555653242,
+          "max": 3.4297063451846674
+        },
+        "Entropy": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 5.907542491610401,
+          "std": 0.9443711915120947,
+          "median": 6.022258164995208,
+          "min": 2.1632277368661756,
+          "max": 7.752058106130562
+        },
+        "Contrast": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 686.2309785125515,
+          "std": 429.12930077000465,
+          "median": 594.0668078957681,
+          "min": 58.05618632445141,
+          "max": 3629.71992065047
+        },
+        "AvgGra": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 17.42270520940443,
+          "std": 9.70695586143712,
+          "median": 14.641720241286986,
+          "min": 2.8290041017608143,
+          "max": 67.94597901579546
+        },
+        "SIFT_KP": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 4190.541501976285,
+          "std": 3642.235531002539,
+          "median": 2787.0,
+          "min": 296.0,
+          "max": 17902.0
+        },
+        "MS_SSIM": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 0.6999994161807501,
+          "std": 0.18673279174934973,
+          "median": 0.761315256357193,
+          "min": 0.0,
+          "max": 0.9508975744247437
+        },
+        "PSNR": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 16.10460487471404,
+          "std": 3.717765061276129,
+          "median": 16.199676529844783,
+          "min": 3.6562585965478664,
+          "max": 23.708986315016887
+        },
+        "UCIQE": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 4.687474687580063,
+          "std": 2.755709600930261,
+          "median": 4.180870532989502,
+          "min": 0.3034633994102478,
+          "max": 13.47074031829834
+        },
+        "UIQM": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 28.916859144487656,
+          "std": 17.004404417255333,
+          "median": 24.937165849232674,
+          "min": 4.67103936958313,
+          "max": 98.94359436149597
+        }
+      }
+    },
+    "r2_05_G_P_A_B": {
+      "directory": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\full506\\runs\\r2_05_G_P_A_B\\png\\Final",
+      "complete_case_count": 506,
+      "metrics": {
+        "EME": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 14.393424061437491,
+          "std": 8.999828890250281,
+          "median": 11.754168607621903,
+          "min": 2.2025945679226955,
+          "max": 54.52902960137221
+        },
+        "EMEE": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 1.1104179084953505,
+          "std": 0.5101438994280261,
+          "median": 0.9602750465950054,
+          "min": 0.4236389555653242,
+          "max": 3.4297063451846674
+        },
+        "Entropy": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 5.9033070411640995,
+          "std": 0.9480156358649895,
+          "median": 6.021633346931556,
+          "min": 2.137114113337939,
+          "max": 7.752058106130562
+        },
+        "Contrast": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 683.7496104736888,
+          "std": 428.3518517736292,
+          "median": 579.4027723354232,
+          "min": 58.05618632445141,
+          "max": 3629.71992065047
+        },
+        "AvgGra": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 17.388447098286633,
+          "std": 9.690145482955439,
+          "median": 14.647630832668037,
+          "min": 2.8290041017608143,
+          "max": 67.94597901579546
+        },
+        "SIFT_KP": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 4178.413043478261,
+          "std": 3640.010381634501,
+          "median": 2797.0,
+          "min": 296.0,
+          "max": 17812.0
+        },
+        "MS_SSIM": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 0.7011498279368924,
+          "std": 0.1860278145178452,
+          "median": 0.7596625089645386,
+          "min": 0.0,
+          "max": 0.9395712018013
+        },
+        "PSNR": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 16.11600181085664,
+          "std": 3.71257436277393,
+          "median": 16.248900809868562,
+          "min": 3.6562585965478664,
+          "max": 23.718449552704
+        },
+        "UCIQE": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 4.725256354441284,
+          "std": 2.7434573445837014,
+          "median": 4.229464769363403,
+          "min": 0.3034633994102478,
+          "max": 13.503849983215332
+        },
+        "UIQM": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 28.91812159797733,
+          "std": 16.96175529078746,
+          "median": 24.817932311415674,
+          "min": 4.67103936958313,
+          "max": 98.94359436149597
+        }
+      }
+    },
+    "r2_08_G_P_A2_B": {
+      "directory": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\full506\\runs\\r2_08_G_P_A2_B\\png\\Final",
+      "complete_case_count": 506,
+      "metrics": {
+        "EME": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 14.415905723214195,
+          "std": 9.013028878678488,
+          "median": 11.75427147233518,
+          "min": 2.2025945679226955,
+          "max": 54.52902960137221
+        },
+        "EMEE": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 1.1117193483174108,
+          "std": 0.5108853095220217,
+          "median": 0.9597171964220756,
+          "min": 0.4236389555653242,
+          "max": 3.4297063451846674
+        },
+        "Entropy": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 5.915583716416735,
+          "std": 0.9279352653871036,
+          "median": 6.034325285312256,
+          "min": 2.4329354141810517,
+          "max": 7.752058106130562
+        },
+        "Contrast": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 686.8445194306256,
+          "std": 429.3708986886432,
+          "median": 593.5855921826019,
+          "min": 58.05618632445141,
+          "max": 3629.71992065047
+        },
+        "AvgGra": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 17.429245293432633,
+          "std": 9.6987279690828,
+          "median": 14.696868837013197,
+          "min": 2.8290041017608143,
+          "max": 67.94597901579546
+        },
+        "SIFT_KP": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 4187.055335968379,
+          "std": 3642.189144420749,
+          "median": 2789.5,
+          "min": 296.0,
+          "max": 17897.0
+        },
+        "MS_SSIM": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 0.7004532574311547,
+          "std": 0.18617052558114341,
+          "median": 0.7612567842006683,
+          "min": 0.0,
+          "max": 0.9438467621803284
+        },
+        "PSNR": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 16.102306225438753,
+          "std": 3.7152768832165535,
+          "median": 16.24889971137392,
+          "min": 3.6562585965478664,
+          "max": 23.724518543421567
+        },
+        "UCIQE": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 4.635707745203388,
+          "std": 2.7710469202960613,
+          "median": 4.166041612625122,
+          "min": 0.3034633994102478,
+          "max": 13.407381057739258
+        },
+        "UIQM": {
+          "count": 506,
+          "nonfinite": 0,
+          "mean": 28.877924559893714,
+          "std": 16.997146410908474,
+          "median": 24.923764792513847,
+          "min": 4.67103936958313,
+          "max": 98.94359436149597
+        }
+      }
+    }
+  },
+  "outputs": {
+    "output_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\full506\\eval",
+    "per_image_csv": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\full506\\eval\\per_image_metrics.csv",
+    "summary_txt": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\full506\\eval\\summary.txt",
+    "summary_json": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\full506\\eval\\summary.json",
+    "failed_csv": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\full506\\eval\\failed_files.csv",
+    "planned_manifest": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\full506\\eval\\planned_manifest.txt",
+    "complete_case_manifest": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\full506\\eval\\complete_case_manifest.txt"
+  },
+  "failures": []
+}

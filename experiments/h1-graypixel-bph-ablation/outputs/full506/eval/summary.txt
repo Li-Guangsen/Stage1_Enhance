@@ -1,0 +1,64 @@
+# Protocol v2 image enhancement evaluation
+Created at: 2026-04-15T12:16:29
+Original dir: D:\Desktop\Stage1Codex\data\inputImg\Original
+Summary policy: complete_cases_across_all_methods
+Planned stems: 506
+Complete success stems: 506
+Failures: 0
+
+## r2_00_baseline
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\full506\runs\r2_00_baseline\png\Final
+Count: 506
+EME: mean=14.423568, std=9.023981
+EMEE: mean=1.112180, std=0.511501
+Entropy: mean=5.907381, std=0.942713
+Contrast: mean=686.807916, std=427.531378
+AvgGra: mean=17.423755, std=9.687574
+SIFT_KP: mean=4189.033597, std=3642.932896
+MS_SSIM: mean=0.700122, std=0.186803
+PSNR: mean=16.084406, std=3.718505
+UCIQE: mean=4.675813, std=2.752001
+UIQM: mean=28.926347, std=17.013753
+
+## r2_02_G_P
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\full506\runs\r2_02_G_P\png\Final
+Count: 506
+EME: mean=14.421487, std=9.016684
+EMEE: mean=1.112020, std=0.511110
+Entropy: mean=5.907542, std=0.944371
+Contrast: mean=686.230979, std=429.129301
+AvgGra: mean=17.422705, std=9.706956
+SIFT_KP: mean=4190.541502, std=3642.235531
+MS_SSIM: mean=0.699999, std=0.186733
+PSNR: mean=16.104605, std=3.717765
+UCIQE: mean=4.687475, std=2.755710
+UIQM: mean=28.916859, std=17.004404
+
+## r2_05_G_P_A_B
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\full506\runs\r2_05_G_P_A_B\png\Final
+Count: 506
+EME: mean=14.393424, std=8.999829
+EMEE: mean=1.110418, std=0.510144
+Entropy: mean=5.903307, std=0.948016
+Contrast: mean=683.749610, std=428.351852
+AvgGra: mean=17.388447, std=9.690145
+SIFT_KP: mean=4178.413043, std=3640.010382
+MS_SSIM: mean=0.701150, std=0.186028
+PSNR: mean=16.116002, std=3.712574
+UCIQE: mean=4.725256, std=2.743457
+UIQM: mean=28.918122, std=16.961755
+
+## r2_08_G_P_A2_B
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\full506\runs\r2_08_G_P_A2_B\png\Final
+Count: 506
+EME: mean=14.415906, std=9.013029
+EMEE: mean=1.111719, std=0.510885
+Entropy: mean=5.915584, std=0.927935
+Contrast: mean=686.844519, std=429.370899
+AvgGra: mean=17.429245, std=9.698728
+SIFT_KP: mean=4187.055336, std=3642.189144
+MS_SSIM: mean=0.700453, std=0.186171
+PSNR: mean=16.102306, std=3.715277
+UCIQE: mean=4.635708, std=2.771047
+UIQM: mean=28.877925, std=16.997146
+
