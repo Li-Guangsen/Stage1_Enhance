@@ -1,0 +1,13 @@
+__pycache__/
+logs/
+manifests/
+results/
+scores/
+status.json
+winner_rghs.json
+winner_clahe.json
+winner_full506.json
+
+# generated candidate params
+configs/
+!configs/
