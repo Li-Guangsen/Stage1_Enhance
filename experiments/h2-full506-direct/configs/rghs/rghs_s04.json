@@ -1,0 +1,42 @@
+{
+  "bph": {
+    "gray_s_thr": 20,
+    "lum_low": 0.15,
+    "lum_high": 0.85,
+    "pre_gain_clip": 2.0,
+    "red_gain_extra": 1.15,
+    "accc_alpha": 0.6,
+    "accc_delta_max": 0.22,
+    "brightness_scale_clip": [
+      0.75,
+      1.25
+    ]
+  },
+  "fusion": {},
+  "final": {
+    "mode": "homomorphic_entropy",
+    "gamma_low": 0.5,
+    "gamma_high": 2.1,
+    "cutoff_freq": 48,
+    "entropy": {
+      "p_low": 1.0,
+      "p_high": 99.0,
+      "clahe_clip": 1.25,
+      "mix_global": 0.35,
+      "mix_local": 0.2,
+      "chroma_gain": 1.02
+    }
+  },
+  "rghs": {
+    "strength": 0.68,
+    "clip_limit": 1.8,
+    "brightness_boost": 1.05,
+    "chroma_preserve": 0.8,
+    "post_L_stretch": [
+      1.8,
+      98.2
+    ],
+    "post_chroma_gain": 1.04,
+    "flat_floor": 0.36
+  }
+}

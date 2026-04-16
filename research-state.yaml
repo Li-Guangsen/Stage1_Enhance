@@ -32,29 +32,47 @@ literature:
     - "Existing metrics in the repository were computed on inconsistent sample subsets and currently cannot serve as the final paper table without standardization."
     - "The best paper framing must separate the mature enhancement contribution from any future edge-detection-network contribution."
   evidence_gaps:
-    - "Need a fixed evaluation subset and locked comparison protocol for all methods."
-    - "Need explicit ablation evidence for IMF1 branch, RGHS branch, CLAHE branch, gated fusion, and homomorphic refinement."
     - "Need stronger downstream edge-validation evidence on enhanced vs non-enhanced images."
+    - "Need a cleaner project-level summary that separates accepted mainline assets from intermediate search artifacts."
+    - "Need explicit visual guardrails if Fusion is reopened, because the current accepted winner improves structure metrics while rolling back UCIQE/UIQM."
 
 hypotheses:
   - id: H1
     statement: "Gray-pixel-guided pre-white-balance plus clipped ACCC yields more stable color recovery and better downstream edge extractability than plain cyclic compensation."
-    status: pending
+    status: accepted_mainline
     motivation: "The current lgsbph implementation already departs from the published ACCC design and appears to be one of the project's most defensible task-specific modifications."
     parent: null
     priority: high
   - id: H2
     statement: "The three-branch IMF1Ray/RGHS/CLAHE feature-gated fusion produces better edge-visible enhancement than any single branch or naive equal-weight fusion."
-    status: pending
+    status: accepted_with_visual_tradeoff
     motivation: "The fusion module is the strongest code-level innovation in the current repository and is the most likely source of publishable differentiation."
     parent: null
     priority: high
   - id: H3
     statement: "L-channel homomorphic refinement improves illumination uniformity and final edge readability, but should be treated as a refinement module rather than the main innovation."
-    status: pending
+    status: accepted_secondary_refinement
     motivation: "This stage is likely useful, but its scientific role must be demonstrated with ablation rather than over-claimed."
     parent: null
     priority: medium
+
+current_mainline:
+  updated: "2026-04-17"
+  accepted_config: "experiments/optimization_v1/configs/locked_full506_final_mainline.json"
+  accepted_result_dir: "experiments/h2-full506-direct/outputs/full506/runs/full506_final_mainline"
+  accepted_eval_dir: "experiments/h2-full506-direct/outputs/full506/eval"
+  upstream_locked_baseline: "experiments/optimization_v1/configs/locked_full506_mainline.json"
+  stages:
+    bph: "r2_05_G_P_A_B"
+    imf1ray: "locked_mainline existing output"
+    rghs: "rghs_s07"
+    clahe: "clahe_s05"
+    fusion: "fusion_s10"
+    final: "r4_03 / homomorphic_entropy"
+  notes:
+    - "H1 full506 has been completed and manually locked on top of the earlier r4_03 downstream baseline."
+    - "H2 full506 sequential tuning has been completed, and the accepted winners are RGHS=rghs_s07, CLAHE=clahe_s05, Fusion=fusion_s10."
+    - "The current accepted Fusion winner improves MS-SSIM and PSNR but causes a visible-metric rollback in UCIQE/UIQM, so future Fusion reopening should add hard visual guardrails."
 
 experiments:
   proxy_metric: "Weighted comprehensive score from metrics/score_protocol_v2.py on the full 506-image Original dataset, interpreted with MS-SSIM/PSNR as structure-preservation references because the paper target is edge/structure extraction rather than PSNR-only restoration."
@@ -87,10 +105,10 @@ evaluation:
     manifest: "metrics/outputs/evaluate_protocol_v2/full506_c25/complete_case_manifest.txt"
     count: 506
     source_original_dir: "data/inputImg/Original"
-    current_best_dir: "experiments/optimization_v1/results/full506_refine_round4/r4_03_gamma_050_210_48/Final"
-    current_best_config: "experiments/optimization_v1/configs/best_full506_r4_03.json"
+    current_best_dir: "experiments/h2-full506-direct/outputs/full506/runs/full506_final_mainline"
+    current_best_config: "experiments/optimization_v1/configs/locked_full506_final_mainline.json"
     final_compare_output: "metrics/outputs/evaluate_protocol_v2/full506_final_compare_c25_r4_03"
-    rationale: "This is now the formal tuning dataset; pilot92-v1 remains a debugging/historical subset only."
+    rationale: "This is now the formal tuning dataset and the accepted mainline is locked by locked_full506_final_mainline.json; pilot92-v1 remains a debugging/historical subset only."
   locked_subset:
     id: "pilot92-v1"
     manifest: "data/eval_subset_pilot92_v1.txt"
@@ -99,9 +117,9 @@ evaluation:
     source_eval_dir: "results/png/Final"
     rationale: "This is the current fully produced intersection and is sufficient for the first controlled ablation cycle."
   primary_metrics:
-    - "Mean_SIFT_KP"
-    - "Mean_AvgGra"
     - "Mean_MS_SSIM"
+    - "Mean_PSNR"
+    - "Mean_AvgGra"
   secondary_metrics:
     - "Mean_Contrast"
     - "Mean_EME"
@@ -111,7 +129,8 @@ evaluation:
     - "Mean_PSNR"
     - "Mean_Entropy"
   decision_rules:
-    - "Treat H1 and H2 as positive only if SIFT_KP and AvgGra improve without unacceptable MS_SSIM collapse or obvious visual artifacts."
+    - "Treat H1 as positive only if the candidate improves or effectively preserves MS_SSIM and PSNR while remaining visually stable under manual inspection."
+    - "Treat H2 as positive only if the candidate improves the current structural references (especially MS_SSIM and PSNR) without introducing unacceptable visual rollback; future Fusion reopening should treat UCIQE/UIQM degradation as a hard or near-hard guardrail."
     - "Treat H3 as positive only if it adds illumination/readability improvement beyond the fused image and remains a secondary refinement, not the primary gain source."
   provisional_baseline:
     source: "metrics/Txt/our.txt"
@@ -130,7 +149,15 @@ execution_priority:
 outer_loop:
   cycle: 0
   last_direction: null
-  last_reflection: "Bootstrap initialized from existing codebase, adjacent paper lineage, a locked 92-image pilot subset, and a first-pass ablation queue prioritizing fusion before white-balance and post-refinement."
+  last_reflection: "The project now has an accepted H1/H2 full506 mainline, renamed branch implementations aligned to their actual functions, and a growing set of paper-writing assets (related work, method drafts, and method figures). The next outer-loop pressure point is no longer basic pipeline discovery but cleaner paper framing, stronger downstream edge validation, and stricter visual guardrails if Fusion is reopened."
+
+writing_assets:
+  related_work: "related-work-underwater-enhancement.md"
+  method_full_draft: "method-underwater-enhancement.md"
+  method_paper_ready_draft: "method-underwater-enhancement-paper-ready.md"
+  method_figure_note: "method-figure-underwater-enhancement.md"
+  method_figure_main: "paper/figures/underwater_method_overview.svg"
+  method_figure_simple: "paper/figures/underwater_method_overview_simple.svg"
 
 workspace:
   findings: "findings.md"

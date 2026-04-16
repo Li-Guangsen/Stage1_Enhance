@@ -3,12 +3,13 @@
 ## 当前状态
 
 - 创建时间：`2026-04-16T00:24:53`
-- 最近更新：`2026-04-16T02:28:43`
+- 最近更新：`2026-04-16T08:26:04`
 - 总状态：`setup_completed`
 - 主线基线：`D:\Desktop\Stage1Codex\experiments\optimization_v1\configs\locked_full506_mainline.json`
 - smoke12 manifest：`D:\Desktop\Stage1Codex\experiments\h2-rghs-clahe-fusion-tuning\manifests\smoke12.txt`
 - pilot92 manifest：`D:\Desktop\Stage1Codex\data\eval_subset_pilot92_v1.txt`
 - full506 manifest：`D:\Desktop\Stage1Codex\metrics\outputs\evaluate_protocol_v2\full506_c25\complete_case_manifest.txt`
+- 说明：本目录记录的是 H2 顺序调参的 `smoke / pilot` 中间过程资产；当前已经接受的 `full506` 收口结果请以 `experiments/h2-full506-direct/analysis.md`、`experiments/h2-full506-direct/selection.json` 和 `experiments/optimization_v1/configs/locked_full506_final_mainline.json` 为准。
 
 ## Setup
 
@@ -19,7 +20,7 @@
 
 ## RGHS
 
-- 状态：`smoke_completed`
+- 状态：`pilot_completed`
 - baseline 配置：`D:\Desktop\Stage1Codex\experiments\h2-rghs-clahe-fusion-tuning\configs\setup\baseline_mainline_pilot92.json`
 - baseline pilot 输出：`D:\Desktop\Stage1Codex\experiments\h2-rghs-clahe-fusion-tuning\results\baseline_mainline_pilot92`
 - smoke 排序：`D:\Desktop\Stage1Codex\experiments\h2-rghs-clahe-fusion-tuning\scores\rghs_smoke_rghs\ranked.json`
@@ -28,11 +29,14 @@
 - `rghs_s06`: ΔMS-SSIM=0.173402, ΔPSNR=4.2427, ΔUCIQE=0.0994, ΔUIQM=-1.6542, gate_pass=True
 - `rghs_s02`: ΔMS-SSIM=0.093022, ΔPSNR=1.8660, ΔUCIQE=0.0525, ΔUIQM=-1.0220, gate_pass=True
 
-- pilot 排序：``
-- pilot 排序尚未生成
+- pilot 排序：`D:\Desktop\Stage1Codex\experiments\h2-rghs-clahe-fusion-tuning\scores\rghs_pilot_rghs\ranked.json`
+- pilot Final 回退检查：`D:\Desktop\Stage1Codex\experiments\h2-rghs-clahe-fusion-tuning\scores\rghs_pilot_final\ranked.json`
+- `rghs_s07`: ΔMS-SSIM=0.062438, ΔPSNR=1.6319, ΔUCIQE=0.1094, ΔUIQM=-1.4899, gate_pass=True
+- `rghs_p01`: ΔMS-SSIM=0.061014, ΔPSNR=1.6594, ΔUCIQE=0.1213, ΔUIQM=-1.4715, gate_pass=True
+- `rghs_s06`: ΔMS-SSIM=0.059933, ΔPSNR=1.6807, ΔUCIQE=0.1330, ΔUIQM=-1.4411, gate_pass=True
 
-- winner：`baseline`
-- winner 参数：`D:\Desktop\Stage1Codex\experiments\h2-rghs-clahe-fusion-tuning\configs\setup\baseline_mainline_pilot92.json`
+- winner：`rghs_s07`
+- winner 参数：`D:\Desktop\Stage1Codex\experiments\h2-rghs-clahe-fusion-tuning\configs\rghs\pilot\rghs_s07.json`
 
 ## CLAHE
 

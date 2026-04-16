@@ -1,0 +1,32 @@
+{
+  "name": "full506_final_mainline",
+  "accepted_at": "2026-04-17",
+  "config_path": "D:\\Desktop\\Stage1Codex\\experiments\\optimization_v1\\configs\\locked_full506_final_mainline.json",
+  "config_copy_path": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\outputs\\full506\\runs\\full506_final_mainline\\locked_full506_final_mainline.json",
+  "selection_path": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\selection.json",
+  "analysis_path": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\analysis.md",
+  "eval_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\outputs\\full506\\eval",
+  "baseline_result_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\full506\\runs\\full506_locked_mainline",
+  "stage_sources": {
+    "BPH": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\full506\\runs\\full506_locked_mainline\\png\\BPH",
+    "IMF1Ray": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\full506\\runs\\full506_locked_mainline\\png\\IMF1Ray",
+    "RGHS": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\results\\rghs\\rghs_s07\\png\\RGHS",
+    "CLAHE": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\results\\clahe\\clahe_s05\\png\\CLAHE",
+    "Fused": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\results\\fusion\\fusion_s10\\png\\Fused",
+    "Final": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\results\\fusion\\fusion_s10\\png\\Final"
+  },
+  "accepted_winners": {
+    "bph": "r2_05_G_P_A_B",
+    "imf1ray": "locked_mainline_existing_output",
+    "rghs": "rghs_s07",
+    "clahe": "clahe_s05",
+    "fusion": "fusion_s10",
+    "final": "r4_03"
+  },
+  "final_metrics_vs_locked_mainline": {
+    "delta_ms_ssim": 0.06751017078109411,
+    "delta_psnr": 1.436174225745912,
+    "delta_uciqe": -0.6234540835670801,
+    "delta_uiqm": -5.033166729304039
+  }
+}

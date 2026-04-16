@@ -1,0 +1,5 @@
+# direct full506 smoke manifest
+# created_at: 2026-04-16T11:56:10
+# count: 2
+chazhuang.1
+chazhuang.10

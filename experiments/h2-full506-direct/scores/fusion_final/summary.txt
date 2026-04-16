@@ -1,0 +1,151 @@
+# Protocol v2 image enhancement evaluation
+Created at: 2026-04-16T13:28:57
+Original dir: D:\Desktop\Stage1Codex\data\inputImg\Original
+Summary policy: complete_cases_across_all_methods
+Planned stems: 506
+Complete success stems: 506
+Failures: 0
+
+## baseline
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\full506\runs\full506_locked_mainline\png\Final
+Count: 506
+EME: mean=14.393424, std=8.999829
+EMEE: mean=1.110418, std=0.510144
+Entropy: mean=5.903307, std=0.948016
+Contrast: mean=683.749610, std=428.351852
+AvgGra: mean=17.388447, std=9.690145
+MS_SSIM: mean=0.701150, std=0.186028
+PSNR: mean=16.116002, std=3.712574
+UCIQE: mean=4.725256, std=2.743457
+UIQM: mean=28.918122, std=16.961755
+
+## fusion_s01
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\fusion\fusion_s01\png\Final
+Count: 506
+EME: mean=12.196821, std=7.328247
+EMEE: mean=0.985703, std=0.413593
+Entropy: mean=5.644142, std=0.939024
+Contrast: mean=596.123478, std=363.091391
+AvgGra: mean=15.411077, std=8.540233
+MS_SSIM: mean=0.754206, std=0.149595
+PSNR: mean=16.831045, std=3.725121
+UCIQE: mean=4.816815, std=2.686663
+UIQM: mean=24.807991, std=14.374658
+
+## fusion_s02
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\fusion\fusion_s02\png\Final
+Count: 506
+EME: mean=12.150545, std=7.371891
+EMEE: mean=0.983190, std=0.416296
+Entropy: mean=5.605000, std=0.961637
+Contrast: mean=596.017092, std=362.844427
+AvgGra: mean=15.375572, std=8.526113
+MS_SSIM: mean=0.755115, std=0.149551
+PSNR: mean=16.767067, std=3.742477
+UCIQE: mean=5.108510, std=2.786232
+UIQM: mean=24.682163, std=14.454013
+
+## fusion_s03
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\fusion\fusion_s03\png\Final
+Count: 506
+EME: mean=12.145551, std=7.225346
+EMEE: mean=0.982570, std=0.407526
+Entropy: mean=5.674484, std=0.907670
+Contrast: mean=589.359724, std=359.799393
+AvgGra: mean=15.398414, std=8.505120
+MS_SSIM: mean=0.756777, std=0.149544
+PSNR: mean=16.916752, std=3.736115
+UCIQE: mean=4.588883, std=2.595353
+UIQM: mean=24.786922, std=14.203211
+
+## fusion_s04
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\fusion\fusion_s04\png\Final
+Count: 506
+EME: mean=13.460077, std=8.275753
+EMEE: mean=1.057781, std=0.468471
+Entropy: mean=5.671058, std=0.969192
+Contrast: mean=668.111472, std=402.974897
+AvgGra: mean=16.701989, std=9.125810
+MS_SSIM: mean=0.717580, std=0.167548
+PSNR: mean=16.133755, std=3.668891
+UCIQE: mean=5.859967, std=2.944947
+UIQM: mean=26.959607, std=15.855875
+
+## fusion_s05
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\fusion\fusion_s05\png\Final
+Count: 506
+EME: mean=11.845200, std=6.909732
+EMEE: mean=0.965331, std=0.389021
+Entropy: mean=5.665757, std=0.905408
+Contrast: mean=568.284778, std=349.375466
+AvgGra: mean=15.079424, std=8.368910
+MS_SSIM: mean=0.763830, std=0.145329
+PSNR: mean=17.249418, std=3.769237
+UCIQE: mean=4.220439, std=2.476388
+UIQM: mean=24.312974, std=13.694228
+
+## fusion_s06
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\fusion\fusion_s06\png\Final
+Count: 506
+EME: mean=12.258711, std=7.520460
+EMEE: mean=0.989581, std=0.424998
+Entropy: mean=5.569631, std=0.978441
+Contrast: mean=602.953423, std=367.749519
+AvgGra: mean=15.519647, std=8.587719
+MS_SSIM: mean=0.751309, std=0.150527
+PSNR: mean=16.616949, std=3.744230
+UCIQE: mean=5.488834, std=2.940239
+UIQM: mean=24.836953, std=14.708730
+
+## fusion_s07
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\fusion\fusion_s07\png\Final
+Count: 506
+EME: mean=12.173882, std=7.324092
+EMEE: mean=0.984439, std=0.413551
+Entropy: mean=5.632467, std=0.928677
+Contrast: mean=591.091022, std=358.978372
+AvgGra: mean=15.432294, std=8.469658
+MS_SSIM: mean=0.756287, std=0.148413
+PSNR: mean=16.808578, std=3.736991
+UCIQE: mean=4.909325, std=2.711872
+UIQM: mean=24.781845, std=14.371150
+
+## fusion_s08
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\fusion\fusion_s08\png\Final
+Count: 506
+EME: mean=11.845955, std=7.054897
+EMEE: mean=0.965786, std=0.397996
+Entropy: mean=5.615982, std=0.931440
+Contrast: mean=572.938306, std=349.069987
+AvgGra: mean=15.110202, std=8.323736
+MS_SSIM: mean=0.764469, std=0.141409
+PSNR: mean=17.048503, std=3.756267
+UCIQE: mean=4.714875, std=2.675326
+UIQM: mean=24.216795, std=13.947072
+
+## fusion_s09
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\fusion\fusion_s09\png\Final
+Count: 506
+EME: mean=13.591558, std=8.483532
+EMEE: mean=1.065257, std=0.480421
+Entropy: mean=5.608634, std=1.026044
+Contrast: mean=685.263625, std=420.621490
+AvgGra: mean=16.950901, std=9.400243
+MS_SSIM: mean=0.709687, std=0.170740
+PSNR: mean=15.967380, std=3.648130
+UCIQE: mean=6.370986, std=3.138086
+UIQM: mean=27.133574, std=16.181872
+
+## fusion_s10
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\fusion\fusion_s10\png\Final
+Count: 506
+EME: mean=11.579887, std=6.664081
+EMEE: mean=0.949934, std=0.374838
+Entropy: mean=5.650181, std=0.906673
+Contrast: mean=549.088586, std=338.184284
+AvgGra: mean=14.869245, std=8.203990
+MS_SSIM: mean=0.768660, std=0.144121
+PSNR: mean=17.552176, std=3.830901
+UCIQE: mean=4.101802, std=2.475389
+UIQM: mean=23.884955, std=13.299536
+

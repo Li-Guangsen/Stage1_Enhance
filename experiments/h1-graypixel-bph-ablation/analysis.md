@@ -110,4 +110,4 @@
 
 - `bph10_gp_strict` 在 5 张 smoke 样本上相对 baseline 的综合分为 `-0.1750`
 - 两者都没有链路级失败
-- `RGHS.py` 在 Lab 转 RGB 时出现少量 `negative Z clipped to zero` 警告，但不影响本轮 BPH 编排执行；后续若诊断图显示异常偏色，再回头单独排查该分支
+- `wb_safe_contrast.py`（旧 `RGHS.py`）在 Lab 转 RGB 时出现少量 `negative Z clipped to zero` 警告，但不影响本轮 BPH 编排执行；后续若诊断图显示异常偏色，再回头单独排查该分支

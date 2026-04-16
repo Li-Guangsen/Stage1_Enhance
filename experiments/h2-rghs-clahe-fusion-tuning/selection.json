@@ -1,0 +1,262 @@
+{
+  "created_at": "2026-04-16T00:24:53",
+  "updated_at": "2026-04-16T08:26:04",
+  "status": "setup_completed",
+  "base_config": "D:\\Desktop\\Stage1Codex\\experiments\\optimization_v1\\configs\\locked_full506_mainline.json",
+  "pilot_manifest": "D:\\Desktop\\Stage1Codex\\data\\eval_subset_pilot92_v1.txt",
+  "smoke_manifest": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\manifests\\smoke12.txt",
+  "full_manifest": "D:\\Desktop\\Stage1Codex\\metrics\\outputs\\evaluate_protocol_v2\\full506_c25\\complete_case_manifest.txt",
+  "full506_baseline_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\full506\\runs\\full506_locked_mainline",
+  "setup": {
+    "baseline_pilot_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\results\\baseline_mainline_pilot92",
+    "baseline_pilot_eval_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\scores\\baseline_mainline_pilot92_final",
+    "baseline_smoke_eval_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\scores\\baseline_mainline_smoke12_final",
+    "smoke12_stems": [
+      "lingxinghaixian.2",
+      "donghaiyuanjia.2",
+      "donghaiyuanjia.5",
+      "haiyangyuanjia.1",
+      "sanjiaoji.13",
+      "luojiazao.8",
+      "hailianzao.4",
+      "haiyangyuanjia.2",
+      "yuanjiazao.8",
+      "sanjiaoji.11",
+      "donghaiyuanjia.4",
+      "haiyangkadun.12"
+    ],
+    "full_chunks": [
+      "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\manifests\\full506_chunk1.txt",
+      "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\manifests\\full506_chunk2.txt",
+      "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\manifests\\full506_chunk3.txt",
+      "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\manifests\\full506_chunk4.txt"
+    ]
+  },
+  "rghs": {
+    "status": "pilot_completed",
+    "baseline_config_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\configs\\setup\\baseline_mainline_pilot92.json",
+    "baseline_pilot_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\results\\baseline_mainline_pilot92",
+    "smoke": {
+      "official_eval_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\scores\\rghs_smoke_rghs",
+      "official_score_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\scores\\rghs_smoke_rghs\\ranked.json",
+      "official_score_csv": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\scores\\rghs_smoke_rghs\\ranked.csv",
+      "backstop_score_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\scores\\rghs_smoke_final\\ranked.json",
+      "shortlist": [
+        {
+          "name": "rghs_s07",
+          "params_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\configs\\rghs\\smoke\\rghs_s07.json",
+          "output_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\results\\rghs_smoke\\rghs_s07",
+          "official_metrics": {
+            "method": "rghs_s07",
+            "MS_SSIM": 0.6289294958114624,
+            "PSNR": 14.368776350542877,
+            "UCIQE": 1.425612449645996,
+            "UIQM": 25.092494727754595,
+            "delta_ms_ssim": 0.18864035606384277,
+            "delta_psnr": 4.374682473965221,
+            "delta_uciqe": 0.09867966175079346,
+            "delta_uiqm": -2.0251172018527974,
+            "gate_pass": true,
+            "z_uciqe": 1.395719820040799,
+            "z_uiqm": -1.039164794446674,
+            "visual_score": 0.1782775127970625,
+            "rank": 1
+          }
+        },
+        {
+          "name": "rghs_s06",
+          "params_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\configs\\rghs\\smoke\\rghs_s06.json",
+          "output_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\results\\rghs_smoke\\rghs_s06",
+          "official_metrics": {
+            "method": "rghs_s06",
+            "MS_SSIM": 0.613691508769989,
+            "PSNR": 14.2367562207222,
+            "UCIQE": 1.4263510704040527,
+            "UIQM": 25.463372202014924,
+            "delta_ms_ssim": 0.17340236902236938,
+            "delta_psnr": 4.242662344144543,
+            "delta_uciqe": 0.0994182825088501,
+            "delta_uiqm": -1.6542397275924685,
+            "gate_pass": true,
+            "z_uciqe": 1.4099657213406407,
+            "z_uiqm": -0.8545820217087107,
+            "visual_score": 0.277691849815965,
+            "rank": 2
+          }
+        },
+        {
+          "name": "rghs_s02",
+          "params_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\configs\\rghs\\smoke\\rghs_s02.json",
+          "output_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\results\\rghs_smoke\\rghs_s02",
+          "official_metrics": {
+            "method": "rghs_s02",
+            "MS_SSIM": 0.533311128616333,
+            "PSNR": 11.860136518636144,
+            "UCIQE": 1.3794695138931274,
+            "UIQM": 26.095634097099307,
+            "delta_ms_ssim": 0.09302198886871338,
+            "delta_psnr": 1.8660426420584884,
+            "delta_uciqe": 0.052536725997924805,
+            "delta_uiqm": -1.0219778325080853,
+            "gate_pass": true,
+            "z_uciqe": 0.5057533504416666,
+            "z_uiqm": -0.5399102991297423,
+            "visual_score": -0.017078474344037864,
+            "rank": 3
+          }
+        }
+      ]
+    },
+    "pilot": {
+      "official_eval_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\scores\\rghs_pilot_rghs",
+      "official_score_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\scores\\rghs_pilot_rghs\\ranked.json",
+      "official_score_csv": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\scores\\rghs_pilot_rghs\\ranked.csv",
+      "backstop_score_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\scores\\rghs_pilot_final\\ranked.json",
+      "shortlist": [
+        {
+          "name": "rghs_s07",
+          "params_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\configs\\rghs\\pilot\\rghs_s07.json",
+          "output_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\results\\rghs_pilot\\rghs_s07",
+          "official_metrics": {
+            "method": "rghs_s07",
+            "MS_SSIM": 0.7817382993905441,
+            "PSNR": 16.505828075845617,
+            "UCIQE": 2.7085857689380646,
+            "UIQM": 20.761330272168955,
+            "delta_ms_ssim": 0.06243758648633957,
+            "delta_psnr": 1.631890650295622,
+            "delta_uciqe": 0.10943865257760743,
+            "delta_uiqm": -1.4898516085896816,
+            "gate_pass": true,
+            "z_uciqe": 0.18747254237414976,
+            "z_uiqm": -0.8589819032560716,
+            "visual_score": -0.3357546804409609,
+            "rank": 1
+          }
+        },
+        {
+          "name": "rghs_p01",
+          "params_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\configs\\rghs\\pilot\\rghs_p01.json",
+          "output_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\results\\rghs_pilot\\rghs_p01",
+          "official_metrics": {
+            "method": "rghs_p01",
+            "MS_SSIM": 0.7803143398917239,
+            "PSNR": 16.533326458854255,
+            "UCIQE": 2.720425680927608,
+            "UIQM": 20.77964138300458,
+            "delta_ms_ssim": 0.06101362698751944,
+            "delta_psnr": 1.6593890333042598,
+            "delta_uciqe": 0.12127856456715103,
+            "delta_uiqm": -1.4715404977540558,
+            "gate_pass": true,
+            "z_uciqe": 0.7388920849275292,
+            "z_uiqm": -0.7681551253128509,
+            "visual_score": -0.01463152019266084,
+            "rank": 2
+          }
+        },
+        {
+          "name": "rghs_s06",
+          "params_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\configs\\rghs\\pilot\\rghs_s06.json",
+          "output_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\results\\rghs_pilot\\rghs_s06",
+          "official_metrics": {
+            "method": "rghs_s06",
+            "MS_SSIM": 0.7792337912580242,
+            "PSNR": 16.554617932969762,
+            "UCIQE": 2.732140459444212,
+            "UIQM": 20.810105592994198,
+            "delta_ms_ssim": 0.05993307835381967,
+            "delta_psnr": 1.6806805074197673,
+            "delta_uciqe": 0.13299334308375466,
+            "delta_uiqm": -1.4410762877644387,
+            "gate_pass": true,
+            "z_uciqe": 1.2844837934169724,
+            "z_uiqm": -0.6170465409794942,
+            "visual_score": 0.3337186262187391,
+            "rank": 3
+          }
+        },
+        {
+          "name": "rghs_p02",
+          "params_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\configs\\rghs\\pilot\\rghs_p02.json",
+          "output_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\results\\rghs_pilot\\rghs_p02",
+          "official_metrics": {
+            "method": "rghs_p02",
+            "MS_SSIM": 0.769456939852756,
+            "PSNR": 16.090899127674305,
+            "UCIQE": 2.6894815143035804,
+            "UIQM": 21.035375159790462,
+            "delta_ms_ssim": 0.050156226948551486,
+            "delta_psnr": 1.2169617021243102,
+            "delta_uciqe": 0.09033439794312326,
+            "delta_uiqm": -1.2158067209681747,
+            "gate_pass": true,
+            "z_uciqe": -0.7022688138685351,
+            "z_uiqm": 0.5003356377664412,
+            "visual_score": -0.10096658805104697,
+            "rank": 4
+          }
+        },
+        {
+          "name": "rghs_s02",
+          "params_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\configs\\rghs\\pilot\\rghs_s02.json",
+          "output_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\results\\rghs_pilot\\rghs_s02",
+          "official_metrics": {
+            "method": "rghs_s02",
+            "MS_SSIM": 0.7557857483625412,
+            "PSNR": 15.641053260467128,
+            "UCIQE": 2.6721686552400175,
+            "UIQM": 21.286073158297203,
+            "delta_ms_ssim": 0.0364850354583367,
+            "delta_psnr": 0.7671158349171332,
+            "delta_uciqe": 0.07302153887956031,
+            "delta_uiqm": -0.9651087224614336,
+            "gate_pass": true,
+            "z_uciqe": -1.508579606850115,
+            "z_uiqm": 1.7438479317819733,
+            "visual_score": 0.11763416246592917,
+            "rank": 5
+          }
+        }
+      ]
+    },
+    "winner": {
+      "name": "rghs_s07",
+      "params_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\configs\\rghs\\pilot\\rghs_s07.json",
+      "override": {
+        "rghs": {
+          "strength": 0.65,
+          "clip_limit": 1.9,
+          "brightness_boost": 1.08,
+          "chroma_preserve": 0.8,
+          "post_L_stretch": [
+            1.0,
+            99.0
+          ],
+          "post_chroma_gain": 1.04,
+          "flat_floor": 0.38
+        }
+      },
+      "output_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h2-rghs-clahe-fusion-tuning\\results\\rghs_pilot\\rghs_s07",
+      "official_metrics": {
+        "method": "rghs_s07",
+        "MS_SSIM": 0.7817382993905441,
+        "PSNR": 16.505828075845617,
+        "UCIQE": 2.7085857689380646,
+        "UIQM": 20.761330272168955,
+        "delta_ms_ssim": 0.06243758648633957,
+        "delta_psnr": 1.631890650295622,
+        "delta_uciqe": 0.10943865257760743,
+        "delta_uiqm": -1.4898516085896816,
+        "gate_pass": true,
+        "z_uciqe": 0.18747254237414976,
+        "z_uiqm": -0.8589819032560716,
+        "visual_score": -0.3357546804409609,
+        "rank": 1
+      }
+    }
+  },
+  "clahe": {},
+  "fusion": {},
+  "full506": {}
+}

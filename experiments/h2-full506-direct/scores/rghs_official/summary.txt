@@ -1,0 +1,134 @@
+# Protocol v2 image enhancement evaluation
+Created at: 2026-04-16T12:20:26
+Original dir: D:\Desktop\Stage1Codex\data\inputImg\Original
+Summary policy: complete_cases_across_all_methods
+Planned stems: 506
+Complete success stems: 506
+Failures: 0
+
+## baseline
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\full506\runs\full506_locked_mainline\png\RGHS
+Count: 506
+EME: mean=13.491945, std=7.810188
+EMEE: mean=1.068251, std=0.448268
+Entropy: mean=6.297083, std=1.088323
+Contrast: mean=422.273569, std=344.206781
+AvgGra: mean=12.494336, std=8.690412
+SIFT_KP: mean=2443.339921, std=2551.837449
+MS_SSIM: mean=0.589210, std=0.211535
+PSNR: mean=13.446154, std=3.361957
+UCIQE: mean=1.958743, std=1.384366
+UIQM: mean=27.305543, std=14.826067
+
+## rghs_s01
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\rghs\rghs_s01\png\RGHS
+Count: 506
+EME: mean=14.163246, std=8.071575
+EMEE: mean=1.110322, std=0.464161
+Entropy: mean=6.315661, std=1.083884
+Contrast: mean=418.263494, std=341.829980
+AvgGra: mean=12.564428, std=8.717719
+SIFT_KP: mean=2471.531621, std=2568.094801
+MS_SSIM: mean=0.586304, std=0.213400
+PSNR: mean=13.408770, std=3.377345
+UCIQE: mean=1.981393, std=1.408885
+UIQM: mean=28.472138, std=15.318056
+
+## rghs_s02
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\rghs\rghs_s02\png\RGHS
+Count: 506
+EME: mean=12.418484, std=6.828925
+EMEE: mean=1.010278, std=0.391614
+Entropy: mean=6.122092, std=1.086007
+Contrast: mean=357.000925, std=286.043621
+AvgGra: mean=11.195191, std=7.718069
+SIFT_KP: mean=2215.310277, std=2435.993761
+MS_SSIM: mean=0.637341, std=0.193694
+PSNR: mean=14.130869, std=3.590753
+UCIQE: mean=2.006880, std=1.405224
+UIQM: mean=25.509446, std=13.310962
+
+## rghs_s03
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\rghs\rghs_s03\png\RGHS
+Count: 506
+EME: mean=14.107862, std=8.024336
+EMEE: mean=1.107504, std=0.461450
+Entropy: mean=6.290333, std=1.094684
+Contrast: mean=423.543440, std=345.652843
+AvgGra: mean=12.506109, std=8.697984
+SIFT_KP: mean=2451.110672, std=2549.200800
+MS_SSIM: mean=0.589070, std=0.211740
+PSNR: mean=13.415661, std=3.360521
+UCIQE: mean=1.961137, std=1.384689
+UIQM: mean=28.381297, std=15.247684
+
+## rghs_s04
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\rghs\rghs_s04\png\RGHS
+Count: 506
+EME: mean=13.414930, std=7.514556
+EMEE: mean=1.067920, std=0.431531
+Entropy: mean=6.216486, std=1.089628
+Contrast: mean=400.080272, std=319.683051
+AvgGra: mean=11.930425, std=8.269097
+SIFT_KP: mean=2343.664032, std=2486.051014
+MS_SSIM: mean=0.610959, std=0.204751
+PSNR: mean=13.662691, std=3.464425
+UCIQE: mean=1.966252, std=1.375238
+UIQM: mean=27.214626, std=14.461282
+
+## rghs_s05
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\rghs\rghs_s05\png\RGHS
+Count: 506
+EME: mean=14.595180, std=8.281820
+EMEE: mean=1.135334, std=0.476123
+Entropy: mean=6.383504, std=1.046714
+Contrast: mean=467.101982, std=382.013374
+AvgGra: mean=13.428044, std=9.362067
+SIFT_KP: mean=2646.055336, std=2698.363832
+MS_SSIM: mean=0.566719, std=0.209490
+PSNR: mean=13.119521, std=3.220232
+UCIQE: mean=1.963169, std=1.380588
+UIQM: mean=29.234833, std=15.577577
+
+## rghs_s06
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\rghs\rghs_s06\png\RGHS
+Count: 506
+EME: mean=10.995062, std=5.964756
+EMEE: mean=0.928171, std=0.341494
+Entropy: mean=5.969815, std=1.043667
+Contrast: mean=299.190319, std=223.688550
+AvgGra: mean=9.980849, std=6.634469
+SIFT_KP: mean=1974.205534, std=2268.113789
+MS_SSIM: mean=0.683967, std=0.167817
+PSNR: mean=15.022593, std=3.891955
+UCIQE: mean=2.045645, std=1.418081
+UIQM: mean=23.072936, std=11.896191
+
+## rghs_s07
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\rghs\rghs_s07\png\RGHS
+Count: 506
+EME: mean=10.982409, std=5.958293
+EMEE: mean=0.927796, std=0.341230
+Entropy: mean=5.944336, std=1.048635
+Contrast: mean=302.994749, std=224.093213
+AvgGra: mean=9.938557, std=6.588646
+SIFT_KP: mean=1960.073123, std=2247.491545
+MS_SSIM: mean=0.687565, std=0.165786
+PSNR: mean=15.024204, std=3.871898
+UCIQE: mean=2.026723, std=1.395729
+UIQM: mean=22.997925, std=11.863060
+
+## rghs_s08
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\rghs\rghs_s08\png\RGHS
+Count: 506
+EME: mean=15.769008, std=9.151493
+EMEE: mean=1.202728, std=0.528634
+Entropy: mean=6.464754, std=1.073889
+Contrast: mean=489.257795, std=403.944281
+AvgGra: mean=13.855590, std=9.610173
+SIFT_KP: mean=2663.865613, std=2650.501120
+MS_SSIM: mean=0.538358, std=0.219091
+PSNR: mean=12.953136, std=3.101377
+UCIQE: mean=1.920552, std=1.363770
+UIQM: mean=31.190871, std=16.972572
+

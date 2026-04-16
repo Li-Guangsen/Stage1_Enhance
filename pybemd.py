@@ -1,3 +1,10 @@
+"""IMF1Ray 细节分支实现。
+
+这个模块名基本符合当前实现。它不是“直接导出原始 IMF1”，而是先在 Lab 的
+L 通道上提取第一 IMF / 高频响应，再叠加边缘与局部纹理增强，最后做
+Rayleigh 亮度匹配，输出供融合阶段使用的高频细节分支图。
+"""
+
 # -*- coding: utf-8 -*-
 import numpy as np
 import cv2
@@ -287,6 +294,18 @@ def imf1Ray_from_bgr(
     """
     输入：img_bgr (uint8 或 float32[0,1], BGR)
     输出：float32[0,1], BGR —— 用于融合的 IMF1 + Rayleigh 图
+
+    调参时可以先按四组理解：
+
+    1. `emd_scale` 与 `emd_kwargs`
+       控制 IMF1 的提取尺度、极值点采样密度和 sift 强度，是“先从 L 通道里
+       提什么样的高频骨架”这一层。
+    2. `detail_gain`、`limit_tanh`
+       控制 IMF1 注入前后的幅度与限幅，是“细节打得多重”的主旋钮。
+    3. `gf_radius`、`gf_eps`、`edge_boost`
+       控制边缘聚焦和细节平滑，是“让高频更贴边还是更散”的结构控制组。
+    4. `ray_sigma`、`ray_clip`、`energy_norm*`
+       控制亮度分布收口和局部能量重分配，决定输出更偏稳健还是更偏激进。
     """
     # 激进预设（更猛，更接近你“放大到960”的观感）
     if aggressive:

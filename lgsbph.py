@@ -1,3 +1,14 @@
+"""BPH white-balance implementation.
+
+这个模块对应流水线里的 `BPH` 阶段。当前主实现不是论文里 ACCC 的直接照搬，
+而是“灰像素引导预白平衡 + 稳健化 ACCC 循环补偿 + 亮度回调”的工程化版本。
+
+按当前项目语境理解：
+
+- `lgs_accc_bgr` 是较接近基础公式的版本
+- `lgs_accc_bgr_improved` 是主线实际使用的改进版白平衡入口
+"""
+
 import numpy as np
 import cv2
 
@@ -125,6 +136,24 @@ def lgs_accc_bgr_improved(
 
     输出:
         bgr_out: float32, [0,1], shape = (H, W, 3), BGR 顺序。
+
+    这个函数在当前流水线中的职责是“把偏色和通道失衡先压到一个更稳的起点”，
+    不是追求把图像直接增强到最终观感。
+
+    调参时可以先按四组理解：
+
+    1. `gray_s_thr`、`lum_low`、`lum_high`
+       控制灰像素候选怎么选。阈值越严格，颜色估计越“干净”，但也越容易样本太少；
+       亮度窗口越窄，越能避开阴影和高光干扰，但鲁棒性会下降。
+    2. `pre_gain_clip`、`red_gain_extra`
+       控制预白平衡增益上限。放大它们会更积极补偿偏色，尤其是水下红衰减；
+       但过大时更容易把噪声、偏红或局部过曝一起推起来。
+    3. `max_iters`、`loss_thresh`、`accc_alpha`、`accc_delta_max`
+       控制 ACCC 补偿的收敛速度与安全边界。更大的步长和截断上限会更快更猛，
+       但也更容易振荡或把通道拉爆；更保守则通常更稳。
+    4. `brightness_preserve`、`brightness_scale_clip`
+       控制最后是否回调整体亮度。它们不直接决定偏色校正能力，但会明显影响
+       后续分支接手时的亮度起点是否稳定。
     """
     if bgr.ndim != 3 or bgr.shape[2] != 3:
         raise ValueError("输入必须是 H×W×3 的 BGR 图像")

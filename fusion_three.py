@@ -1,4 +1,19 @@
-# fusion_three.py
+"""Three-branch fusion implementation.
+
+这个模块对应流水线里的 `Fused` 阶段。它不是简单把三张增强图做平均，而是：
+
+1. 把 `IMF1Ray / RGHS / CLAHE` 三个分支统一到 Lab 的 L 通道上比较
+2. 为每个分支构造梯度、纹理、显著性、曝光等特征权重
+3. 通过 guided filter 和拉普拉斯金字塔做层级融合
+4. 用 `RGHS` 作为颜色锚点，主要融合亮度结构而不是直接混色
+
+按当前职责分工理解：
+
+- `IMF1Ray` 负责高频细节和边缘响应
+- `RGHS` 负责主体层次、亮度托底和色彩锚定
+- `CLAHE` 负责中层可见性、背景与暗部补偿
+"""
+
 # -*- coding: utf-8 -*-
 import cv2
 import numpy as np
@@ -146,6 +161,24 @@ def fuse_three_images_bgr(
     post_sigmoid_k=1.20,             # S型对比系数（1.1~1.3）
     post_sigmoid_alpha=0.25          # 与原 L 融合比例（0.15~0.35）
 ):
+    """Fuse IMF1Ray / RGHS / CLAHE into the `Fused` stage output.
+
+    这里的“融合”主要发生在亮度通道，颜色默认更依赖 `RGHS` 分支维持稳定，
+    因此调参时更适合把它理解为“亮度结构分工 + 色彩锚定”，而不是传统三图混色。
+
+    参数可以先按五组理解：
+
+    1. `*_w_grad / *_w_tex / *_w_sal / *_w_exp`
+       控制三个分支各自偏好哪类特征，是最基础的分支职责分配。
+    2. `gf_radius`、`gf_eps`
+       控制权重图向 `RGHS` 结构对齐的程度，影响融合边界是否干净。
+    3. `imf1_keep_levels`、`clahe_mid_range`、`rghs_low_boost`
+       控制不同分支参与哪些金字塔层，是“高频给谁、中频给谁、低频给谁”的核心。
+    4. `clahe_floor_*`、`boost_*`、`*_bias`、`level_gain_*`
+       控制层内保底和区域偏置，主要用来防止某一路把其余两路完全吞掉。
+    5. `post_stretch`、`post_sigmoid_k`、`post_sigmoid_alpha`
+       控制融合后 L 通道的最后收口，对整体通透感和观感影响最大。
+    """
     # 统一 & 拉齐
     imf1_bgr = _to_float01(imf1_bgr)
     rghs_bgr = _to_float01(rghs_bgr)

@@ -1,0 +1,181 @@
+{
+  "created_at": "2026-04-16T11:55:29",
+  "updated_at": "2026-04-16T13:28:58",
+  "status": "completed",
+  "base_config": "D:\\Desktop\\Stage1Codex\\experiments\\optimization_v1\\configs\\locked_full506_mainline.json",
+  "baseline_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h1-graypixel-bph-ablation\\outputs\\full506\\runs\\full506_locked_mainline",
+  "full_manifest": "D:\\Desktop\\Stage1Codex\\metrics\\outputs\\evaluate_protocol_v2\\full506_c25\\complete_case_manifest.txt",
+  "smoke_manifest": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\smoke_manifest.txt",
+  "accepted_artifacts": {
+    "config_path": "D:\\Desktop\\Stage1Codex\\experiments\\optimization_v1\\configs\\locked_full506_final_mainline.json",
+    "result_dir": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\outputs\\full506\\runs\\full506_final_mainline",
+    "artifact_manifest": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\outputs\\full506\\runs\\full506_final_mainline\\artifact_manifest.json"
+  },
+  "rghs": {
+    "status": "completed",
+    "official_score_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\scores\\rghs_official\\ranked.json",
+    "final_score_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\scores\\rghs_final_backstop\\ranked.json",
+    "winner": {
+      "name": "rghs_s07",
+      "params_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\configs\\rghs\\rghs_s07.json",
+      "result_root": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\results\\rghs\\rghs_s07",
+      "params": {
+        "strength": 0.65,
+        "clip_limit": 1.9,
+        "brightness_boost": 1.08,
+        "chroma_preserve": 0.8,
+        "post_L_stretch": [
+          1.0,
+          99.0
+        ],
+        "post_chroma_gain": 1.04,
+        "flat_floor": 0.38
+      },
+      "official": {
+        "method": "rghs_s07",
+        "MS_SSIM": 0.6875653114655743,
+        "PSNR": 15.02420385477141,
+        "UCIQE": 2.026723173649415,
+        "UIQM": 22.997925403214605,
+        "delta_ms_ssim": 0.09835547821323853,
+        "delta_psnr": 1.578050093773296,
+        "delta_uciqe": 0.06798007171380216,
+        "delta_uiqm": -4.307617887714276,
+        "z_uciqe": 1.1299753887298407,
+        "z_uiqm": -1.4606162304366581,
+        "visual_score": -0.1653204208534087,
+        "gate_pass": true,
+        "rank": 1
+      },
+      "final_backstop": {
+        "method": "rghs_s07",
+        "MS_SSIM": 0.7529783639983226,
+        "PSNR": 16.847090505327387,
+        "UCIQE": 4.805481420263,
+        "UIQM": 24.81828894782448,
+        "delta_ms_ssim": 0.05182853606143023,
+        "delta_psnr": 0.7310886944707455,
+        "delta_uciqe": 0.08022506582171562,
+        "delta_uiqm": -4.099832650152848,
+        "z_uciqe": 1.4388062887568531,
+        "z_uiqm": -1.4265933399708874,
+        "visual_score": 0.006106474392982841,
+        "gate_pass": true,
+        "rank": 1
+      }
+    }
+  },
+  "clahe": {
+    "status": "completed",
+    "official_score_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\scores\\clahe_official\\ranked.json",
+    "final_score_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\scores\\clahe_final_backstop\\ranked.json",
+    "winner": {
+      "name": "clahe_s05",
+      "params_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\configs\\clahe\\clahe_s05.json",
+      "result_root": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\results\\clahe\\clahe_s05",
+      "params": {
+        "clip_limit": 2.2,
+        "tile_size": [
+          7,
+          7
+        ],
+        "gmin": 0.88,
+        "gmax": 2.8,
+        "gain_gamma": 1.08,
+        "gf_radius": 8,
+        "post_L_stretch": [
+          0.8,
+          99.2
+        ],
+        "post_chroma_gain": 1.04
+      },
+      "official": {
+        "method": "clahe_s05",
+        "MS_SSIM": 0.7208657296808813,
+        "PSNR": 16.621245669445187,
+        "UCIQE": 2.266858888149497,
+        "UIQM": 19.85404339948545,
+        "delta_ms_ssim": 0.03508339760449575,
+        "delta_psnr": 0.7239718524878036,
+        "delta_uciqe": 0.022733694803808824,
+        "delta_uiqm": -1.119371862401362,
+        "z_uciqe": 1.1471379992702153,
+        "z_uiqm": -1.0283120929711913,
+        "visual_score": 0.059412953149512004,
+        "gate_pass": true,
+        "rank": 1
+      },
+      "final_backstop": {
+        "method": "clahe_s05",
+        "MS_SSIM": 0.7541677268891938,
+        "PSNR": 16.833251018677224,
+        "UCIQE": 4.816533090981099,
+        "UIQM": 24.807053319890674,
+        "delta_ms_ssim": 0.05301789895230136,
+        "delta_psnr": 0.7172492078205828,
+        "delta_uciqe": 0.0912767365398146,
+        "delta_uiqm": -4.111068278086655,
+        "z_uciqe": 0.943468248516515,
+        "z_uiqm": -0.809918092897624,
+        "visual_score": 0.06677507780944553,
+        "gate_pass": true,
+        "rank": 2
+      }
+    }
+  },
+  "fusion": {
+    "status": "completed",
+    "official_score_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\scores\\fusion_final\\ranked.json",
+    "final_score_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\scores\\fusion_final\\ranked.json",
+    "winner": {
+      "name": "fusion_s10",
+      "params_json": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\configs\\fusion\\fusion_s10.json",
+      "result_root": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\results\\fusion\\fusion_s10",
+      "params": {
+        "rghs_low_boost": 1.6,
+        "rgh_fg_bias": 0.5,
+        "clahe_floor_mid": 0.13,
+        "clahe_floor_high": 0.07,
+        "boost_clahe": 0.15,
+        "clahe_bg_bias": 0.4,
+        "post_sigmoid_alpha": 0.3,
+        "post_stretch": [
+          0.5,
+          99.5
+        ]
+      },
+      "official": {
+        "method": "fusion_s10",
+        "MS_SSIM": 0.7686599987179865,
+        "PSNR": 17.552176036602553,
+        "UCIQE": 4.101802270874204,
+        "UIQM": 23.88495486867329,
+        "delta_ms_ssim": 0.06751017078109411,
+        "delta_psnr": 1.436174225745912,
+        "delta_uciqe": -0.6234540835670801,
+        "delta_uiqm": -5.033166729304039,
+        "z_uciqe": -1.354878524386205,
+        "z_uiqm": -1.1035554082103176,
+        "visual_score": -1.2292169662982613,
+        "gate_pass": true,
+        "rank": 1
+      },
+      "final_backstop": {
+        "method": "fusion_s10",
+        "MS_SSIM": 0.7686599987179865,
+        "PSNR": 17.552176036602553,
+        "UCIQE": 4.101802270874204,
+        "UIQM": 23.88495486867329,
+        "delta_ms_ssim": 0.06751017078109411,
+        "delta_psnr": 1.436174225745912,
+        "delta_uciqe": -0.6234540835670801,
+        "delta_uiqm": -5.033166729304039,
+        "z_uciqe": -1.354878524386205,
+        "z_uiqm": -1.1035554082103176,
+        "visual_score": -1.2292169662982613,
+        "gate_pass": true,
+        "rank": 1
+      }
+    }
+  }
+}

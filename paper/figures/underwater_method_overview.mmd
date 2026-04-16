@@ -1,0 +1,58 @@
+flowchart LR
+    I["Input Underwater HAB<br/>Microscopic Image"]
+    B["Gray-Pixel-Guided<br/>Pre-White-Balance"]
+
+    subgraph BR["Complementary Enhancement Branches"]
+        direction TB
+        C1["IMF1-Rayleigh<br/>Detail Branch"]
+        C1N["2D-EMD IMF1 extraction<br/>Edge-aware detail injection<br/>Rayleigh luminance matching"]
+        C2["White-Balance-Safe<br/>Contrast Branch"]
+        C2N["Lab luminance enhancement<br/>Flat-region suppression<br/>Adaptive chroma protection"]
+        C3["CLAHE-Guided Local<br/>Visibility Branch"]
+        C3N["CLAHE-derived gain map<br/>Guided gain smoothing<br/>WB-preserving brightness scaling"]
+
+        C1 --- C1N
+        C2 --- C2N
+        C3 --- C3N
+    end
+
+    F["Feature-Gated Three-Branch Fusion"]
+    FN["Gradient / texture / saliency / exposure<br/>Region-dependent gating<br/>Laplacian-pyramid fusion<br/>RGHS chroma anchoring"]
+    R["Illumination and Contrast<br/>Refinement"]
+    RN["Homomorphic illumination correction<br/>Entropy-oriented Lab adjustment"]
+    O["Final Enhanced Output"]
+    E["Downstream Edge-Oriented Validation<br/>(Task-facing evaluation path)"]
+
+    I --> B
+    B --> C1
+    B --> C2
+    B --> C3
+    C1 --> F
+    C2 --> F
+    C3 --> F
+    F --- FN
+    F --> R
+    R --- RN
+    R --> O
+    O -.-> E
+
+    classDef input fill:#d9e7ef,stroke:#516f7f,stroke-width:1.5px,color:#1f2d35;
+    classDef prewb fill:#dfe7f3,stroke:#50617f,stroke-width:1.5px,color:#1d2633;
+    classDef detail fill:#d8e8f8,stroke:#4f78a8,stroke-width:1.5px,color:#15283d;
+    classDef contrast fill:#f3ded2,stroke:#a06245,stroke-width:1.5px,color:#3b2416;
+    classDef visibility fill:#dcefdc,stroke:#4c7d52,stroke-width:1.5px,color:#1d311f;
+    classDef fusion fill:#d8dce2,stroke:#50555d,stroke-width:2px,color:#1f2328;
+    classDef refine fill:#ece8e2,stroke:#6a6259,stroke-width:1.5px,color:#28231f;
+    classDef output fill:#eef0f2,stroke:#666f7b,stroke-width:1.5px,color:#1f252c;
+    classDef note fill:#faf8f5,stroke:#a8a39b,stroke-dasharray: 4 3,color:#333333;
+    classDef eval fill:#f6f6f6,stroke:#8b8b8b,stroke-dasharray: 6 4,stroke-width:1.5px,color:#353535;
+
+    class I input;
+    class B prewb;
+    class C1,C1N detail;
+    class C2,C2N contrast;
+    class C3,C3N visibility;
+    class F,FN fusion;
+    class R,RN refine;
+    class O output;
+    class E eval;

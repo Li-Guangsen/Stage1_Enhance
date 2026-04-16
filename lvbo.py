@@ -1,3 +1,14 @@
+"""Final-stage refinement utilities.
+
+这个模块对应流水线里的 `Final` 阶段。它不负责重新生成主体结构，而是在
+`Fused` 结果基础上做最后一层亮度整理，当前包含两类工具：
+
+- `Gaussian_lvbo`：基于 L 通道同态滤波的照明不均匀校正 / 细节整理
+- `entropy_boost_Lab`：基于 Lab 亮度拉伸与轻微色度增强的观感补偿
+
+在当前主线里，`Final` 更适合作为“收口层”理解，而不是新的主增强分支。
+"""
+
 import cv2
 import numpy as np
 
@@ -10,6 +21,11 @@ def homomorphic_filter(img, gamma_low=0.5, gamma_high=1.8, cutoff_freq=65):
     gamma_low (float): 低频增益 (小于1以压缩动态范围)。
     gamma_high (float): 高频增益 (大于1以增强细节)。
     cutoff_freq (int): 截止频率 (高斯高通滤波器的D0)。
+
+    调参理解：
+    - `gamma_low` 越小，低频照明压得越狠，画面会更去雾/去阴影，但也更容易显得发硬。
+    - `gamma_high` 越大，高频细节提得越明显，但过大时容易把噪声和光晕一起抬起来。
+    - `cutoff_freq` 越小，滤波更偏全局照明校正；越大，作用范围更局部，观感通常更温和。
     """
     
     # 1. 检查图像是否为单通道
@@ -74,6 +90,17 @@ def entropy_boost_Lab(
     输入:  BGR uint8 [0,255] 或 float32 [0,1]
     输出:  BGR uint8 [0,255]
     作用:  只在 Lab 的 L 上拉开直方图 + 一点点 CLAHE，稍微拉饱和度 → 提高 Entropy/UCIQE
+
+    调参时可以先按四组理解：
+
+    1. `p_low`、`p_high`
+       控制全局亮度拉伸范围，越激进越容易把层次拉开，但也更容易牺牲自然度。
+    2. `clahe_clip`、`clahe_tile`
+       控制局部对比的力度与空间尺度，偏大时会更通透，但块感和噪声风险也会上升。
+    3. `mix_global`、`mix_local`
+       控制全局拉伸和局部增强在最终 L 通道里的占比，是这条支路最直接的观感配比。
+    4. `chroma_gain`
+       只负责轻微色度补偿，不建议把颜色问题主要交给它兜底。
     """
     arr = np.asarray(img_bgr)
     if arr.dtype == np.uint8:
@@ -135,6 +162,15 @@ def Gaussian_lvbo(
     cutoff_freq=65,
     brightness_match=True,
 ):
+    """Apply homomorphic refinement on L channel and restore global brightness.
+
+    调参理解：
+    - `gamma_low / gamma_high / cutoff_freq` 决定同态滤波的明暗压缩与细节提升强度。
+    - `brightness_match` 决定滤波后是否把整体亮度拉回到更接近输入的均值。
+
+    在当前流水线里，这个函数更适合做“最后一层亮度收口”，而不是拿来补救
+    上游分支本身没有调好的结构或颜色问题。
+    """
     # 输入bgr[0,255] uint8
     # 输出bgr[0,255] uint8
     lab = cv2.cvtColor(img_dark_fused, cv2.COLOR_BGR2LAB)

@@ -1,0 +1,41 @@
+flowchart LR
+    I["Input"]
+    B["Pre-WB"]
+    C1["Detail"]
+    C2["Contrast"]
+    C3["Visibility"]
+    F["Fusion"]
+    R["Refine"]
+    O["Output"]
+    E["Downstream Validation"]
+
+    I --> B
+    B --> C1
+    B --> C2
+    B --> C3
+    C1 --> F
+    C2 --> F
+    C3 --> F
+    F --> R
+    R --> O
+    O -.-> E
+
+    classDef input fill:#d9e7ef,stroke:#516f7f,stroke-width:1.5px,color:#1f2d35;
+    classDef prewb fill:#dfe7f3,stroke:#50617f,stroke-width:1.5px,color:#1d2633;
+    classDef detail fill:#d8e8f8,stroke:#4f78a8,stroke-width:1.5px,color:#15283d;
+    classDef contrast fill:#f3ded2,stroke:#a06245,stroke-width:1.5px,color:#3b2416;
+    classDef visibility fill:#dcefdc,stroke:#4c7d52,stroke-width:1.5px,color:#1d311f;
+    classDef fusion fill:#d8dce2,stroke:#50555d,stroke-width:2px,color:#1f2328;
+    classDef refine fill:#ece8e2,stroke:#6a6259,stroke-width:1.5px,color:#28231f;
+    classDef output fill:#eef0f2,stroke:#666f7b,stroke-width:1.5px,color:#1f252c;
+    classDef eval fill:#f6f6f6,stroke:#8b8b8b,stroke-dasharray: 6 4,stroke-width:1.5px,color:#353535;
+
+    class I input;
+    class B prewb;
+    class C1 detail;
+    class C2 contrast;
+    class C3 visibility;
+    class F fusion;
+    class R refine;
+    class O output;
+    class E eval;

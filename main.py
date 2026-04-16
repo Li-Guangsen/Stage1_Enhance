@@ -1,3 +1,16 @@
+"""Main entry for the seven-stage underwater enhancement pipeline.
+
+当前主流程顺序固定为：
+
+`Original -> BPH -> IMF1Ray -> RGHS -> CLAHE -> Fused -> Final`
+
+可以把它理解成三层结构：
+
+- `BPH`：先把颜色失衡压回相对稳定的起点
+- `IMF1Ray / RGHS / CLAHE`：分别生成高频细节、主体对比、局部可见性三条分支
+- `Fused / Final`：先做分支职责融合，再做最后的亮度收口
+"""
+
 import argparse
 import json
 import os
@@ -5,8 +18,8 @@ from pathlib import Path
 import cv2
 import numpy as np
 from pybemd import imf1Ray_from_bgr
-from RGHS import wb_safe_contrast
-from CLAHE import clahe_3ch_wb_safe
+from wb_safe_contrast import wb_safe_contrast
+from clahe_guided_visibility import clahe_3ch_wb_safe
 from fusion_three import fuse_three_images_bgr
 from lvbo import Gaussian_lvbo, entropy_boost_Lab
 from lgsbph import lgs_accc_bgr_improved
@@ -88,6 +101,24 @@ def _list_inputs(input_dir, manifest_path=None, limit=None):
 
 
 def _load_params(params_json):
+    """Load stage-parameter overrides from a JSON file.
+
+    约定的顶层 key 及其消费位置如下：
+
+    - `bph` -> `lgs_accc_bgr_improved`
+    - `imf1ray` -> `imf1Ray_from_bgr`
+    - `rghs` -> `wb_safe_contrast`
+    - `clahe` -> `clahe_3ch_wb_safe`
+    - `fusion` -> `fuse_three_images_bgr`
+    - `final` -> `_final_refine`
+
+    额外说明：
+
+    - `imf1ray` 会先以 `{"aggressive": True}` 作为默认基线，再叠加 JSON 中的覆写值
+    - `final.mode` 当前支持：`homomorphic` / `entropy` / `homomorphic_entropy` / `none`
+    - JSON 中省略某个 stage key，表示该阶段使用代码默认参数
+    - 未被主流程消费的顶层 key 当前会被忽略，不参与运行
+    """
     if not params_json:
         return {}
     with open(params_json, "r", encoding="utf-8") as f:
@@ -95,6 +126,7 @@ def _load_params(params_json):
 
 
 def _final_refine(fused_uint8, final_params):
+    """Dispatch the configured `Final` refinement mode."""
     params = dict(final_params or {})
     enabled = bool(params.pop("enabled", True))
     if not enabled:
@@ -114,6 +146,15 @@ def _final_refine(fused_uint8, final_params):
 
 
 def process_one_image(img_path, results_dir, params, resize_to=(320, 320), skip_existing=False):
+    """Run the full seven-stage pipeline for one image and write stage artifacts.
+
+    当前阶段参数在主流程里的接线关系是：
+
+    - `bph` 先作用在原图，生成所有下游共享的白平衡起点
+    - `imf1ray / rghs / clahe` 都从 `bph_bgr` 出发，各自生成分支图
+    - `fusion` 只负责把三条分支合成为 `Fused`
+    - `final` 只负责把 `Fused` 收口为 `Final`
+    """
     name = img_path.name
     stem = img_path.stem
     final_png = Path(results_dir) / "png" / "Final" / f"{stem}_Final.png"

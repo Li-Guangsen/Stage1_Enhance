@@ -1,0 +1,125 @@
+# Protocol v2 image enhancement evaluation
+Created at: 2026-04-16T12:53:04
+Original dir: D:\Desktop\Stage1Codex\data\inputImg\Original
+Summary policy: complete_cases_across_all_methods
+Planned stems: 506
+Complete success stems: 506
+Failures: 0
+
+## baseline
+Directory: D:\Desktop\Stage1Codex\experiments\h1-graypixel-bph-ablation\outputs\full506\runs\full506_locked_mainline\png\CLAHE
+Count: 506
+EME: mean=10.554684, std=5.831338
+EMEE: mean=0.899390, std=0.332724
+Entropy: mean=6.037445, std=0.885367
+Contrast: mean=242.272485, std=187.653911
+AvgGra: mean=9.762189, std=6.592365
+MS_SSIM: mean=0.685782, std=0.170222
+PSNR: mean=15.897274, std=3.248505
+UCIQE: mean=2.244125, std=1.622931
+UIQM: mean=20.973415, std=11.753330
+
+## clahe_s01
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\clahe\clahe_s01\png\CLAHE
+Count: 506
+EME: mean=14.407581, std=8.418432
+EMEE: mean=1.122352, std=0.485034
+Entropy: mean=6.105095, std=0.998023
+Contrast: mean=379.044906, std=312.484615
+AvgGra: mean=12.728518, std=8.834597
+MS_SSIM: mean=0.581514, std=0.213787
+PSNR: mean=14.191339, std=2.941176
+UCIQE: mean=2.138089, std=1.569101
+UIQM: mean=26.755277, std=15.517016
+
+## clahe_s02
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\clahe\clahe_s02\png\CLAHE
+Count: 506
+EME: mean=12.654257, std=7.124842
+EMEE: mean=1.021351, std=0.408749
+Entropy: mean=6.063405, std=0.961810
+Contrast: mean=311.315768, std=251.108174
+AvgGra: mean=11.331605, std=7.771799
+MS_SSIM: mean=0.626622, std=0.200124
+PSNR: mean=14.897636, std=3.146737
+UCIQE: mean=2.186722, std=1.593381
+UIQM: mean=24.034496, std=13.601459
+
+## clahe_s03
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\clahe\clahe_s03\png\CLAHE
+Count: 506
+EME: mean=10.724369, std=5.927728
+EMEE: mean=0.910162, std=0.339109
+Entropy: mean=5.959804, std=0.928003
+Contrast: mean=242.995541, std=188.291283
+AvgGra: mean=9.769883, std=6.586623
+MS_SSIM: mean=0.684908, std=0.170966
+PSNR: mean=15.902590, std=3.264476
+UCIQE: mean=2.249321, std=1.627106
+UIQM: mean=21.157664, std=11.940413
+
+## clahe_s04
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\clahe\clahe_s04\png\CLAHE
+Count: 506
+EME: mean=10.732091, std=5.958898
+EMEE: mean=0.910682, std=0.340837
+Entropy: mean=5.993210, std=0.919225
+Contrast: mean=242.826760, std=189.929450
+AvgGra: mean=9.766506, std=6.668766
+MS_SSIM: mean=0.684153, std=0.170110
+PSNR: mean=15.872438, std=3.234742
+UCIQE: mean=2.240619, std=1.622155
+UIQM: mean=21.185492, std=11.996327
+
+## clahe_s05
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\clahe\clahe_s05\png\CLAHE
+Count: 506
+EME: mean=9.920869, std=5.485995
+EMEE: mean=0.863941, std=0.313446
+Entropy: mean=5.852958, std=0.924190
+Contrast: mean=215.613278, std=163.306161
+AvgGra: mean=9.076512, std=6.039232
+MS_SSIM: mean=0.720866, std=0.153585
+PSNR: mean=16.621246, std=3.449955
+UCIQE: mean=2.266859, std=1.657412
+UIQM: mean=19.854043, std=11.278125
+
+## clahe_s06
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\clahe\clahe_s06\png\CLAHE
+Count: 506
+EME: mean=10.762021, std=5.978187
+EMEE: mean=0.912018, std=0.341957
+Entropy: mean=6.051714, std=0.914220
+Contrast: mean=240.013909, std=189.550701
+AvgGra: mean=9.770932, std=6.655337
+MS_SSIM: mean=0.676099, std=0.172587
+PSNR: mean=15.607557, std=3.354780
+UCIQE: mean=2.224979, std=1.609353
+UIQM: mean=21.268118, std=12.034617
+
+## clahe_s07
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\clahe\clahe_s07\png\CLAHE
+Count: 506
+EME: mean=14.657527, std=8.586535
+EMEE: mean=1.136824, std=0.494604
+Entropy: mean=6.063141, std=1.023395
+Contrast: mean=383.649911, std=314.613814
+AvgGra: mean=12.825183, std=8.885400
+MS_SSIM: mean=0.583413, std=0.215148
+PSNR: mean=14.218003, std=3.026247
+UCIQE: mean=2.149739, std=1.576443
+UIQM: mean=27.163669, std=15.717444
+
+## clahe_s08
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\results\clahe\clahe_s08\png\CLAHE
+Count: 506
+EME: mean=9.965324, std=5.562839
+EMEE: mean=0.866488, std=0.317801
+Entropy: mean=5.908555, std=0.908438
+Contrast: mean=215.794292, std=165.552828
+AvgGra: mean=9.101841, std=6.143331
+MS_SSIM: mean=0.714322, std=0.152252
+PSNR: mean=16.475371, std=3.367849
+UCIQE: mean=2.254089, std=1.653112
+UIQM: mean=19.995653, std=11.436393
+

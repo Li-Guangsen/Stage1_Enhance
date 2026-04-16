@@ -19,7 +19,6 @@ if str(THIS_DIR) not in sys.path:
 from libs.EME import EME
 from libs.EMEE import EMEE
 from libs.Gradient import Gradient
-from libs.SIFT import get_keypoint
 from libs.UCIQE import calc_uciqe
 from libs.UIQM import calc_uiqm
 from libs.calc_InEntropy import get_entropy
@@ -45,7 +44,6 @@ METRIC_NAMES = [
     "Entropy",
     "Contrast",
     "AvgGra",
-    "SIFT_KP",
     "MS_SSIM",
     "PSNR",
     "UCIQE",
@@ -81,7 +79,6 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--limit", type=int, default=None, help="Debug limit after manifest/common matching.")
     parser.add_argument("--resize-to", nargs=2, type=int, default=(320, 320), metavar=("WIDTH", "HEIGHT"))
     parser.add_argument("--no-resize", action="store_true")
-    parser.add_argument("--sift-size", type=int, default=960)
     parser.add_argument("--quiet", action="store_true")
     return parser.parse_args()
 
@@ -144,7 +141,6 @@ def compute_metrics(
     original_path: Path,
     result_path: Path,
     resize_to: Optional[Tuple[int, int]],
-    sift_size: int,
 ) -> Dict[str, float]:
     original_bgr = resize_bgr(read_bgr(original_path), resize_to)
     result_bgr = resize_bgr(read_bgr(result_path), resize_to)
@@ -152,15 +148,12 @@ def compute_metrics(
     original_gray = cv2.cvtColor(original_bgr, cv2.COLOR_BGR2GRAY)
     result_gray = cv2.cvtColor(result_bgr, cv2.COLOR_BGR2GRAY)
 
-    sift_input = cv2.resize(result_bgr, (sift_size, sift_size), interpolation=cv2.INTER_CUBIC)
-
     return {
         "EME": float(EME(result_gray)),
         "EMEE": float(EMEE(result_gray)),
         "Entropy": float(get_entropy(result_gray)),
         "Contrast": float(contrast(result_gray)),
         "AvgGra": float(Gradient(result_gray)),
-        "SIFT_KP": float(get_keypoint(sift_input)),
         "MS_SSIM": float(msssim(original_bgr, result_bgr)),
         "PSNR": float(cv2.PSNR(original_gray, result_gray)),
         "UCIQE": float(calc_uciqe(result_bgr)),
@@ -336,7 +329,7 @@ def main() -> int:
         for method in methods:
             result_path = method_indexes[method.name].by_key[stem]
             try:
-                metrics = compute_metrics(original_path, result_path, resize_to, args.sift_size)
+                metrics = compute_metrics(original_path, result_path, resize_to)
                 row: Dict[str, object] = {
                     "method": method.name,
                     "stem": stem,
