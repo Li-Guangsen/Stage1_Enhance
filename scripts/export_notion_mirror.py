@@ -86,7 +86,7 @@ DATABASES = [
         "view_url": "https://www.notion.so/2faaeb5ec59b4369a2368547e6ba5fa2?v=0c544e6dfa0242f2959aadf17b2f93ae",
         "schema": [
             "论文标题: title",
-            "Bucket: select (同方向师兄 / 对比方法 / 可借鉴参考)",
+            "Bucket: select (同方向师兄 / 对比方法)",
             "Concepts: multi_select (wavelet, histogram, multi-scale, white-balance, color-compensation, retinex, semantic-guidance, transformer, hab-microscopy)",
             "DOI: text",
             "Method Family: select (传统融合 / 物理先验 / Retinex/优化 / 深度学习 / Transformer / 白平衡 / 混合方法)",
@@ -101,8 +101,8 @@ DATABASES = [
         "items": [
             {"id": "344bb1f4-e23e-8120-b865-f97f8f565e70", "title": "Underwater Image Enhancement via Weighted Wavelet Visual Perception Fusion", "url": notion_url("344bb1f4-e23e-8120-b865-f97f8f565e70"), "properties": {"Bucket": "对比方法", "DOI": "10.1109/TCSVT.2023.3336518", "Method Family": "传统融合", "Status": "关键基线", "Summary": "结合衰减感知颜色校正和加权小波视觉感知融合的传统增强方法。", "Venue": "IEEE Transactions on Circuits and Systems for Video Technology", "Zotero Key": "U6DBLZMV", "年份": 2024, "论文标题": "Underwater Image Enhancement via Weighted Wavelet Visual Perception Fusion"}},
             {"id": "344bb1f4-e23e-8125-9531-d33c2c1a0f44", "title": "SGUIE-Net: Semantic Attention Guided Underwater Image Enhancement With Multi-Scale Perception", "url": notion_url("344bb1f4-e23e-8125-9531-d33c2c1a0f44"), "properties": {"Bucket": "对比方法", "DOI": "10.1109/TIP.2022.3216208", "Method Family": "深度学习", "Status": "关键基线", "Summary": "以语义注意力和多尺度感知为核心的深度水下增强网络。", "Venue": "IEEE Transactions on Image Processing", "Zotero Key": "P4E22T2E", "年份": 2022, "论文标题": "SGUIE-Net: Semantic Attention Guided Underwater Image Enhancement With Multi-Scale Perception"}},
-            {"id": "344bb1f4-e23e-812e-a60f-d4e9965cd80b", "title": "ABC-Former: Auxiliary Bimodal Cross-domain Transformer with Interactive Channel Attention for White Balance", "url": notion_url("344bb1f4-e23e-812e-a60f-d4e9965cd80b"), "properties": {"Bucket": "可借鉴参考", "DOI": "10.1109/CVPR52734.2025.01980", "Method Family": "白平衡", "Status": "已写入 related work", "Summary": "联合直方图与图像输入的白平衡 Transformer，可为颜色校正建模提供借鉴。", "Venue": "CVPR 2025", "Zotero Key": "LF9HP7DR", "年份": 2025, "论文标题": "ABC-Former: Auxiliary Bimodal Cross-domain Transformer with Interactive Channel Attention for White Balance"}},
-            {"id": "344bb1f4-e23e-815b-bc05-fe4ea42f7590", "title": "HVDualformer: Histogram-Vision Dual Transformer for White Balance", "url": notion_url("344bb1f4-e23e-815b-bc05-fe4ea42f7590"), "properties": {"Bucket": "可借鉴参考", "DOI": "10.1609/aaai.v39i6.32697", "Method Family": "白平衡", "Status": "已写入 related work", "Summary": "通过 histogram-vision dual transformer 建模白平衡校正过程的参考工作。", "Venue": "AAAI 2025", "Zotero Key": "TEKJDF6M", "年份": 2025, "论文标题": "HVDualformer: Histogram-Vision Dual Transformer for White Balance"}},
+            {"id": "344bb1f4-e23e-812e-a60f-d4e9965cd80b", "title": "ABC-Former: Auxiliary Bimodal Cross-domain Transformer with Interactive Channel Attention for White Balance", "url": notion_url("344bb1f4-e23e-812e-a60f-d4e9965cd80b"), "properties": {"Bucket": "对比方法", "DOI": "10.1109/CVPR52734.2025.01980", "Method Family": "白平衡", "Status": "已写入 related work", "Summary": "联合直方图与图像输入的白平衡 Transformer，可为颜色校正建模提供借鉴。", "Venue": "CVPR 2025", "Zotero Key": "LF9HP7DR", "年份": 2025, "论文标题": "ABC-Former: Auxiliary Bimodal Cross-domain Transformer with Interactive Channel Attention for White Balance"}},
+            {"id": "344bb1f4-e23e-815b-bc05-fe4ea42f7590", "title": "HVDualformer: Histogram-Vision Dual Transformer for White Balance", "url": notion_url("344bb1f4-e23e-815b-bc05-fe4ea42f7590"), "properties": {"Bucket": "对比方法", "DOI": "10.1609/aaai.v39i6.32697", "Method Family": "白平衡", "Status": "已写入 related work", "Summary": "通过 histogram-vision dual transformer 建模白平衡校正过程的参考工作。", "Venue": "AAAI 2025", "Zotero Key": "TEKJDF6M", "年份": 2025, "论文标题": "HVDualformer: Histogram-Vision Dual Transformer for White Balance"}},
             {"id": "344bb1f4-e23e-8182-9bf4-ebeca95bd466", "title": "Underwater enhancement computing of ocean HABs based on cyclic color compensation and multi-scale fusion", "url": notion_url("344bb1f4-e23e-8182-9bf4-ebeca95bd466"), "properties": {"Bucket": "同方向师兄", "DOI": "10.1007/s11042-023-17410-y", "Method Family": "传统融合", "Status": "已写入 related work", "Summary": "将循环颜色补偿与多尺度融合结合，用于 HAB 显微图像增强和下游验证。", "Venue": "Multimedia Tools and Applications", "Zotero Key": "GS2RFTEL", "年份": 2023, "论文标题": "Underwater enhancement computing of ocean HABs based on cyclic color compensation and multi-scale fusion"}},
             {"id": "344bb1f4-e23e-8189-9d12-ce678091ef4b", "title": "Generalization of the Dark Channel Prior for Single Image Restoration", "url": notion_url("344bb1f4-e23e-8189-9d12-ce678091ef4b"), "properties": {"Bucket": "对比方法", "DOI": "10.1109/TIP.2018.2813092", "Method Family": "物理先验", "Status": "关键基线", "Summary": "基于广义暗通道先验和成像模型的恢复方法，代表物理先验路线。", "Venue": "IEEE Transactions on Image Processing", "Zotero Key": "V87JDUST", "年份": 2018, "论文标题": "Generalization of the Dark Channel Prior for Single Image Restoration"}},
             {"id": "344bb1f4-e23e-8191-9763-f1f5d80016f7", "title": "Innovative underwater image enhancement algorithm: Combined application of adaptive white balance color compensation and pyramid image fusion to submarine algal microscopy", "url": notion_url("344bb1f4-e23e-8191-9763-f1f5d80016f7"), "properties": {"Bucket": "同方向师兄", "DOI": "10.1016/j.imavis.2025.105466", "Method Family": "混合方法", "Status": "已写入 related work", "Summary": "结合自适应白平衡颜色补偿、注意力引导和金字塔融合的 HAB 显微增强方法。", "Venue": "Image and Vision Computing", "Zotero Key": "LTE9U599", "年份": 2025, "论文标题": "Innovative underwater image enhancement algorithm: Combined application of adaptive white balance color compensation and pyramid image fusion to submarine algal microscopy"}},
@@ -213,14 +213,14 @@ L-channel homomorphic refinement improves illumination uniformity and final edge
 <tr><td>Innovative underwater image enhancement algorithm: Combined application of adaptive white balance color compensation and pyramid image fusion to submarine algal microscopy</td><td>同方向师兄</td><td>自适应白平衡 + 注意力引导 + 金字塔融合</td><td>最接近当前项目的结构参考</td></tr>
 <tr><td>SGUIE-Net: Semantic Attention Guided Underwater Image Enhancement With Multi-Scale Perception</td><td>对比方法</td><td>语义注意力 + 多尺度感知</td><td>深度学习增强代表</td></tr>
 <tr><td>Histoformer: Histogram-Based Transformer for Efficient Underwater Image Enhancement</td><td>对比方法</td><td>直方图分布学习 + Transformer</td><td>现代 Transformer 基线</td></tr>
-<tr><td>ABC-Former: Auxiliary Bimodal Cross-domain Transformer with Interactive Channel Attention for White Balance</td><td>可借鉴参考</td><td>双模态直方图与图像建模 + 通道注意力</td><td>白平衡与颜色建模参考</td></tr>
-<tr><td>HVDualformer: Histogram-Vision Dual Transformer for White Balance</td><td>可借鉴参考</td><td>Histogram-vision dual transformer</td><td>白平衡与统计建模参考</td></tr>
+<tr><td>ABC-Former: Auxiliary Bimodal Cross-domain Transformer with Interactive Channel Attention for White Balance</td><td>对比方法</td><td>双模态直方图与图像建模 + 通道注意力</td><td>白平衡与颜色建模参考</td></tr>
+<tr><td>HVDualformer: Histogram-Vision Dual Transformer for White Balance</td><td>对比方法</td><td>Histogram-vision dual transformer</td><td>白平衡与统计建模参考</td></tr>
 </table>
 ## 推荐写作分组
 - 传统方法：AFLVZ4KR, V87JDUST, PWKRPBPJ, U6DBLZMV
 - HAB 显微方向：DQIVG34J, GS2RFTEL, LTE9U599
 - 深度增强：P4E22T2E, V5H7FQTY
-- 可借鉴白平衡参考：LF9HP7DR, TEKJDF6M
+- 对比方法（白平衡参考）：LF9HP7DR, TEKJDF6M
 """)},
         ],
     },

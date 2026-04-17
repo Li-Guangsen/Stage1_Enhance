@@ -5,7 +5,7 @@
 - **Exported On**: 2026-04-17
 
 ## Properties
-- **Bucket**: 可借鉴参考
+- **Bucket**: 对比方法
 - **DOI**: 10.1609/aaai.v39i6.32697
 - **Method Family**: 白平衡
 - **Status**: 已写入 related work

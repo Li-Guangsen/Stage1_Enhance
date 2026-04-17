@@ -8,7 +8,7 @@
 
 ## Schema Summary
 - 论文标题: title
-- Bucket: select (同方向师兄 / 对比方法 / 可借鉴参考)
+- Bucket: select (同方向师兄 / 对比方法)
 - Concepts: multi_select (wavelet, histogram, multi-scale, white-balance, color-compensation, retinex, semantic-guidance, transformer, hab-microscopy)
 - DOI: text
 - Method Family: select (传统融合 / 物理先验 / Retinex/优化 / 深度学习 / Transformer / 白平衡 / 混合方法)
@@ -23,8 +23,8 @@
 ## Items
 - [Underwater Image Enhancement via Weighted Wavelet Visual Perception Fusion](Underwater Image Enhancement via Weighted Wavelet Visual Perception Fusion [344bb1f4].md) — Bucket: 对比方法; Method Family: 传统融合; 年份: 2024
 - [SGUIE-Net: Semantic Attention Guided Underwater Image Enhancement With Multi-Scale Perception](SGUIE-Net_ Semantic Attention Guided Underwater Image Enhancement With Multi-Sca [344bb1f4].md) — Bucket: 对比方法; Method Family: 深度学习; 年份: 2022
-- [ABC-Former: Auxiliary Bimodal Cross-domain Transformer with Interactive Channel Attention for White Balance](ABC-Former_ Auxiliary Bimodal Cross-domain Transformer with Interactive Channel [344bb1f4].md) — Bucket: 可借鉴参考; Method Family: 白平衡; 年份: 2025
-- [HVDualformer: Histogram-Vision Dual Transformer for White Balance](HVDualformer_ Histogram-Vision Dual Transformer for White Balance [344bb1f4].md) — Bucket: 可借鉴参考; Method Family: 白平衡; 年份: 2025
+- [ABC-Former: Auxiliary Bimodal Cross-domain Transformer with Interactive Channel Attention for White Balance](ABC-Former_ Auxiliary Bimodal Cross-domain Transformer with Interactive Channel [344bb1f4].md) — Bucket: 对比方法; Method Family: 白平衡; 年份: 2025
+- [HVDualformer: Histogram-Vision Dual Transformer for White Balance](HVDualformer_ Histogram-Vision Dual Transformer for White Balance [344bb1f4].md) — Bucket: 对比方法; Method Family: 白平衡; 年份: 2025
 - [Underwater enhancement computing of ocean HABs based on cyclic color compensation and multi-scale fusion](Underwater enhancement computing of ocean HABs based on cyclic color compensatio [344bb1f4].md) — Bucket: 同方向师兄; Method Family: 传统融合; 年份: 2023
 - [Generalization of the Dark Channel Prior for Single Image Restoration](Generalization of the Dark Channel Prior for Single Image Restoration [344bb1f4].md) — Bucket: 对比方法; Method Family: 物理先验; 年份: 2018
 - [Innovative underwater image enhancement algorithm: Combined application of adaptive white balance color compensation and pyramid image fusion to submarine algal microscopy](Innovative underwater image enhancement algorithm_ Combined application of adapt [344bb1f4].md) — Bucket: 同方向师兄; Method Family: 混合方法; 年份: 2025
