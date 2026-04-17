@@ -525,7 +525,144 @@ experiments/h2-full506-direct/
    - 研究结论、当前接受 winner、阶段依赖关系，应优先写入 README 与对应实验目录文档
    - MCP / skill 的使用只记录“项目里如何按需用”，不在 README 中展开罗列全部平台能力清单
 
-## 11. 当前下一步
+补充记录一下，本项目到目前为止真实用过、且和后续延续最相关的能力主要是：
+
+- 本地 shell / 文件编辑
+  - 用于代码阅读、实验编排、结果汇总、日志整理、README 与分析文档维护
+- `ml-paper-writing` skill
+  - 用于把当前代码真实实现压成 method section 长稿、精简稿、图注草稿和 related work 写作骨架
+- Notion plugin / MCP
+  - 用于把项目主页、文献库、研究笔记、实验记录、任务计划、论文写作这些结构化页面同步起来
+  - 已同步过的方法与写作页面，后续可继续更新，但新线程默认先以本地 README 和文档为主
+- Zotero / 文献检索与整理
+  - 用于整理当前 related work 阅读集、比较表和写作底稿所依赖的论文池
+  - 当前已从 Zotero 阅读集沉淀出本地文件 `related-work-underwater-enhancement.md`，所以新线程若只是继续写综述，优先先看本地文件，不必一上来就重新调 Zotero
+- web / 外部检索
+  - 只在需要补时效性资料、官方文档或文献核实时再用，不作为日常实验推进前置
+
+当前已建好的 Notion 项目主页入口为：
+
+- `https://www.notion.so/344bb1f4e23e8190a24adc78e66587ff`
+
+但对新线程来说，更推荐的接手顺序仍然是：
+
+1. 先读本地 `README.md`
+2. 再读 `research-log.md`
+3. 按任务类型进入对应实验目录或论文写作文档
+4. 只有在需要继续同步知识库时再回到 Notion
+
+## 11. 新线程快速接手 / 历史工作记录摘要
+
+如果后续新开线程，希望在不回看长对话的情况下直接继续，建议先按下面这组摘要接手。
+
+### 11.1 已完成到什么程度
+
+- 已确认当前项目主线是七阶段增强流水线：
+  - `Original -> BPH -> IMF1Ray -> RGHS -> CLAHE -> Fused -> Final`
+- H1 白平衡 `full506` 正式实验已完成：
+  - 自动 `metric_winner = r2_02_G_P`
+  - 人工最终锁定 `final_winner = r2_05_G_P_A_B`
+- H2 `RGHS -> CLAHE -> Fusion` 顺序调参 `full506` 已完成一轮正式收口：
+  - `RGHS = rghs_s07`
+  - `CLAHE = clahe_s05`
+  - `Fusion = fusion_s10`
+- 当前整条接受主线已经固化为：
+  - `experiments/optimization_v1/configs/locked_full506_final_mainline.json`
+- 当前正式展示结果目录已经整理为：
+  - `experiments/h2-full506-direct/outputs/full506/runs/full506_final_mainline`
+
+### 11.2 已经做过哪些关键工作
+
+- 实验侧：
+  - 完成 `pilot92-v1` 与后续 `full506` 协议切换
+  - 完成后处理 / 收口搜索，锁定 `r4_03`
+  - 完成 H1 白平衡 full506 正式实验与人工定胜
+  - 完成 H2 `RGHS / CLAHE / Fusion` 顺序调参与阶段 winner 收口
+- 代码整理侧：
+  - 保留历史阶段名 `RGHS / CLAHE`
+  - 但将真实实现文件明确为 `wb_safe_contrast.py` 与 `clahe_guided_visibility.py`
+  - 在 `main.py`、README 与模块头注释里补齐了配置接线和职责说明
+- 论文写作侧：
+  - 已完成 `related-work-underwater-enhancement.md`
+  - 已完成 `method-underwater-enhancement.md`
+  - 已完成 `method-underwater-enhancement-paper-ready.md`
+  - 已完成 `method-figure-underwater-enhancement.md`
+  - 已完成 `paper/figures/underwater_method_overview*.{mmd,svg,png}` 图稿资产
+- Zotero / 文献整理侧：
+  - 已围绕当前 Zotero 阅读集整理出传统水下增强、HAB 显微增强谱系、深度模型和白平衡 / 直方图建模四组 related work 比较材料
+  - 当前与 Zotero 最直接对应的本地落地文件是 `related-work-underwater-enhancement.md`
+- Notion 同步侧：
+  - 已搭好项目主页、文献库、研究笔记、实验记录、任务计划、论文写作五类主库
+  - 已同步核心文献、related work 草稿、method 草稿、方法图说明和阶段总结页
+
+按时间顺序压缩理解，这些工作大致是这样推进的：
+
+- `2026-04-11`
+  - 完成项目 bootstrap、代码通读、H1/H2/H3 假设成型、`pilot92-v1` 受控评测子集锁定
+- `2026-04-12`
+  - 新增 protocol-v2 评测 / 打分流程，并在 pilot 上完成第一轮后处理 / 收口搜索
+- `2026-04-13`
+  - 将主线切到 `full506`，锁定下游 `r4_03`，并搭好 H1 白平衡编排与 explore64/round1/round2/full506 流程
+- `2026-04-15`
+  - 完成 H1 `full506` 正式实验，人工最终锁定 `r2_05_G_P_A_B`，并整理出 `locked_full506_mainline.json`
+- `2026-04-16`
+  - 完成 H2 `RGHS -> CLAHE -> Fusion` 顺序调参与 `full506` 直跑收口，接受 `rghs_s07 / clahe_s05 / fusion_s10`
+- `2026-04-17`
+  - 完成命名整理（`wb_safe_contrast.py` / `clahe_guided_visibility.py`）、related work / method / 方法图资产整理，以及 README / research-log / research-state 的统一同步
+
+### 11.3 新线程应该先看哪些文件
+
+如果是继续实验：
+
+- `experiments/h1-graypixel-bph-ablation/analysis.md`
+- `experiments/h2-full506-direct/analysis.md`
+- `experiments/h2-full506-direct/selection.json`
+- `experiments/optimization_v1/configs/locked_full506_final_mainline.json`
+
+如果是继续读代码或改实现：
+
+- `main.py`
+- `lgsbph.py`
+- `pybemd.py`
+- `wb_safe_contrast.py`
+- `clahe_guided_visibility.py`
+- `fusion_three.py`
+- `lvbo.py`
+
+如果是继续写论文：
+
+- `related-work-underwater-enhancement.md`
+- `method-underwater-enhancement.md`
+- `method-underwater-enhancement-paper-ready.md`
+- `method-figure-underwater-enhancement.md`
+- `paper/figures/underwater_method_overview_simple.mmd`
+
+如果是继续整理文献或知识库：
+
+- 先看本地 `related-work-underwater-enhancement.md`
+- 再看 `research-log.md` 里最近的写作与同步记录
+- 只有在需要补新论文、核对元数据或继续同步结构化页面时，再回到 Zotero / Notion
+
+### 11.4 新线程默认遵守的工作约定
+
+- 不要默认重跑整套 `full506`；先检查现有 `selection.json`、`analysis.md` 和结果目录
+- 不要把 `main.py` 默认参数直接改成当前锁定配置，除非明确决定把它升格为主默认入口
+- 结果命名、阶段目录和配置字段里继续沿用历史名 `RGHS / CLAHE`
+- 说明文档、阶段结论、接受 winner 与后续计划，优先回写到 README 和对应实验分析文档
+- 若要继续同步 Notion，以本地已确认文档为源，不要让 Notion 反过来覆盖本地结论
+
+### 11.5 当前最自然的后续方向
+
+- 实验方向：
+  - 若继续调参，优先重开 `Fusion`，并把 `UCIQE / UIQM` 退化纳入硬约束
+- 写作方向：
+  - 继续把 method 精简稿扩成论文正文
+  - 将 related work 与 method 图正式接入论文主稿
+- 知识库方向：
+  - 继续把新的阶段总结、实验记录和写作页同步到 Notion
+  - 文献库 `Concepts` 多选标签仍是后续可补但不阻塞主线的尾项
+
+## 12. 当前下一步
 
 当前 H2 顺序调参已完成一次 `full506` 收口，README 中已接受：
 

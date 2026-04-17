@@ -31,3 +31,4 @@
 | 25 | 2026-04-17 | 文档 | 为便于当前版本先提交，新增更轻量的图稿 `paper/figures/underwater_method_overview_simple.mmd`，并导出 `paper/figures/underwater_method_overview_simple.svg` 与 `paper/figures/underwater_method_overview_simple.png`。该版本保留方法主链、三分支、融合中心和外部下游验证路径，但去掉了框内细节说明，适合作为先行提交和后续微调底稿。 |
 | 26 | 2026-04-17 | 文献 | 新增 `related-work-underwater-enhancement.md`，围绕当前 Zotero 阅读集整理传统水下增强、HAB 显微增强谱系、深度模型以及白平衡/直方图建模的相关工作比较表、中文综述段落、英文骨架和短版写法，作为论文相关工作起草底稿。 |
 | 27 | 2026-04-17 | 文档 | 统一补齐项目记录层：将 README、`research-state.yaml`、H2 中间阶段分析文档与当前接受主线对齐，明确 `locked_full506_final_mainline.json` 为当前接受配置，并把 method / related work / 方法图资产纳入仓库级文档导航。 |
+| 28 | 2026-04-17 | 文档 | 为后续新线程可直接接手，在 `README.md` 中补充“新线程快速接手 / 历史工作记录摘要”，集中说明当前接受主线、已完成实验、已产出写作资产、Notion / Skill / MCP 的实际使用方式，以及新线程默认应先读哪些本地文件。 |
