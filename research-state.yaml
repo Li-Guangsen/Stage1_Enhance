@@ -29,11 +29,11 @@ literature:
       relevance: "Relevant downstream reference showing that HAB microscopy enhancement and edge-sensitive processing can be argued as a unified application line."
   open_problems:
     - "Current references validate downstream edge extraction, but the exact enhancement design in this project already differs from the published AWBCC/IPF and cyclic fusion formulations."
-    - "Existing metrics in the repository were computed on inconsistent sample subsets and currently cannot serve as the final paper table without standardization."
+    - "The project now has a standardized full502/complete496 protocol, but still lacks a locked downstream edge-validation table aligned to the accepted mainline."
     - "The best paper framing must separate the mature enhancement contribution from any future edge-detection-network contribution."
   evidence_gaps:
     - "Need stronger downstream edge-validation evidence on enhanced vs non-enhanced images."
-    - "Need a cleaner project-level summary that separates accepted mainline assets from intermediate search artifacts."
+    - "Need paper-ready qualitative panels, failure cases, and runtime/resource reporting."
     - "Need explicit visual guardrails if Fusion is reopened, because the current accepted winner improves structure metrics while rolling back UCIQE/UIQM."
 
 hypotheses:
@@ -57,10 +57,11 @@ hypotheses:
     priority: medium
 
 current_mainline:
-  updated: "2026-04-17"
+  updated: "2026-04-24"
   accepted_config: "experiments/optimization_v1/configs/locked_full506_final_mainline.json"
   accepted_result_dir: "experiments/h2-full506-direct/outputs/full506/runs/full506_final_mainline"
-  accepted_eval_dir: "experiments/h2-full506-direct/outputs/full506/eval"
+  accepted_eval_dir: "metrics/outputs/evaluate_protocol_v2/official_stage_progress_full502"
+  accepted_compare_eval_dir: "metrics/outputs/evaluate_protocol_v2/official_compare9_complete496"
   upstream_locked_baseline: "experiments/optimization_v1/configs/locked_full506_mainline.json"
   stages:
     bph: "r2_05_G_P_A_B"
@@ -73,6 +74,17 @@ current_mainline:
     - "H1 full506 has been completed and manually locked on top of the earlier r4_03 downstream baseline."
     - "H2 full506 sequential tuning has been completed, and the accepted winners are RGHS=rghs_s07, CLAHE=clahe_s05, Fusion=fusion_s10."
     - "The current accepted Fusion winner improves MS-SSIM and PSNR but causes a visible-metric rollback in UCIQE/UIQM, so future Fusion reopening should add hard visual guardrails."
+    - "The official clean evaluation protocol now uses full502_clean_v1 for stage progress and compare9_complete496_v1 for the paper main table."
+    - "The official result copy has been cleaned of the four SIFT diagnostic artifacts and should be the only formal result entry point."
+    - "Formal reruns must pass locked_full506_final_mainline.json explicitly; the repository default main.py params are not the accepted paper mainline."
+
+runtime:
+  formal_enhancement_eval_env:
+    scope: "Formal enhancement and protocol-v2 evaluation only."
+    conda_root: 'D:\miniconda3'
+    env_path: 'D:\Desktop\EdgeDetection\my_env'
+    activate_cmd: 'cmd.exe /K "D:\miniconda3\Scripts\activate.bat D:\Desktop\EdgeDetection\my_env"'
+    note: "This is the public environment contract for the current formal enhancement/evaluation workflow, not a blanket claim about every historical script or figure utility in the repository."
 
 experiments:
   proxy_metric: "Weighted comprehensive score from metrics/score_protocol_v2.py on the full 506-image Original dataset, interpreted with MS-SSIM/PSNR as structure-preservation references because the paper target is edge/structure extraction rather than PSNR-only restoration."
@@ -101,14 +113,48 @@ experiments:
 
 evaluation:
   locked_full_dataset:
-    id: "full506-original-v1"
-    manifest: "metrics/outputs/evaluate_protocol_v2/full506_c25/complete_case_manifest.txt"
-    count: 506
+    id: "full502-clean-v1"
+    manifest: "metrics/manifests/full502_clean_v1.txt"
+    count: 502
     source_original_dir: "data/inputImg/Original"
     current_best_dir: "experiments/h2-full506-direct/outputs/full506/runs/full506_final_mainline"
     current_best_config: "experiments/optimization_v1/configs/locked_full506_final_mainline.json"
-    final_compare_output: "metrics/outputs/evaluate_protocol_v2/full506_final_compare_c25_r4_03"
-    rationale: "This is now the formal tuning dataset and the accepted mainline is locked by locked_full506_final_mainline.json; pilot92-v1 remains a debugging/historical subset only."
+    stage_progress_output: "metrics/outputs/evaluate_protocol_v2/official_stage_progress_full502"
+    rationale: "This is the formal clean stage-progress dataset. It is derived from the cleaned Original directory after removing the four diagnostic SIFT artifacts from the official result copy."
+  formal_compare_dataset:
+    id: "compare9-complete496-v1"
+    manifest: "metrics/manifests/compare9_complete496_v1.txt"
+    count: 496
+    compared_methods:
+      - "Ours"
+      - "HVDualformer"
+      - "ABC-Former"
+      - "GDCP"
+      - "CBF"
+      - "HLRP"
+      - "SGUIE-Net"
+      - "Histoformer"
+      - "WWPF"
+    final_compare_output: "metrics/outputs/evaluate_protocol_v2/official_compare9_complete496"
+    rationale: "This is the formal paper-table dataset. It uses the complete-case intersection across the accepted mainline and all eight external baselines."
+    rerun_dependency_note: "The formal compare output is directly readable from the current workspace, but regenerating it still depends on machine-local absolute result directories for the eight external baselines listed in metrics/configs/official_method_registry.json."
+    analysis_strategy:
+      - "Keep WWPF in the paper main table as an aggressive but acceptable strong baseline; do not drop it merely because some no-reference metrics exceed Ours."
+      - "Keep HLRP and Histoformer in the formal numeric table, but treat them as failure-case or supplementary qualitative discussion in the paper body because current microscopy outputs show strong distortion, color shift, and noise amplification."
+      - "Interpret MS_SSIM and PSNR as structure-consistency references to the original image, not as enhancement-GT quality scores."
+      - "Write all negative conclusions with an explicit HAB-microscopy scope; these observations describe task-specific adaptation under the current protocol, not a general invalidation of the original methods."
+  planned_downstream_handoff_contract:
+    status: planned
+    note: "This is the target interface for future downstream edge validation, not an existing result."
+    input_original_dir: "data/inputImg/Original"
+    input_enhanced_dir: "experiments/h2-full506-direct/outputs/full506/runs/full506_final_mainline/png/Final"
+    manifest: "metrics/manifests/full502_clean_v1.txt"
+    recommended_output_dir: "metrics/outputs/downstream_edge_validation/official_full502_mainline"
+    minimum_artifacts:
+      - "summary.md or summary.csv"
+      - "per_image_metrics.csv"
+      - "manifest copy or explicit manifest reference"
+      - "method note describing Original vs Ours Final"
   locked_subset:
     id: "pilot92-v1"
     manifest: "data/eval_subset_pilot92_v1.txt"
@@ -132,9 +178,10 @@ evaluation:
     - "Treat H1 as positive only if the candidate improves or effectively preserves MS_SSIM and PSNR while remaining visually stable under manual inspection."
     - "Treat H2 as positive only if the candidate improves the current structural references (especially MS_SSIM and PSNR) without introducing unacceptable visual rollback; future Fusion reopening should treat UCIQE/UIQM degradation as a hard or near-hard guardrail."
     - "Treat H3 as positive only if it adds illumination/readability improvement beyond the fused image and remains a secondary refinement, not the primary gain source."
+    - "In paper writing, treat MS_SSIM and PSNR as original-reference structure-consistency metrics; high values indicate conservative similarity, not necessarily stronger enhancement."
   provisional_baseline:
-    source: "metrics/Txt/our.txt"
-    note: "Legacy 92-image JPG summary used only as orientation. A standardized PNG rerun on pilot92-v1 is still required before any paper table is frozen."
+    source: "metrics/archive/legacy_txt/our.txt"
+    note: "Legacy 92-image JPG summary archived for reference only. It is no longer part of the formal paper workflow."
     mean_sift_kp: 2102.2283
     mean_avggra: 10.8460
     mean_ms_ssim: 0.8839

@@ -5,10 +5,6 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional, Sequence, Tuple
 
-import cv2
-import numpy as np
-
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 IMAGE_EXTS = (".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff")
 STAGE_SUFFIXES = (
@@ -18,6 +14,14 @@ STAGE_SUFFIXES = (
     "_IMF1Ray",
     "_RGHS",
     "_CLAHE",
+    "_HVDual",
+    "_AbcFormer",
+    "_GDCP",
+    "_CBF",
+    "_HLRP",
+    "_SGUIEnet",
+    "_Histoformer",
+    "_WWPF",
 )
 
 
@@ -175,6 +179,9 @@ def select_common_stems(
 
 
 def read_bgr(path: str | Path) -> np.ndarray:
+    import cv2
+    import numpy as np
+
     path = Path(path)
     data = np.fromfile(str(path), dtype=np.uint8)
     img = cv2.imdecode(data, cv2.IMREAD_COLOR)
@@ -184,6 +191,8 @@ def read_bgr(path: str | Path) -> np.ndarray:
 
 
 def write_image(path: str | Path, img: np.ndarray) -> None:
+    import cv2
+
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     ok, encoded = cv2.imencode(path.suffix, img)
@@ -193,6 +202,8 @@ def write_image(path: str | Path, img: np.ndarray) -> None:
 
 
 def resize_bgr(img_bgr: np.ndarray, resize_to: Optional[Tuple[int, int]]) -> np.ndarray:
+    import cv2
+
     if resize_to is None:
         return img_bgr
     width, height = resize_to

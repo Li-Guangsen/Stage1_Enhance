@@ -1,0 +1,125 @@
+# Protocol v2 image enhancement evaluation
+Created at: 2026-04-23T21:15:43
+Original dir: D:\Desktop\Stage1Codex\data\inputImg\Original
+Summary policy: complete_cases_across_all_methods
+Planned stems: 496
+Complete success stems: 496
+Failures: 0
+
+## Ours
+Directory: D:\Desktop\Stage1Codex\experiments\h2-full506-direct\outputs\full506\runs\full506_final_mainline\png\Final
+Count: 496
+EME: mean=11.509421, std=6.549310
+EMEE: mean=0.945908, std=0.368204
+Entropy: mean=5.652732, std=0.905779
+Contrast: mean=543.037871, std=328.954151
+AvgGra: mean=14.810122, std=8.161097
+MS_SSIM: mean=0.768904, std=0.144378
+PSNR: mean=17.623655, std=3.767029
+UCIQE: mean=4.137099, std=2.462445
+UIQM: mean=23.771798, std=13.124734
+
+## HVDualformer
+Directory: D:\Desktop\2025AAAI_HVDual_former\lgsresults
+Count: 496
+EME: mean=2.719132, std=2.135869
+EMEE: mean=0.448699, std=0.118607
+Entropy: mean=4.051158, std=1.087187
+Contrast: mean=26.135951, std=27.471359
+AvgGra: mean=2.949070, std=2.234105
+MS_SSIM: mean=0.991564, std=0.007936
+PSNR: mean=34.833654, std=7.051493
+UCIQE: mean=1.761943, std=1.377275
+UIQM: mean=7.624343, std=5.764997
+
+## ABC-Former
+Directory: D:\Desktop\2025CVPR_ABC-Former\ABC-Former\lgsresults
+Count: 496
+EME: mean=2.515995, std=2.034065
+EMEE: mean=0.437385, std=0.112939
+Entropy: mean=3.994955, std=1.095103
+Contrast: mean=25.732336, std=27.202137
+AvgGra: mean=2.930849, std=2.202650
+MS_SSIM: mean=0.998545, std=0.001039
+PSNR: mean=41.128199, std=8.229275
+UCIQE: mean=2.192251, std=1.727744
+UIQM: mean=7.197430, std=5.602733
+
+## GDCP
+Directory: D:\Desktop\2018_Generalization-of-the-Dark-Channel-Prior\lgsresults
+Count: 496
+EME: mean=7.059273, std=5.764244
+EMEE: mean=0.697767, std=0.328878
+Entropy: mean=5.214701, std=1.158097
+Contrast: mean=101.276416, std=105.607545
+AvgGra: mean=6.255524, std=5.249901
+MS_SSIM: mean=0.873613, std=0.061026
+PSNR: mean=23.266760, std=5.076990
+UCIQE: mean=3.801571, std=2.452286
+UIQM: mean=16.237748, std=11.689161
+
+## CBF
+Directory: D:\Desktop\2018_Color-Balance-and-fusion-for-underwater-image-enhancement\lgsresult
+Count: 496
+EME: mean=7.216237, std=4.701584
+EMEE: mean=0.699708, std=0.262943
+Entropy: mean=6.614945, std=0.408752
+Contrast: mean=96.936447, std=88.371065
+AvgGra: mean=6.834273, std=4.647655
+MS_SSIM: mean=0.753121, std=0.086254
+PSNR: mean=17.528409, std=1.451796
+UCIQE: mean=2.977642, std=1.836260
+UIQM: mean=16.773506, std=9.935351
+
+## HLRP
+Directory: D:\Desktop\2022_HLRP-main\HLRP_Code\lgsresult
+Count: 496
+EME: mean=19.403461, std=5.696187
+EMEE: mean=1.360619, std=0.341389
+Entropy: mean=7.109759, std=0.803200
+Contrast: mean=458.892509, std=210.571022
+AvgGra: mean=18.415244, std=4.212428
+MS_SSIM: mean=0.247358, std=0.110926
+PSNR: mean=11.156014, std=2.981336
+UCIQE: mean=3.726200, std=2.414490
+UIQM: mean=40.434626, std=10.971907
+
+## SGUIE-Net
+Directory: D:\Desktop\2022_SGUIE_Net_Simple\lgsresults
+Count: 496
+EME: mean=6.266064, std=5.831796
+EMEE: mean=0.652541, std=0.331985
+Entropy: mean=4.843394, std=1.376076
+Contrast: mean=92.475649, std=114.455993
+AvgGra: mean=5.814215, std=5.306900
+MS_SSIM: mean=0.902673, std=0.097051
+PSNR: mean=24.653721, std=6.056643
+UCIQE: mean=3.295875, std=2.327114
+UIQM: mean=14.925475, std=11.810515
+
+## Histoformer
+Directory: D:\Desktop\2024_Histoformer-main\lgsresults
+Count: 496
+EME: mean=18.869165, std=8.482511
+EMEE: mean=1.360206, std=0.481281
+Entropy: mean=7.045310, std=0.519244
+Contrast: mean=511.978733, std=358.901202
+AvgGra: mean=18.089942, std=9.377249
+MS_SSIM: mean=0.412768, std=0.187644
+PSNR: mean=15.116972, std=2.518305
+UCIQE: mean=5.362447, std=1.636231
+UIQM: mean=40.092629, std=15.391135
+
+## WWPF
+Directory: D:\Desktop\2024_WWPF_code\2023-WWPE\datasets\lgsresults
+Count: 496
+EME: mean=12.418180, std=7.642804
+EMEE: mean=1.006575, std=0.440811
+Entropy: mean=6.242535, std=0.997060
+Contrast: mean=358.697787, std=288.838543
+AvgGra: mean=14.252659, std=8.608828
+MS_SSIM: mean=0.554434, std=0.160208
+PSNR: mean=15.243884, std=3.116093
+UCIQE: mean=2.765040, std=1.785985
+UIQM: mean=25.471027, std=14.437477
+

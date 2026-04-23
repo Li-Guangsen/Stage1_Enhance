@@ -1,6 +1,6 @@
 # Underwater Image Enhancement Related Work Draft
 
-Last updated: 2026-04-17
+Last updated: 2026-04-23
 
 This note consolidates the current Zotero reading set for the HAB underwater microscopic image enhancement project. It is organized for two direct uses:
 
@@ -18,6 +18,21 @@ This note consolidates the current Zotero reading set for the HAB underwater mic
   - complementary detail and contrast branches
   - feature-aware multi-scale fusion
   - downstream edge-oriented validation
+
+## Current Evidence Levels
+
+- Full paper-ready package:
+  - `paper/comparison_methods_related_work_pack_cn.md`
+- Current formal experimental comparison set:
+  - deep white-balance methods: `HVDualformer`, `ABC-Former`
+  - traditional / non-deep underwater enhancement methods: `GDCP`, `CBF`, `HLRP`, `WWPF`
+  - deep underwater enhancement methods: `SGUIE-Net`, `Histoformer`
+- Current review-only expansion set:
+  - traditional white balance: `MaxRGB`, `Gray-World`, `Shades of Gray`, `Gray-Edge`
+  - traditional underwater enhancement: `UDCP`, `IBLA`, `VRE`
+  - deep underwater enhancement: `WaterNet`, `UWCNN`
+- Writing rule:
+  - `HVDualformer` and `ABC-Former` can stay in the experiment section because they have been run in the current protocol, but in related work they must still be described as white-balance methods rather than standard underwater enhancement models.
 
 ## Comparison Table
 
@@ -91,19 +106,38 @@ Writing goal:
 - use them to support the argument that histogram-aware and color-aware transformer modeling is relevant to severe color cast correction;
 - provide conceptual support for color correction design choices without overstating task overlap.
 
+## Expanded Review-Only Methods
+
+### Traditional White Balance Heuristics
+
+- `MaxRGB`: assumes a white surface produces maximal channel responses and corrects channels by maxima.
+- `Gray-World`: assumes the average reflectance of a natural scene is achromatic and corrects channels by global means.
+- `Shades of Gray`: extends `Gray-World` with a Minkowski-norm formulation.
+- `Gray-Edge`: estimates illumination from derivative statistics rather than raw pixel values.
+
+### Additional Underwater Enhancement References
+
+- `WaterNet`: introduced in *An Underwater Image Enhancement Benchmark Dataset and Beyond*; represents end-to-end deep fusion on benchmark-driven training.
+- `UWCNN`: introduced in *Underwater Scene Prior Inspired Deep Underwater Image and Video Enhancement*; represents lightweight CNN enhancement guided by underwater scene priors.
+- `UDCP`: introduced in *Transmission Estimation in Underwater Single Images*; represents the underwater dark-channel and transmission-estimation line.
+- `IBLA`: represents the image-blurriness-and-light-absorption restoration line in underwater image enhancement.
+- `VRE`: keep as a placeholder label only until the exact canonical paper is re-verified.
+
+## Experiment-Ready Comparison Methods Paragraph
+
+The current external comparison set contains eight methods organized into three groups. The first group is deep white-balance methods, including `HVDualformer` and `ABC-Former`. Although they are not standard underwater enhancement models, they are kept as deep white-balance baselines because they directly target severe color-cast correction and have been run under the current protocol. The second group is traditional or non-deep underwater enhancement methods, including `GDCP`, `CBF`, `HLRP`, and `WWPF`, which cover physical-prior restoration, classical fusion, optimization-based enhancement, and modern traditional fusion. The third group is deep underwater enhancement methods, including `SGUIE-Net` and `Histoformer`, representing semantic-guided enhancement and histogram-transformer enhancement, respectively. Among these methods, seven generate results for all 502 cleaned input images, while the official `WWPF` package only produces 496 valid outputs. Therefore, any final fair quantitative comparison should be computed on the 496-image complete-case subset rather than on method-specific sample counts.
+
 ## Related Work Draft in Chinese
 
 ### 相关工作
 
-水下图像增强的核心目标是缓解由光吸收、散射和波长依赖衰减带来的颜色失真、低对比度和细节模糊问题。早期研究主要依赖颜色补偿、多尺度融合和成像先验建模来恢复视觉质量。Ancuti 等在 *Color Balance and Fusion for Underwater Image Enhancement* 中通过颜色补偿、白平衡与多尺度融合构建了经典的单幅图像增强框架，为后续融合类方法提供了代表性范式。Peng 等在 *Generalization of the Dark Channel Prior for Single Image Restoration* 中从成像模型出发，对暗通道先验进行了更一般化的推广，通过环境光估计、透射率恢复和自适应颜色校正实现退化图像恢复。进一步地，Zhuang 等在 *Underwater Image Enhancement With Hyper-Laplacian Reflectance Priors* 中将 Retinex 变分建模与高阶反射先验结合，增强了结构与细节恢复能力。此类传统方法通常具有较强可解释性，但对复杂场景下高层语义一致性和任务相关特征的建模能力仍然有限。
+水下图像增强旨在缓解由光吸收、散射和波长依赖衰减引起的颜色失真、低对比度和细节退化。早期研究主要围绕颜色补偿、多尺度融合和成像先验展开。除经典的颜色平衡与多尺度融合路线外，*Transmission Estimation in Underwater Single Images* 提出的水下暗通道先验、以及基于 image blurriness and light absorption 的恢复模型，分别代表了 transmission 估计和 IFM 型恢复思路。随后，*Generalization of the Dark Channel Prior for Single Image Restoration* 进一步推广了暗通道先验，*Underwater Image Enhancement With Hyper-Laplacian Reflectance Priors* 将 Retinex 变分建模与高阶反射率先验结合，*Underwater Image Enhancement via Weighted Wavelet Visual Perception Fusion* 则展示了颜色校正、全局/局部对比增强与小波融合的现代传统扩展。总体来看，这类方法具有较强可解释性，但往往难以同时兼顾颜色稳定、局部可见性和任务相关结构表达。
 
-围绕有害藻华显微图像这一更具体的应用场景，已有工作逐步形成了较清晰的技术演进脉络。Wu 等在 *Numerical computation of ocean HABs image enhancement based on empirical mode decomposition and wavelet fusion* 中使用经验模态分解与小波融合来提升藻类显微图像的纹理清晰度和整体对比度，代表了分解驱动的早期思路。随后，Wu 等在 *Underwater enhancement computing of ocean HABs based on cyclic color compensation and multi-scale fusion* 中进一步引入循环颜色补偿和多尺度融合机制，将增强效果与边缘检测、关键点匹配等下游表现联系起来。Fan 等在 *Innovative underwater image enhancement algorithm: Combined application of adaptive white balance color compensation and pyramid image fusion to submarine algal microscopy* 中又将自适应白平衡颜色补偿、注意力引导和图像金字塔融合作为统一框架，并通过边缘检测相关实验验证增强结果对后续视觉任务的促进作用。上述研究说明，针对 HAB 显微图像的增强不应仅停留在主观视觉改善层面，而应与细胞边缘、纹理和形态信息的可分辨性紧密结合。
+围绕有害藻华显微图像这一具体场景，已有工作逐渐形成了从分解融合到颜色补偿再到白平衡引导融合的技术谱系。早期工作利用经验模态分解与小波融合提升藻类显微图像的纹理清晰度，随后又将循环颜色补偿与多尺度融合结合，并把增强结果与边缘检测、关键点匹配等下游任务联系起来。更近的工作进一步将自适应白平衡颜色补偿、注意力引导和金字塔融合整合到统一框架中，说明 HAB 显微增强不仅应关注主观视觉质量，还应服务于细胞边缘、纹理和形态结构的可辨识性。
 
-随着深度学习的发展，水下图像增强方法开始更加关注高层语义信息和全局分布建模。Qi 等提出的 *SGUIE-Net: Semantic Attention Guided Underwater Image Enhancement With Multi-Scale Perception* 利用语义引导和多尺度感知模块，在有限训练样本条件下提升局部区域增强的一致性与鲁棒性。Peng 等提出的 *Histoformer: Histogram-Based Transformer for Efficient Underwater Image Enhancement* 则从直方图分布学习的角度出发，使用 Transformer 建模高对比度与颜色校正图像的全局统计特征，并结合生成式细化模块进一步优化结果。这类方法相较传统管线在复杂颜色偏移和结构恢复方面具有更强表达能力，但其效果通常更加依赖训练数据覆盖范围和分布匹配程度。
+随着深度学习的发展，水下增强开始更加重视高层语义和全局分布建模。`WaterNet` 通过多路预处理结果的端到端融合建立了基准数据集驱动的增强范式，`UWCNN` 则体现了结合水下场景先验和轻量 CNN 的早期深度增强路线。进一步地，*SGUIE-Net* 通过语义注意力和多尺度感知提升区域增强一致性，*Histoformer* 使用直方图 Transformer 与生成式细化模块建模颜色和对比度的全局统计特征。这些方法在复杂退化场景下具有更强表达能力，但通常更依赖训练数据分布。
 
-除直接面向水下增强的研究外，白平衡校正与直方图建模方向同样为颜色失真校正提供了重要启发。Chiu 等在 CVPR 2025 提出的 *ABC-Former* 通过联合直方图与图像输入进行跨域建模，并利用通道交互注意力提升白平衡校正精度。Peng 和 Chen 在 AAAI 2025 提出的 *HVDualformer* 则进一步通过 histogram-vision dual transformer 统一颜色分布特征与视觉特征。虽然这两类方法并非标准的水下图像增强模型，但它们表明，全局颜色统计、直方图表示以及通道交互建模对严重颜色偏移场景具有重要价值，这对于水下显微图像中的颜色补偿与白平衡设计具有直接借鉴意义。
-
-综合来看，现有研究大致可以归纳为三条主线：一是基于颜色补偿、融合和成像先验的传统增强方法；二是面向具体水下显微任务、强调下游边缘或结构可见性的任务驱动方法；三是依托语义建模、Transformer 和直方图分布学习的深度增强方法。与这些工作相比，当前项目更关注将任务相关的白平衡与颜色校正、互补的细节与对比分支、多尺度融合机制以及面向边缘敏感任务的验证方式整合到同一框架中，从而在保持结构真实性的前提下提升藻类显微图像的可判读性。
+除直接面向水下增强的研究外，白平衡校正与颜色统计建模同样为严重偏色场景提供了重要启发。传统白平衡方法如 `MaxRGB`、`Gray-World`、`Shades of Gray` 和 `Gray-Edge` 代表了颜色恒常假设的经典谱系。近年来，`ABC-Former` 和 `HVDualformer` 等深度白平衡模型进一步表明，直方图表示、全局颜色统计和通道交互建模对于颜色偏移校正十分关键。虽然这些方法并非标准的水下增强模型，但它们为水下显微图像中的颜色补偿与白平衡设计提供了直接的可迁移思路。与现有工作相比，当前项目更关注将稳态前置白平衡、互补三分支增强、亮度域特征门控融合以及面向结构可读性的设计动机整合到同一条可复现实验主线中。
 
 ## Practical Notes for Paper Drafting
 

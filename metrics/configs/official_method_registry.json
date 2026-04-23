@@ -1,0 +1,154 @@
+{
+  "version": "official_v1",
+  "updated_at": "2026-04-23",
+  "original_dir": "D:\\Desktop\\Stage1Codex\\data\\inputImg\\Original",
+  "official_config_path": "D:\\Desktop\\Stage1Codex\\experiments\\optimization_v1\\configs\\locked_full506_final_mainline.json",
+  "official_result_root": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\outputs\\full506\\runs\\full506_final_mainline\\png",
+  "notes": [
+    "正式主线固定为 locked_full506_final_mainline.json 对应的组合版结果副本。",
+    "正式外部对比采用 9 方法 complete-case 口径。",
+    "HVDualformer 和 ABC-Former 在实验节保留，但 related work 中归为白平衡方法。"
+  ],
+  "stage_methods": [
+    {
+      "name": "BPH",
+      "display_name": "BPH",
+      "directory": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\outputs\\full506\\runs\\full506_final_mainline\\png\\BPH",
+      "method_class": "stage",
+      "official": true,
+      "note": "前置白平衡输出"
+    },
+    {
+      "name": "IMF1Ray",
+      "display_name": "IMF1Ray",
+      "directory": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\outputs\\full506\\runs\\full506_final_mainline\\png\\IMF1Ray",
+      "method_class": "stage",
+      "official": true,
+      "note": "高频细节分支输出"
+    },
+    {
+      "name": "RGHS",
+      "display_name": "RGHS",
+      "directory": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\outputs\\full506\\runs\\full506_final_mainline\\png\\RGHS",
+      "method_class": "stage",
+      "official": true,
+      "note": "白平衡安全对比分支输出"
+    },
+    {
+      "name": "CLAHE",
+      "display_name": "CLAHE",
+      "directory": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\outputs\\full506\\runs\\full506_final_mainline\\png\\CLAHE",
+      "method_class": "stage",
+      "official": true,
+      "note": "局部可见性分支输出"
+    },
+    {
+      "name": "Fused",
+      "display_name": "Fused",
+      "directory": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\outputs\\full506\\runs\\full506_final_mainline\\png\\Fused",
+      "method_class": "stage",
+      "official": true,
+      "note": "三分支融合输出"
+    },
+    {
+      "name": "Final",
+      "display_name": "Final",
+      "directory": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\outputs\\full506\\runs\\full506_final_mainline\\png\\Final",
+      "method_class": "stage",
+      "official": true,
+      "note": "正式主线最终输出"
+    }
+  ],
+  "compare_methods": [
+    {
+      "name": "Ours",
+      "display_name": "Ours",
+      "directory": "D:\\Desktop\\Stage1Codex\\experiments\\h2-full506-direct\\outputs\\full506\\runs\\full506_final_mainline\\png\\Final",
+      "method_class": "正式主线",
+      "paper_title": "This work",
+      "current_sample_count": 502,
+      "official": true,
+      "note": "BPH=r2_05_G_P_A_B, IMF1Ray=locked existing output, RGHS=rghs_s07, CLAHE=clahe_s05, Fusion=fusion_s10, Final=r4_03/homomorphic_entropy"
+    },
+    {
+      "name": "HVDualformer",
+      "display_name": "HVDualformer",
+      "directory": "D:\\Desktop\\2025AAAI_HVDual_former\\lgsresults",
+      "method_class": "深度白平衡",
+      "paper_title": "HVDualformer: Histogram-Vision Dual Transformer for White Balance",
+      "current_sample_count": 502,
+      "official": true,
+      "note": "深度白平衡方法，实验节保留，related work 归入白平衡"
+    },
+    {
+      "name": "ABC-Former",
+      "display_name": "ABC-Former",
+      "directory": "D:\\Desktop\\2025CVPR_ABC-Former\\ABC-Former\\lgsresults",
+      "method_class": "深度白平衡",
+      "paper_title": "ABC-Former: Auxiliary Bimodal Cross-domain Transformer with Interactive Channel Attention for White Balance",
+      "current_sample_count": 502,
+      "official": true,
+      "note": "深度白平衡方法，实验节保留，related work 归入白平衡"
+    },
+    {
+      "name": "GDCP",
+      "display_name": "GDCP",
+      "directory": "D:\\Desktop\\2018_Generalization-of-the-Dark-Channel-Prior\\lgsresults",
+      "method_class": "传统/非深度水下增强",
+      "paper_title": "Generalization of the Dark Channel Prior for Single Image Restoration",
+      "current_sample_count": 502,
+      "official": true,
+      "note": "物理先验恢复路线"
+    },
+    {
+      "name": "CBF",
+      "display_name": "CBF",
+      "directory": "D:\\Desktop\\2018_Color-Balance-and-fusion-for-underwater-image-enhancement\\lgsresult",
+      "method_class": "传统/非深度水下增强",
+      "paper_title": "Color Balance and Fusion for Underwater Image Enhancement",
+      "current_sample_count": 502,
+      "official": true,
+      "note": "经典颜色补偿与多尺度融合"
+    },
+    {
+      "name": "HLRP",
+      "display_name": "HLRP",
+      "directory": "D:\\Desktop\\2022_HLRP-main\\HLRP_Code\\lgsresult",
+      "method_class": "传统/非深度水下增强",
+      "paper_title": "Underwater Image Enhancement With Hyper-Laplacian Reflectance Priors",
+      "current_sample_count": 502,
+      "official": true,
+      "note": "Retinex 变分与高阶反射率先验"
+    },
+    {
+      "name": "SGUIE-Net",
+      "display_name": "SGUIE-Net",
+      "directory": "D:\\Desktop\\2022_SGUIE_Net_Simple\\lgsresults",
+      "method_class": "深度水下增强",
+      "paper_title": "SGUIE-Net: Semantic Attention Guided Underwater Image Enhancement With Multi-Scale Perception",
+      "current_sample_count": 502,
+      "official": true,
+      "note": "语义注意力与多尺度感知"
+    },
+    {
+      "name": "Histoformer",
+      "display_name": "Histoformer",
+      "directory": "D:\\Desktop\\2024_Histoformer-main\\lgsresults",
+      "method_class": "深度水下增强",
+      "paper_title": "Histoformer: Histogram-Based Transformer for Efficient Underwater Image Enhancement",
+      "current_sample_count": 502,
+      "official": true,
+      "note": "直方图 Transformer 增强"
+    },
+    {
+      "name": "WWPF",
+      "display_name": "WWPF",
+      "directory": "D:\\Desktop\\2024_WWPF_code\\2023-WWPE\\datasets\\lgsresults",
+      "method_class": "传统/非深度水下增强",
+      "paper_title": "Underwater Image Enhancement via Weighted Wavelet Visual Perception Fusion",
+      "current_sample_count": 496,
+      "official": true,
+      "note": "官方包仅稳定生成 496 张输出，主表按 complete-case 处理"
+    }
+  ]
+}
