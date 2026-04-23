@@ -4,6 +4,7 @@ project:
   status: active
   started: "2026-04-11"
   domain: "underwater microscopic image enhancement and edge-oriented computer vision"
+  writing_language_priority: "Chinese-first for the current paper-writing and evidence-alignment phase; English outlines and supporting drafts are kept as auxiliary assets."
 
 literature:
   key_papers:
