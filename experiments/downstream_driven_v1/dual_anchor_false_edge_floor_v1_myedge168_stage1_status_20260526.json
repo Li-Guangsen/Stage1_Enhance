@@ -1,0 +1,110 @@
+{
+  "date": "2026-05-26",
+  "variant": "dual_anchor_false_edge_floor_v1",
+  "config": "experiments/downstream_driven_v1/configs/dual_anchor_false_edge_floor_v1.json",
+  "final_mode": "dual_anchor_false_edge_floor_bph",
+  "scope": {
+    "split": "MyEdge 168-image ALGAE split with GT",
+    "fixed_detectors": [
+      "msfi_50k",
+      "diffusionedge_baseline_50k"
+    ],
+    "full502_metrics_scope": "full502_clean_v1 and compare9_complete496_v1 enhancement metrics only",
+    "fullpool_2770": "not_entered",
+    "formal_mainline_overwritten": false
+  },
+  "assets": {
+    "stage1_myedge168_output_root": "experiments/downstream_driven_v1/outputs/myedge168/dual_anchor_false_edge_floor_v1",
+    "stage1_full502_output_root": "experiments/downstream_driven_v1/outputs/full502/dual_anchor_false_edge_floor_v1",
+    "stage1_proxy_prescreen": "docs/stage1_myedge168_gt_edge_proxy_prescreen_p26_20260526_cn.md",
+    "myedge_preflight": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/dual_anchor_false_edge_floor_p26_preflight_20260526.md",
+    "myedge_results": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/dual_anchor_false_edge_floor_p26_results_20260526.md",
+    "myedge_structure_proxy": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/dual_anchor_false_edge_floor_p26_structure_metrics_20260526.md",
+    "myedge_downstream_gate": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/dual_anchor_false_edge_floor_p26_downstream_gate_20260526.md",
+    "full502_metrics": "metrics/outputs/evaluate_protocol_v2/downstream_driven_p26_full502_20260526",
+    "compare496_metrics": "metrics/outputs/evaluate_protocol_v2/downstream_driven_p26_compare496_20260526"
+  },
+  "readiness": {
+    "stage1_myedge168_final_png": 168,
+    "stage1_myedge168_final_jpg": 168,
+    "stage1_full502_final_png": 502,
+    "stage1_full502_final_jpg": 502,
+    "myedge_sampling_executed": true,
+    "wsl_eval_show_executed": true,
+    "result_intake_status": "complete_with_report_assets",
+    "structure_proxy_status": "complete",
+    "downstream_gate_decision": "candidate_rescues_legacy_but_not_near_raw"
+  },
+  "stage1_proxy_delta_vs_raw": {
+    "decision": "proxy_positive_candidate",
+    "f1": 0.000093,
+    "false_edge_ratio": -0.000564,
+    "endpoints_per_1k_skel_px": -0.727718
+  },
+  "metrics": {
+    "msfi_50k": {
+      "ods": 0.784101,
+      "ois": 0.794815,
+      "ap": 0.346741,
+      "ac": 0.7937,
+      "raw_anchor_ods": 0.783527,
+      "raw_anchor_ois": 0.794213,
+      "raw_anchor_ap": 0.345899,
+      "raw_anchor_ac": 0.796846
+    },
+    "diffusionedge_baseline_50k": {
+      "ods": 0.773399,
+      "ois": 0.783027,
+      "ap": 0.364636,
+      "ac": 0.7953,
+      "raw_anchor_ods": 0.770521,
+      "raw_anchor_ois": 0.779986,
+      "raw_anchor_ap": 0.363065,
+      "raw_anchor_ac": 0.7969
+    }
+  },
+  "structure_proxy_delta_vs_raw": {
+    "msfi_50k": {
+      "f1": 0.002691,
+      "false_edge_ratio": -0.012214,
+      "endpoints_per_1k_skel_px": -1.631014,
+      "structure_non_worse": true
+    },
+    "diffusionedge_baseline_50k": {
+      "f1": 0.000129,
+      "false_edge_ratio": 0.003102,
+      "endpoints_per_1k_skel_px": 0.375864,
+      "structure_non_worse": false
+    }
+  },
+  "enhancement_metrics": {
+    "full502_clean_v1": {
+      "count": 502,
+      "eme": 2.545224,
+      "contrast": 25.689059,
+      "avggra": 2.771164,
+      "ms_ssim": 0.998480,
+      "psnr": 48.187858,
+      "uciqe": 2.226195,
+      "uiqm": 7.316971
+    },
+    "compare9_complete496_v1": {
+      "count": 496,
+      "eme": 2.438149,
+      "contrast": 24.382367,
+      "avggra": 2.708358,
+      "ms_ssim": 0.998469,
+      "psnr": 48.198759,
+      "uciqe": 2.250437,
+      "uiqm": 7.134507
+    }
+  },
+  "boundary": [
+    "P26 adds a detector-domain dual-anchor false-edge floor on top of the P25-like weak-boundary anchor.",
+    "P26 rescues legacy Stage1 Final collapse and improves MSFI-side structure proxy, but it is not a strong pass.",
+    "MSFI AC falls just outside the near-raw tolerance and DiffusionEdge baseline structure proxy remains worse than raw on false-edge ratio and endpoints.",
+    "P26 should be kept as a failed/rescue diagnostic, not promoted as a stable downstream-improving Stage1 mainline.",
+    "MS_SSIM and PSNR are relative structure consistency to original, not GT enhancement quality.",
+    "Do not run P26 on the 2770-image full pool from this gate alone."
+  ]
+}

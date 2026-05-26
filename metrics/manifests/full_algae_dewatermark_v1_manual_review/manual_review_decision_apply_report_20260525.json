@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-05-25T01:26:20",
+  "status": "no_decisions_to_apply",
+  "apply_mode": false,
+  "template": "metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\manual_review_decision_template.tsv",
+  "template_rows": 544,
+  "filled_decision_rows": 0,
+  "valid_decision_rows": 0,
+  "invalid_decision_rows": 0,
+  "decision_counts": {},
+  "applied_to_review_sheets": false,
+  "applied_counts": {},
+  "plan_tsv": "metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\manual_review_decision_apply_plan_20260525.tsv",
+  "invalid_tsv": "metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\manual_review_decision_apply_invalid_20260525.tsv",
+  "boundary": "Dry-run mode does not write review sheets. This script never edits source images, runs enhancement, or generates a clean manifest."
+}

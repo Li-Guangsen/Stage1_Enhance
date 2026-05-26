@@ -1,0 +1,247 @@
+{
+  "generated_at": "2026-05-25T03:03:58",
+  "stage1_root": "D:\\Desktop\\Stage1Codex",
+  "myedge_root": "D:\\Desktop\\MyEdgeCodex",
+  "no_experiment_executed": true,
+  "overall_status": "superseded_by_completed_p1",
+  "confirmation_phrase": "我确认执行高风险操作",
+  "expected_count": 168,
+  "source_status_files": {
+    "coupling_status": "D:\\Desktop\\Stage1Codex\\docs\\stage1_myedge_coupling_status_20260525_cn.json",
+    "next_gate_board": "D:\\Desktop\\Stage1Codex\\docs\\stage1_myedge_next_gate_board_20260525_cn.json",
+    "myedge_project_state": "D:\\Desktop\\MyEdgeCodex\\project-state.yaml",
+    "command_sheet": "D:\\Desktop\\MyEdgeCodex\\docs\\research_contracts\\stage1_myedge_coupling_p1_execution_command_sheet_v1.md",
+    "minimum_matrix_sheet": "D:\\Desktop\\MyEdgeCodex\\docs\\research_contracts\\stage1_myedge_coupling_minimum_matrix_run_sheet_v1.md",
+    "manifest": "D:\\Desktop\\MyEdgeCodex\\docs\\paper_assets\\stage1_coupling\\stage1_myedge_168_coupling_manifest_20260524.csv",
+    "preflight": "D:\\Desktop\\MyEdgeCodex\\docs\\paper_assets\\stage1_coupling\\p1_preflight_20260524.json",
+    "intake_pending": "D:\\Desktop\\MyEdgeCodex\\docs\\paper_assets\\stage1_coupling\\p1_results_intake_pending_20260525.json",
+    "sync_status": "D:\\Desktop\\MyEdgeCodex\\docs\\paper_assets\\stage1_coupling\\p1_report_asset_sync_status_20260525.json",
+    "baseline_freeze": "D:\\Desktop\\MyEdgeCodex\\docs\\paper_assets\\stage1_coupling\\diffusionedge_baseline_p1_asset_freeze_20260525.md",
+    "prepare_script": "D:\\Desktop\\MyEdgeCodex\\docs\\paper_assets\\scripts\\prepare_stage1_coupling_p1_assets.py",
+    "intake_script": "D:\\Desktop\\MyEdgeCodex\\docs\\paper_assets\\scripts\\intake_stage1_coupling_p1_results.py",
+    "sync_script": "D:\\Desktop\\MyEdgeCodex\\docs\\paper_assets\\scripts\\sync_stage1_coupling_p1_report_assets.py"
+  },
+  "current_preflight": {
+    "row_count": 168,
+    "staging_exists": true,
+    "staging_file_count": 168,
+    "write_staging_executed": false,
+    "msfi_output_root_exists": false,
+    "baseline_output_root_exists": false,
+    "ready_for_msfi_p1_after_approval": true,
+    "ready_for_baseline_p1_after_approval": true,
+    "no_inference_or_eval": true
+  },
+  "current_intake": {
+    "overall_status": "complete_with_report_assets",
+    "no_inference_or_eval": true,
+    "run_count": 2,
+    "runs": [
+      {
+        "run_id": "stage1_final_to_msfi_50k",
+        "status": "complete_with_report_assets",
+        "root_exists": true,
+        "core_complete": true,
+        "report_complete": true,
+        "counts": {
+          "png": 168,
+          "mat": 168,
+          "nms": 168,
+          "white": 168,
+          "overlay": 168,
+          "error_map": 168,
+          "mat_eval_files": 171,
+          "nms_eval_files": 171
+        },
+        "required_file_exists": {
+          "sample_log": true,
+          "eval_log": true,
+          "show_log": true,
+          "mat_eval": true,
+          "nms_eval": true,
+          "manifest": true,
+          "run_report": true
+        }
+      },
+      {
+        "run_id": "stage1_final_to_diffusionedge_baseline_50k",
+        "status": "complete_with_report_assets",
+        "root_exists": true,
+        "core_complete": true,
+        "report_complete": true,
+        "counts": {
+          "png": 168,
+          "mat": 168,
+          "nms": 168,
+          "white": 168,
+          "overlay": 168,
+          "error_map": 168,
+          "mat_eval_files": 171,
+          "nms_eval_files": 171
+        },
+        "required_file_exists": {
+          "sample_log": true,
+          "eval_log": true,
+          "show_log": true,
+          "mat_eval": true,
+          "nms_eval": true,
+          "manifest": true,
+          "run_report": true
+        }
+      }
+    ]
+  },
+  "baseline_checkpoint_record": {
+    "size_bytes": "4176168989",
+    "sha256": "D78FC44ED04CA7495913D5DCF4088FBEDB5344CA7D5232426C68F05F1648507F",
+    "source": "D:\\Desktop\\MyEdgeCodex\\docs\\paper_assets\\stage1_coupling\\diffusionedge_baseline_p1_asset_freeze_20260525.md",
+    "hash_recomputed_by_this_script": false
+  },
+  "prerequisites": [
+    {
+      "item_id": "P01",
+      "requirement": "Stage1/MyEdge coupling manifest exists and has 168 rows",
+      "satisfied": true,
+      "evidence": "`docs/paper_assets/stage1_coupling/stage1_myedge_168_coupling_manifest_20260524.csv`; row_count=168",
+      "blocking_if_failed": "Stop before staging or sampling; regenerate/read-only audit the manifest first."
+    },
+    {
+      "item_id": "P02",
+      "requirement": "All 168 Stage1 Final files and GT references are available",
+      "satisfied": true,
+      "evidence": "missing_stage1_final=0; missing_gt=0; duplicate_target=0",
+      "blocking_if_failed": "Stop before staging; inspect missing paths or duplicate target stems."
+    },
+    {
+      "item_id": "P03",
+      "requirement": "Staging root has not been populated",
+      "satisfied": false,
+      "evidence": "stage1_coupling_inputs/stage1_final_168_original_stem_20260524; exists=True; file_count=168",
+      "blocking_if_failed": "Stop and inspect whether a prior staging run exists before writing/copying files."
+    },
+    {
+      "item_id": "P04",
+      "requirement": "MSFI P1 config template exists and planned output root is absent",
+      "satisfied": true,
+      "evidence": "config=`configs/stage1_coupling/msfi_stage1_final_168_p1_20260524.yaml`; output=output_test/stage1_coupling/msfi_50k/stage1_final_168_p1_20260524; root_exists=False; root_nonempty=False",
+      "blocking_if_failed": "Stop before sampling; do not overwrite a populated MSFI P1 root."
+    },
+    {
+      "item_id": "P05",
+      "requirement": "DiffusionEdge baseline P1 config and frozen checkpoint evidence exist; planned output root is absent",
+      "satisfied": true,
+      "evidence": "config=`configs/stage1_coupling/diffusionedge_baseline_stage1_final_168_p1_20260525.yaml`; freeze=`docs/paper_assets/stage1_coupling/diffusionedge_baseline_p1_asset_freeze_20260525.md`; checkpoint_size=4176168989; sha256=D78FC44ED04CA7495913D5DCF4088FBEDB5344CA7D5232426C68F05F1648507F; output=output_test/stage1_coupling/diffusionedge_baseline_50k/stage1_final_168_p1_20260525; root_exists=False",
+      "blocking_if_failed": "Stop before baseline sampling; verify checkpoint size/hash or document any mismatch."
+    },
+    {
+      "item_id": "P06",
+      "requirement": "P1 intake and report sync are still not-started check artifacts",
+      "satisfied": false,
+      "evidence": "intake_status=complete_with_report_assets; intake_no_inference_or_eval=True; sync_status=complete_with_report_assets; sync_write_assets=False",
+      "blocking_if_failed": "Stop before writing paper claims; no P1 metric evidence exists yet."
+    },
+    {
+      "item_id": "P07",
+      "requirement": "Stage1-side gate board still marks MyEdge P1 as ready only after explicit approval",
+      "satisfied": false,
+      "evidence": "gate_board=`docs/stage1_myedge_next_gate_board_20260525_cn.json`; coupling_p1_status=complete_with_report_assets",
+      "blocking_if_failed": "Stop and reconcile Stage1/MyEdge status files before execution."
+    }
+  ],
+  "future_execution_sequence": [
+    {
+      "step_id": "S0",
+      "title": "Refresh P1 preflight/config templates and root checks",
+      "execution_scope": "Windows PowerShell, D:/Desktop/MyEdgeCodex",
+      "command": "D:/Desktop/DeepLearning/my_env/python.exe docs/paper_assets/scripts/prepare_stage1_coupling_p1_assets.py --write-config",
+      "risk_level": "guarded_write_config_only",
+      "expected_evidence": "Updated config/preflight files and confirmed staging/output roots remain absent or empty.",
+      "stop_rule": "Do not proceed if root checks fail or config changes are unexpected."
+    },
+    {
+      "step_id": "S1",
+      "title": "Populate 168 Stage1 Final inputs under original MyEdge stems",
+      "execution_scope": "Windows PowerShell, D:/Desktop/MyEdgeCodex",
+      "command": "D:/Desktop/DeepLearning/my_env/python.exe docs/paper_assets/scripts/prepare_stage1_coupling_p1_assets.py --write-config --write-staging",
+      "risk_level": "high_risk_writes_staging_files",
+      "expected_evidence": "168 PNG files under stage1_coupling_inputs/stage1_final_168_original_stem_20260524.",
+      "stop_rule": "Requires user phrase `我确认执行高风险操作`; stop if staged PNG count is not 168."
+    },
+    {
+      "step_id": "S2",
+      "title": "Run Stage1 Final -> MSFI 50k sampling",
+      "execution_scope": "Windows PowerShell, D:/Desktop/MyEdgeCodex",
+      "command": "$msfiRoot = \"D:\\Desktop\\MyEdgeCodex\\output_test\\stage1_coupling\\msfi_50k\\stage1_final_168_p1_20260524\"\nNew-Item -ItemType Directory -Force -Path \"$msfiRoot\\logs\" | Out-Null\nD:/Desktop/DeepLearning/my_env/python.exe sample_cond_ldm.py --cfg configs/stage1_coupling/msfi_stage1_final_168_p1_20260524.yaml 2>&1 |\n  Tee-Object -FilePath \"$msfiRoot\\logs\\sample.log\"",
+      "risk_level": "high_risk_sampling",
+      "expected_evidence": "MSFI P1 png/mat counts are 168 and logs/sample.log exists.",
+      "stop_rule": "Requires user phrase `我确认执行高风险操作`; stop if png/mat counts differ from 168."
+    },
+    {
+      "step_id": "S3",
+      "title": "Run Stage1 Final -> DiffusionEdge baseline 50k sampling",
+      "execution_scope": "Windows PowerShell, D:/Desktop/MyEdgeCodex",
+      "command": "$baseRoot = \"D:\\Desktop\\MyEdgeCodex\\output_test\\stage1_coupling\\diffusionedge_baseline_50k\\stage1_final_168_p1_20260525\"\nNew-Item -ItemType Directory -Force -Path \"$baseRoot\\logs\" | Out-Null\nD:/Desktop/DeepLearning/my_env/python.exe sample_cond_ldm.py --cfg configs/stage1_coupling/diffusionedge_baseline_stage1_final_168_p1_20260525.yaml 2>&1 |\n  Tee-Object -FilePath \"$baseRoot\\logs\\sample.log\"",
+      "risk_level": "high_risk_sampling",
+      "expected_evidence": "Baseline P1 png/mat counts are 168 and logs/sample.log exists.",
+      "stop_rule": "Requires user phrase `我确认执行高风险操作`; stop if checkpoint hash/size differs or png/mat counts differ from 168."
+    },
+    {
+      "step_id": "S4",
+      "title": "Evaluate MSFI P1 with eval.py/show.py",
+      "execution_scope": "WSL, /mnt/d/Desktop/MyEdgeCodex/eval-edge-py",
+      "command": "PY=/root/miniconda3/envs/myenv/bin/python; MSFI_ROOT=/mnt/d/Desktop/MyEdgeCodex/output_test/stage1_coupling/msfi_50k/stage1_final_168_p1_20260524; \"$PY\" eval.py ../output_test/stage1_coupling/msfi_50k/stage1_final_168_p1_20260524 -d ALGAE -nw -f 2>&1 | tee \"$MSFI_ROOT/logs/eval.log\"; \"$PY\" show.py ../output_test/stage1_coupling/msfi_50k/stage1_final_168_p1_20260524 -f 2>&1 | tee \"$MSFI_ROOT/logs/show.log\"",
+      "risk_level": "high_risk_evaluation",
+      "expected_evidence": "nms count 168, mat-eval/eval_bdry.txt, nms-eval/eval_bdry.txt, logs/eval.log and logs/show.log.",
+      "stop_rule": "Requires user phrase `我确认执行高风险操作`; stop if any eval/show artifact is missing."
+    },
+    {
+      "step_id": "S5",
+      "title": "Evaluate DiffusionEdge baseline P1 with eval.py/show.py",
+      "execution_scope": "WSL, /mnt/d/Desktop/MyEdgeCodex/eval-edge-py",
+      "command": "PY=/root/miniconda3/envs/myenv/bin/python; BASE_ROOT=/mnt/d/Desktop/MyEdgeCodex/output_test/stage1_coupling/diffusionedge_baseline_50k/stage1_final_168_p1_20260525; \"$PY\" eval.py ../output_test/stage1_coupling/diffusionedge_baseline_50k/stage1_final_168_p1_20260525 -d ALGAE -nw -f 2>&1 | tee \"$BASE_ROOT/logs/eval.log\"; \"$PY\" show.py ../output_test/stage1_coupling/diffusionedge_baseline_50k/stage1_final_168_p1_20260525 -f 2>&1 | tee \"$BASE_ROOT/logs/show.log\"",
+      "risk_level": "high_risk_evaluation",
+      "expected_evidence": "nms count 168, mat-eval/eval_bdry.txt, nms-eval/eval_bdry.txt, logs/eval.log and logs/show.log.",
+      "stop_rule": "Requires user phrase `我确认执行高风险操作`; stop if any eval/show artifact is missing."
+    },
+    {
+      "step_id": "S6",
+      "title": "Run read-only P1 results intake",
+      "execution_scope": "Windows PowerShell, D:/Desktop/MyEdgeCodex",
+      "command": "D:/Desktop/DeepLearning/my_env/python.exe docs/paper_assets/scripts/intake_stage1_coupling_p1_results.py",
+      "risk_level": "read_only_intake_after_results_exist",
+      "expected_evidence": "A non-pending P1 intake report with both runs core_complete=true.",
+      "stop_rule": "Do not update paper claims unless intake confirms complete core outputs."
+    },
+    {
+      "step_id": "S7",
+      "title": "Generate visualization-only report assets after core results are ready",
+      "execution_scope": "Windows PowerShell, D:/Desktop/MyEdgeCodex",
+      "command": "D:/Desktop/DeepLearning/my_env/python.exe docs/paper_assets/scripts/sync_stage1_coupling_p1_report_assets.py --write-assets",
+      "risk_level": "guarded_report_asset_write",
+      "expected_evidence": "white/overlay/error_map/manifest.csv/run_report.md for each P1 root.",
+      "stop_rule": "Only run after intake reports core_results_ready_for_report_sync or equivalent complete state."
+    }
+  ],
+  "acceptance_criteria": [
+    "Staging directory contains exactly 168 PNG files with original MyEdge stems.",
+    "Both P1 output roots contain exactly 168 PNG and 168 MAT files.",
+    "Both P1 output roots contain exactly 168 NMS PNG files after WSL evaluation.",
+    "Both P1 roots contain mat-eval/eval_bdry.txt and nms-eval/eval_bdry.txt.",
+    "Both P1 roots contain logs/sample.log, logs/eval.log and logs/show.log.",
+    "Read-only intake reports both runs core_complete=true with parsed ODS/OIS/AP and AC where available.",
+    "Report sync is run only after core completion and then produces manifest.csv, run_report.md, white/, overlay/ and error_map/."
+  ],
+  "paper_boundaries": [
+    "Currently allowed: write that P1 is prepared and ready only after explicit high-risk approval.",
+    "Currently forbidden: claim Stage1 Final improves ODS/OIS/AP/AC, false-edge suppression, morphology consistency or downstream edge detection.",
+    "After results exist: compare Stage1 Final P1 only against existing raw-input anchors in MyEdge.",
+    "If ODS/OIS improve but AP drops, write an operating-point/ranking trade-off, not comprehensive superiority.",
+    "If only one detector benefits, write detector-specific or interaction-specific support only."
+  ],
+  "hard_stops": [
+    "Do not run S1-S5 without explicit MyEdge high-risk confirmation.",
+    "Do not create or populate P1 output roots before confirming they are absent or empty.",
+    "If P1 intake is complete_with_report_assets, treat this readiness pack as superseded and use the coupling status snapshot instead.",
+    "Do not treat this readiness package as a result artifact."
+  ]
+}

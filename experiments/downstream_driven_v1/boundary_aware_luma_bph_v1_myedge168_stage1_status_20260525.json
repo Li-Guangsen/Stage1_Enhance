@@ -1,0 +1,45 @@
+{
+  "date": "2026-05-25",
+  "variant": "boundary_aware_luma_bph_v1",
+  "config": "experiments/downstream_driven_v1/configs/boundary_aware_luma_bph_v1.json",
+  "final_mode": "boundary_aware_luma_bph",
+  "smoke_output_root": "experiments/downstream_driven_v1/outputs/smoke_myedge168/boundary_aware_luma_bph_v1",
+  "myedge168_output_root": "experiments/downstream_driven_v1/outputs/myedge168/boundary_aware_luma_bph_v1",
+  "status": "stage1_myedge168_outputs_ready_not_downstream_evaluated",
+  "scope": {
+    "split_source": "D:/Desktop/MyEdgeCodex/input_test/algae",
+    "smoke_images": 2,
+    "myedge168_images": 168
+  },
+  "implementation": {
+    "luminance": "raw Lab luminance with clipped mild gamma/contrast, background bilateral smoothing, and high-gradient masked unsharp support",
+    "chroma": "small BPH Lab chroma transfer",
+    "skipped_stages": [
+      "IMF1Ray",
+      "RGHS",
+      "CLAHE",
+      "Fusion",
+      "legacy Final"
+    ]
+  },
+  "smoke_counts": {
+    "final_png_count": 2,
+    "final_jpg_count": 2,
+    "non_final_stage_file_count": 0,
+    "decoded_final_png_count": 2,
+    "decode_failures": []
+  },
+  "myedge168_counts": {
+    "final_png_count": 168,
+    "final_jpg_count": 168,
+    "non_final_stage_file_count": 0,
+    "decoded_final_png_count": 168,
+    "decode_failures": []
+  },
+  "no_myedge_sampling_eval_show_training": true,
+  "boundary": [
+    "Stage1 output readiness only; no MyEdge sampling, WSL eval.py/show.py, training, ODS/OIS/AP/AC, or structure-proxy metrics.",
+    "Does not replace the locked full506 final mainline.",
+    "Next gate is fixed-detector MyEdge evaluation after explicit high-risk approval; do not expand to 2770 from this Stage1-side output alone."
+  ]
+}

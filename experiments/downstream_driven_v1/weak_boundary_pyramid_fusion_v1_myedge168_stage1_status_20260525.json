@@ -1,0 +1,104 @@
+{
+  "date": "2026-05-25",
+  "status": "candidate_rescues_legacy_but_not_near_raw",
+  "candidate": "P14",
+  "variant": "weak_boundary_pyramid_fusion_v1",
+  "config": "experiments/downstream_driven_v1/configs/weak_boundary_pyramid_fusion_v1.json",
+  "final_mode": "weak_boundary_pyramid_fusion_bph",
+  "role": "Non-mainline downstream-driven weak-boundary local-fusion candidate after P12/P13.",
+  "stage1_outputs": {
+    "smoke_myedge2": {
+      "root": "experiments/downstream_driven_v1/outputs/smoke_myedge168/weak_boundary_pyramid_fusion_v1",
+      "final_png": 2,
+      "final_jpg": 2,
+      "decode_failures": 0
+    },
+    "myedge168": {
+      "root": "experiments/downstream_driven_v1/outputs/myedge168/weak_boundary_pyramid_fusion_v1",
+      "final_png": 168,
+      "final_jpg": 168,
+      "decode_failures": 0
+    },
+    "full502_clean_v1": {
+      "root": "experiments/downstream_driven_v1/outputs/full502/weak_boundary_pyramid_fusion_v1",
+      "final_png": 502,
+      "final_jpg": 502,
+      "decode_failures": 0
+    }
+  },
+  "myedge_assets": {
+    "preflight": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/weak_boundary_pyramid_fusion_p14_preflight_20260525.md",
+    "results": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/weak_boundary_pyramid_fusion_p14_results_20260525.md",
+    "structure_proxy": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/weak_boundary_pyramid_fusion_p14_structure_metrics_20260525.md",
+    "downstream_gate": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/weak_boundary_pyramid_fusion_p14_downstream_gate_20260525.md"
+  },
+  "fixed_detector_metrics": {
+    "msfi_50k": {
+      "ods": 0.784373,
+      "ois": 0.795164,
+      "ap": 0.346405,
+      "ac": 0.794,
+      "raw_anchor_ods": 0.783527,
+      "raw_anchor_ois": 0.794213,
+      "raw_anchor_ap": 0.345899,
+      "raw_anchor_ac": 0.796846
+    },
+    "diffusionedge_baseline_50k": {
+      "ods": 0.773454,
+      "ois": 0.784037,
+      "ap": 0.37293,
+      "ac": 0.7935,
+      "raw_anchor_ods": 0.770521,
+      "raw_anchor_ois": 0.779986,
+      "raw_anchor_ap": 0.363065,
+      "raw_anchor_ac": 0.7969
+    }
+  },
+  "structure_proxy_delta_vs_raw": {
+    "msfi_50k": {
+      "f1": 0.0017,
+      "false_edge_ratio": -0.0151,
+      "endpoints_per_1k_skel_px": -1.4952
+    },
+    "diffusionedge_baseline_50k": {
+      "f1": 0.0013,
+      "false_edge_ratio": 0.0034,
+      "endpoints_per_1k_skel_px": -0.1187
+    }
+  },
+  "enhancement_metrics": {
+    "full502_clean_v1": {
+      "count": 502,
+      "eme": 2.600463,
+      "contrast": 26.924021,
+      "avggra": 2.776384,
+      "ms_ssim": 0.998147,
+      "psnr": 47.621897,
+      "uciqe": 2.243207,
+      "uiqm": 7.391716
+    },
+    "compare9_complete496_v1": {
+      "count": 496,
+      "eme": 2.495456,
+      "contrast": 25.566317,
+      "avggra": 2.712229,
+      "ms_ssim": 0.998134,
+      "psnr": 47.632429,
+      "uciqe": 2.267399,
+      "uiqm": 7.21187
+    }
+  },
+  "gate": {
+    "decision": "candidate_rescues_legacy_but_not_near_raw",
+    "msfi_near_raw": true,
+    "msfi_structure_nonworse": true,
+    "diffusionedge_baseline_near_raw": false,
+    "diffusionedge_baseline_structure_nonworse": false
+  },
+  "boundary": [
+    "P14 rescues legacy Stage1 Final damage but is not a strong pass.",
+    "P14 is more conservative than P13/P12 in full502 and compare496 enhancement metrics.",
+    "Do not claim stable Stage1 downstream improvement from P14.",
+    "Do not expand P14 to the 2770-image full pool."
+  ]
+}

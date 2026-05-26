@@ -1,0 +1,93 @@
+{
+  "pipeline": {
+    "save_intermediate_stages": false
+  },
+  "bph": {
+    "gray_s_thr": 20,
+    "lum_low": 0.15,
+    "lum_high": 0.85,
+    "pre_gain_clip": 1.5,
+    "red_gain_extra": 1.05,
+    "accc_alpha": 0.25,
+    "accc_delta_max": 0.1,
+    "brightness_scale_clip": [
+      0.95,
+      1.05
+    ]
+  },
+  "final": {
+    "mode": "downstream_d01_structure_flow_bph",
+    "enable_color_consistency": true,
+    "enable_lowfreq_correction": true,
+    "enable_local_contrast": true,
+    "enable_structure_branch": true,
+    "enable_edge_guided_fusion": true,
+    "enable_false_edge_suppression": true,
+    "enable_structure_sharpen": true,
+    "enable_bounded_selection": true,
+    "wb_gain_cap": [
+      0.93,
+      1.07
+    ],
+    "channel_imbalance_skip": 0.025,
+    "wb_luma_alpha": 0.04,
+    "wb_chroma_alpha": 0.05,
+    "bph_chroma_alpha": 0.06,
+    "max_chroma_delta": 3.0,
+    "chroma_sigma": 13.0,
+    "low_sigma": 17.0,
+    "illum_alpha": 0.06,
+    "bph_low_luma_alpha": 0.03,
+    "nonuniformity_reference": 0.32,
+    "gamma_candidates": [
+      0.98,
+      1.0,
+      1.02
+    ],
+    "contrast_candidates": [
+      0.995,
+      1.0,
+      1.01
+    ],
+    "clahe_clip_limit": 0.8,
+    "clahe_tile_size": [
+      8,
+      8
+    ],
+    "local_contrast_alpha": 0.05,
+    "structure_sigmas": [
+      0.8,
+      1.6,
+      2.8
+    ],
+    "structure_alpha": 0.08,
+    "bph_structure_alpha": 0.015,
+    "background_smooth_alpha": 0.04,
+    "false_edge_suppress_alpha": 0.25,
+    "sharpen_alpha": 0.02,
+    "sharpen_sigma": 1.0,
+    "max_luma_delta": 4.0,
+    "grad_low_percentile": 44.0,
+    "grad_high_percentile": 90.0,
+    "texture_low_percentile": 54.0,
+    "texture_high_percentile": 93.0,
+    "support_power": 1.15,
+    "texture_risk_power": 1.15,
+    "mask_blur_ksize": 5,
+    "bilateral_d": 5,
+    "bilateral_sigma_color": 14.0,
+    "bilateral_sigma_space": 5.0,
+    "selection_scales": [
+      0.5,
+      0.75,
+      1.0
+    ],
+    "score_background_weight": 0.55,
+    "score_delta_weight": 1.2,
+    "score_saturation_weight": 1.35,
+    "guard_global_grad_ratio": 1.006,
+    "guard_background_grad_ratio": 1.0,
+    "guard_mean_abs_delta": 1.1,
+    "guard_added_edge_ratio": 0.0045
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "date": "2026-05-25",
+  "variant": "degradation_aware_pyramid_frequency_v1",
+  "config": "experiments/downstream_driven_v1/configs/degradation_aware_pyramid_frequency_v1.json",
+  "final_mode": "degradation_aware_pyramid_frequency_bph",
+  "input": "D:/Desktop/MyEdgeCodex/input_test/algae",
+  "output_root": "experiments/downstream_driven_v1/outputs/myedge168/degradation_aware_pyramid_frequency_v1",
+  "split": "MyEdge ALGAE fixed-detector 168-image split",
+  "counts": {
+    "final_png": 168,
+    "final_jpg": 168,
+    "non_final_stage_files": 0
+  },
+  "boundary": [
+    "Non-mainline downstream-driven candidate output.",
+    "Does not replace the locked Stage1 formal mainline or official 502/496 enhancement tables.",
+    "Used only as the input asset for the MyEdge P12 fixed-detector gate.",
+    "Do not scale to the 2770 full-pool from this output; the P12 gate is not a strong pass."
+  ]
+}

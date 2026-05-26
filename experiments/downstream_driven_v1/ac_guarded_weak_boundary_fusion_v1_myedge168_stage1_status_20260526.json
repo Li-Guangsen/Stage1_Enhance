@@ -1,0 +1,123 @@
+{
+  "date": "2026-05-26",
+  "variant": "ac_guarded_weak_boundary_fusion_v1",
+  "config": "experiments/downstream_driven_v1/configs/ac_guarded_weak_boundary_fusion_v1.json",
+  "final_mode": "ac_guarded_weak_boundary_bph",
+  "status": "complete_with_downstream_gate",
+  "scope": {
+    "myedge_split": "168-image ALGAE split with GT",
+    "full502_metrics_scope": "full502_clean_v1 and compare9_complete496_v1 enhancement metrics only",
+    "fullpool_2770": "not_entered"
+  },
+  "assets": {
+    "stage1_myedge168_output_root": "experiments/downstream_driven_v1/outputs/myedge168/ac_guarded_weak_boundary_fusion_v1",
+    "stage1_full502_output_root": "experiments/downstream_driven_v1/outputs/full502/ac_guarded_weak_boundary_fusion_v1",
+    "stage1_proxy_prescreen": "docs/stage1_myedge168_gt_edge_proxy_prescreen_p22_20260526_cn.md",
+    "myedge_preflight": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/ac_guarded_weak_boundary_fusion_p22_preflight_20260526.md",
+    "myedge_results": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/ac_guarded_weak_boundary_fusion_p22_results_20260526.md",
+    "myedge_structure_proxy": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/ac_guarded_weak_boundary_fusion_p22_structure_metrics_20260526.md",
+    "myedge_downstream_gate": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/ac_guarded_weak_boundary_fusion_p22_downstream_gate_20260526.md",
+    "full502_metrics": "metrics/outputs/evaluate_protocol_v2/downstream_driven_p22_full502_20260526",
+    "compare496_metrics": "metrics/outputs/evaluate_protocol_v2/downstream_driven_p22_compare496_20260526"
+  },
+  "readiness": {
+    "myedge168_final_png": 168,
+    "myedge168_final_jpg": 168,
+    "decoded_myedge168_final_png": 168,
+    "full502_final_png": 502,
+    "full502_final_jpg": 502,
+    "myedge_sampling_executed": true,
+    "wsl_eval_show_executed": true,
+    "result_intake_status": "complete_with_report_assets",
+    "structure_proxy_status": "complete",
+    "downstream_gate_decision": "candidate_rescues_legacy_but_not_near_raw"
+  },
+  "stage1_proxy_prescreen": {
+    "decision": "proxy_positive_candidate",
+    "f1": 0.583110,
+    "precision": 0.479076,
+    "recall": 0.894917,
+    "false_edge_ratio": 0.520924,
+    "components_per_1k_skel_px": 10.439433,
+    "endpoints_per_1k_skel_px": 55.842308,
+    "mean_luma_delta": 1.032475,
+    "delta_vs_raw": {
+      "f1": 0.001780,
+      "false_edge_ratio": -0.002768,
+      "endpoints_per_1k_skel_px": -0.258654
+    }
+  },
+  "metrics": {
+    "msfi_50k": {
+      "ods": 0.785414,
+      "ois": 0.796161,
+      "ap": 0.346719,
+      "ac": 0.7946,
+      "raw_anchor_ods": 0.783527,
+      "raw_anchor_ois": 0.794213,
+      "raw_anchor_ap": 0.345899,
+      "raw_anchor_ac": 0.796846
+    },
+    "diffusionedge_baseline_50k": {
+      "ods": 0.773537,
+      "ois": 0.783375,
+      "ap": 0.365145,
+      "ac": 0.7936,
+      "raw_anchor_ods": 0.770521,
+      "raw_anchor_ois": 0.779986,
+      "raw_anchor_ap": 0.363065,
+      "raw_anchor_ac": 0.7969
+    }
+  },
+  "structure_proxy_delta_vs_raw": {
+    "msfi_50k": {
+      "f1": 0.002431,
+      "precision": 0.011902,
+      "recall": -0.006605,
+      "false_edge_ratio": -0.011902,
+      "components_per_1k_skel_px": -0.614030,
+      "endpoints_per_1k_skel_px": -1.341618,
+      "structure_non_worse": true
+    },
+    "diffusionedge_baseline_50k": {
+      "f1": 0.000807,
+      "precision": -0.002607,
+      "recall": 0.003083,
+      "false_edge_ratio": 0.002607,
+      "components_per_1k_skel_px": -0.151629,
+      "endpoints_per_1k_skel_px": 0.292560,
+      "structure_non_worse": false
+    }
+  },
+  "enhancement_metrics": {
+    "full502_clean_v1": {
+      "count": 502,
+      "eme": 2.527595,
+      "contrast": 25.612431,
+      "avggra": 2.708753,
+      "ms_ssim": 0.998221,
+      "psnr": 47.573541,
+      "uciqe": 2.233058,
+      "uiqm": 7.251289
+    },
+    "compare9_complete496_v1": {
+      "count": 496,
+      "eme": 2.422461,
+      "contrast": 24.295492,
+      "avggra": 2.645468,
+      "ms_ssim": 0.998209,
+      "psnr": 47.580250,
+      "uciqe": 2.257428,
+      "uiqm": 7.071506
+    }
+  },
+  "boundary": [
+    "P22 wraps the P21-like weak-boundary candidate with AC/false-edge-oriented guards.",
+    "P22 rescues legacy Stage1 Final damage and improves ODS/OIS/AP versus raw under both fixed detectors.",
+    "MSFI side is structure non-worse.",
+    "DiffusionEdge baseline AC misses the current near-raw tolerance by 0.0003 and false-edge/endpoints remain worse than raw.",
+    "MS_SSIM and PSNR are relative structure consistency to original, not GT enhancement quality.",
+    "Do not claim stable Stage1 downstream improvement from P22.",
+    "Do not run P22 on the 2770-image full pool from this gate alone."
+  ]
+}

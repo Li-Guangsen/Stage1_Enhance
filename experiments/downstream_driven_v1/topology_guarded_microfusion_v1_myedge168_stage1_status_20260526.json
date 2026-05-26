@@ -1,0 +1,74 @@
+{
+  "date": "2026-05-26",
+  "variant": "topology_guarded_microfusion_v1",
+  "stage": "Stage1 output and downstream fixed-detector diagnostic",
+  "status": "complete_with_downstream_gate",
+  "config": "experiments/downstream_driven_v1/configs/topology_guarded_microfusion_v1.json",
+  "stage1_outputs": {
+    "myedge168_root": "experiments/downstream_driven_v1/outputs/myedge168/topology_guarded_microfusion_v1",
+    "myedge168_png_final_count": 168,
+    "myedge168_jpg_final_count": 168,
+    "full502_root": "experiments/downstream_driven_v1/outputs/full502/topology_guarded_microfusion_v1",
+    "full502_png_final_count": 502,
+    "full502_jpg_final_count": 502
+  },
+  "myedge_assets": {
+    "preflight": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/topology_guarded_microfusion_p17_preflight_20260526.md",
+    "results": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/topology_guarded_microfusion_p17_results_20260526.md",
+    "structure_proxy": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/topology_guarded_microfusion_p17_structure_metrics_20260526.md",
+    "downstream_gate": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/topology_guarded_microfusion_p17_downstream_gate_20260526.md"
+  },
+  "fixed_detector_results": {
+    "gate": "candidate_metric_near_raw_structure_mixed",
+    "msfi_50k": {
+      "ods": 0.784021,
+      "ois": 0.795041,
+      "ap": 0.346753,
+      "ac": 0.7945,
+      "structure_delta_vs_raw": {
+        "f1": 0.002088,
+        "false_edge_ratio": -0.016451,
+        "endpoints_per_1k_skel_px": -1.206439
+      }
+    },
+    "diffusionedge_baseline_50k": {
+      "ods": 0.771878,
+      "ois": 0.781854,
+      "ap": 0.364359,
+      "ac": 0.7958,
+      "structure_delta_vs_raw": {
+        "f1": 0.000471,
+        "false_edge_ratio": 0.003138,
+        "endpoints_per_1k_skel_px": 0.095826
+      }
+    }
+  },
+  "enhancement_metrics": {
+    "full502_clean_v1": {
+      "count": 502,
+      "eme": 2.539264,
+      "contrast": 25.676677,
+      "avg_gra": 2.75975,
+      "ms_ssim": 0.998866,
+      "psnr": 47.707367,
+      "uciqe": 2.229543,
+      "uiqm": 7.387601
+    },
+    "compare9_complete496_v1": {
+      "count": 496,
+      "eme": 2.439145,
+      "contrast": 24.328425,
+      "avg_gra": 2.6952,
+      "ms_ssim": 0.998859,
+      "psnr": 47.708913,
+      "uciqe": 2.253806,
+      "uiqm": 7.217338
+    }
+  },
+  "boundaries": [
+    "P17 is a non-mainline downstream-driven diagnostic candidate.",
+    "Do not claim stable Stage1 downstream benefit: DiffusionEdge baseline false-edge ratio and endpoints remain slightly worse than raw.",
+    "Do not expand to Stage1 2770 full-pool from this gate.",
+    "MS_SSIM and PSNR are relative structural consistency to original, not enhanced-ground-truth quality."
+  ]
+}

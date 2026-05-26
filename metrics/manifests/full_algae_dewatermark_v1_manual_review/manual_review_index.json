@@ -1,0 +1,10 @@
+{
+  "generated_at": "2026-05-25T00:47:36",
+  "decode_failure_rows": 4,
+  "exact_duplicate_group_rows": 3,
+  "near_duplicate_pair_rows": 30,
+  "quality_outlier_rows": 507,
+  "unified_review_rows": 544,
+  "review_status": "pending_manual_review",
+  "boundary": "These sheets are manual review inputs only. They do not change manifests, clean data, run enhancement, or replace formal 502/496 protocols."
+}

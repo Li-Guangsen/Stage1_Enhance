@@ -1,0 +1,137 @@
+{
+  "generated_at": "2026-05-25T03:03:58",
+  "myedge_root": "D:\\Desktop\\MyEdgeCodex",
+  "overall_status": "complete_with_report_assets",
+  "no_training_sampling_or_eval": true,
+  "source_files": {
+    "myedge_readme": "readme.md",
+    "myedge_project_state": "project-state.yaml",
+    "coupling_manifest_summary": "docs/paper_assets/stage1_coupling/stage1_myedge_168_coupling_manifest_20260524.summary.json",
+    "p1_preflight": "docs/paper_assets/stage1_coupling/p1_preflight_20260524.json",
+    "p1_results_intake": "docs/paper_assets/stage1_coupling/p1_results_intake_pending_20260525.json",
+    "p1_report_asset_sync": "docs/paper_assets/stage1_coupling/p1_report_asset_sync_status_20260525.json",
+    "p1_execution_command_sheet": "docs/research_contracts/stage1_myedge_coupling_p1_execution_command_sheet_v1.md",
+    "minimum_matrix_run_sheet": "docs/research_contracts/stage1_myedge_coupling_minimum_matrix_run_sheet_v1.md"
+  },
+  "manifest": {
+    "rows": 168,
+    "gt_missing_count": 0,
+    "all_stage_rows_complete": true,
+    "stage_missing_counts": {
+      "BPH": 0,
+      "IMF1Ray": 0,
+      "RGHS": 0,
+      "CLAHE": 0,
+      "Fused": 0,
+      "Final": 0
+    },
+    "msfi_reference_missing_count": 0,
+    "diffusionedge_reference_missing_count": 0,
+    "planned_staging_note": "Stage1 Final files carry _Final suffix; future detector input staging must use original stem filenames to keep eval GT matching."
+  },
+  "preflight": {
+    "staging_exists": true,
+    "staging_file_count": 168,
+    "write_staging_executed": false,
+    "missing_stage1_final_count": 0,
+    "missing_gt_count": 0,
+    "duplicate_target_count": 0,
+    "msfi_config_template": "D:/Desktop/MyEdgeCodex/configs/stage1_coupling/msfi_stage1_final_168_p1_20260524.yaml",
+    "msfi_output_root_exists": false,
+    "ready_for_msfi_p1_after_approval": true,
+    "baseline_asset_freeze_exists": true,
+    "baseline_config_template_exists": true,
+    "baseline_output_root_exists": false,
+    "ready_for_baseline_p1_after_approval": true,
+    "no_inference_or_eval": true
+  },
+  "p1_results_intake": {
+    "overall_status": "complete_with_report_assets",
+    "expected_count": 168,
+    "p1_roots_exist": true,
+    "p1_any_metrics": true,
+    "runs": [
+      {
+        "run_id": "stage1_final_to_msfi_50k",
+        "detector": "Ours / MSFI 50k",
+        "root": "D:/Desktop/MyEdgeCodex/output_test/stage1_coupling/msfi_50k/stage1_final_168_p1_20260524",
+        "status": "complete_with_report_assets",
+        "root_exists": true,
+        "counts": {
+          "png": 168,
+          "mat": 168,
+          "nms": 168,
+          "white": 168,
+          "overlay": 168,
+          "error_map": 168,
+          "mat_eval_files": 171,
+          "nms_eval_files": 171
+        },
+        "mat_eval": {
+          "threshold": 0.24,
+          "ods": 0.588287,
+          "ois": 0.671357,
+          "ap": 0.263997
+        },
+        "nms_eval": {
+          "threshold": 0.17,
+          "ods": 0.569307,
+          "ois": 0.65192,
+          "ap": 0.22154
+        },
+        "ac_from_show": 0.7403
+      },
+      {
+        "run_id": "stage1_final_to_diffusionedge_baseline_50k",
+        "detector": "DiffusionEdge baseline 50k",
+        "root": "D:/Desktop/MyEdgeCodex/output_test/stage1_coupling/diffusionedge_baseline_50k/stage1_final_168_p1_20260525",
+        "status": "complete_with_report_assets",
+        "root_exists": true,
+        "counts": {
+          "png": 168,
+          "mat": 168,
+          "nms": 168,
+          "white": 168,
+          "overlay": 168,
+          "error_map": 168,
+          "mat_eval_files": 171,
+          "nms_eval_files": 171
+        },
+        "mat_eval": {
+          "threshold": 0.46,
+          "ods": 0.530094,
+          "ois": 0.56791,
+          "ap": 0.224073
+        },
+        "nms_eval": {
+          "threshold": 0.39,
+          "ods": 0.523548,
+          "ois": 0.497877,
+          "ap": 0.211365
+        },
+        "ac_from_show": 0.7349
+      }
+    ]
+  },
+  "p1_report_asset_sync": {
+    "overall_status": "complete_with_report_assets",
+    "write_assets": false,
+    "runs": [
+      {
+        "run_id": "stage1_final_to_msfi_50k",
+        "status": "complete_with_report_assets",
+        "core_complete": true,
+        "report_assets_complete": true,
+        "action": "checked_only"
+      },
+      {
+        "run_id": "stage1_final_to_diffusionedge_baseline_50k",
+        "status": "complete_with_report_assets",
+        "core_complete": true,
+        "report_assets_complete": true,
+        "action": "checked_only"
+      }
+    ]
+  },
+  "interpretation_boundary": "This Stage1-side snapshot mirrors completed MyEdgeCodex P1 intake/report assets. It does not execute training, sampling, eval.py, show.py, Stage1 full-pool enhancement, or metric recomputation. P1 metrics may be cited only with their fixed-detector, 168-image, Stage1-Final-input boundary."
+}

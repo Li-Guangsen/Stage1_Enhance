@@ -1,5 +1,7 @@
 # Optimization v1 analysis
 
+> 阅读提示：本文档按时间记录了从 `pilot92-v1` 到 `full506` 搜索，再到主线锁定的优化过程。开头的 `pilot92` 与 `c25` 内容是历史搜索背景，不是当前正式论文主表口径。当前正式主线入口必须以 `experiments/optimization_v1/configs/locked_full506_final_mainline.json` 和 `experiments/h2-full506-direct/outputs/full506/runs/full506_final_mainline` 为准；正式评测口径以 `full502_clean_v1` 和 `compare9_complete496_v1` 为准。
+
 ## Objective
 
 在 pilot92-v1 上优化增强后综合指标。综合评分采用 `metrics/score_protocol_v2.py` 中的加权 log-ratio：

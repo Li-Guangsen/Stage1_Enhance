@@ -1,0 +1,10 @@
+{
+  "generated_at": "2026-05-25T00:53:53",
+  "decode_failure_rows": 4,
+  "exact_duplicate_group_rows": 3,
+  "total_p0_rows": 7,
+  "review_status": "recommendations_only_pending_manual_review",
+  "recommendations_path": "metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\p0_review_pack\\p0_review_recommendations.tsv",
+  "contact_sheet_path": "metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\p0_review_pack\\p0_contact_sheet.png",
+  "boundary": "Machine suggestions are not reviewer decisions. This pack does not change manifests, convert files, delete images, run enhancement, or replace formal 502/496 protocols."
+}

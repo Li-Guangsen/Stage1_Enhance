@@ -1,5 +1,7 @@
 # H2 Protocol: Three-Branch Fusion Ablation
 
+> 历史协议说明：本文档是早期 `pilot92-v1` H2 消融设计草案，保留用于追溯三分支融合假设的形成过程。当前正式 H2/主线结论已经收口到 `experiments/h2-full506-direct/analysis.md`、`experiments/h2-full506-direct/selection.json` 和 `experiments/optimization_v1/configs/locked_full506_final_mainline.json`；新任务不得把本文档当作当前正式评测协议。
+
 ## Hypothesis
 
 The IMF1Ray/RGHS/CLAHE feature-gated fusion is the main source of the method's publishable gain and should outperform single-branch outputs and naive fusion baselines.

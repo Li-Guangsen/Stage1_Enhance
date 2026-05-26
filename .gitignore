@@ -13,12 +13,15 @@ metrics/outputs/**
 !experiments/**/outputs/**/composite_scores.csv
 !experiments/**/outputs/**/guardrail_scores.csv
 !experiments/**/outputs/**/per_image_metrics.csv
-!metrics/outputs/**/
-!metrics/outputs/**/summary.json
-!metrics/outputs/**/summary.txt
-!metrics/outputs/**/composite_scores.csv
-!metrics/outputs/**/guardrail_scores.csv
-!metrics/outputs/**/per_image_metrics.csv
+# metrics/outputs are generated and reproducible; keep them local unless a
+# specific run-intake plan promotes a compact summary elsewhere.
+
+# Large review packs and per-image detail tables
+metrics/manifests/**/contact_sheets/**
+metrics/manifests/**/previews/**
+metrics/manifests/**/*.png
+metrics/manifests/**/*.tsv
+docs/*.per_image.csv
 
 # IDE, caches, logs
 .idea/

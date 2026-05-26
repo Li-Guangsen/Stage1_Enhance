@@ -1,0 +1,156 @@
+{
+  "summary": {
+    "overall_status": "reference_dataset_descriptions_verified_exact_overlap_missing",
+    "generated_at": "2026-05-25T02:03:27",
+    "stage1_full_pool": {
+      "image_files_total": 2777,
+      "default_candidate_manifest": 2774,
+      "cv2_readable_candidate_manifest": 2770,
+      "decode_failures": 4,
+      "manual_review_pending_rows": 544,
+      "clean_manifest_exists": false
+    },
+    "reference_datasets": {
+      "eswa_edge": {
+        "zotero_key": "9MCJDQGE",
+        "article": "Expert Systems with Applications 298 (2026), Article 129663",
+        "reported_images": 676,
+        "reported_species": 36,
+        "reported_train": 473,
+        "reported_test": 203,
+        "task": "edge detection"
+      },
+      "eaai_segmentation": {
+        "zotero_key": "ZMUBCGCD",
+        "article": "Engineering Applications of Artificial Intelligence 177 (2026), Article 114948",
+        "reported_images": 1026,
+        "reported_split": "8:2 train/validation",
+        "task": "segmentation"
+      }
+    },
+    "relation_status": "exact_overlap_missing",
+    "status_counts": {
+      "verified_in_local_zotero_cache": 6,
+      "verified_in_repo": 2,
+      "relation_unproven": 1
+    }
+  },
+  "rows": [
+    {
+      "item_id": "R01",
+      "source": "Wu et al. 2026 ESWA edge reference",
+      "field": "dataset_source",
+      "verified_value": "Applied Microalgal Biology Laboratory at Ocean University of China",
+      "status": "verified_in_local_zotero_cache",
+      "evidence": "Zotero key `9MCJDQGE`, attachment cache `D:/Zotero/zoteroData/storage/KPT9MVGB/.zotero-ft-cache`; local note `literature/wu2026_eswa_hab_edge_detection.md`",
+      "usable_wording_cn": "可写：ESWA 参考文献的数据由中国海洋大学相关微藻实验室提供。",
+      "forbidden_wording_cn": "不可写：Stage1 当前 2777 图像池已经被证明就是该 676 图边缘数据集。",
+      "missing_for_submission": "需要本项目自己的采集说明、物种清单和与 676 图边缘集的文件级对应关系。",
+      "boundary": "该字段只能用于借鉴数据描述结构，不能替代本项目数据证明。"
+    },
+    {
+      "item_id": "R02",
+      "source": "Wu et al. 2026 ESWA edge reference",
+      "field": "dataset_size_species",
+      "verified_value": "676 high-resolution microscopic images, 36 HAB species",
+      "status": "verified_in_local_zotero_cache",
+      "evidence": "Zotero key `9MCJDQGE`, attachment cache `D:/Zotero/zoteroData/storage/KPT9MVGB/.zotero-ft-cache`; line-level extraction documented by this audit.",
+      "usable_wording_cn": "可写：ESWA 参考文献报告 676 张 HAB 显微图像、36 个常见有害藻华物种。",
+      "forbidden_wording_cn": "不可写：我们的 2777 图像池自动包含或扩展该 676 图集合。",
+      "missing_for_submission": "需要文件名、原始编号或哈希层面的 overlap / subset 证明。",
+      "boundary": "676/36 是参考论文事实，不是 Stage1 当前数据集事实。"
+    },
+    {
+      "item_id": "R03",
+      "source": "Wu et al. 2026 ESWA edge reference",
+      "field": "acquisition_and_annotation",
+      "verified_value": "Olympus CX43 + Canon EOS 5D Mark IV, 400x, bright-field; LabelMe edge maps by two HAB experts",
+      "status": "verified_in_local_zotero_cache",
+      "evidence": "Zotero key `9MCJDQGE`, attachment cache `D:/Zotero/zoteroData/storage/KPT9MVGB/.zotero-ft-cache`",
+      "usable_wording_cn": "可借鉴写法：说明显微镜、相机、倍率、明场条件、专家交叉核验和分歧协商流程。",
+      "forbidden_wording_cn": "不可写：当前 Stage1 full-pool 已有同等专家标注或同一设备参数。",
+      "missing_for_submission": "需要本项目实际设备、倍率、拍摄协议、标注者资质和标注软件记录。",
+      "boundary": "如果 Stage1 只做增强，没有 GT edge 标注，不能照搬 edge annotation 描述。"
+    },
+    {
+      "item_id": "R04",
+      "source": "Wu et al. 2026 ESWA edge reference",
+      "field": "split_and_edge_protocol",
+      "verified_value": "473 train / 203 test, 70/30 species-level split; ODS/OIS/AP/AC edge evaluation; no NMS",
+      "status": "verified_in_local_zotero_cache",
+      "evidence": "Zotero key `9MCJDQGE`, attachment cache `D:/Zotero/zoteroData/storage/KPT9MVGB/.zotero-ft-cache`",
+      "usable_wording_cn": "可借鉴：若做 MyEdge/Stage1 coupling，优先报告 ODS/OIS/AP/AC、是否 NMS、split 单位和评估阈值。",
+      "forbidden_wording_cn": "不可写：Stage1 502/496 增强主表等价于 ESWA 的 203 张 edge test。",
+      "missing_for_submission": "需要 MyEdge 当前 168 张测试集与 ESWA 203 测试集的关系说明，或明确它们是不同本地协议。",
+      "boundary": "Stage1 增强指标与 edge ODS/OIS/AP/AC 是不同任务口径。"
+    },
+    {
+      "item_id": "R05",
+      "source": "Wu et al. 2026 EAAI segmentation reference",
+      "field": "dataset_source_size_split",
+      "verified_value": "AICO/OUC HAB microscopy dataset, 1026 images, 8:2 train/validation split",
+      "status": "verified_in_local_zotero_cache",
+      "evidence": "Zotero key `ZMUBCGCD`, attachment cache `D:/Zotero/zoteroData/storage/WU7DISPR/.zotero-ft-cache`; local note `literature/wu2026_eaai_hab_segmentation.md`",
+      "usable_wording_cn": "可写：EAAI 参考文献在同方向 HAB 显微分割任务中报告 1026 张数据和 8:2 划分。",
+      "forbidden_wording_cn": "不可写：Stage1 2777 图像池已经证明与 EAAI 1026 图分割集同一划分或同一标注集合。",
+      "missing_for_submission": "需要文件级 overlap、分割 mask 对应关系、训练/验证名单或数据登记表。",
+      "boundary": "1026/8:2 是参考论文事实；当前 Stage1 只能据本仓库写 2777/2774/2770。"
+    },
+    {
+      "item_id": "R06",
+      "source": "Wu et al. 2026 EAAI segmentation reference",
+      "field": "evidence_chain_to_borrow",
+      "verified_value": "task-oriented enhancement + segmentation coupling; enhancement ablation; boundary metrics; efficiency; cross-dataset and downstream analyses",
+      "status": "verified_in_local_zotero_cache",
+      "evidence": "Zotero key `ZMUBCGCD`, attachment cache `D:/Zotero/zoteroData/storage/WU7DISPR/.zotero-ft-cache`",
+      "usable_wording_cn": "可借鉴：把增强写成任务驱动结构输入，并用下游边界、效率、失败案例和应用指标支撑。",
+      "forbidden_wording_cn": "不可写：Stage1 已经完成这些 EAAI 风格下游分割或分类证据。",
+      "missing_for_submission": "需要 Stage1->MyEdge 固定 detector 结果、效率、失败案例、退化子集和至少一种应用级验证。",
+      "boundary": "只能借鉴证据链结构，不能把参考论文结果转写成我们自己的结果。"
+    },
+    {
+      "item_id": "R07",
+      "source": "Stage1Codex current full algae pool",
+      "field": "current_pool_counts",
+      "verified_value": {
+        "image_files_total": 2777,
+        "default_candidate_manifest": 2774,
+        "cv2_readable_candidate_manifest": 2770,
+        "decode_failures": 4
+      },
+      "status": "verified_in_repo",
+      "evidence": "`docs/full_enhancement_dataset_inventory_cn.md`; `metrics/manifests/full_algae_dewatermark_v1_audit.json`; `metrics/manifests/full_algae_dewatermark_v1.txt`; `metrics/manifests/full_algae_dewatermark_v1_cv2_readable_candidate.txt`",
+      "usable_wording_cn": "可写：本项目当前完整增强图像池为 2777 个图像文件，默认候选 2774，OpenCV 可读候选 2770。",
+      "forbidden_wording_cn": "不可写：full2770 已经完成增强，或 full2770 已替代正式 502/496 论文口径。",
+      "missing_for_submission": "需要人工复核后 clean manifest；如获授权，还需要 full2770 正式长跑和 intake 接收。",
+      "boundary": "当前 2770 是 cv2-readable candidate，不是 reviewed clean protocol。"
+    },
+    {
+      "item_id": "R08",
+      "source": "Stage1Codex current full algae pool",
+      "field": "manual_review_state",
+      "verified_value": {
+        "pending_rows": 544,
+        "clean_manifest_exists": false
+      },
+      "status": "verified_in_repo",
+      "evidence": "`metrics/manifests/full_algae_dewatermark_v1_manual_review/manual_review_validation_status_20260525.json`; `metrics/manifests/full_algae_dewatermark_v1_manual_review/derived_review_artifacts/reviewed_cv2_clean_manifest.txt` (missing)",
+      "usable_wording_cn": "可写：完整图像池仍有 544 条人工复核 pending，clean manifest 尚未生成。",
+      "forbidden_wording_cn": "不可写：重复/近重复/质量异常已经人工清洗完毕。",
+      "missing_for_submission": "需要人工填写 reviewer_decision 并派生 reviewed clean manifest。",
+      "boundary": "机助建议不能自动变成人工决策。"
+    },
+    {
+      "item_id": "R09",
+      "source": "Cross-dataset relation",
+      "field": "current_relation_status",
+      "verified_value": "same lab is user-reported; exact overlap with ESWA 676 or EAAI 1026 is unproven in local repo",
+      "status": "relation_unproven",
+      "evidence": "Current repo evidence: `docs/full_enhancement_dataset_inventory_cn.md`; reference metadata/cache: `D:/Zotero/zoteroData/storage/KPT9MVGB/.zotero-ft-cache`, `D:/Zotero/zoteroData/storage/WU7DISPR/.zotero-ft-cache`",
+      "usable_wording_cn": "可写：两篇参考论文提供了同方向同实验室 HAB 显微数据描述模板；本项目需另行给出 2777/2774/2770 图像池的本地证据。",
+      "forbidden_wording_cn": "不可写：本项目与两篇论文使用完全相同数据集、同一 split、同一 GT 标注或同一统计口径。",
+      "missing_for_submission": "需要文件级清单比对、哈希比对、原始采集编号、标注文件或实验室数据登记证明。",
+      "boundary": "这是当前最大数据描述边界。"
+    }
+  ]
+}

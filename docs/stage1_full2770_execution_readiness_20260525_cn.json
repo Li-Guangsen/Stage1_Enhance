@@ -1,0 +1,175 @@
+{
+  "generated_at": "2026-05-25T01:50:47",
+  "stage1_root": "D:\\Desktop\\Stage1Codex",
+  "source_root": "D:\\Desktop\\去水印所有藻类图像",
+  "no_experiment_executed": true,
+  "overall_status": "candidate_full2770_ready_after_explicit_approval_clean_protocol_blocked",
+  "candidate_run_ready_after_explicit_approval": true,
+  "expected_images": 2770,
+  "expected_output_files": 33240,
+  "free_space_gib": 96.15,
+  "source_status_files": {
+    "source_root": "D:\\Desktop\\去水印所有藻类图像",
+    "locked_config": "D:\\Desktop\\Stage1Codex\\experiments\\optimization_v1\\configs\\locked_full506_final_mainline.json",
+    "manifest": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\full_algae_dewatermark_v1_cv2_readable_candidate.txt",
+    "decode_summary": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\full_algae_dewatermark_v1_decode_audit.summary.json",
+    "manual_validation": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\manual_review_validation_status_20260525.json",
+    "derived_review": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\derived_review_artifacts\\review_artifacts_status_20260525.json",
+    "reviewed_clean_manifest": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\derived_review_artifacts\\reviewed_cv2_clean_manifest.txt",
+    "smoke_summary": "D:\\Desktop\\Stage1Codex\\experiments\\full-algae-dewatermark-v1\\outputs\\cv2readable2770\\runs\\smoke_summary.md",
+    "smoke10_completeness": "D:\\Desktop\\Stage1Codex\\experiments\\full-algae-dewatermark-v1\\outputs\\cv2readable2770\\runs\\smoke_limit10_locked_final_mainline_completeness.json",
+    "budget": "D:\\Desktop\\Stage1Codex\\experiments\\full-algae-dewatermark-v1\\run_budget_estimate.md",
+    "run_script": "D:\\Desktop\\Stage1Codex\\experiments\\full-algae-dewatermark-v1\\run_full_cv2readable2770_locked.ps1",
+    "intake_script": "D:\\Desktop\\Stage1Codex\\metrics\\scripts\\intake_stage1_fullpool_run_outputs.py",
+    "summarize_script": "D:\\Desktop\\Stage1Codex\\metrics\\scripts\\summarize_stage1_run_outputs.py",
+    "intake_status": "D:\\Desktop\\Stage1Codex\\experiments\\full-algae-dewatermark-v1\\outputs\\cv2readable2770\\runs\\full2770_locked_final_mainline_intake_status_20260525.json",
+    "output_dir": "D:\\Desktop\\Stage1Codex\\experiments\\full-algae-dewatermark-v1\\outputs\\cv2readable2770\\runs\\full2770_locked_final_mainline"
+  },
+  "manifest": {
+    "exists": true,
+    "raw_rows": 2770,
+    "unique_rows": 2770,
+    "duplicates": 0,
+    "first": "1、Akashiwo sanguinea-血红哈卡藻/0012_Akashiwo-sanguinea.jpg",
+    "last": "9、Gymnodinium catenatum-链状裸甲藻/vera_veloso_gymnodinium_catenatum_cruz_xxw_20070621133158_small.jpg"
+  },
+  "current_intake": {
+    "status": "not_started",
+    "output_dir_exists": false,
+    "log_exists": false,
+    "run_report_exists": false,
+    "present_output_files": 0,
+    "missing_output_files": 33240,
+    "no_main_py_execution": true
+  },
+  "clean_protocol_gate": {
+    "status": "blocked_pending_manual_review",
+    "manual_pending_rows": 544,
+    "manual_invalid_rows": 0,
+    "can_generate_clean_manifest": false,
+    "reviewed_clean_manifest_exists": false,
+    "boundary": "The cv2-readable 2770 run can be prepared as a candidate coverage run after explicit approval, but a reviewed clean full-pool protocol remains blocked until manual review is complete."
+  },
+  "prerequisites": [
+    {
+      "item_id": "F01",
+      "requirement": "External source root is available",
+      "satisfied": true,
+      "evidence": "D:\\Desktop\\去水印所有藻类图像",
+      "blocking_if_failed": "Stop before long run; the external full algae image pool is not accessible."
+    },
+    {
+      "item_id": "F02",
+      "requirement": "cv2-readable candidate manifest exists with 2770 unique rows",
+      "satisfied": true,
+      "evidence": "`metrics/manifests/full_algae_dewatermark_v1_cv2_readable_candidate.txt`; raw=2770; unique=2770; duplicates=0; first=1、Akashiwo sanguinea-血红哈卡藻/0012_Akashiwo-sanguinea.jpg; last=9、Gymnodinium catenatum-链状裸甲藻/vera_veloso_gymnodinium_catenatum_cruz_xxw_20070621133158_small.jpg",
+      "blocking_if_failed": "Stop before long run; rebuild or inspect the manifest."
+    },
+    {
+      "item_id": "F03",
+      "requirement": "Decode audit supports the cv2-readable candidate split",
+      "satisfied": true,
+      "evidence": "`metrics/manifests/full_algae_dewatermark_v1_decode_audit.summary.json`; candidate_rows=2774; readable=2770; decode_failures=4",
+      "blocking_if_failed": "Stop before long run; decode audit and manifest counts disagree."
+    },
+    {
+      "item_id": "F04",
+      "requirement": "Locked final mainline config and resumable run script are present and aligned",
+      "satisfied": true,
+      "evidence": "config=`experiments/optimization_v1/configs/locked_full506_final_mainline.json`; run_script=`experiments/full-algae-dewatermark-v1/run_full_cv2readable2770_locked.ps1`; has_locked_config=True; has_manifest=True; has_skip_existing=True",
+      "blocking_if_failed": "Stop before long run; the run script must explicitly pass the locked config and candidate manifest."
+    },
+    {
+      "item_id": "F05",
+      "requirement": "Smoke and completeness assets exist",
+      "satisfied": true,
+      "evidence": "`experiments/full-algae-dewatermark-v1/outputs/cv2readable2770/runs/smoke_summary.md`; `experiments/full-algae-dewatermark-v1/outputs/cv2readable2770/runs/smoke_limit10_locked_final_mainline_completeness.json`; all_complete=True",
+      "blocking_if_failed": "Stop before 2770 run; rerun or inspect smoke if completeness is not true."
+    },
+    {
+      "item_id": "F06",
+      "requirement": "Budget, summarizer and intake scripts are present",
+      "satisfied": true,
+      "evidence": "`experiments/full-algae-dewatermark-v1/run_budget_estimate.md`; `metrics/scripts/summarize_stage1_run_outputs.py`; `metrics/scripts/intake_stage1_fullpool_run_outputs.py`",
+      "blocking_if_failed": "Stop before long run; post-run intake must be available before execution."
+    },
+    {
+      "item_id": "F07",
+      "requirement": "Full2770 output root is not started",
+      "satisfied": true,
+      "evidence": "output=experiments/full-algae-dewatermark-v1/outputs/cv2readable2770/runs/full2770_locked_final_mainline; output_exists=False; intake_status=not_started; present_output_files=0; expected_output_files=33240",
+      "blocking_if_failed": "Stop and inspect existing outputs before starting or resuming the run."
+    },
+    {
+      "item_id": "F08",
+      "requirement": "Minimum disk-space recommendation is currently met",
+      "satisfied": true,
+      "evidence": "free_space_gib=96.15; minimum_recommended_gib=5; preferred_with_future_artifacts_gib=8-10",
+      "blocking_if_failed": "Stop before long run or free space; expected output is about 3.04 GiB plus logs/future artifacts."
+    }
+  ],
+  "future_execution_sequence": [
+    {
+      "step_id": "S0",
+      "title": "Optional read-only preflight refresh",
+      "command": "D:\\Desktop\\EdgeDetection\\my_env\\python.exe metrics\\scripts\\intake_stage1_fullpool_run_outputs.py",
+      "risk_level": "read_only",
+      "expected_evidence": "Updated intake status remains not_started before execution.",
+      "stop_rule": "If output root exists unexpectedly, stop and inspect before running main.py."
+    },
+    {
+      "step_id": "S1",
+      "title": "Run Stage1 cv2-readable 2770 candidate full run",
+      "command": "powershell -ExecutionPolicy Bypass -File experiments\\full-algae-dewatermark-v1\\run_full_cv2readable2770_locked.ps1",
+      "risk_level": "high_risk_long_run",
+      "expected_evidence": "full2770_locked_final_mainline output root, logs/full2770_locked_final_mainline.log, six stages x JPG/PNG outputs.",
+      "stop_rule": "Requires explicit user authorization; stop if free disk is below 5 GiB or the planned output root already contains mixed outputs."
+    },
+    {
+      "step_id": "S2",
+      "title": "Read-only post-run intake",
+      "command": "D:\\Desktop\\EdgeDetection\\my_env\\python.exe metrics\\scripts\\intake_stage1_fullpool_run_outputs.py",
+      "risk_level": "read_only_after_long_run",
+      "expected_evidence": "Intake status reaches core_outputs_complete or complete_with_log_and_run_report.",
+      "stop_rule": "Do not write completion claims while status is not_started or incomplete_or_in_progress."
+    },
+    {
+      "step_id": "S3",
+      "title": "Write run_report only after core outputs are complete",
+      "command": "D:\\Desktop\\EdgeDetection\\my_env\\python.exe metrics\\scripts\\intake_stage1_fullpool_run_outputs.py --write-run-report",
+      "risk_level": "guarded_report_write",
+      "expected_evidence": "output_dir/run_report.md exists and intake status reaches complete_with_log_and_run_report.",
+      "stop_rule": "The intake script refuses to write run_report unless core outputs are complete."
+    },
+    {
+      "step_id": "S4",
+      "title": "Decide whether to promote any full-pool evidence",
+      "command": "manual review plus document update; no command",
+      "risk_level": "human_decision",
+      "expected_evidence": "README/status/research-state/research-log updated only after intake and human review.",
+      "stop_rule": "Do not replace full502_clean_v1 or compare9_complete496_v1 without a separately accepted protocol."
+    }
+  ],
+  "acceptance_criteria": [
+    "Manifest raw and unique rows are exactly 2770.",
+    "Run command explicitly passes locked_full506_final_mainline.json and full_algae_dewatermark_v1_cv2_readable_candidate.txt.",
+    "Log exists at experiments/full-algae-dewatermark-v1/outputs/cv2readable2770/runs/full2770_locked_final_mainline/logs/full2770_locked_final_mainline.log.",
+    "Each of six stages has 2770 JPG and 2770 PNG outputs, for 33240 files total.",
+    "Final PNG decode sample succeeds after post-run intake.",
+    "run_report.md is generated only after core outputs are complete.",
+    "State docs and research-log are updated only after intake proves completion."
+  ],
+  "paper_boundaries": [
+    "Current status can only be written as candidate full2770 ready after explicit approval, not executed.",
+    "The four GIF89a-content files remain outside the cv2-readable run unless converted through a separate reviewed decision.",
+    "Manual review still blocks a reviewed clean full-pool manifest.",
+    "Full2770 coverage evidence does not replace the current formal full502_clean_v1 and compare9_complete496_v1 paper result protocols.",
+    "Full2770 enhancement outputs alone do not prove downstream edge gains; MyEdge GT validation is still required."
+  ],
+  "hard_stops": [
+    "Do not run the full2770 PowerShell script without explicit user authorization.",
+    "Do not use the candidate cv2-readable run as a reviewed clean manifest.",
+    "Do not claim 2770 completion before intake reaches complete_with_log_and_run_report.",
+    "Do not overwrite current formal 502/496 result directories."
+  ]
+}

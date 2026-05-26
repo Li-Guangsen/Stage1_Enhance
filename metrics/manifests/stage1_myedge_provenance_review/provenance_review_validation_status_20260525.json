@@ -1,0 +1,17 @@
+{
+  "generated_at": "2026-05-25T02:26:48",
+  "status": "pending_manual_provenance_review",
+  "template": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\stage1_myedge_provenance_review\\provenance_review_template.tsv",
+  "row_count": 1510,
+  "pending_count": 1510,
+  "reviewed_count": 0,
+  "invalid_count": 0,
+  "paper_positive_count": 0,
+  "decision_counts": {
+    "": 1510
+  },
+  "paper_use_counts": {
+    "": 1510
+  },
+  "boundary": "Validation checks fields only; it does not infer provenance or create a clean manifest."
+}

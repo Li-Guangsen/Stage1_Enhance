@@ -1,0 +1,35 @@
+{
+  "generated_at": "2026-05-25T01:26:39",
+  "queue_status": "ready_pending_manual_review",
+  "queue_rows": 544,
+  "expected_review_rows": 544,
+  "priority_counts": {
+    "P0": 7,
+    "P1": 134,
+    "P2": 403
+  },
+  "issue_type_counts": {
+    "decode_failure": 4,
+    "exact_duplicate_group": 3,
+    "near_duplicate_pair": 30,
+    "quality_outlier": 507
+  },
+  "machine_suggestion_counts": {
+    "exclude_from_opencv_fullpool": 4,
+    "deduplicate_for_clean_pool": 2,
+    "keep_but_split_guard": 11,
+    "needs_manual_visual_check": 18,
+    "mark_duplicate": 2,
+    "subset_label_only": 507
+  },
+  "pack_totals": {
+    "P0": 7,
+    "P1": 134,
+    "P2": 403
+  },
+  "validation_status": "pending_manual_review",
+  "derived_status": "pending_manual_review",
+  "can_generate_clean_manifest": false,
+  "queue_path": "metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\all_priority_review_queue.tsv",
+  "boundary": "This dashboard is a manual-review aid only. It does not fill reviewer decisions, change manifests, convert files, run enhancement, or replace formal 502/496 protocols."
+}

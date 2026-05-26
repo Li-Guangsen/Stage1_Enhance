@@ -1,6 +1,6 @@
 # 对比方法与结果索引（中文）
 
-更新时间：2026-04-24
+更新时间：2026-05-24
 
 ## 1. 正式参评集合
 
@@ -81,10 +81,23 @@
 - 当前总表已经统一到同一 complete-case 口径，可以正式引用
 - `MS_SSIM` 与 `PSNR` 在当前论文口径下应解释为增强结果相对原图的结构一致性，而不是相对增强真值的质量指标
 - `HVDualformer` 与 `ABC-Former` 仍属于白平衡方法，不能在 related work 中混写为标准水下增强方法
-- 当前对比结果是“增强指标总表”，还不是“增强 + 下游边缘验证”的完整闭环
+- 当前正式增强对比结果是“增强指标总表”，还不是“增强 + 下游边缘验证”的完整闭环
 - `WWPF` 的 496 样本实现边界必须在论文里如实说明
 
-## 6. 主表叙述策略
+## 6. 下游边缘结构代理补充
+
+当前已经额外生成一版无 GT 边缘结构代理结果，用于 Stage1 到 MyEdge 的衔接准备：
+
+- 输出根目录：`metrics/outputs/downstream_edge_validation/official_full502_mainline`
+- 阶段级代理：`stage_full502_proxy`，基于 `full502_clean_v1`，覆盖 `Original`、`BPH`、`IMF1Ray`、`RGHS`、`CLAHE`、`Fused`、`Final`
+- 外部对比代理：`compare9_complete496_proxy`，基于 `compare9_complete496_v1`，覆盖 `Original`、`Ours` 和 8 个外部增强方法
+- 说明文档：`docs/stage1_enhancement_to_edge_support_cn.md`
+
+该代理结果只统计 Sobel/Otsu 边缘响应、连通域与 skeleton 指标，可用于筛查候选图、失败案例和后续 MyEdge 输入集合。它不能替代带 GT 的 ODS/OIS/AP/AC 评测，也不能写成下游边缘检测精度已经提升。
+
+在 `compare9_complete496_proxy` 中，`HLRP`、`Histoformer` 与 `WWPF` 的边缘响应代理值更激进。该现象只能说明这些结果产生了更多边缘响应，不能直接解释为更高生物边界质量；结合当前 HAB 显微协议下的增强主表和定性观察，`HLRP` 与 `Histoformer` 仍只适合作为当前协议下的失败案例或补充分析。
+
+## 7. 主表叙述策略
 
 - 正式数值表继续保留全部 `9` 方法，不人为删除 `WWPF`、`HLRP` 或 `Histoformer`
 - 正文主讨论建议围绕 `Ours`、`HVDualformer`、`ABC-Former`、`GDCP`、`CBF`、`SGUIE-Net` 和 `WWPF` 展开
@@ -92,7 +105,7 @@
 - `HLRP` 与 `Histoformer` 虽保留在正式数值表中，但在正文层面更适合作为失败案例或补充分析，而不宜与稳健方法作同等层级的正向讨论
 - 上述区分都限定在当前 HAB 显微图像协议下，不应被写成对原论文方法在一般水下场景中的否定
 
-## 7. 当前推荐结果解读
+## 8. 当前推荐结果解读
 
 - `HVDualformer` 与 `ABC-Former` 的 `MS_SSIM/PSNR` 很高，说明它们与原图更接近，但 `EME`、`Contrast`、`AvgGra`、`UCIQE` 和 `UIQM` 普遍偏低，因此更适合作为保守白平衡基线，而不是强增强方法
 - `GDCP`、`CBF` 与 `SGUIE-Net` 代表中等增强强度的方法组，在结构一致性与视觉改善之间较为稳健，但综合增强收益仍弱于本文方法

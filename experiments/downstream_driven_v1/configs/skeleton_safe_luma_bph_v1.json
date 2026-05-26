@@ -1,0 +1,36 @@
+{
+  "pipeline": {
+    "save_intermediate_stages": false
+  },
+  "bph": {
+    "gray_s_thr": 20,
+    "lum_low": 0.15,
+    "lum_high": 0.85,
+    "pre_gain_clip": 1.5,
+    "red_gain_extra": 1.05,
+    "accc_alpha": 0.25,
+    "accc_delta_max": 0.1,
+    "brightness_scale_clip": [
+      0.95,
+      1.05
+    ]
+  },
+  "final": {
+    "mode": "boundary_aware_luma_bph",
+    "gamma": 1.0,
+    "contrast_alpha": 1.0,
+    "beta": 0.0,
+    "luma_alpha": 0.0,
+    "chroma_alpha": 0.04,
+    "denoise_alpha": 0.16,
+    "sharpen_alpha": 0.0,
+    "max_luma_delta": 3.0,
+    "grad_low_percentile": 60.0,
+    "grad_high_percentile": 92.0,
+    "mask_blur_ksize": 7,
+    "bilateral_d": 5,
+    "bilateral_sigma_color": 20.0,
+    "bilateral_sigma_space": 6.0,
+    "unsharp_sigma": 1.0
+  }
+}

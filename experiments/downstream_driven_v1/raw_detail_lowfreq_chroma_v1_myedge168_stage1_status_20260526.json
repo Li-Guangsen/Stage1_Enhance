@@ -1,0 +1,115 @@
+{
+  "date": "2026-05-26",
+  "variant": "raw_detail_lowfreq_chroma_v1",
+  "config": "experiments/downstream_driven_v1/configs/raw_detail_lowfreq_chroma_v1.json",
+  "final_mode": "raw_detail_lowfreq_chroma_bph",
+  "scope": {
+    "split": "MyEdge 168-image ALGAE split with GT",
+    "fixed_detectors": [
+      "msfi_50k",
+      "diffusionedge_baseline_50k"
+    ],
+    "full502_metrics_scope": "full502_clean_v1 and compare9_complete496_v1 enhancement metrics only",
+    "fullpool_2770": "not_entered",
+    "formal_mainline_overwritten": false,
+    "myedge_training_changed": false
+  },
+  "assets": {
+    "stage1_myedge168_output_root": "experiments/downstream_driven_v1/outputs/myedge168/raw_detail_lowfreq_chroma_v1",
+    "stage1_full502_output_root": "experiments/downstream_driven_v1/outputs/full502/raw_detail_lowfreq_chroma_v1",
+    "stage1_proxy_prescreen": "docs/stage1_myedge168_gt_edge_proxy_prescreen_p27_20260526_cn.md",
+    "myedge_preflight": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/raw_detail_lowfreq_chroma_p27_preflight_20260526.md",
+    "myedge_results": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/raw_detail_lowfreq_chroma_p27_results_20260526.md",
+    "myedge_structure_proxy": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/raw_detail_lowfreq_chroma_p27_structure_metrics_20260526.md",
+    "myedge_downstream_gate": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/raw_detail_lowfreq_chroma_p27_downstream_gate_20260526.md",
+    "full502_metrics": "metrics/outputs/evaluate_protocol_v2/downstream_driven_p27_full502_20260526",
+    "compare496_metrics": "metrics/outputs/evaluate_protocol_v2/downstream_driven_p27_compare496_20260526"
+  },
+  "readiness": {
+    "stage1_myedge168_final_png": 168,
+    "stage1_myedge168_final_jpg": 168,
+    "stage1_full502_final_png": 502,
+    "stage1_full502_final_jpg": 502,
+    "myedge_sampling_executed": true,
+    "wsl_eval_show_executed": true,
+    "result_intake_status": "complete_with_report_assets",
+    "structure_proxy_status": "complete",
+    "downstream_gate_decision": "candidate_metric_near_raw_structure_mixed"
+  },
+  "stage1_proxy_delta_vs_raw": {
+    "decision": "proxy_edge_safe_candidate",
+    "dF1": 0.000228,
+    "dFalse_edge_ratio": -0.000344,
+    "dEndpoints_per_1k_skel_px": 0.076285
+  },
+  "fixed_detector_metrics": {
+    "msfi_raw_anchor": {
+      "ods": 0.783527,
+      "ois": 0.794213,
+      "ap": 0.345899,
+      "ac": 0.796846
+    },
+    "msfi_p27": {
+      "ods": 0.783329,
+      "ois": 0.794822,
+      "ap": 0.346115,
+      "ac": 0.7951
+    },
+    "diffusionedge_baseline_raw_anchor": {
+      "ods": 0.770521,
+      "ois": 0.779986,
+      "ap": 0.363065,
+      "ac": 0.7969
+    },
+    "diffusionedge_baseline_p27": {
+      "ods": 0.772587,
+      "ois": 0.782971,
+      "ap": 0.372084,
+      "ac": 0.7949
+    }
+  },
+  "structure_proxy_delta_vs_raw": {
+    "msfi": {
+      "dF1": 0.000577,
+      "dFalse_edge_ratio": -0.013685,
+      "dEndpoints_per_1k_skel_px": -1.160557,
+      "structure_non_worse": true
+    },
+    "diffusionedge_baseline": {
+      "dF1": -0.000099,
+      "dFalse_edge_ratio": 0.003972,
+      "dEndpoints_per_1k_skel_px": -0.176182,
+      "structure_non_worse": false
+    }
+  },
+  "enhancement_metrics": {
+    "full502_clean_v1": {
+      "count": 502,
+      "eme": 2.554038,
+      "contrast": 26.220755,
+      "avggra": 2.768436,
+      "ms_ssim": 0.999026,
+      "psnr": 51.021551,
+      "uciqe": 2.225860,
+      "uiqm": 7.252755
+    },
+    "compare9_complete496_v1": {
+      "count": 496,
+      "eme": 2.443638,
+      "contrast": 24.875176,
+      "avggra": 2.702260,
+      "ms_ssim": 0.999019,
+      "psnr": 50.952416,
+      "uciqe": 2.250301,
+      "uiqm": 7.060930
+    }
+  },
+  "interpretation": [
+    "P27 preserves raw high-frequency/luma detail while moving only low-frequency illumination/chroma toward BPH evidence.",
+    "P27 rescues legacy Stage1 Final collapse and reaches metric-near-raw on both fixed detectors.",
+    "MSFI structure proxy is non-worse; DiffusionEdge baseline remains structure-mixed because false-edge ratio is worse than raw even though endpoints improve.",
+    "P27 is a candidate-pass diagnostic, not a strong pass or stable downstream-improving Stage1 mainline.",
+    "MS_SSIM and PSNR are relative structure consistency to original, not GT enhancement quality.",
+    "Do not run P27 on the 2770-image full pool from this gate alone."
+  ]
+}

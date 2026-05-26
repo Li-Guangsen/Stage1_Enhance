@@ -1,0 +1,170 @@
+{
+  "pipeline": {
+    "save_intermediate_stages": false
+  },
+  "bph": {
+    "gray_s_thr": 20,
+    "lum_low": 0.15,
+    "lum_high": 0.85,
+    "pre_gain_clip": 1.5,
+    "red_gain_extra": 1.05,
+    "accc_alpha": 0.25,
+    "accc_delta_max": 0.1,
+    "brightness_scale_clip": [
+      0.95,
+      1.05
+    ]
+  },
+  "final": {
+    "mode": "ac_guarded_weak_boundary_bph",
+    "base_params": {
+      "gamma": 1.0,
+      "contrast_alpha": 1.0,
+      "beta": 0.0,
+      "luma_alpha": 0.0,
+      "chroma_alpha": 0.05,
+      "denoise_alpha": 0.10,
+      "sharpen_alpha": 0.0,
+      "max_luma_delta": 2.4,
+      "grad_low_percentile": 49.0,
+      "grad_high_percentile": 89.5,
+      "mask_blur_ksize": 7,
+      "bilateral_d": 5,
+      "bilateral_sigma_color": 17.0,
+      "bilateral_sigma_space": 5.5,
+      "unsharp_sigma": 1.0
+    },
+    "candidate_params": {
+      "base_params": {
+        "gamma": 1.0,
+        "contrast_alpha": 1.0,
+        "beta": 0.0,
+        "luma_alpha": 0.0,
+        "chroma_alpha": 0.05,
+        "denoise_alpha": 0.10,
+        "sharpen_alpha": 0.0,
+        "max_luma_delta": 2.4,
+        "grad_low_percentile": 49.0,
+        "grad_high_percentile": 89.5,
+        "mask_blur_ksize": 7,
+        "bilateral_d": 5,
+        "bilateral_sigma_color": 17.0,
+        "bilateral_sigma_space": 5.5,
+        "unsharp_sigma": 1.0
+      },
+      "enhancement_params": {
+        "gamma_candidates": [
+          0.93,
+          0.965,
+          1.0
+        ],
+        "contrast_candidates": [
+          1.0,
+          1.03,
+          1.055
+        ],
+        "clahe_clip_candidates": [
+          1.10,
+          1.35
+        ],
+        "luma_alpha": 0.30,
+        "clahe_alpha": 0.14,
+        "retinex_alpha": 0.06,
+        "detail_alpha": 0.08,
+        "bph_detail_alpha": 0.026,
+        "denoise_alpha": 0.18,
+        "pseudoedge_suppress_alpha": 0.24,
+        "chroma_alpha": 0.10,
+        "max_luma_delta": 8.0,
+        "grad_low_percentile": 47.0,
+        "grad_high_percentile": 88.0,
+        "mask_blur_ksize": 7,
+        "clahe_tile_size": [
+          8,
+          8
+        ],
+        "bilateral_d": 5,
+        "bilateral_sigma_color": 18.0,
+        "bilateral_sigma_space": 6.0,
+        "detail_sigmas": [
+          0.8,
+          1.6
+        ],
+        "retinex_sigma": 18.0,
+        "background_weight": 0.56,
+        "delta_weight": 1.4,
+        "saturation_weight": 1.65,
+        "raw_edge_rescue_alpha": 0.34,
+        "raw_edge_rescue_power": 1.4,
+        "raw_global_blend_alpha": 0.09
+      },
+      "fusion_alpha": 0.44,
+      "structure_sharpen_alpha": 0.026,
+      "bph_structure_alpha": 0.010,
+      "background_denoise_alpha": 0.18,
+      "pseudoedge_suppress_alpha": 0.40,
+      "raw_strong_edge_rescue_alpha": 0.38,
+      "raw_global_blend_alpha": 0.10,
+      "chroma_fusion_alpha": 0.11,
+      "max_luma_delta": 5.8,
+      "local_std_sigma": 3.0,
+      "std_low_percentile": 22.0,
+      "std_high_percentile": 82.0,
+      "grad_low_percentile": 47.5,
+      "grad_high_percentile": 89.5,
+      "mask_blur_ksize": 7,
+      "detail_sigmas": [
+        0.8,
+        1.6
+      ],
+      "bilateral_d": 5,
+      "bilateral_sigma_color": 17.0,
+      "bilateral_sigma_space": 5.5
+    },
+    "prune_alpha": 0.74,
+    "line_prune_alpha": 0.68,
+    "background_prune_alpha": 0.40,
+    "background_denoise_alpha": 0.10,
+    "raw_strong_edge_rescue_alpha": 0.40,
+    "raw_strong_edge_power": 1.6,
+    "crisp_restore_alpha": 0.26,
+    "crisp_restore_power": 1.15,
+    "support_unsharp_alpha": 0.0,
+    "support_unsharp_sigma": 1.0,
+    "support_unsharp_power": 1.35,
+    "support_unsharp_max_delta": 2.2,
+    "raw_global_blend_alpha": 0.10,
+    "base_global_blend_alpha": 0.05,
+    "chroma_base_alpha": 0.08,
+    "chroma_candidate_alpha": 0.07,
+    "max_luma_delta": 4.8,
+    "raw_edge_dilate": 2,
+    "edge_support_blur": 5,
+    "small_component_max_area": 26,
+    "line_component_max_area": 80,
+    "line_component_max_minor_axis": 3,
+    "line_component_min_aspect_ratio": 2.0,
+    "local_std_sigma": 3.0,
+    "grad_low_percentile": 48.5,
+    "grad_high_percentile": 90.0,
+    "std_low_percentile": 22.0,
+    "std_high_percentile": 82.0,
+    "pseudoedge_margin": 0.030,
+    "guard_added_edge_ratio": 0.009,
+    "guard_background_grad_ratio": 0.992,
+    "guard_global_grad_ratio": 1.010,
+    "guard_support_grad_ratio": 0.990,
+    "guard_mean_abs_delta": 1.35,
+    "fallback_scales": [
+      1.0,
+      0.76,
+      0.56,
+      0.38,
+      0.20,
+      0.0
+    ],
+    "bilateral_d": 5,
+    "bilateral_sigma_color": 16.0,
+    "bilateral_sigma_space": 5.0
+  }
+}

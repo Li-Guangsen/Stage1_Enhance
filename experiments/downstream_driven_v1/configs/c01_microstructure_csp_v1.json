@@ -1,0 +1,50 @@
+{
+  "pipeline": {
+    "save_intermediate_stages": false
+  },
+  "bph": {
+    "gray_s_thr": 20,
+    "lum_low": 0.15,
+    "lum_high": 0.85,
+    "pre_gain_clip": 1.5,
+    "red_gain_extra": 1.05,
+    "accc_alpha": 0.25,
+    "accc_delta_max": 0.1,
+    "brightness_scale_clip": [
+      0.95,
+      1.05
+    ]
+  },
+  "final": {
+    "mode": "microstructure_csp_bph",
+    "wb_gain_cap": [
+      0.9,
+      1.1
+    ],
+    "channel_imbalance_skip": 0.03,
+    "wb_luma_alpha": 0.06,
+    "wb_chroma_alpha": 0.1,
+    "bph_chroma_alpha": 0.06,
+    "window_size": 31,
+    "contrast_alpha": 0.08,
+    "structure_alpha": 0.09,
+    "denoise_alpha": 0.08,
+    "max_luma_delta": 5.0,
+    "guard_ratio": 1.1,
+    "guard_local_var_ratio": 1.08,
+    "grad_low_percentile": 45.0,
+    "grad_high_percentile": 88.0,
+    "texture_low_percentile": 55.0,
+    "texture_high_percentile": 92.0,
+    "mask_blur_ksize": 5,
+    "bilateral_d": 5,
+    "bilateral_sigma_color": 16.0,
+    "bilateral_sigma_space": 5.0,
+    "detail_sigmas": [
+      1.0,
+      2.0
+    ],
+    "structure_power": 1.25,
+    "texture_risk_power": 1.2
+  }
+}

@@ -1,0 +1,319 @@
+{
+  "id": "full_algae_dewatermark_v1_decode_audit",
+  "status": "decode_dimension_audit_completed",
+  "generated_at": "2026-05-24T23:17:59",
+  "inventory": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\full_algae_dewatermark_v1_inventory.tsv",
+  "output_tsv": "metrics\\manifests\\full_algae_dewatermark_v1_decode_audit.tsv",
+  "output_tsv_name": "full_algae_dewatermark_v1_decode_audit.tsv",
+  "folder_summary_tsv": "metrics\\manifests\\full_algae_dewatermark_v1_decode_audit_folder_summary.tsv",
+  "summary_md": "metrics\\manifests\\full_algae_dewatermark_v1_decode_audit.summary.md",
+  "summary_json_name": "full_algae_dewatermark_v1_decode_audit.summary.json",
+  "readable_candidate_manifest": "metrics\\manifests\\full_algae_dewatermark_v1_cv2_readable_candidate.txt",
+  "readable_candidate_manifest_name": "full_algae_dewatermark_v1_cv2_readable_candidate.txt",
+  "failure_output": "metrics\\manifests\\full_algae_dewatermark_v1_decode_failures.tsv",
+  "failure_output_name": "full_algae_dewatermark_v1_decode_failures.tsv",
+  "limit": null,
+  "all_images": {
+    "rows": 2777,
+    "readable": 2773,
+    "decode_failures": 4,
+    "missing_files": 0,
+    "width_min": 67,
+    "width_max": 4096,
+    "height_min": 54,
+    "height_max": 4096,
+    "megapixels_min": 0.008308,
+    "megapixels_max": 15.581184,
+    "aspect_ratio_min": 0.19246032,
+    "aspect_ratio_max": 11.111111,
+    "extension_counts": {
+      ".jpeg": 34,
+      ".jpg": 2512,
+      ".png": 217,
+      ".webp": 14
+    },
+    "channel_counts": {
+      "3": 2517,
+      "4": 256
+    },
+    "dtype_counts": {
+      "uint8": 2773
+    },
+    "color_category_counts": {
+      "color_3ch": 2517,
+      "color_alpha_4ch": 256
+    },
+    "top_shapes": [
+      {
+        "shape": "450x450x3",
+        "count": 781
+      },
+      {
+        "shape": "600x800x4",
+        "count": 107
+      },
+      {
+        "shape": "675x900x3",
+        "count": 53
+      },
+      {
+        "shape": "548x752x3",
+        "count": 38
+      },
+      {
+        "shape": "375x500x3",
+        "count": 34
+      },
+      {
+        "shape": "350x400x3",
+        "count": 34
+      },
+      {
+        "shape": "400x533x3",
+        "count": 31
+      },
+      {
+        "shape": "580x800x3",
+        "count": 31
+      },
+      {
+        "shape": "1536x2048x3",
+        "count": 26
+      },
+      {
+        "shape": "297x396x3",
+        "count": 26
+      },
+      {
+        "shape": "600x800x3",
+        "count": 25
+      },
+      {
+        "shape": "480x640x3",
+        "count": 19
+      },
+      {
+        "shape": "338x600x3",
+        "count": 18
+      },
+      {
+        "shape": "1024x1360x3",
+        "count": 17
+      },
+      {
+        "shape": "300x400x3",
+        "count": 15
+      },
+      {
+        "shape": "532x800x3",
+        "count": 12
+      },
+      {
+        "shape": "500x500x3",
+        "count": 12
+      },
+      {
+        "shape": "508x680x3",
+        "count": 10
+      },
+      {
+        "shape": "1333x2000x3",
+        "count": 10
+      },
+      {
+        "shape": "515x639x3",
+        "count": 10
+      }
+    ],
+    "failed_examples": [
+      {
+        "relative_path": "46、Coscinodiscus asteromphalus-星脐圆筛藻-新补充-细胞表面排列规整-有中心但不是蛋白核/coscinodiscusasteromphalus_akw.jpg",
+        "absolute_path": "D:\\Desktop\\去水印所有藻类图像\\46、Coscinodiscus asteromphalus-星脐圆筛藻-新补充-细胞表面排列规整-有中心但不是蛋白核\\coscinodiscusasteromphalus_akw.jpg",
+        "error": "RuntimeError: cv2.imdecode returned None"
+      },
+      {
+        "relative_path": "47、Coscinodiscus radiatus-辐射圆筛藻 -新补充-细胞表面排列不规整-有中心但不是蛋白核/coscinodiscusradiatus_akw.jpg",
+        "absolute_path": "D:\\Desktop\\去水印所有藻类图像\\47、Coscinodiscus radiatus-辐射圆筛藻 -新补充-细胞表面排列不规整-有中心但不是蛋白核\\coscinodiscusradiatus_akw.jpg",
+        "error": "RuntimeError: cv2.imdecode returned None"
+      },
+      {
+        "relative_path": "55、Paralia sulcata-具槽帕拉藻/paraliasulcata_akw.jpg",
+        "absolute_path": "D:\\Desktop\\去水印所有藻类图像\\55、Paralia sulcata-具槽帕拉藻\\paraliasulcata_akw.jpg",
+        "error": "RuntimeError: cv2.imdecode returned None"
+      },
+      {
+        "relative_path": "8-5、Protoperidinium bipes-双刺原多甲藻-新补充/protoperidiniumbipes_akw.jpg",
+        "absolute_path": "D:\\Desktop\\去水印所有藻类图像\\8-5、Protoperidinium bipes-双刺原多甲藻-新补充\\protoperidiniumbipes_akw.jpg",
+        "error": "RuntimeError: cv2.imdecode returned None"
+      }
+    ]
+  },
+  "candidate_images": {
+    "rows": 2774,
+    "readable": 2770,
+    "decode_failures": 4,
+    "missing_files": 0,
+    "width_min": 67,
+    "width_max": 4096,
+    "height_min": 54,
+    "height_max": 4096,
+    "megapixels_min": 0.008308,
+    "megapixels_max": 15.581184,
+    "aspect_ratio_min": 0.19246032,
+    "aspect_ratio_max": 11.111111,
+    "extension_counts": {
+      ".jpeg": 34,
+      ".jpg": 2509,
+      ".png": 217,
+      ".webp": 14
+    },
+    "channel_counts": {
+      "3": 2514,
+      "4": 256
+    },
+    "dtype_counts": {
+      "uint8": 2770
+    },
+    "color_category_counts": {
+      "color_3ch": 2514,
+      "color_alpha_4ch": 256
+    },
+    "top_shapes": [
+      {
+        "shape": "450x450x3",
+        "count": 781
+      },
+      {
+        "shape": "600x800x4",
+        "count": 107
+      },
+      {
+        "shape": "675x900x3",
+        "count": 53
+      },
+      {
+        "shape": "548x752x3",
+        "count": 38
+      },
+      {
+        "shape": "375x500x3",
+        "count": 34
+      },
+      {
+        "shape": "350x400x3",
+        "count": 34
+      },
+      {
+        "shape": "400x533x3",
+        "count": 31
+      },
+      {
+        "shape": "580x800x3",
+        "count": 31
+      },
+      {
+        "shape": "1536x2048x3",
+        "count": 26
+      },
+      {
+        "shape": "297x396x3",
+        "count": 26
+      },
+      {
+        "shape": "600x800x3",
+        "count": 25
+      },
+      {
+        "shape": "480x640x3",
+        "count": 19
+      },
+      {
+        "shape": "338x600x3",
+        "count": 18
+      },
+      {
+        "shape": "1024x1360x3",
+        "count": 17
+      },
+      {
+        "shape": "300x400x3",
+        "count": 15
+      },
+      {
+        "shape": "532x800x3",
+        "count": 12
+      },
+      {
+        "shape": "500x500x3",
+        "count": 12
+      },
+      {
+        "shape": "508x680x3",
+        "count": 10
+      },
+      {
+        "shape": "1333x2000x3",
+        "count": 10
+      },
+      {
+        "shape": "515x639x3",
+        "count": 10
+      }
+    ],
+    "failed_examples": [
+      {
+        "relative_path": "46、Coscinodiscus asteromphalus-星脐圆筛藻-新补充-细胞表面排列规整-有中心但不是蛋白核/coscinodiscusasteromphalus_akw.jpg",
+        "absolute_path": "D:\\Desktop\\去水印所有藻类图像\\46、Coscinodiscus asteromphalus-星脐圆筛藻-新补充-细胞表面排列规整-有中心但不是蛋白核\\coscinodiscusasteromphalus_akw.jpg",
+        "error": "RuntimeError: cv2.imdecode returned None"
+      },
+      {
+        "relative_path": "47、Coscinodiscus radiatus-辐射圆筛藻 -新补充-细胞表面排列不规整-有中心但不是蛋白核/coscinodiscusradiatus_akw.jpg",
+        "absolute_path": "D:\\Desktop\\去水印所有藻类图像\\47、Coscinodiscus radiatus-辐射圆筛藻 -新补充-细胞表面排列不规整-有中心但不是蛋白核\\coscinodiscusradiatus_akw.jpg",
+        "error": "RuntimeError: cv2.imdecode returned None"
+      },
+      {
+        "relative_path": "55、Paralia sulcata-具槽帕拉藻/paraliasulcata_akw.jpg",
+        "absolute_path": "D:\\Desktop\\去水印所有藻类图像\\55、Paralia sulcata-具槽帕拉藻\\paraliasulcata_akw.jpg",
+        "error": "RuntimeError: cv2.imdecode returned None"
+      },
+      {
+        "relative_path": "8-5、Protoperidinium bipes-双刺原多甲藻-新补充/protoperidiniumbipes_akw.jpg",
+        "absolute_path": "D:\\Desktop\\去水印所有藻类图像\\8-5、Protoperidinium bipes-双刺原多甲藻-新补充\\protoperidiniumbipes_akw.jpg",
+        "error": "RuntimeError: cv2.imdecode returned None"
+      }
+    ]
+  },
+  "root_level_images": {
+    "rows": 3,
+    "readable": 3,
+    "decode_failures": 0,
+    "missing_files": 0,
+    "width_min": 1144,
+    "width_max": 1144,
+    "height_min": 856,
+    "height_max": 856,
+    "megapixels_min": 0.979264,
+    "megapixels_max": 0.979264,
+    "aspect_ratio_min": 1.3364486,
+    "aspect_ratio_max": 1.3364486,
+    "extension_counts": {
+      ".jpg": 3
+    },
+    "channel_counts": {
+      "3": 3
+    },
+    "dtype_counts": {
+      "uint8": 3
+    },
+    "color_category_counts": {
+      "color_3ch": 3
+    },
+    "top_shapes": [
+      {
+        "shape": "856x1144x3",
+        "count": 3
+      }
+    ],
+    "failed_examples": []
+  }
+}

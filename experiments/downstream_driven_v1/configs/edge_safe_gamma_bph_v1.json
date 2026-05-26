@@ -1,0 +1,26 @@
+{
+  "pipeline": {
+    "save_intermediate_stages": false
+  },
+  "bph": {
+    "gray_s_thr": 20,
+    "lum_low": 0.15,
+    "lum_high": 0.85,
+    "pre_gain_clip": 1.5,
+    "red_gain_extra": 1.05,
+    "accc_alpha": 0.25,
+    "accc_delta_max": 0.1,
+    "brightness_scale_clip": [
+      0.95,
+      1.05
+    ]
+  },
+  "final": {
+    "mode": "edge_safe_gamma_bph",
+    "gamma": 0.95,
+    "contrast_alpha": 1.02,
+    "beta": 0.0,
+    "luma_alpha": 0.25,
+    "chroma_alpha": 0.1
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "generated_at": "2026-05-25T01:29:05",
+  "review_sheet": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\all_manual_review_issues.tsv",
+  "overall_status": "pending_manual_review",
+  "total_rows": 544,
+  "pending_rows": 544,
+  "reviewed_rows": 0,
+  "needs_followup_rows": 0,
+  "invalid_rows": 0,
+  "status_counts": {
+    "pending": 544
+  },
+  "issue_type_counts": {
+    "decode_failure": 4,
+    "exact_duplicate_group": 3,
+    "near_duplicate_pair": 30,
+    "quality_outlier": 507
+  },
+  "priority_counts": {
+    "P0": 7,
+    "P1": 134,
+    "P2": 403
+  },
+  "decision_counts": {},
+  "invalid_output": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\manual_review_invalid_rows_20260525.tsv",
+  "boundary": "This validation report only checks manual review fields. It does not clean data, change manifests, convert files, run enhancement, or replace formal 502/496 protocols."
+}

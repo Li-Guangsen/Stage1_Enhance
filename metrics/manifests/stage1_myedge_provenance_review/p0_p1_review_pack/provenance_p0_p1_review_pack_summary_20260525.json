@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-05-25T02:40:52",
+  "status": "review_aid_ready_pending_manual_decision",
+  "queue": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\stage1_myedge_provenance_review\\provenance_priority_review_queue.tsv",
+  "row_count": 208,
+  "priority_counts": {
+    "P0": 126,
+    "P1": 82
+  },
+  "relation_scope_counts": {
+    "myedge_raw_to_fullpool_visual_candidate": 8,
+    "myedge_raw_to_stage1_original_same_filename": 160,
+    "stage1_original_to_fullpool_visual_candidate": 40
+  },
+  "candidate_band_counts": {
+    "exact_or_reencoded_visual_candidate": 11,
+    "possible_visual_candidate": 37,
+    "strong_visual_candidate": 160
+  },
+  "contact_sheet_count": 54,
+  "reviewer_decision_filled": 0,
+  "reviewer_decision_pending": 208,
+  "contact_sheet_dir": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\stage1_myedge_provenance_review\\p0_p1_review_pack\\contact_sheets",
+  "pack_index_tsv": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\stage1_myedge_provenance_review\\p0_p1_review_pack\\provenance_p0_p1_review_pack_index.tsv",
+  "boundary": "This pack is a manual review aid only and does not confirm provenance."
+}

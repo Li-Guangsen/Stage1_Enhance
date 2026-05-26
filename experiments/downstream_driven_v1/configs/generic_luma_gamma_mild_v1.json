@@ -1,0 +1,12 @@
+{
+  "pipeline": {
+    "save_intermediate_stages": false
+  },
+  "final": {
+    "mode": "generic_luma_gamma",
+    "gamma": 0.95,
+    "contrast_alpha": 1.03,
+    "beta": 0.0,
+    "luma_alpha": 0.35
+  }
+}

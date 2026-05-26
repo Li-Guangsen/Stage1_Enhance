@@ -1,0 +1,68 @@
+{
+  "pipeline": {
+    "save_intermediate_stages": false
+  },
+  "bph": {
+    "gray_s_thr": 20,
+    "lum_low": 0.15,
+    "lum_high": 0.85,
+    "pre_gain_clip": 1.5,
+    "red_gain_extra": 1.05,
+    "accc_alpha": 0.25,
+    "accc_delta_max": 0.1,
+    "brightness_scale_clip": [
+      0.95,
+      1.05
+    ]
+  },
+  "final": {
+    "mode": "raw_detail_lowfreq_chroma_bph",
+    "low_sigma": 11.0,
+    "chroma_sigma": 13.0,
+    "gamma_candidates": [
+      0.97,
+      1.0,
+      1.03
+    ],
+    "contrast_candidates": [
+      0.995,
+      1.0,
+      1.012
+    ],
+    "luma_alpha": 0.16,
+    "bph_low_luma_alpha": 0.035,
+    "detail_scale": 1.0,
+    "background_detail_dampen": 0.045,
+    "background_denoise_alpha": 0.030,
+    "support_rescue_alpha": 0.52,
+    "support_rescue_power": 1.42,
+    "raw_global_blend_alpha": 0.055,
+    "max_luma_delta": 2.8,
+    "chroma_alpha": 0.18,
+    "chroma_edge_protect": 0.78,
+    "max_chroma_delta": 5.5,
+    "grad_low_percentile": 49.2,
+    "grad_high_percentile": 90.6,
+    "local_std_sigma": 3.0,
+    "std_low_percentile": 22.0,
+    "std_high_percentile": 82.0,
+    "support_dilate": 2,
+    "support_blur": 5,
+    "guard_added_edge_ratio": 0.0042,
+    "guard_background_grad_ratio": 0.997,
+    "guard_global_grad_ratio": 1.003,
+    "guard_support_grad_ratio": 0.996,
+    "guard_mean_abs_delta": 0.78,
+    "fallback_scales": [
+      1.0,
+      0.76,
+      0.52,
+      0.30,
+      0.12,
+      0.0
+    ],
+    "bilateral_d": 5,
+    "bilateral_sigma_color": 13.0,
+    "bilateral_sigma_space": 4.5
+  }
+}

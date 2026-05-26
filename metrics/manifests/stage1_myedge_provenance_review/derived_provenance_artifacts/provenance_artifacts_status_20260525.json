@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-05-25T02:31:01",
+  "template": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\stage1_myedge_provenance_review\\provenance_review_template.tsv",
+  "output_dir": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\stage1_myedge_provenance_review\\derived_provenance_artifacts",
+  "status": "pending_manual_provenance_review",
+  "row_count": 1510,
+  "pending_count": 1510,
+  "reviewed_count": 0,
+  "invalid_count": 0,
+  "positive_relation_count": 0,
+  "paper_usable_relation_count": 0,
+  "negative_or_uncertain_count": 0,
+  "confirmed_original_id_count": 0,
+  "split_leakage_guard_candidate_count": 0,
+  "can_generate_final_provenance": false,
+  "outputs": {
+    "positive": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\stage1_myedge_provenance_review\\derived_provenance_artifacts\\confirmed_positive_relations.tsv",
+    "paper": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\stage1_myedge_provenance_review\\derived_provenance_artifacts\\paper_usable_provenance_relations.tsv",
+    "negative": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\stage1_myedge_provenance_review\\derived_provenance_artifacts\\reviewed_negative_or_uncertain_relations.tsv",
+    "map": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\stage1_myedge_provenance_review\\derived_provenance_artifacts\\confirmed_original_id_map.tsv",
+    "guard": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\stage1_myedge_provenance_review\\derived_provenance_artifacts\\split_leakage_guard_candidates.tsv",
+    "invalid": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\stage1_myedge_provenance_review\\derived_provenance_artifacts\\provenance_artifacts_invalid_rows_20260525.tsv"
+  },
+  "boundary": "Derived artifacts are final only when can_generate_final_provenance is true. Pending or invalid review rows keep all provenance claims blocked."
+}

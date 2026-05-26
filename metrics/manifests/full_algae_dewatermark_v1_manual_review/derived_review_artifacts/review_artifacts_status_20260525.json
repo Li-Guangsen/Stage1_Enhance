@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-05-25T01:29:05",
+  "review_sheet": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\all_manual_review_issues.tsv",
+  "base_cv2_manifest": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\full_algae_dewatermark_v1_cv2_readable_candidate.txt",
+  "output_dir": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\derived_review_artifacts",
+  "overall_status": "pending_manual_review",
+  "can_generate_clean_manifest": false,
+  "total_rows": 544,
+  "pending_rows": 544,
+  "needs_followup_rows": 0,
+  "invalid_rows": 0,
+  "unresolved_decision_rows": 0,
+  "status_counts": {
+    "pending": 544
+  },
+  "decision_counts": {},
+  "conversion_rows": 0,
+  "exclusion_rows": 0,
+  "deduplicate_drop_rows": 0,
+  "split_guard_rows": 0,
+  "subset_label_rows": 0,
+  "conversion_candidates_tsv": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\derived_review_artifacts\\conversion_candidates.tsv",
+  "exclusion_candidates_tsv": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\derived_review_artifacts\\exclusion_candidates.tsv",
+  "deduplicate_drop_candidates_tsv": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\derived_review_artifacts\\deduplicate_drop_candidates.tsv",
+  "split_leakage_guard_candidates_tsv": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\derived_review_artifacts\\split_leakage_guard_candidates.tsv",
+  "subset_label_candidates_tsv": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\derived_review_artifacts\\subset_label_candidates.tsv",
+  "invalid_rows_tsv": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\derived_review_artifacts\\invalid_rows.tsv",
+  "reviewed_clean_manifest": "",
+  "boundary": "Derived artifacts are valid only after manual review decisions are complete and validated. This script does not edit source images, convert files, run enhancement, or replace formal 502/496 protocols."
+}

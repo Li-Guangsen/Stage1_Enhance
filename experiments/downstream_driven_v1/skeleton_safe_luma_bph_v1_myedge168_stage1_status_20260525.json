@@ -1,0 +1,14 @@
+{
+  "status": "complete",
+  "date": "2026-05-25",
+  "scope": "myedge168",
+  "variant": "skeleton_safe_luma_bph_v1",
+  "config": "experiments/downstream_driven_v1/configs/skeleton_safe_luma_bph_v1.json",
+  "output_root": "experiments\\downstream_driven_v1\\outputs\\myedge168\\skeleton_safe_luma_bph_v1",
+  "final_png_count": 168,
+  "final_jpg_count": 168,
+  "non_final_stage_file_count": 0,
+  "decoded_final_png_count": 168,
+  "decode_failures": [],
+  "boundary": "Stage1 output readiness only; no MyEdge sampling/eval/show, detector metrics, or training were run."
+}

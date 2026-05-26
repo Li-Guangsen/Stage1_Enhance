@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-05-25T00:39:03",
+  "inventory": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\full_algae_dewatermark_v1_inventory.tsv",
+  "rows_total": 2777,
+  "candidate_rows": 2774,
+  "hash_readable_total": 2777,
+  "hash_unreadable_total": 0,
+  "candidate_hash_readable": 2774,
+  "candidate_hash_unreadable": 0,
+  "decoder_counts": {
+    "cv2": 2773,
+    "pillow_fallback": 4
+  },
+  "exact_file_duplicate_groups": 3,
+  "exact_file_duplicate_images": 6,
+  "candidate_exact_file_duplicate_images": 6,
+  "exact_gray_duplicate_groups": 3,
+  "exact_gray_duplicate_images": 6,
+  "candidate_exact_gray_duplicate_images": 6,
+  "near_duplicate_pair_thresholds": {
+    "phash_hamming_max": 4,
+    "dhash_hamming_max": 8
+  },
+  "near_duplicate_pairs_total": 30,
+  "near_duplicate_pairs_reported": 30,
+  "near_duplicate_pairs_truncated": false,
+  "near_duplicate_pairs_max_reported": 5000,
+  "boundary": "Near-duplicate pairs are candidates for manual review, not automatic removal decisions. This audit does not change the current formal 502/496 protocols and does not run enhancement."
+}

@@ -1,0 +1,89 @@
+{
+  "date": "2026-05-25",
+  "variant": "calibrated_pyramid_frequency_v1",
+  "status": "candidate_rescues_legacy_but_not_near_raw",
+  "config": "experiments/downstream_driven_v1/configs/calibrated_pyramid_frequency_v1.json",
+  "myedge168_output_root": "experiments/downstream_driven_v1/outputs/myedge168/calibrated_pyramid_frequency_v1",
+  "stage1_counts": {
+    "final_png": 168,
+    "final_jpg": 168,
+    "non_final_stage_files": 0,
+    "decoded_final_png": 168
+  },
+  "myedge_fixed_detector_metrics": {
+    "msfi_raw_anchor": {
+      "ods": 0.783527,
+      "ois": 0.794213,
+      "ap": 0.345899,
+      "ac": 0.796846
+    },
+    "msfi_p13": {
+      "ods": 0.784769,
+      "ois": 0.796472,
+      "ap": 0.345621,
+      "ac": 0.7932
+    },
+    "diffusionedge_baseline_raw_anchor": {
+      "ods": 0.770521,
+      "ois": 0.779986,
+      "ap": 0.363065,
+      "ac": 0.7969
+    },
+    "diffusionedge_baseline_p13": {
+      "ods": 0.774132,
+      "ois": 0.786695,
+      "ap": 0.369667,
+      "ac": 0.7917
+    }
+  },
+  "structure_proxy_delta_vs_raw": {
+    "msfi": {
+      "f1": 0.0013,
+      "precision": 0.0106,
+      "recall": -0.0073,
+      "false_edge_ratio": -0.0106,
+      "components_per_1k_skel_px": -0.3301,
+      "endpoints_per_1k_skel_px": -1.2913
+    },
+    "diffusionedge_baseline": {
+      "f1": -0.0002,
+      "precision": 0.0012,
+      "recall": -0.0011,
+      "false_edge_ratio": -0.0012,
+      "components_per_1k_skel_px": -0.5689,
+      "endpoints_per_1k_skel_px": -1.2643
+    }
+  },
+  "enhancement_metrics": {
+    "full502_clean_v1": {
+      "p13": {
+        "count": 502,
+        "eme": 2.837947,
+        "contrast": 31.686172,
+        "avggra": 3.091810,
+        "ms_ssim": 0.997415,
+        "psnr": 46.769593,
+        "uciqe": 2.257257,
+        "uiqm": 7.868968
+      }
+    },
+    "compare9_complete496_v1": {
+      "p13": {
+        "count": 496,
+        "eme": 2.732427,
+        "contrast": 30.255113,
+        "avggra": 3.025835,
+        "ms_ssim": 0.997397,
+        "psnr": 46.786504,
+        "uciqe": 2.282007,
+        "uiqm": 7.689745
+      }
+    }
+  },
+  "boundary": [
+    "P13 rescues the legacy Stage1 Final collapse but is not a strong pass.",
+    "P13 is more conservative than P12 in enhancement metrics and remains much weaker than FormalFinal in EME, Contrast, AvgGra, UCIQE, and UIQM.",
+    "Do not expand P13 to the 2770-image full pool.",
+    "Do not write P13 as a stable downstream-improving mainline."
+  ]
+}

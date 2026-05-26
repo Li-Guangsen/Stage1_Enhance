@@ -1,0 +1,111 @@
+{
+  "date": "2026-05-26",
+  "status": "complete_weak_candidate_not_strong",
+  "variant": "d01_structure_flow_v1",
+  "protocol": "downstream_driven_v2",
+  "final_mode": "downstream_d01_structure_flow_bph",
+  "config": "experiments/downstream_driven_v2/configs/d01_structure_flow_v1.json",
+  "stage1_time_seconds": 24.04,
+  "counts": {
+    "stage1_final_png": 168,
+    "stage1_final_jpg": 168,
+    "myedge_msfi_png": 168,
+    "myedge_msfi_mat": 168,
+    "myedge_msfi_nms": 168,
+    "myedge_msfi_white": 168,
+    "myedge_msfi_overlay": 168,
+    "myedge_msfi_error_map": 168,
+    "myedge_diffusionedge_baseline_png": 168,
+    "myedge_diffusionedge_baseline_mat": 168,
+    "myedge_diffusionedge_baseline_nms": 168,
+    "myedge_diffusionedge_baseline_white": 168,
+    "myedge_diffusionedge_baseline_overlay": 168,
+    "myedge_diffusionedge_baseline_error_map": 168
+  },
+  "artifacts": {
+    "method_design_audit": "docs/downstream_driven_v2_d01_method_design_and_audit_20260526_cn.md",
+    "protocol": "experiments/downstream_driven_v2/protocol.md",
+    "stage1_output_root": "experiments/downstream_driven_v2/outputs/myedge168/d01_structure_flow_v1",
+    "stage1_proxy_prescreen_md": "docs/stage1_myedge168_gt_edge_proxy_prescreen_d01_20260526_cn.md",
+    "stage1_proxy_prescreen_json": "docs/stage1_myedge168_gt_edge_proxy_prescreen_d01_20260526_cn.json",
+    "myedge_preflight": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/d01_structure_flow_d01_preflight_20260526.md",
+    "myedge_results": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/d01_structure_flow_d01_results_20260526.md",
+    "myedge_structure_proxy": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/d01_structure_flow_d01_structure_metrics_20260526.md",
+    "myedge_downstream_gate": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/d01_structure_flow_d01_downstream_gate_20260526.md",
+    "myedge_eval_show_script": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/run_d01_structure_flow_d01_eval_show_20260526.sh"
+  },
+  "stage1_proxy_delta_vs_raw": {
+    "decision": "proxy_edge_safe_candidate",
+    "dF1": 0.000590,
+    "dPrecision": 0.000672,
+    "dRecall": -0.000025,
+    "dFalse_edge_ratio": -0.000672,
+    "dEndpoints_per_1k_skel_px": 0.482890,
+    "dMeanAbsLuma": 0.771249
+  },
+  "fixed_detector_metrics": {
+    "msfi_50k_raw_anchor": {
+      "ods": 0.783527,
+      "ois": 0.794213,
+      "ap": 0.345899,
+      "ac": 0.796846
+    },
+    "msfi_50k_d01": {
+      "ods": 0.783871,
+      "ois": 0.795067,
+      "ap": 0.346008,
+      "ac": 0.7934
+    },
+    "diffusionedge_baseline_50k_raw_anchor": {
+      "ods": 0.770521,
+      "ois": 0.779986,
+      "ap": 0.363065,
+      "ac": 0.7969
+    },
+    "diffusionedge_baseline_50k_d01": {
+      "ods": 0.771730,
+      "ois": 0.783218,
+      "ap": 0.371149,
+      "ac": 0.7948
+    }
+  },
+  "structure_proxy_delta_vs_raw": {
+    "msfi_50k": {
+      "dF1": 0.000343,
+      "dPrecision": 0.013767,
+      "dRecall": -0.012194,
+      "dFalse_edge_ratio": -0.013767,
+      "dEndpoints_per_1k_skel_px": -1.140514,
+      "structure_non_worse": true
+    },
+    "diffusionedge_baseline_50k": {
+      "dF1": -0.000327,
+      "dPrecision": -0.005265,
+      "dRecall": 0.004194,
+      "dFalse_edge_ratio": 0.005265,
+      "dEndpoints_per_1k_skel_px": 0.353641,
+      "structure_non_worse": false
+    }
+  },
+  "gate": {
+    "strict_script_decision": "candidate_rescues_legacy_but_not_near_raw",
+    "goal_level_decision": "weak_candidate_pass_not_strong",
+    "reason": [
+      "D01 rescues legacy Stage1 Final collapse on both fixed detectors.",
+      "MSFI ODS/OIS/AP are slightly above raw anchor, but AC is below raw by 0.003446 and misses the strict 0.003 near-raw tolerance.",
+      "DiffusionEdge baseline is metric-near-raw, but false-edge ratio and endpoints remain worse than raw in structure proxy.",
+      "D01 is mechanism-complete diagnostic evidence, not a stable downstream-benefit claim."
+    ]
+  },
+  "scope": {
+    "myedge_168_run": true,
+    "full502_run": false,
+    "compare496_run": false,
+    "fullpool_2770_run": false,
+    "myedge_training_changed": false,
+    "checkpoints_changed": false,
+    "gt_changed": false,
+    "eval_protocol_changed": false,
+    "formal_mainline_overwritten": false
+  }
+}

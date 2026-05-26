@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-05-25T01:09:26",
+  "near_duplicate_pair_rows": 9,
+  "quality_outlier_rows": 125,
+  "total_p1_rows": 134,
+  "review_status": "recommendations_only_pending_manual_review",
+  "recommendations_path": "metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\p1_review_pack\\p1_review_recommendations.tsv",
+  "near_duplicate_contact_sheet_path": "metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\p1_review_pack\\p1_near_duplicate_contact_sheet.png",
+  "quality_contact_sheet_paths": [
+    "metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\p1_review_pack\\p1_quality_contact_sheet_001.png",
+    "metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\p1_review_pack\\p1_quality_contact_sheet_002.png",
+    "metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\p1_review_pack\\p1_quality_contact_sheet_003.png",
+    "metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\p1_review_pack\\p1_quality_contact_sheet_004.png"
+  ],
+  "boundary": "Machine suggestions are not reviewer decisions. This pack does not change manifests, convert files, delete images, run enhancement, or replace formal 502/496 protocols."
+}

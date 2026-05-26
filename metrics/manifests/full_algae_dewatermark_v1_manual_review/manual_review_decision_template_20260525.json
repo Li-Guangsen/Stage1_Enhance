@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-05-25T01:26:17",
+  "template_status": "ready_for_human_fill",
+  "template_rows": 544,
+  "expected_review_rows": 544,
+  "priority_counts": {
+    "P0": 7,
+    "P1": 134,
+    "P2": 403
+  },
+  "decision_template": "metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\manual_review_decision_template.tsv",
+  "summary_json": "metrics\\manifests\\full_algae_dewatermark_v1_manual_review\\manual_review_decision_template_20260525.json",
+  "boundary": "This template is for human decisions only. It does not apply decisions, change manifests, run enhancement, or replace formal 502/496 protocols."
+}

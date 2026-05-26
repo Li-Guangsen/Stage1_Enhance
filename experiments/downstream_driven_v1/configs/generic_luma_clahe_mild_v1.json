@@ -1,0 +1,14 @@
+{
+  "pipeline": {
+    "save_intermediate_stages": false
+  },
+  "final": {
+    "mode": "generic_luma_clahe",
+    "clip_limit": 1.2,
+    "tile_size": [
+      8,
+      8
+    ],
+    "luma_alpha": 0.25
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "date": "2026-05-25",
+  "status": "stage1_myedge168_outputs_ready_not_downstream_evaluated",
+  "variant": "edge_safe_gamma_bph_v1",
+  "config": "experiments/downstream_driven_v1/configs/edge_safe_gamma_bph_v1.json",
+  "final_mode": "edge_safe_gamma_bph",
+  "input_root": "D:/Desktop/MyEdgeCodex/input_test/algae",
+  "output_root": "experiments/downstream_driven_v1/outputs/myedge168/edge_safe_gamma_bph_v1",
+  "log": "experiments/downstream_driven_v1/logs/edge_safe_gamma_bph_v1_myedge168_stage1.log",
+  "scope_images": 168,
+  "final_png_count": 168,
+  "final_jpg_count": 168,
+  "non_final_stage_file_count": 0,
+  "decoded_final_png_count": 168,
+  "myedge_sampling_executed": false,
+  "wsl_eval_show_executed": false,
+  "training_executed": false,
+  "metric_recomputation_executed": false,
+  "boundary": [
+    "Stage1 output readiness only; no downstream ODS/OIS/AP/AC evidence.",
+    "Does not replace the locked full506 formal mainline.",
+    "Next gate is fixed-detector MyEdge evaluation after explicit high-risk approval."
+  ]
+}

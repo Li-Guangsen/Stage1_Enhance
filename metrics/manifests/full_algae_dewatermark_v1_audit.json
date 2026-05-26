@@ -1,0 +1,35 @@
+{
+  "id": "full_algae_dewatermark_v1",
+  "status": "candidate_full_pool_manifest_for_audit_not_formal_evaluation_protocol",
+  "source_root": "D:\\Desktop\\去水印所有藻类图像",
+  "generated_at": "2026-05-24",
+  "total_files": 2785,
+  "top_level_directories": 80,
+  "image_files_total": 2777,
+  "image_files_under_top_level_directories": 2774,
+  "root_level_images_excluded_from_candidate": 3,
+  "candidate_manifest": "metrics/manifests/full_algae_dewatermark_v1.txt",
+  "candidate_manifest_count": 2774,
+  "inventory_tsv": "metrics/manifests/full_algae_dewatermark_v1_inventory.tsv",
+  "folder_counts_tsv": "metrics/manifests/full_algae_dewatermark_v1_folder_counts.tsv",
+  "root_files_tsv": "metrics/manifests/full_algae_dewatermark_v1_root_files.tsv",
+  "extensions": {
+    ".png": 217,
+    ".webp": 14,
+    ".jpg": 2512,
+    ".jpeg": 34
+  },
+  "duplicate_basename_groups": 28,
+  "duplicate_basename_images": 122,
+  "zero_byte_images": 0,
+  "under_1kb_images": 0,
+  "existing_formal_stage_manifest": "metrics/manifests/full502_clean_v1.txt",
+  "existing_formal_stage_count": 502,
+  "existing_formal_compare_manifest": "metrics/manifests/compare9_complete496_v1.txt",
+  "existing_formal_compare_count": 496,
+  "notes": [
+    "This manifest indexes the external desktop image pool and does not replace full502_clean_v1 or compare9_complete496_v1.",
+    "The default candidate manifest excludes root-level illustrative files and keeps only images under top-level dataset folders.",
+    "No enhancement experiment or metric evaluation was run while generating this audit."
+  ]
+}

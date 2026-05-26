@@ -1,0 +1,42 @@
+{
+  "generated_at": "2026-05-25T00:43:59",
+  "inventory": "D:\\Desktop\\Stage1Codex\\metrics\\manifests\\full_algae_dewatermark_v1_inventory.tsv",
+  "outlier_percentile": 2.0,
+  "rows_total": 2777,
+  "candidate_rows": 2774,
+  "quality_readable_total": 2777,
+  "candidate_quality_readable": 2774,
+  "quality_unreadable_total": 0,
+  "decoder_counts": {
+    "cv2": 2773,
+    "pillow_fallback": 4
+  },
+  "outlier_candidate_rows": 507,
+  "outlier_flag_counts": {
+    "high_aspect_ratio": 56,
+    "high_luminance": 56,
+    "high_saturation": 56,
+    "large_resolution": 62,
+    "low_aspect_ratio": 56,
+    "low_contrast": 56,
+    "low_laplacian_sharpness": 56,
+    "low_luminance": 56,
+    "low_saturation": 56,
+    "low_tenengrad_edges": 56,
+    "small_resolution": 56
+  },
+  "thresholds": {
+    "low_luma_mean": 54.83646016,
+    "high_luma_mean": 220.9786546,
+    "low_luma_std": 7.523962518,
+    "low_laplacian_var": 5.0804351819999995,
+    "low_tenengrad": 197.2164694,
+    "low_saturation_mean": 6.227038442,
+    "high_saturation_mean": 189.7242934,
+    "low_megapixels": 0.0503762,
+    "high_megapixels": 3.145728,
+    "low_aspect_ratio": 0.6250118772000001,
+    "high_aspect_ratio": 2.0475871259999985
+  },
+  "boundary": "Quality outliers are percentile-based manual-review candidates, not automatic exclusion decisions. This audit does not change the current formal 502/496 protocols and does not run enhancement."
+}

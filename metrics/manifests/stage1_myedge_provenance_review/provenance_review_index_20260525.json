@@ -1,0 +1,36 @@
+{
+  "generated_at": "2026-05-25T02:26:00",
+  "status": "pending_manual_provenance_review",
+  "source_visual_audit_status": "visual_candidates_only_not_proven_provenance",
+  "row_count": 1510,
+  "priority_counts": {
+    "P0": 126,
+    "P1": 82,
+    "P2": 37,
+    "P3": 599,
+    "P4": 666
+  },
+  "relation_scope_counts": {
+    "myedge_raw_to_fullpool_visual_candidate": 840,
+    "myedge_raw_to_stage1_original_same_filename": 168,
+    "stage1_original_to_fullpool_visual_candidate": 502
+  },
+  "candidate_band_counts": {
+    "exact_or_reencoded_visual_candidate": 11,
+    "possible_visual_candidate": 66,
+    "strong_visual_candidate": 160,
+    "weak_or_no_visual_candidate": 1273
+  },
+  "p0_p1_rows": 208,
+  "fullpool_candidate_rows": 1342,
+  "reviewer_decision_filled": 0,
+  "reviewer_decision_pending": 1510,
+  "allowed_reviewer_decisions": [
+    "confirmed_same_original",
+    "confirmed_same_visual_subject_reencoded_or_cropped",
+    "confirmed_related_same_species_not_same_original",
+    "confirmed_different",
+    "uncertain_needs_followup"
+  ],
+  "boundary": "This template contains machine-generated candidates only. Empty reviewer_decision fields mean no provenance relation has been confirmed."
+}
