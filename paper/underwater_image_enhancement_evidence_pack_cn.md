@@ -2,7 +2,9 @@
 
 更新时间：2026-04-24
 
-说明：本证据包优先依据本地工作区，其次参照 Notion 项目页与 Zotero 文献库整理。凡无法直接确认之处，均用 `[Inference]` 或 `[Missing]` 标明，不把推断写成事实。本版已基于 2026-04-23 的正式收口结果刷新本地实验结果、Notion 页面与 Zotero 条目访问状态。
+说明：本证据包当前只把仓库内已版本化的本地文件、正式 manifest、正式结果表和本地可读草稿当作论文事实源。历史 Notion 页面、聊天历史、在线页面、个人记忆和未落盘事实均不作为当前事实来源；如需使用其中任何信息，必须先落到本仓库并重新核验。凡无法直接确认之处，均用 `[Inference]` 或 `[Missing]` 标明，不把推断写成事实。
+
+当前中文主稿入口为 `paper/underwater_image_enhancement_draft_cn.md`，状态为中文投稿主稿 v1.0。该文件已从早期 `Part E / Part H` 双版本草稿收束为单一当前主稿；历史分版只作为 git 历史背景，不再作为当前写作入口。
 
 ## Part A. 资源访问情况
 
@@ -11,30 +13,16 @@
 - 已访问项目总览与论文草稿类文件：`README.md`、`method-underwater-enhancement-paper-ready.md`、`method-underwater-enhancement.md`、`method-figure-underwater-enhancement.md`、`related-work-underwater-enhancement.md`、`research-log.md`、`research-state.yaml`。[Local]
 - 已访问核心实现文件：`main.py`、`lgsbph.py`、`pybemd.py`、`wb_safe_contrast.py`、`clahe_guided_visibility.py`、`fusion_three.py`、`lvbo.py`。[Local]
 - 已访问关键配置与结果文件：`experiments/optimization_v1/configs/locked_full506_final_mainline.json`、`experiments/h2-full506-direct/outputs/full506/eval/analysis.md`、`experiments/h2-full506-direct/outputs/full506/eval/selection.json`、`experiments/h1-graypixel-bph-ablation/outputs/full506/eval/summary.json`、`experiments/h1-graypixel-bph-ablation/outputs/full506/selection.json`、`metrics/score_protocol_v2.py`、`experiments/h1-graypixel-bph-ablation/analysis.md`、`metrics/outputs/evaluate_protocol_v2/official_stage_progress_full502/summary.json`、`metrics/outputs/evaluate_protocol_v2/official_compare9_complete496/summary.json`、`docs/project_status_overview_cn.md`、`docs/comparison_methods_results_index_cn.md`。[Local]
+- 已访问 Stage1 enhancement-to-edge 支撑包：`docs/stage1_enhancement_to_edge_support_cn.md`、`metrics/scripts/run_downstream_edge_proxy_stage1.py`、`metrics/outputs/downstream_edge_validation/official_full502_mainline/index.md`、`stage_full502_proxy/summary.md`、`compare9_complete496_proxy/summary.md`。[Local]
 - 已核对当前正式增强与正式评测环境口径：conda 根目录为 `D:\miniconda3`，正式增强与评测环境为 `D:\Desktop\EdgeDetection\my_env`；该环境已通过 `main.py + evaluate_protocol_v2.py` 的 smoke 验证。[Local]
 - 已访问已有图示与图稿资产：`paper/figures/underwater_method_overview*.{mmd,svg,png}`，并新增生成 `paper/figures/fig_h1_h2_metric_summary.{png,svg}` 的脚本与输出。[Local]
 - 已查看部分定性材料：H1 诊断对比图和 H2 当前主线输出图各至少 1 张，用于核对“有输出资产”这一事实，但当前尚未形成可直接进论文的精选定性图组。[Local]
 
-### A2. Notion 访问情况
+### A2. 非仓库来源处理规则
 
-- 已成功访问项目主页：`水下图像增强项目主页`，并确认其下存在 `文献库`、`研究笔记`、`实验记录`、`任务计划`、`论文写作` 五个数据库入口。[Notion]
-- 已成功访问与论文正文直接相关的页面：
-  - `水下图像增强 related work 初稿`
-  - `水下图像增强 method section 草稿`
-  - `水下图像增强 method section 精简稿`
-  - `水下图像增强 方法总览图说明`
-  - `水下图像增强文献对比表`
-  - `项目现状与关键发现（2026-04-17）`
-  - `主线方法与假设框架`
-  - `阶段命名与模块速查`
-  - `方法命名与七阶段流程说明`
-  - `H1 白平衡 full506 正式实验`
-  - `H2 RGHS/CLAHE/Fusion 顺序优化`。[Notion]
-- 已成功获取数据库 schema：
-  - `论文写作` 对应数据源 `collection://0a07c42c-b54a-4279-a8b8-b34dcfd3d356`
-  - `文献库` 对应数据源 `collection://75a0fea5-a117-4c22-9057-2f583650e048`
-  - `研究笔记` 对应数据源 `collection://2d7ffbcc-19ff-4fe2-a8fc-e8138f2542f1`
-  - `实验记录` 对应数据源 `collection://b8182f16-5ee8-4c2a-8d8c-e6546686f04f`。[Notion]
+- 历史 Notion 页面、聊天历史、在线页面和个人记忆不作为当前论文事实源。
+- 本证据包早期版本中曾记录过 Notion 访问情况；这些记录仅能作为“历史访问痕迹”，不能直接支撑当前论文主张。
+- 如果后续确实需要引用 Notion 或在线页面中的信息，必须先把对应事实同步到仓库内已版本化文件，再在本证据包中重新标注为 `[Local]`。
 
 ### A3. Zotero 访问情况
 
@@ -42,8 +30,11 @@
   - `同方向师兄已发表`
   - `水下图像增强/同方向师兄`
   - `水下图像增强/对比方法`。[Zotero]
+- 已核验两篇同方向一区 HAB / 赤潮核心参考：
+  - ESWA 2026：`Enhanced edge detection of harmful algal Blooms using diffusion probability models and Sobel-convolutional attention mechanisms`，Zotero keys `9MCJDQGE` / `AKGYHG77`。[Zotero]
+  - EAAI 2026：`Microscopic image segmentation of harmful algal blooms using pyramid fusion enhancement and dual-branch network`，Zotero key `ZMUBCGCD`。[Zotero]
 - 已成功获取并核验以下条目的元数据或摘要：`AFLVZ4KR`、`V87JDUST`、`PWKRPBPJ`、`U6DBLZMV`、`DQIVG34J`、`GS2RFTEL`、`LTE9U599`、`P4E22T2E`、`V5H7FQTY`、`LF9HP7DR`、`TEKJDF6M`。[Zotero]
-- 已确认 Notion 中“11 篇核心论文”的本地落地与 Zotero 条目基本一致。[Notion][Zotero]
+- 已核验到至少 13 篇核心论文的 Zotero 条目或本地题录线索；正式投稿前仍应确保引用条目可从本地 `.bib`、Zotero 导出或论文 PDF 中复核。[Zotero]
 
 ### A4. 访问失败或受限情况
 
@@ -55,29 +46,44 @@
 ### A5. 对论文真实性影响最大的潜在阻塞
 
 - 无法直接从已访问文件中确认正式数据的采集协议、设备说明、物种覆盖和公开性状态；这会影响实验部分的可复现性与数据说明完整度。[Local][Missing]
-- 当前已经形成 `official_stage_progress_full502` 的阶段进度表与 `official_compare9_complete496` 的 `9` 方法 complete-case 主表，因此“统一指标总表”已不再是主要阻塞。当前真正影响投稿充分性的，是与锁定主线严格对齐的下游边缘验证总表、投稿级总图和运行时间/资源说明。[Local]
-- 当前“面向下游边缘友好验证”的叙事有历史论文与项目笔记支持，但面向本轮锁定主线的完整下游验证表仍未在已访问结果文件中显式出现。[Local][Notion][Missing]
+- 当前已经形成 `official_stage_progress_full502` 的阶段进度表、`official_compare9_complete496` 的 `9` 方法 complete-case 主表，以及 `official_full502_mainline` 无 GT 边缘结构 proxy 支撑包，因此“统一增强指标总表”已不再是主要阻塞。当前真正影响投稿充分性的，是 MyEdge / DiffusionEdge 带 GT 下游边缘验证、人工确认后的投稿级总图和完整运行资源说明。[Local]
+- 当前“面向下游边缘友好验证”的叙事已经有第一版无 GT 边缘结构 proxy 支撑包，但面向 MyEdge / DiffusionEdge 的 ODS/OIS/AP/AC 等带 GT 边缘检测结果仍未在已访问结果文件中显式出现。[Local][Missing]
+
+### A6. 主张-证据-边界矩阵
+
+| 主张类型 | 可写程度 | 当前证据 | 写作边界 |
+| --- | --- | --- | --- |
+| 正式主线已锁定 | 可作为正文事实 | `experiments/optimization_v1/configs/locked_full506_final_mainline.json` 与 `experiments/h2-full506-direct/outputs/full506/runs/full506_final_mainline` | 不能把默认 `python main.py` 写成正式主线；正式重跑必须显式传锁定配置 |
+| 阶段进度表已完成 | 可作为正文事实 | `metrics/manifests/full502_clean_v1.txt` 与 `metrics/outputs/evaluate_protocol_v2/official_stage_progress_full502/mean_metrics_table.md` | 这是 502 张清洁主集的阶段表，不是外部方法 complete-case 主表 |
+| `Ours + 8 baselines` 主比较表已完成 | 可作为正文事实 | `metrics/manifests/compare9_complete496_v1.txt` 与 `metrics/outputs/evaluate_protocol_v2/official_compare9_complete496/mean_metrics_table.md` | 这是 496 张 complete-case 交集；`WWPF` 的 496 张实现边界必须写明 |
+| 方法具有边缘友好设计动机 | 可谨慎写作 | 方法结构、HAB 显微图像任务定位、正式阶段结果 | 不能写成“已完整证明下游边缘任务提升”，因为正式下游边缘验证总表尚未形成 |
+| 本方法视觉自然度全面最优 | 不可写 | 当前 Fusion 和外部主表均显示结构指标与视觉指标存在 trade-off | 不能写“所有指标最优”或“全面领先外部 SOTA” |
+| `MS_SSIM` / `PSNR` 表示增强真值质量 | 不可写 | 当前协议以原图为参考计算这些指标 | 只能解释为增强结果相对原图的结构一致性或保守相似性 |
+| `HLRP` / `Histoformer` 普遍无效 | 不可写 | 当前主表与观察只覆盖 HAB 显微图像协议 | 只能写成当前协议下的失败案例或补充分析，不能泛化否定原方法 |
+| 中文主稿已收口为单一当前版本 | 可作为写作状态事实 | `paper/underwater_image_enhancement_draft_cn.md` | 只能说明已形成中文投稿底稿 v1.0，不能写成投稿终稿或实验闭环已完成 |
+| Stage1 已形成 enhancement-to-edge 支撑包 | 可作为衔接事实 | `metrics/outputs/downstream_edge_validation/official_full502_mainline` 与 `docs/stage1_enhancement_to_edge_support_cn.md` | 这是无 GT Sobel/Otsu 边缘结构 proxy，不能替代 MyEdge 的 ODS/OIS/AP/AC |
+| 三份建议已收束跨项目定位 | 可作为项目策略事实 | `docs/stage1_myedge_three_suggestions_synthesis_cn.md` | 这是策略与写作边界，不是新增实验结果；不能把建议中的未落盘实验设想写成已完成事实 |
 
 ## Part B. 研究信息证据表
 
 ### 1. 任务名称
 
 - 内容：面向有害藻华水下显微图像的分阶段增强与论文准备。
-- 来源：`README.md`、`research-state.yaml`、Notion 项目主页与 method 草稿页。[Local][Notion]
+- 来源：`README.md`、`research-state.yaml` 与本地方法草稿。[Local]
 - 可信度：已确认
 - 备注：`research-state.yaml` 的项目标题为 “HAB Microscopic Image Enhancement and Edge-Detection-Oriented Validation”。[Local]
 
 ### 2. 研究目标
 
 - 内容：在缓解颜色偏移、低对比度、细节模糊和照明不均匀的同时，提高结构可辨识性，并尽量服务于边缘敏感的下游分析。
-- 来源：`method-underwater-enhancement*.md`、`research-state.yaml`、Notion `项目现状与关键发现（2026-04-17）`。[Local][Notion]
+- 来源：`method-underwater-enhancement*.md`、`research-state.yaml`、`docs/project_status_overview_cn.md`。[Local]
 - 可信度：已确认
-- 备注：当前最稳妥的表述是“结构可读性与边缘友好”，不宜直接写成“已完整证明下游边缘任务显著提升”。[Local][Notion][Inference]
+- 备注：当前最稳妥的表述是“结构可读性与边缘友好设计动机”，不宜直接写成“已完整证明下游边缘任务显著提升”。[Local][Inference]
 
 ### 3. 应用场景
 
 - 内容：水下有害藻华（HAB）显微图像增强。
-- 来源：`README.md`、`research-state.yaml`、Notion method/related work 页面、多篇 HAB 方向 Zotero 文献。[Local][Notion][Zotero]
+- 来源：`README.md`、`research-state.yaml`、本地 method/related work 草稿、多篇 HAB 方向 Zotero 文献。[Local][Zotero]
 - 可信度：已确认
 - 备注：从命名与文献脉络看，项目定位明显偏向显微图像而非一般水下自然场景照片。[Local][Zotero]
 
@@ -91,9 +97,9 @@
 ### 5. 方法总体框架
 
 - 内容：`Original -> BPH -> IMF1Ray -> RGHS -> CLAHE -> Fused -> Final`；其中论文叙事更适合将 `Final` 之后的边缘友好验证视为外部任务化评估路径，而非增强算子本体。
-- 来源：`main.py`、`README.md`、Notion `方法总览图说明`、`阶段命名与模块速查`。[Local][Notion]
+- 来源：`main.py`、`README.md`、`method-figure-underwater-enhancement.md`、`docs/project_handoff_guide_cn.md`。[Local]
 - 可信度：已确认
-- 备注：代码层的实际“增强算子”是输入后的六个操作阶段；若算上外部验证才是项目级七阶段叙事。[Local][Notion]
+- 备注：代码层的实际“增强算子”是输入后的六个操作阶段；下游验证只能作为外部任务化评估规划，不属于当前增强算子本体。[Local]
 
 ### 6. 核心模块
 
@@ -104,9 +110,9 @@
   - `CLAHE`：历史名保留，真实功能为 CLAHE 引导的局部可见性增强
   - `Fused`：亮度域特征门控三分支融合
   - `Final`：同态与熵增强式收口。[Local]
-- 来源：对应代码文件头说明、函数注释、Notion method 页面。[Local][Notion]
+- 来源：对应代码文件头说明、函数注释和本地 method 草稿。[Local]
 - 可信度：已确认
-- 备注：`RGHS` 和 `CLAHE` 不能在论文中被写成“标准 RGHS 模块”和“普通 CLAHE 输出”。[Local][Notion]
+- 备注：`RGHS` 和 `CLAHE` 不能在论文中被写成“标准 RGHS 模块”和“普通 CLAHE 输出”。[Local]
 
 ### 7. 输入与输出
 
@@ -121,7 +127,7 @@
   - H1：白平衡候选搜索与人工锁定
   - H2：固定上游后依次锁定 `RGHS -> CLAHE -> Fusion`
   - H3：此前完成后处理/收口搜索，当前主线采用 `r4_03` 的 `homomorphic_entropy` 收口。[Local]
-- 来源：`research-log.md`、`research-state.yaml`、`selection.json`、`analysis.md`。[Local][Notion]
+- 来源：`research-log.md`、`research-state.yaml`、`selection.json`、`analysis.md`。[Local]
 - 可信度：已确认
 - 备注：当前综合分脚本 `metrics/score_protocol_v2.py` 用于内部调参与排序，不宜直接作为论文主结果指标叙事。[Local][Inference]
 
@@ -170,14 +176,14 @@
   - H1：验证前置白平衡候选
   - H2：验证在固定上游前提下的 `RGHS -> CLAHE -> Fusion` 顺序优化
   - H3：已有后处理/收口搜索，但当前 paper-ready 结果更像主线锁定的背景，而不是一套完整独立章节。[Local]
-- 来源：`research-log.md`、`README.md`、`research-state.yaml`。[Local][Notion]
+- 来源：`research-log.md`、`README.md`、`research-state.yaml`。[Local]
 - 可信度：已确认
 - 备注：当前最完整、最适合写入论文的消融证据是 H1 与 H2；H3 可作为补充小节，但不宜写成主要创新验证。[Inference]
 
 ### 15. 定性结果
 
-- 内容：仓库中存在 H1 诊断 comparison/edge/sheet 图，以及 H2 当前主线全部阶段输出；Notion 与本地日志均记录“人工抽看未见明显系统性偏红、偏黄、偏紫偏色”。
-- 来源：`experiments/h1-graypixel-bph-ablation/analysis.md`、本地诊断图目录、Notion H1/H2 页面。[Local][Notion]
+- 内容：仓库中存在 H1 诊断 comparison/edge/sheet 图，以及 H2 当前主线全部阶段输出；本地分析与日志记录过人工抽看结论。
+- 来源：`experiments/h1-graypixel-bph-ablation/analysis.md`、本地诊断图目录、`research-log.md`。[Local]
 - 可信度：高概率推断
 - 备注：当前尚未看到已整理成论文版的代表性 qualitative panel，因此正文里只能谨慎写“已有诊断图支持人工复查”，不能写“系统性定性优势已完整展示”。[Missing]
 
@@ -199,18 +205,18 @@
   2. 面向职责分离的三分支结构：细节、对比、局部可见性
   3. 亮度域特征门控 + 拉普拉斯金字塔融合 + `RGHS` 色彩锚定
   4. 面向 HAB 显微场景的阶段化证据组织与边缘友好定位。[Local][Inference]
-- 来源：代码实现、本地/Notion method 草稿、研究状态总结。[Local][Notion]
+- 来源：代码实现、本地 method 草稿、研究状态总结。[Local]
 - 可信度：前 3 项已确认；第 4 项为高概率推断
 - 备注：最稳妥的写法是“结构化整合创新”而不是“单算子理论突破”。[Inference]
 
 ### 18. 当前证据不足处
 
 - 内容：
-  - 缺少面向当前锁定主线的完整下游边缘验证表
+  - 已有面向当前锁定主线的无 GT 边缘结构 proxy 支撑包，但缺少 MyEdge / DiffusionEdge 带 GT 下游边缘验证表
   - 缺少数据采集与公开性说明
-  - 缺少可直接投稿的定性图组、失败案例与运行时间说明
+  - 已生成自动候选定性图组和失败案例候选，但缺少人工确认后的投稿级定性图组、失败案例与完整运行资源说明
   - 缺少对正式主表结果的投稿级图示化呈现与讨论收束。[Local][Missing]
-- 来源：已访问本地结果、Notion 阶段总结、Zotero 仅提供文献而非复现实验。[Local][Notion][Zotero]
+- 来源：已访问本地结果与 Zotero 题录；Zotero 仅提供文献而非复现实验。[Local][Zotero]
 - 可信度：已确认
 - 备注：这些缺口决定了当前稿件更适合“可继续打磨投稿的初稿”，而不是直接终稿。[Inference]
 
@@ -225,7 +231,7 @@
   - 不应因为 WWPF 在部分无参考指标上较高就将其从主表删除
   - 不应把 HLRP 与 Histoformer 继续写成“稳健强基线”
   - 不应把当前 HAB 显微图像协议下的负面复现结果，写成对原论文方法普遍无效的否定性结论。[Local][Missing]
-- 来源：代码职责、本地文档、研究状态里的 evidence gap。[Local][Notion]
+- 来源：代码职责、本地文档、研究状态里的 evidence gap。[Local]
 - 可信度：已确认
 - 备注：这些边界正是本稿需要主动克制的地方。[Inference]
 
@@ -237,7 +243,7 @@
   3. 代表性定性可视化和失败案例
   4. 运行时间/资源开销说明
   5. 与当前 `9` 方法主表相配套的投稿级图示、排序解释与讨论收束。[Missing]
-- 来源：本轮访问范围内均未见完整定稿版证据。[Local][Notion]
+- 来源：本轮本地访问范围内均未见完整定稿版证据。[Local]
 - 可信度：已确认
 - 备注：如果目标期刊是 IEEE TIP / TCSVT / PR，这几项里至少前 3 项需要显著补强。[Inference]
 
@@ -332,7 +338,7 @@
 
 更具体地说：
 
-- 论文主轴应写成：面向 HAB 水下显微图像的阶段化增强框架。[Local][Notion]
+- 论文主轴应写成：面向 HAB 水下显微图像的阶段化增强框架。[Local]
 - 方法辨识度主要来自：职责化三分支和亮度域特征门控融合，而不是单独某个现成模块。[Local]
 - “任务导向”可以写，但要克制；当前更适合表述为“面向边缘敏感分析的设计动机”，而不是“已完成大规模下游任务证明”。[Local][Missing]
 
@@ -346,7 +352,7 @@
 
 #### 可以谨慎表述的贡献
 
-4. 方法面向边缘敏感的显微分析任务进行了设计取向上的适配，增强目标不只停留在主观观感，而是尽量服务于结构可读性。[Local][Notion][Inference]
+4. 方法面向边缘敏感的显微分析任务进行了设计取向上的适配，增强目标不只停留在主观观感，而是尽量服务于结构可读性。[Local][Inference]
 
 ### C3. 哪些内容可写成贡献
 
@@ -389,7 +395,7 @@
 - 明确本文不是单算子增强，而是阶段化框架。
 - 摘出 3 个最核心模块：稳态前置白平衡、职责化三分支、特征门控融合。
 - 实验描述坚持事实：基于历史 `full506` 锁定证据与当前 `full502_clean_v1` / `compare9_complete496_v1` 正式口径完成阶段化和主比较证据，不虚构外部 benchmark 排名。
-- 结尾写真实边界：当前结果支持结构指标改善与论文叙事，但外部强基线和下游验证仍待补强。
+- 结尾写真实边界：当前结果支持结构指标改善与论文叙事，但投稿级图组、下游验证和数据/资源说明仍待补强。
 
 ### D3. 关键词
 
@@ -404,7 +410,7 @@
 
 #### 1 引言
 
-- 写作目标：从场景问题出发，收束到“为什么单一增强算子不足，为什么需要职责化框架”。  
+- 写作目标：从场景问题出发，收束到“为什么单一增强算子不足，为什么需要职责化框架”。
 - 主要证据依赖：本地 method/related work 草稿、HAB 方向 Zotero 文献。[Local][Zotero]
 - 可直接落笔的内容：场景问题、传统方法局限、项目主线结构。
 - 需谨慎措辞的内容：下游任务收益。
@@ -413,7 +419,7 @@
 #### 2 相关工作
 
 - 写作目标：构造“传统水下增强 -> HAB 显微方向 -> 深度/Transformer -> 白平衡建模借鉴”的四段结构。
-- 主要证据依赖：Zotero 核验账本、Notion 文献对比表。[Zotero][Notion]
+- 主要证据依赖：Zotero 核验账本、本地 related work 草稿与对比方法包。[Local][Zotero]
 - 可直接落笔的内容：11 篇已核验文献的分组与用途。
 - 需谨慎措辞的内容：不要把白平衡论文写成直接对比基线。
 - 待补充项：若后续新增文献，可扩展近两年 Transformer 方向。
@@ -421,7 +427,7 @@
 #### 3 方法
 
 - 写作目标：按真实调用链和模块职责讲清楚“为什么这么拆、每条分支负责什么、如何融合、收口层怎么定位”。
-- 主要证据依赖：`main.py` 与 6 个模块文件、method 草稿、方法图说明。[Local][Notion]
+- 主要证据依赖：`main.py` 与 6 个模块文件、method 草稿、方法图说明。[Local]
 - 可直接落笔的内容：BPH、IMF1Ray、RGHS、CLAHE、Fused、Final。
 - 需谨慎措辞的内容：避免把历史命名误当算法名。
 - 待补充项：若后续需要公式，可从代码与原理再补公式化表达。
@@ -430,7 +436,7 @@
 
 - 写作目标：如实呈现当前内部证据，说明 H1/H2 的结论、优点和 trade-off。
 - 主要证据依赖：H1/H2 结果文件、`score_protocol_v2.py`、新增数据图。[Local]
-- 可直接落笔的内容：`full506`、`320x320`、H1/H2 结果、Fusion trade-off。
+- 可直接落笔的内容：历史 `full506` 搜索背景、`320x320` 设置、H1/H2 结果、Fusion trade-off。
 - 需谨慎措辞的内容：external SOTA comparison、下游边缘验证。
 - 待补充项：数据来源描述、外部基线、定性图组。
 
@@ -465,7 +471,7 @@
 
 ### F3. 写作逻辑风险
 
-1. 项目层七阶段叙事和增强算子本体六阶段叙事容易混淆；若不统一，会导致方法图、方法节和实验节自相矛盾。[Local][Notion]
+1. 项目层七阶段叙事和增强算子本体六阶段叙事容易混淆；若不统一，会导致方法图、方法节和实验节自相矛盾。[Local]
 2. 内部 composite score 容易误导读者；如果不说明它只是调参工具，会削弱实验可信度。[Local]
 
 ### F4. 可复现性风险
@@ -527,7 +533,7 @@
 - `full506` 数据是否可以在论文中公开描述，还是只能写成自建私有数据。
 - 当前投稿目标期刊到底是 TIP、TCSVT、PR，还是先走相近中文/英文过渡投稿。
 - 是否继续沿用 `fusion_s10` 作为最终主线，还是先按视觉护栏再重开一轮 Fusion。
-- 是否需要把已有 method figure 再升级为包含中间缩略图的主图版本。[Local][Notion]
+- 是否需要把已有 method figure 再升级为包含中间缩略图的主图版本。[Local]
 
 ### I8. 目前只能谨慎表述的结论
 

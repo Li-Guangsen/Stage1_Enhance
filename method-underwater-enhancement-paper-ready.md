@@ -1,18 +1,18 @@
-# Paper-Ready Method Section Draft
+# 方法部分论文成稿草稿
 
-Last updated: 2026-04-17
+最后更新：2026-04-17
 
-This file is a tighter, paper-oriented rewrite of the code-aligned method notes in `method-underwater-enhancement.md`. It is intended to be closer to a conference-paper `Method` section and easier to adapt into LaTeX or Notion.
+本文档是在 `method-underwater-enhancement.md` 基础上进一步压缩得到的论文取向版本，更接近会议论文 `Method` 小节，可用于后续改写到 LaTeX 或 Notion。
 
-## Suggested Section Title
+## 建议章节标题
 
 `3 Method`
 
-Alternative working title:
+备选工作标题：
 
 `A Stage-Wise Task-Oriented Enhancement Framework for Underwater HAB Microscopic Imagery`
 
-## Chinese Paper-Ready Draft
+## 中文论文成稿草稿
 
 ### 3 方法
 
@@ -46,48 +46,60 @@ Alternative working title:
 
 综合来看，本文真正想强调的并不是某个单一增强算子的局部改造，而是一套面向 HAB 显微图像任务需求的结构化增强框架。前置白平衡模块提供稳定输入，细节、对比和局部可见性三条分支分别承担互补职责，融合阶段根据频率层级和区域特征进行门控分配，最终收口阶段则负责温和整理照明与对比。由此，方法能够在保持结构真实性和颜色稳定性的前提下，提高显微藻类图像的可判读性，并为后续边缘敏感分析提供更友好的输入表示。
 
-## Condensed Chinese Version
+## 中文压缩版
 
 本文提出一套面向有害藻华水下显微图像的分阶段增强框架。方法首先利用灰像素引导的前置白平衡模块稳定颜色起点，并通过受限预增益、截断式循环补偿和亮度回调抑制严重偏色。随后，从白平衡结果并行生成三条互补分支：IMF1-Rayleigh 高频细节分支用于恢复细胞边缘与细纹理，白平衡安全对比分支用于提供主体层次和色彩锚定，CLAHE 引导的局部可见性分支用于补偿背景与暗部可见性。最后，方法在 Lab 亮度空间中构造梯度、纹理、显著性和曝光等特征权重，并在拉普拉斯金字塔域按频率层级执行门控融合，再通过轻量同态与熵增强模块完成照明与对比收口。
 
 与将同一种增强机制统一施加于整幅图像的做法不同，本文强调分支间的职责分工与结构化协同。前置白平衡负责稳定输入，细节分支负责高频清晰度，对比分支负责主体层次与颜色锚定，局部可见性分支负责背景和暗部补偿，而最终模块只承担温和收口而不重新定义主要结构。这一设计既符合当前代码实现，也更适合支持后续围绕白平衡、三分支融合和最终收口的分阶段消融实验。
 
-## English Paper Skeleton
+## 英文辅助骨架（仅供后续英文稿改写）
 
-### 3 Method
+### 3 方法（英文辅助）
 
 We propose a stage-wise enhancement framework for underwater HAB microscopic imagery, designed to improve color recovery, local visibility, structural readability, and downstream edge-oriented usability in a unified pipeline. Instead of applying a single enhancement operator to the entire image, the framework follows a stabilize-enhance-fuse-refine design: it first normalizes the input by a gray-pixel-guided pre-white-balance module, then constructs three complementary enhancement branches for detail recovery, contrast support, and local visibility compensation, and finally performs feature-gated fusion followed by lightweight illumination and contrast refinement.
 
-#### 3.1 Gray-Pixel-Guided Pre-White-Balance
+#### 3.1 灰像素引导的前置白平衡（英文辅助）
 
 The pre-white-balance module is designed as an upstream stabilization stage rather than a final visual enhancement block. It first estimates the dominant color cast from near-neutral pixels in a middle-luminance range and performs constrained channel-wise pre-gain correction. A clipped and step-controlled ACCC-style cyclic compensation is then applied only on mid-luminance regions, which reduces over-correction caused by highlights, shadows, or extreme color patches. A final brightness restoration step keeps the output close to the original luminance scale, making this stage serve as a stable entry point for all subsequent branches.
 
-#### 3.2 IMF1-Rayleigh Detail Branch
+#### 3.2 IMF1-Rayleigh 高频细节分支（英文辅助）
 
 The first branch focuses on high-frequency detail recovery. We extract the first empirical mode from the luminance channel and optionally resample the luminance image during EMD solving to better capture scale-sensitive microscopic structures. The extracted response is normalized, softly bounded, and aligned to the underlying luminance structure by guided filtering. We further modulate the detail injection using multi-scale high-pass responses, local variance, and edge-aware weighting, and then apply Rayleigh luminance matching to improve detail visibility and luminance distribution. This branch is mainly responsible for edge sharpness and fine texture recovery.
 
-#### 3.3 Complementary Contrast and Local Visibility Branches
+#### 3.3 互补的对比与局部可见性分支（英文辅助）
 
 To complement the detail branch, we construct two additional luminance-oriented branches. The white-balance-safe contrast branch enhances subject-level contrast in Lab space with percentile stretching, local contrast enhancement, flat-region suppression, adaptive chroma protection, and gamut-aware correction, thereby providing global luminance anchoring and stable color support. The CLAHE-guided local visibility branch does not directly output raw CLAHE results; instead, it estimates a smooth local gain map from CLAHE-induced brightness changes and applies the gain in a white-balance-preserving manner. This design makes it more suitable for background and low-visibility compensation than for subject anchoring.
 
-#### 3.4 Feature-Gated Three-Branch Fusion
+#### 3.4 特征门控三分支融合（英文辅助）
 
 The three branches are fused in the luminance domain rather than naively averaged in RGB space. We compute branch-specific weights from gradient, texture, saliency, exposure, local variance, and region-dependent cues, and then perform Laplacian-pyramid fusion with level-aware gating. The detail branch mainly contributes to high-frequency layers, the local visibility branch mainly contributes to mid-frequency layers, and the contrast branch anchors low-frequency structure and chroma. Guided filtering is used to align all weight maps to a common luminance structure before normalization, which helps maintain fusion continuity across spatial regions and pyramid levels.
 
-#### 3.5 Final Refinement
+#### 3.5 最终收口（英文辅助）
 
 The final stage is a lightweight refinement block rather than the main source of structural enhancement. It applies homomorphic illumination correction and entropy-oriented luminance adjustment in sequence to reduce uneven illumination, improve global luminance distribution, and gently refine local contrast. This makes the final stage suitable for controlled output stabilization and consistent with the paper's ablation logic, where the major emphasis remains on upstream normalization and feature-gated multi-branch enhancement.
 
-## Figure Caption Draft
+## 图注草稿
+
+中文图注：
+
+`图 X. 本文提出的分阶段增强框架总览。输入图像首先通过灰像素引导的前置白平衡模块进行稳定化处理，随后进入三条互补分支，分别完成细节恢复、对比锚定和局部可见性补偿。三条分支的输出在亮度域中通过特征门控的拉普拉斯金字塔融合进行整合，最后经过轻量照明与对比收口得到最终结果。`
+
+英文图注辅助稿：
 
 `Overview of the proposed stage-wise enhancement framework. The input image is first stabilized by gray-pixel-guided pre-white-balance, then processed by three complementary branches for detail recovery, contrast anchoring, and local visibility compensation. The branch outputs are fused by feature-gated Laplacian-pyramid fusion in the luminance domain, followed by lightweight illumination and contrast refinement.`
 
-## Transition Sentence to Experiments
+## 引出实验部分的过渡句
+
+中文过渡句：
+
+`基于上述设计，本文实验分别围绕上游白平衡稳定化、互补三分支融合以及最终轻量收口三个层面组织消融与对比，以验证各阶段对当前增强主线的贡献。`
+
+英文辅助句：
 
 `Based on this design, the experiments are organized to separately evaluate the contribution of upstream white-balance stabilization, complementary branch fusion, and final lightweight refinement under a unified full506 protocol.`
 
-## Notes
+## 注意事项
 
-- This version is intentionally more concise than `method-underwater-enhancement.md`.
-- The paper should still describe `RGHS` and `CLAHE` by function rather than by historical name.
-- The task-facing “downstream edge-oriented validation” is better presented in the experiments section than as part of the enhancement operator itself.
+- 本版本故意比 `method-underwater-enhancement.md` 更紧凑。
+- 论文仍应按功能描述 `RGHS` 和 `CLAHE`，不要只使用历史命名。
+- 面向任务的“下游边缘友好验证”更适合放在实验部分，而不是写成增强算子本体的一部分。

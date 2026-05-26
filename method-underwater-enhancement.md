@@ -1,41 +1,41 @@
-# Underwater Image Enhancement Method Draft
+# 水下图像增强方法草稿
 
-Last updated: 2026-04-17
+最后更新：2026-04-17
 
-This note is a code-aligned method draft for the current HAB underwater microscopic image enhancement project. It is meant for two direct uses:
+本文档是当前 HAB 水下显微图像增强项目的方法草稿，重点与仓库中的真实代码实现保持一致。主要用途有两个：
 
-1. drafting the method section of the paper;
-2. keeping the writing aligned with the actual implementation in the repo.
+1. 起草论文方法部分；
+2. 保证论文叙事与当前仓库实现一致。
 
-## Writing Position
+## 写作定位
 
-- Target task: underwater HAB microscopic image enhancement with emphasis on structure readability and downstream edge-sensitive analysis.
-- Current enhancement chain:
+- 目标任务：HAB 水下显微图像增强，重点关注结构可读性和下游边缘敏感分析。
+- 当前增强链路：
   `Original -> BPH -> IMF1Ray -> RGHS -> CLAHE -> Fused -> Final`
-- Recommended paper naming:
-  - `BPH`: gray-pixel-guided pre-white-balance
-  - `IMF1Ray`: IMF1-Rayleigh detail branch
-  - `RGHS`: white-balance-safe contrast branch
-  - `CLAHE`: CLAHE-guided local visibility branch
-  - `Fused`: feature-gated three-branch fusion
-  - `Final`: illumination and contrast refinement
-- Important naming boundary:
-  the historical stage names `RGHS` and `CLAHE` are still kept in code, configs, experiment folders, and result assets for compatibility, but the paper should describe them by their actual functions rather than present them as standard RGHS or plain CLAHE modules.
-- Local main file for this draft:
+- 论文中推荐命名：
+  - `BPH`：灰像素引导的前置白平衡
+  - `IMF1Ray`：IMF1-Rayleigh 高频细节分支
+  - `RGHS`：白平衡安全对比分支
+  - `CLAHE`：CLAHE 引导的局部可见性分支
+  - `Fused`：特征门控的三分支融合
+  - `Final`：照明与对比收口
+- 重要命名边界：
+  历史阶段名 `RGHS` 和 `CLAHE` 仍保留在代码、配置、实验目录和结果资产中以维持兼容性；但论文中应按真实功能描述它们，而不是把它们写成标准 RGHS 模块或普通 CLAHE 模块。
+- 本草稿对应的本地文件：
   `D:\Desktop\Stage1Codex\method-underwater-enhancement.md`
 
-## Code Anchor
+## 代码锚点
 
-| Stage | Main file | Practical role in the current repo |
+| 阶段 | 主文件 | 当前仓库中的实际作用 |
 | --- | --- | --- |
-| `BPH` | `lgsbph.py` | stabilize color cast and channel imbalance before all later branches |
-| `IMF1Ray` | `pybemd.py` | extract high-frequency detail, edge response, and luminance redistribution |
-| `RGHS` | `wb_safe_contrast.py` | enhance subject contrast while protecting white-balance stability |
-| `CLAHE` | `clahe_guided_visibility.py` | derive a smooth local visibility gain from CLAHE rather than output raw CLAHE directly |
-| `Fused` | `fusion_three.py` | assign branch responsibility across pyramid levels and fuse luminance structure |
-| `Final` | `lvbo.py` | perform homomorphic illumination cleanup and optional entropy-oriented Lab refinement |
+| `BPH` | `lgsbph.py` | 在所有后续分支前稳定偏色和通道失衡 |
+| `IMF1Ray` | `pybemd.py` | 提取高频细节、边缘响应并重整亮度分布 |
+| `RGHS` | `wb_safe_contrast.py` | 在保护白平衡稳定性的同时增强主体对比 |
+| `CLAHE` | `clahe_guided_visibility.py` | 从 CLAHE 中估计平滑局部可见性增益，而不是直接输出原始 CLAHE |
+| `Fused` | `fusion_three.py` | 在金字塔层级中分配分支职责并融合亮度结构 |
+| `Final` | `lvbo.py` | 执行同态照明整理和可选的熵导向 Lab 收口 |
 
-## Chinese Full Draft
+## 中文完整草稿
 
 ### 方法概述
 
@@ -69,52 +69,52 @@ This note is a code-aligned method draft for the current HAB underwater microsco
 
 从论文写作角度看，本文的方法创新更适合被表述为“面向 HAB 显微图像的任务化增强框架”，而不是某个单独模块的孤立新算子。前置白平衡模块提供稳定起点，高频细节分支、对比分支和局部可见性分支分别承担互补职责，融合阶段再根据频率层级和区域特征进行门控分配，最终收口阶段保证亮度和观感的一致性。这样的表述既符合当前代码真实实现，也更容易与后续消融设计对应：H1 主要验证前置白平衡，H2 主要验证三分支与融合策略，H3 仅验证最终照明细化的附加价值。换句话说，论文中最值得强调的是“职责化分支设计 + 特征门控融合 + 下游边缘友好验证”的整体叙事，而不是把历史命名为 `RGHS` 或 `CLAHE` 的单个模块包装成标准现成方法。
 
-## Chinese Short Draft
+## 中文短版草稿
 
 本文提出一套面向有害藻华水下显微图像的分阶段增强框架。该框架首先通过灰像素引导的前置白平衡模块稳定颜色起点，再从白平衡结果并行生成三条互补分支：IMF1-Rayleigh 高频细节分支用于强化边缘和纹理，白平衡安全对比分支用于提供主体层次和亮度托底，CLAHE 引导的局部可见性分支用于补偿暗部和背景可见性。随后，方法在 Lab 亮度空间中构造梯度、纹理、显著性和曝光等特征权重，并在拉普拉斯金字塔域按频率层级分配三条分支的职责，以实现面向亮度结构的特征门控融合。最后，本文利用轻量同态滤波和熵增强对融合结果进行照明与对比收口，同时保持颜色稳定性。
 
 与将单一增强算子直接作用于整幅图像的做法不同，本文更强调各模块的职责分工与协同关系。前置白平衡负责把严重偏色拉回稳定区域，细节分支负责高频清晰度，对比分支负责主体层次和色彩锚定，局部可见性分支负责背景和暗部补偿，最终收口模块只承担温和整理而不重新定义主要结构。这一设计使方法既保留传统增强链路的可解释性，又能更自然地服务于边缘敏感的下游分析任务。
 
-## English Skeleton
+## 英文辅助骨架（仅供后续英文稿改写）
 
-### Method Overview
+### 方法概述（英文辅助）
 
 We develop a stage-wise enhancement framework for underwater HAB microscopic imagery, aiming to address severe color cast, low local contrast, blurred fine structures, and uneven illumination. Rather than relying on a single global enhancement operator, the framework first stabilizes the color distribution by a gray-pixel-guided pre-white-balance module, then constructs three complementary branches for detail recovery, contrast support, and local visibility compensation, and finally performs feature-gated fusion followed by lightweight refinement.
 
-### Pre-White-Balance Module
+### 前置白平衡模块（英文辅助）
 
 The pre-white-balance stage combines gray-pixel-guided global gain estimation with a clipped and step-controlled ACCC-style cyclic compensation procedure. Neutral pixels in a middle-luminance range are used to estimate the dominant color cast, and channel gains are constrained to avoid unstable over-correction. The subsequent iterative compensation is computed only on mid-luminance regions and uses clamped inter-channel differences, which makes the white-balance stage serve as a stable upstream normalization module rather than an overly aggressive visual enhancer.
 
-### Three Complementary Enhancement Branches
+### 三条互补增强分支（英文辅助）
 
 Starting from the white-balanced image, the IMF1-Rayleigh branch extracts the first empirical mode component on the luminance channel, aligns the high-frequency response with the underlying structure by guided filtering, and injects detail with edge-aware weighting before applying Rayleigh luminance matching. In parallel, the white-balance-safe contrast branch performs luminance enhancement in Lab space with flat-region suppression, chroma protection, and gamut-aware correction to provide stable subject contrast and color anchoring. The CLAHE-guided local visibility branch does not directly output raw CLAHE results; instead, it derives a smooth luminance gain map from CLAHE-induced brightness changes and applies this gain in a white-balance-preserving manner.
 
-### Feature-Gated Fusion and Final Refinement
+### 特征门控融合与最终收口（英文辅助）
 
 The three branches are fused in the luminance domain rather than naively averaged in RGB space. We compute branch-specific weights from gradient, texture, saliency, exposure, local variance, and region-dependent cues, and then perform Laplacian pyramid fusion with level-aware branch gating: the detail branch mainly contributes to high-frequency layers, the local visibility branch mainly contributes to mid-frequency layers, and the contrast branch anchors low-frequency structure and chroma. A final refinement stage applies lightweight homomorphic illumination correction and entropy-oriented Lab adjustment, which acts as a controlled closing step instead of the main source of structural enhancement.
 
-## Implementation Anchor
+## 实现锚点
 
-### Current Accepted Mainline
+### 当前接受主线
 
-- main config:
+- 主配置：
   `experiments/optimization_v1/configs/locked_full506_final_mainline.json`
-- upstream white balance:
+- 上游白平衡：
   `r2_05_G_P_A_B`
-- IMF1Ray:
-  current mainline uses the aggressive detail preset and keeps the branch as the high-frequency detail path
-- contrast branch:
+- IMF1Ray：
+  当前主线使用较强细节预设，并将该分支保留为高频细节路径
+- 对比分支：
   `rghs_s07`
-- local visibility branch:
+- 局部可见性分支：
   `clahe_s05`
-- fusion:
+- 融合：
   `fusion_s10`
-- final refinement:
+- 最终收口：
   `r4_03` via `homomorphic_entropy`
 
-### Not-for-Paper but Useful Reminder
+### 不直接写入论文但有用的提醒
 
-- The implemented enhancement pipeline contains six operational stages after the input image.
-- In project-level narrative, a seventh step, downstream edge-oriented validation, can be presented as the task-facing evaluation stage rather than as part of the enhancement operator itself.
-- If the paper needs a cleaner name, a safe working title is:
+- 当前实现中的增强算子在输入图像之后包含六个操作阶段。
+- 在项目级叙事中，第七步“面向下游边缘的验证”可以作为任务化评估阶段呈现，而不是作为增强算子本体的一部分。
+- 如果论文需要更干净的方法名，一个稳妥的工作标题是：
   `A stage-wise task-oriented enhancement framework for underwater HAB microscopic imagery`.
