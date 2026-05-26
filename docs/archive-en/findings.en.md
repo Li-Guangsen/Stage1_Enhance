@@ -1,5 +1,11 @@
 # Research Findings
 
+Archived from the former root-level `findings.md`.
+
+Archive date: 2026-04-24
+
+Reason for archiving: this was an early autoresearch bootstrap snapshot from 2026-04-11. It is kept only for audit/history. It is outdated and must not be used as the current project state source.
+
 ## Research Question
 
 How can we strengthen underwater harmful algal bloom microscopic image enhancement so that color recovery, fine texture visibility, and downstream edge extractability all improve in a measurable and publishable way?
@@ -21,7 +27,7 @@ The codebase does not exactly implement the published reference methods. Instead
 
 - The white-balance stage is already more project-specific than the published cyclic compensation baseline and is likely a real contribution if supported by controlled ablation.
 - The fusion stage is the clearest code-level innovation and likely the best core method section for a first paper.
-- The project is currently strongest as an enhancement paper with downstream edge-validation, not yet as a fully unified “new enhancement + new edge detector” paper unless edge-network experiments are made equally mature.
+- The project is currently strongest as an enhancement paper with downstream edge-validation, not yet as a fully unified "new enhancement + new edge detector" paper unless edge-network experiments are made equally mature.
 - From a research-planning standpoint, the best first ablation is H2 rather than H1. H2 directly tests whether the project's main compositional claim is real, and it can be executed with fewer new implementation branches than the white-balance redesign.
 
 ## Lessons and Constraints
