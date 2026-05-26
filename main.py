@@ -23,10 +23,11 @@ from clahe_guided_visibility import clahe_3ch_wb_safe
 from fusion_three import fuse_three_images_bgr
 from lvbo import Gaussian_lvbo, entropy_boost_Lab
 from lgsbph import lgs_accc_bgr_improved
+from stage1_downstream_candidates import _final_source_requirements, run_downstream_final_mode
 
 
 STAGE_DIRS = ["BPH", "IMF1Ray", "RGHS", "CLAHE", "Fused", "Final"]
-IMAGE_EXTS = (".jpg", ".png", ".jpeg", ".bmp", ".tif", ".tiff")
+IMAGE_EXTS = (".jpg", ".png", ".jpeg", ".bmp", ".tif", ".tiff", ".webp")
 
 
 def ensure_output_dirs(results_dir):
@@ -37,16 +38,38 @@ def ensure_output_dirs(results_dir):
             os.makedirs(os.path.join(fmt_root, stage), exist_ok=True)
 
 
-def save_result_variants(img_uint8, results_dir, stage_name, src_name):
-    stem = os.path.splitext(src_name)[0]
+def _read_bgr(path):
+    data = np.fromfile(str(path), dtype=np.uint8)
+    img = cv2.imdecode(data, cv2.IMREAD_COLOR)
+    if img is None:
+        raise RuntimeError(f"cv2.imdecode 失败: {path}")
+    return img
 
-    jpg_name = f"{stem}_{stage_name}.jpg"
-    jpg_path = os.path.join(results_dir, "jpg", stage_name, jpg_name)
-    cv2.imwrite(jpg_path, img_uint8)
 
-    png_name = f"{stem}_{stage_name}.png"
-    png_path = os.path.join(results_dir, "png", stage_name, png_name)
-    cv2.imwrite(png_path, img_uint8)
+def _write_image(path, img_uint8):
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    ok, encoded = cv2.imencode(path.suffix, img_uint8)
+    if not ok:
+        raise RuntimeError(f"cv2.imencode 失败: {path}")
+    encoded.tofile(str(path))
+
+
+def _result_variant_path(results_dir, fmt, stage_name, src_rel_path):
+    src_rel = Path(src_rel_path)
+    stem_path = src_rel.with_suffix("")
+    stage_root = Path(results_dir) / fmt / stage_name
+    if stem_path.parent != Path("."):
+        stage_root = stage_root / stem_path.parent
+    return stage_root / f"{stem_path.name}_{stage_name}.{fmt}"
+
+
+def save_result_variants(img_uint8, results_dir, stage_name, src_rel_path):
+    jpg_path = _result_variant_path(results_dir, "jpg", stage_name, src_rel_path)
+    _write_image(jpg_path, img_uint8)
+
+    png_path = _result_variant_path(results_dir, "png", stage_name, src_rel_path)
+    _write_image(png_path, img_uint8)
 
 
 def _project_path(path_text, base_dir):
@@ -57,38 +80,56 @@ def _project_path(path_text, base_dir):
 
 
 def _read_manifest(manifest_path):
-    stems = []
+    items = []
     seen = set()
     with open(manifest_path, "r", encoding="utf-8") as f:
         for line in f:
             item = line.strip().lstrip("\ufeff")
             if not item or item.startswith("#"):
                 continue
-            token = item.split("#", 1)[0].strip().split()[0].split(",")[0]
-            path = Path(token)
-            stem = path.stem if path.suffix.lower() in IMAGE_EXTS else path.name
-            for suffix in STAGE_DIRS:
-                tag = f"_{suffix}"
-                if stem.lower().endswith(tag.lower()):
-                    stem = stem[: -len(tag)]
-                    break
-            if stem not in seen:
-                stems.append(stem)
-                seen.add(stem)
-    return stems
+            token = item
+            if len(token) >= 2 and token[0] == token[-1] and token[0] in {"'", '"'}:
+                token = token[1:-1]
+            if token and token not in seen:
+                items.append(token)
+                seen.add(token)
+    return items
+
+
+def _strip_stage_suffix(stem):
+    for suffix in STAGE_DIRS:
+        tag = f"_{suffix}"
+        if stem.lower().endswith(tag.lower()):
+            return stem[: -len(tag)]
+    return stem
 
 
 def _list_inputs(input_dir, manifest_path=None, limit=None):
-    files = [p for p in Path(input_dir).iterdir() if p.is_file() and p.suffix.lower() in IMAGE_EXTS]
+    input_root = Path(input_dir)
+    files = [p for p in input_root.iterdir() if p.is_file() and p.suffix.lower() in IMAGE_EXTS]
     by_stem = {p.stem: p for p in files}
+    by_name = {p.name: p for p in files}
     if manifest_path:
         names = _read_manifest(manifest_path)
         selected = []
         missing = []
-        for stem in names:
-            path = by_stem.get(stem)
+        recursive_files = [p for p in input_root.rglob("*") if p.is_file() and p.suffix.lower() in IMAGE_EXTS]
+        recursive_by_name = {p.name: p for p in recursive_files}
+        recursive_by_stem = {p.stem: p for p in recursive_files}
+        for item in names:
+            manifest_item = Path(item)
+            path = None
+            if manifest_item.suffix.lower() in IMAGE_EXTS:
+                relative_candidate = input_root / manifest_item
+                if relative_candidate.is_file():
+                    path = relative_candidate
+                else:
+                    path = by_name.get(manifest_item.name) or recursive_by_name.get(manifest_item.name)
+            else:
+                stem = _strip_stage_suffix(manifest_item.name)
+                path = by_stem.get(stem) or recursive_by_stem.get(stem)
             if path is None:
-                missing.append(stem)
+                missing.append(item)
             else:
                 selected.append(path)
         if missing:
@@ -115,7 +156,20 @@ def _load_params(params_json):
     额外说明：
 
     - `imf1ray` 会先以 `{"aggressive": True}` 作为默认基线，再叠加 JSON 中的覆写值
-    - `final.mode` 当前支持：`homomorphic` / `entropy` / `homomorphic_entropy` / `none`
+    - `final.mode` 当前支持：`homomorphic` / `entropy` / `homomorphic_entropy` /
+      `none` / `original` / `bph` / `edge_preserve_blend` /
+      `generic_luma_clahe` / `generic_luma_gamma` /
+      `edge_safe_gamma_bph` / `boundary_aware_luma_bph` /
+      `microstructure_csp_bph` /
+      `topology_guarded_microfusion_bph` /
+      `topology_pruned_microfusion_bph` /
+      `endpoint_stabilized_weak_boundary_bph` /
+      `ac_guarded_weak_boundary_bph` /
+      `dual_anchor_false_edge_floor_bph` /
+      `raw_detail_lowfreq_chroma_bph` /
+      `degradation_aware_pyramid_frequency_bph` /
+      `weak_boundary_pyramid_fusion_bph`
+    - `pipeline.save_intermediate_stages=false` 可用于只输出 `Final` 的诊断变体
     - JSON 中省略某个 stage key，表示该阶段使用代码默认参数
     - 未被主流程消费的顶层 key 当前会被忽略，不参与运行
     """
@@ -125,7 +179,8 @@ def _load_params(params_json):
         return json.load(f)
 
 
-def _final_refine(fused_uint8, final_params):
+
+def _final_refine(fused_uint8, final_params, original_uint8=None, bph_uint8=None):
     """Dispatch the configured `Final` refinement mode."""
     params = dict(final_params or {})
     enabled = bool(params.pop("enabled", True))
@@ -142,10 +197,34 @@ def _final_refine(fused_uint8, final_params):
         return entropy_boost_Lab(first, **entropy_params)
     if mode == "none":
         return fused_uint8
+    if mode == "original":
+        if original_uint8 is None:
+            raise ValueError("final mode `original` requires original_uint8")
+        return original_uint8
+    if mode == "bph":
+        if bph_uint8 is None:
+            raise ValueError("final mode `bph` requires bph_uint8")
+        return bph_uint8
+    downstream_result = run_downstream_final_mode(
+        mode,
+        fused_uint8,
+        original_uint8=original_uint8,
+        bph_uint8=bph_uint8,
+        **params,
+    )
+    if downstream_result is not None:
+        return downstream_result
     raise ValueError(f"未知 final mode: {mode}")
 
 
-def process_one_image(img_path, results_dir, params, resize_to=(320, 320), skip_existing=False):
+def _relative_to_root(path, root):
+    try:
+        return path.relative_to(root)
+    except ValueError:
+        return Path(path.name)
+
+
+def process_one_image(img_path, results_dir, params, resize_to=(320, 320), skip_existing=False, input_root=None):
     """Run the full seven-stage pipeline for one image and write stage artifacts.
 
     当前阶段参数在主流程里的接线关系是：
@@ -155,16 +234,17 @@ def process_one_image(img_path, results_dir, params, resize_to=(320, 320), skip_
     - `fusion` 只负责把三条分支合成为 `Fused`
     - `final` 只负责把 `Fused` 收口为 `Final`
     """
+    img_path = Path(img_path)
+    input_root = Path(input_root) if input_root is not None else img_path.parent
+    src_rel_path = _relative_to_root(img_path, input_root)
     name = img_path.name
     stem = img_path.stem
-    final_png = Path(results_dir) / "png" / "Final" / f"{stem}_Final.png"
+    final_png = _result_variant_path(results_dir, "png", "Final", src_rel_path)
     if skip_existing and final_png.exists():
         print(f"[SKIP] 已存在 Final PNG: {name}")
         return
 
-    img_bgr = cv2.imread(str(img_path), cv2.IMREAD_COLOR)
-    if img_bgr is None:
-        raise RuntimeError(f"cv2.imread 失败: {img_path}")
+    img_bgr = _read_bgr(img_path)
 
     print(f"[INFO] 原始尺寸 {name}: {img_bgr.shape}")
     if resize_to is not None:
@@ -172,38 +252,61 @@ def process_one_image(img_path, results_dir, params, resize_to=(320, 320), skip_
         if img_bgr.shape[0] != h or img_bgr.shape[1] != w:
             img_bgr = cv2.resize(img_bgr, (w, h), cv2.INTER_CUBIC)
 
+    original_uint8 = img_bgr.copy()
     img = img_bgr.astype(np.float32) / 255.0
     print("正在处理:", name)
 
-    bph_bgr = lgs_accc_bgr_improved(img, **params.get("bph", {}))
-    bph_uint8 = np.clip(bph_bgr * 255, 0, 255).astype(np.uint8)
-    save_result_variants(bph_uint8, results_dir, "BPH", name)
-    print("白平衡完成")
+    final_params = params.get("final", {})
+    pipeline_params = params.get("pipeline", {})
+    save_intermediate_stages = bool(pipeline_params.get("save_intermediate_stages", True))
+    requirements = _final_source_requirements(final_params)
+    need_bph = save_intermediate_stages or requirements["bph"] or requirements["fused"]
+    need_fused = save_intermediate_stages or requirements["fused"]
 
-    imf_params = {"aggressive": True}
-    imf_params.update(params.get("imf1ray", {}))
-    imf1_bgr = imf1Ray_from_bgr(bph_bgr, **imf_params)
-    imf1_uint8 = np.clip(imf1_bgr * 255, 0, 255).astype(np.uint8)
-    save_result_variants(imf1_uint8, results_dir, "IMF1Ray", name)
-    print("IMF1 Rayleigh 增强完成")
+    bph_bgr = None
+    bph_uint8 = None
+    if need_bph:
+        bph_bgr = lgs_accc_bgr_improved(img, **params.get("bph", {}))
+        bph_uint8 = np.clip(bph_bgr * 255, 0, 255).astype(np.uint8)
+        if save_intermediate_stages:
+            save_result_variants(bph_uint8, results_dir, "BPH", src_rel_path)
+        print("白平衡完成")
 
-    rghs_bgr = wb_safe_contrast(bph_bgr, **params.get("rghs", {}))
-    rghs_uint8 = np.clip(rghs_bgr * 255, 0, 255).astype(np.uint8)
-    save_result_variants(rghs_uint8, results_dir, "RGHS", name)
-    print("RGHS 增强完成")
+    fused_uint8 = original_uint8
+    if need_fused:
+        imf_params = {"aggressive": True}
+        imf_params.update(params.get("imf1ray", {}))
+        imf1_bgr = imf1Ray_from_bgr(bph_bgr, **imf_params)
+        imf1_uint8 = np.clip(imf1_bgr * 255, 0, 255).astype(np.uint8)
+        if save_intermediate_stages:
+            save_result_variants(imf1_uint8, results_dir, "IMF1Ray", src_rel_path)
+        print("IMF1 Rayleigh 增强完成")
 
-    clahe_bgr = clahe_3ch_wb_safe(bph_bgr, **params.get("clahe", {}))
-    clahe_uint8 = np.clip(clahe_bgr * 255, 0, 255).astype(np.uint8)
-    save_result_variants(clahe_uint8, results_dir, "CLAHE", name)
-    print("CLAHE 增强完成")
+        rghs_bgr = wb_safe_contrast(bph_bgr, **params.get("rghs", {}))
+        rghs_uint8 = np.clip(rghs_bgr * 255, 0, 255).astype(np.uint8)
+        if save_intermediate_stages:
+            save_result_variants(rghs_uint8, results_dir, "RGHS", src_rel_path)
+        print("RGHS 增强完成")
 
-    fused_bgr = fuse_three_images_bgr(imf1_bgr, rghs_bgr, clahe_bgr, **params.get("fusion", {}))
-    fused_uint8 = np.clip(fused_bgr * 255, 0, 255).astype(np.uint8)
-    save_result_variants(fused_uint8, results_dir, "Fused", name)
-    print("融合完成:", stem + "_Fused")
+        clahe_bgr = clahe_3ch_wb_safe(bph_bgr, **params.get("clahe", {}))
+        clahe_uint8 = np.clip(clahe_bgr * 255, 0, 255).astype(np.uint8)
+        if save_intermediate_stages:
+            save_result_variants(clahe_uint8, results_dir, "CLAHE", src_rel_path)
+        print("CLAHE 增强完成")
 
-    final_uint8 = _final_refine(fused_uint8, params.get("final", {}))
-    save_result_variants(final_uint8, results_dir, "Final", name)
+        fused_bgr = fuse_three_images_bgr(imf1_bgr, rghs_bgr, clahe_bgr, **params.get("fusion", {}))
+        fused_uint8 = np.clip(fused_bgr * 255, 0, 255).astype(np.uint8)
+        if save_intermediate_stages:
+            save_result_variants(fused_uint8, results_dir, "Fused", src_rel_path)
+        print("融合完成:", stem + "_Fused")
+
+    final_uint8 = _final_refine(
+        fused_uint8,
+        final_params,
+        original_uint8=original_uint8,
+        bph_uint8=bph_uint8,
+    )
+    save_result_variants(final_uint8, results_dir, "Final", src_rel_path)
     print("增强完成:", stem + "_Final")
 
 
@@ -255,6 +358,7 @@ def main():
             params,
             resize_to=resize_to,
             skip_existing=args.skip_existing,
+            input_root=input_dir,
         )
 
 
