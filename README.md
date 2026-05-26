@@ -1,164 +1,160 @@
 # Stage1Codex
 
-面向有害藻华水下显微图像的分阶段增强项目，不是一般自然场景水下增强仓库。
+Stage1Codex 是面向有害藻华（HAB）水下显微图像的分阶段增强与下游边缘验证支撑仓库，不是一般自然场景水下增强仓库。
 
-当前仓库已经完成正式主线锁定、正式阶段评测和正式外部主表评测。它现在更接近“论文底稿 + 正式结果入口 + 后续下游衔接工作台”，而不是早期探索期实验仓库。
+当前项目已经从早期探索进入“正式增强资产 + 证据治理 + MyEdge/MSFI 论文支撑”的阶段。Stage1 的当前定位是为 MyEdge/MSFI 主论文提供 `task-driven structure-preserving input formation`，而不是单独硬推“增强 + 边缘检测 pipeline”主创新。
 
-当前写作与结果收口的语言工作重心优先放在中文主稿；英文 outline、英文 related work 草稿和 Word 导出工具作为辅助写作资产保留。
+## 1. 必读入口
 
-## 1. 当前正式主线
+每次接手先读：
 
-当前正式增强链路为：
+1. `AGENTS.md`
+2. `docs/project_execution_rules_cn.md`
+3. `docs/current_experiment_status_cn.md`
+4. `docs/evidence_asset_inventory_cn.md`
+5. `metrics/registry_schema_cn.md`
+6. `metrics/experiment_registry.csv`
+7. `metrics/candidate_registry.csv`
+8. `docs/project_status_overview_cn.md`
+9. `docs/project_handoff_guide_cn.md`
+9. `research-state.yaml`
 
-`Original -> BPH -> IMF1Ray -> RGHS -> CLAHE -> Fused -> Final`
+涉及正式结果、baseline 或主表时再读：
 
-当前锁定组合为：
+- `docs/comparison_methods_results_index_cn.md`
+- `metrics/outputs/evaluate_protocol_v2/official_stage_progress_full502/mean_metrics_table.md`
+- `metrics/outputs/evaluate_protocol_v2/official_compare9_complete496/mean_metrics_table.md`
 
-- `BPH = r2_05_G_P_A_B`
-- `IMF1Ray = locked existing output`
-- `RGHS = rghs_s07`
-- `CLAHE = clahe_s05`
-- `Fusion = fusion_s10`
-- `Final = r4_03 / homomorphic_entropy`
+涉及论文写作时再读：
 
-当前唯一正式配置：
+- `paper/underwater_image_enhancement_draft_cn.md`
+- `paper/underwater_image_enhancement_evidence_pack_cn.md`
+- `method-underwater-enhancement.md`
+- `method-underwater-enhancement-paper-ready.md`
+- `related-work-underwater-enhancement.md`
 
-- `experiments/optimization_v1/configs/locked_full506_final_mainline.json`
+## 2. 正式增强资产
 
-当前唯一正式结果副本：
+当前 formal enhancement source asset 是：
 
-- `experiments/h2-full506-direct/outputs/full506/runs/full506_final_mainline`
+- 配置：`experiments/optimization_v1/configs/locked_full506_final_mainline.json`
+- 结果源目录：`experiments/h2-full506-direct/outputs/full506/runs/full506_final_mainline`
+- 最终输出源：`experiments/h2-full506-direct/outputs/full506/runs/full506_final_mainline/png/Final`
 
-正式运行提醒：
+注意：`full506_final_mainline` 是历史锁定后的源资产目录名，不是论文主表样本口径。
 
-- 当前正式主线必须显式传 `experiments/optimization_v1/configs/locked_full506_final_mainline.json`
-- 直接运行 `python main.py` 的默认参数不会自动落到当前正式论文主线
-- 当前不会把 `main.py` 默认入口升格为正式主线，以免历史流程和正式流程混淆
+正式增强流程：
 
-## 2. 当前正式评测口径
+`Original -> BPH -> IMF1Ray / RGHS / CLAHE -> Fused -> Final`
 
-当前正式论文口径分为两层：
+论文中必须按真实职责解释阶段：
 
-- `full502_clean_v1`
-  - 用于阶段进度表
-  - manifest: `metrics/manifests/full502_clean_v1.txt`
-- `compare9_complete496_v1`
-  - 用于 `Ours + 8 baselines` 主比较表
-  - manifest: `metrics/manifests/compare9_complete496_v1.txt`
+- `BPH`：灰像素引导的前置白平衡。
+- `IMF1Ray`：IMF1-Rayleigh 高频细节分支。
+- `RGHS`：白平衡安全对比分支，不是标准现成 RGHS 模块。
+- `CLAHE`：CLAHE 引导的局部可见性分支，不是直接输出普通 CLAHE 图像。
+- `Fused`：特征门控的三分支亮度结构融合。
+- `Final`：轻量照明与对比收口。
 
-需要明确：
+## 3. 正式论文指标口径
 
-- `full506` 现在只表示历史搜索与锁定背景，不再是当前正式论文主表口径
-- 当前不是“还没统一评测”，而是已经形成正式阶段表和正式主比较表
+当前论文统计只认两套 manifest：
 
-## 3. 当前正式结果入口
+- 阶段表：`full502_clean_v1`
+  - manifest：`metrics/manifests/full502_clean_v1.txt`
+  - 输出：`metrics/outputs/evaluate_protocol_v2/official_stage_progress_full502`
+- 主比较表：`compare9_complete496_v1`
+  - manifest：`metrics/manifests/compare9_complete496_v1.txt`
+  - 输出：`metrics/outputs/evaluate_protocol_v2/official_compare9_complete496`
 
-只看这两个目录即可：
+`compare9_complete496_v1` 覆盖 `Ours + 8 baselines`，其中 `WWPF` 官方实现稳定输出 496 张，因此正式公平比较使用 496 complete-case。
 
-- 阶段进度表：`metrics/outputs/evaluate_protocol_v2/official_stage_progress_full502`
-- 外部主比较表：`metrics/outputs/evaluate_protocol_v2/official_compare9_complete496`
+`MS_SSIM` 和 `PSNR` 只能解释为增强结果相对原图的结构一致性，不是相对增强真值的质量指标。
 
-辅助入口：
+## 4. Downstream 诊断事实
 
-- 方法注册表：`metrics/configs/official_method_registry.json`
-- manifest 生成脚本：`metrics/scripts/build_official_manifests.py`
-- 正式评测脚本：`metrics/scripts/run_official_evaluations.ps1`
+在 MyEdge 168 张带 GT split、fixed MSFI 50k 和 fixed DiffusionEdge baseline 50k 口径下，locked Stage1 `Final` 是 downstream negative control：它明显降低 ODS/OIS/AP/AC。
 
-还需要明确一件事：
+因此，不能写：
 
-- 当前仓库内已经保存正式主表输出，因此“阅读结果”不依赖外部方法源码仓库
-- 但如果你要在本机重新生成 `official_compare9_complete496`，则仍依赖 `metrics/configs/official_method_registry.json` 中登记的外部方法结果目录
-- 这些外部方法结果目录目前是当前工作站上的绝对路径资产，不随本仓库一起分发
+- Stage1 locked Final 已稳定提升下游边缘检测。
+- Stage1 已证明 ODS/OIS/AP/AC 正向收益。
+- structure proxy 可替代 ODS/OIS/AP/AC。
 
-## 4. 当前增强与评测环境
+当前 168 张带 GT split 是 downstream validation 核心；502/496 只用于 Stage1 增强指标和 complete-case 对照；2770 full-pool 不能替代 168 downstream validation。
 
-下面这条环境说明只适用于当前正式增强与正式评测，不自动覆盖仓库内所有历史脚本：
+## 5. 候选治理状态
 
-- conda 根目录：`D:\miniconda3`
-- 当前增强与评测环境：`D:\Desktop\EdgeDetection\my_env`
+当前优先级是实验治理与候选归档，不是继续派生 P29/D02。
 
-推荐的交互式启动方式：
+唯一候选总账：
 
-```bat
-cmd.exe /K "D:\miniconda3\Scripts\activate.bat D:\Desktop\EdgeDetection\my_env"
-```
+- `metrics/registry_schema_cn.md`
+- `metrics/experiment_registry.csv`
+- `metrics/candidate_registry.csv`
 
-推荐的一次性运行方式：
+当前候选边界：
 
-```bat
-cmd.exe /D /S /C "call D:\miniconda3\Scripts\activate.bat D:\Desktop\EdgeDetection\my_env && python main.py --params-json experiments\optimization_v1\configs\locked_full506_final_mainline.json"
-```
+- P12-P28：`diagnostic candidates / archived evidence`。
+- P28：`pending_audit`，不得继续迭代。
+- D01：`mechanism-complete weak diagnostic candidate`，不是 strong pass、正式增强主线或稳定下游收益。
+- `candidate_rescues_legacy_but_not_near_raw` 和 `candidate_metric_near_raw_structure_mixed` 都不能写成目标完成。
 
-当前已做过 smoke 验证：
+新增候选前必须先有 method review、run sheet、isolated output root、config、log、status、decision 和 registry entry。
 
-- 能用该环境跑 `main.py` 的当前正式主线配置
-- 能用该环境跑 `metrics/evaluate_protocol_v2.py`
+## 6. 2770 Full-Pool 状态
 
-正式评测脚本 `metrics/scripts/run_official_evaluations.ps1` 也统一指向这套环境，但这不表示仓库内所有历史脚本都已经收口到同一解释器。
+`full_algae_dewatermark_v1` 来自 `D:\Desktop\去水印所有藻类图像`，当前角色是 cv2-readable full-pool candidate / qualitative engineering pool。
 
-正式重跑命令：
+当前已知状态：
 
-```bat
-cmd.exe /D /S /C "call D:\miniconda3\Scripts\activate.bat D:\Desktop\EdgeDetection\my_env && powershell -ExecutionPolicy Bypass -File metrics\scripts\run_official_evaluations.ps1"
-```
+- 顶层图像文件：2777
+- 默认候选 manifest：2774
+- OpenCV 可读候选：2770
+- 人工复核：544 条 pending
+- clean manifest：未生成
+- full2770 run intake：`not_started`
 
-需要注意：
+2770 不能写成正式 full-pool 结果，也不能替代 502/496 正式口径或 168 downstream validation。
 
-- 该脚本会先重建正式 manifest
-- 然后覆盖 `metrics/outputs/evaluate_protocol_v2/official_stage_progress_full502`
-- 以及覆盖 `metrics/outputs/evaluate_protocol_v2/official_compare9_complete496`
+## 7. 参考论文边界
 
-如果只是确认环境或流程是否通，优先做 1 张图 smoke，而不是直接重跑正式全量评测。
+两篇 Wu et al. 2026 HAB 论文是 nearest-neighbor / overlap-risk anchor：
 
-## 5. 新接手阅读顺序
+- `Enhanced edge detection of harmful algal Blooms using diffusion probability models and Sobel-convolutional attention mechanisms`
+- `Microscopic image segmentation of harmful algal blooms using pyramid fusion enhancement and dual-branch network`
 
-第一次进入仓库，按这个顺序看：
+它们用于 HAB task framing、degradation analysis、enhancement-flow design、metric design 和写作边界参考。当前仓库未证明 Stage1 2777/2774/2770 与 ESWA 676 或 EAAI 1026 有文件级 overlap、同一 split、同一 GT 或同一统计口径。
 
-1. `docs/project_handoff_guide_cn.md`
-2. `docs/project_status_overview_cn.md`
-3. `docs/comparison_methods_results_index_cn.md`
-4. `research-state.yaml`
+## 8. 历史资产
 
-这四份文件的职责已经拆开：`README.md` 只做总导航，`project_handoff_guide_cn.md` 负责交接全景，`project_status_overview_cn.md` 负责正式状态快照，`comparison_methods_results_index_cn.md` 负责主表与对比方法索引。
-
-如果要看代码实现，再看：
-
-- `main.py`
-- `lgsbph.py`
-- `pybemd.py`
-- `wb_safe_contrast.py`
-- `clahe_guided_visibility.py`
-- `fusion_three.py`
-- `lvbo.py`
-
-## 6. 当前还缺什么
-
-当前最关键的缺口不是统一评测，而是：
-
-- 与当前正式主线严格对齐的下游边缘验证总表
-- paper-ready 的代表性 qualitative panel 与失败案例图组
-- 数据采集/覆盖范围/公开性说明，以及运行时间与资源说明
-
-## 7. 结果解释边界
-
-当前主表解释统一采用以下口径：
-
-- `MS_SSIM` 与 `PSNR` 表示增强结果相对原图的结构一致性，不是相对增强真值的质量指标
-- `WWPF` 保留在主表中，作为激进但可接受的强基线
-- `HLRP` 与 `Histoformer` 的数值保留在正式主表中，但正文层面只在当前 HAB 显微图像协议下作为失败案例或补充分析讨论
-- 这些结论只适用于当前有害藻华显微图像任务、本地复现实验和当前指标解释，不构成对原方法既有论文结论的否定
-
-## 8. 历史资产说明
-
-以下内容属于历史搜索、旧口径结果或归档背景，不再作为正式论文入口：
+以下资产可用于审计，不是当前正式入口：
 
 - `results_optimized_c25`
 - 旧 `full506` 评测目录
 - `metrics/archive/`
-- 其他围绕旧 `c25`、旧 `506` 口径生成的临时汇总与对比输出
+- `AIlog/`
+- `notion_mirror/`
+- 旧 pilot / H2 / H3 草案
 
-如果需要理解这些资产与当前正式口径的关系，请看：
+不删除这些资产，但论文和实验说明必须回到当前 formal source asset、502/496 paper metric、168 downstream diagnostic 和 registry。
 
-- `docs/project_handoff_guide_cn.md`
-- `docs/project_status_overview_cn.md`
-- `research-state.yaml`
+## 9. 当前禁止写法
+
+不要写：
+
+- “全面领先 SOTA”
+- “所有指标最优”
+- “Stage1 已稳定提升下游边缘检测”
+- “D01/P27 是正式成功候选”
+- “2770 是正式 full-pool 结果”
+- “Wu 2026 数据集与本项目已证明完全相同”
+- “HLRP/Histoformer 原方法普遍无效”
+
+可写：
+
+- Stage1 提供可复现的 formal enhancement source asset。
+- 502/496 增强指标已完成。
+- locked Final 在 168 fixed-detector downstream 口径下是 negative control。
+- P12-P28/D01 是诊断候选与归档证据。
+- Stage1 当前更适合作为 MyEdge/MSFI 主论文的结构保持增强输入支撑。
