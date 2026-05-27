@@ -1,0 +1,119 @@
+{
+  "run_id": "smoke5_fast_imf_v8",
+  "status": "complete_smoke_fast_imf_v8_visual_review_pending",
+  "decision": "visual_review_before_168_gate",
+  "manifest": "experiments\\full_flow_downstream_stage1_mainline_v1\\manifests\\smoke5_v1.txt",
+  "output_root": "experiments\\full_flow_downstream_stage1_mainline_v1\\outputs\\smoke5_v1_fast_imf_v8",
+  "expected_images": 5,
+  "runtime_sec": 3.0,
+  "sec_per_image": 0.6,
+  "projected_168_min": 1.68,
+  "stage_counts": {
+    "jpg": {
+      "BPH": 5,
+      "IMF1Ray": 5,
+      "RGHS": 5,
+      "CLAHE": 5,
+      "Fused": 5,
+      "Final": 5
+    },
+    "png": {
+      "BPH": 5,
+      "IMF1Ray": 5,
+      "RGHS": 5,
+      "CLAHE": 5,
+      "Fused": 5,
+      "Final": 5
+    }
+  },
+  "missing_files": [],
+  "decode_failures": [],
+  "final_rows": [
+    {
+      "stem": "chazhuang.1",
+      "mean_abs_bgr_delta": 6.022942543029785,
+      "mean_abs_luma_delta": 1.0351171493530273,
+      "mean_abs_chroma_delta": 4.671494007110596,
+      "psnr_vs_raw": 29.68911967597828,
+      "raw_grad_mean": 0.5767266750335693,
+      "final_grad_mean": 0.5793190002441406,
+      "grad_mean_ratio": 1.0044948921530732,
+      "raw_luma_std": 41.07143783569336,
+      "final_luma_std": 41.16396713256836,
+      "luma_std_ratio": 1.0022529363632202
+    },
+    {
+      "stem": "haiyangkadun.18",
+      "mean_abs_bgr_delta": 3.033574104309082,
+      "mean_abs_luma_delta": 1.0832128524780273,
+      "mean_abs_chroma_delta": 2.3899707794189453,
+      "psnr_vs_raw": 37.658574784052206,
+      "raw_grad_mean": 0.1305627077817917,
+      "final_grad_mean": 0.13556167483329773,
+      "grad_mean_ratio": 1.0382878549177528,
+      "raw_luma_std": 12.904595375061035,
+      "final_luma_std": 13.282987594604492,
+      "luma_std_ratio": 1.0293222665786743
+    },
+    {
+      "stem": "lingxinghaixian.6",
+      "mean_abs_bgr_delta": 10.435338973999023,
+      "mean_abs_luma_delta": 2.124941349029541,
+      "mean_abs_chroma_delta": 11.544106483459473,
+      "psnr_vs_raw": 26.745611285119782,
+      "raw_grad_mean": 0.17417538166046143,
+      "final_grad_mean": 0.1795729696750641,
+      "grad_mean_ratio": 1.0309893793953921,
+      "raw_luma_std": 7.974884510040283,
+      "final_luma_std": 8.003384590148926,
+      "luma_std_ratio": 1.0035737752914429
+    },
+    {
+      "stem": "tama.14",
+      "mean_abs_bgr_delta": 5.073157787322998,
+      "mean_abs_luma_delta": 1.041689395904541,
+      "mean_abs_chroma_delta": 2.6017041206359863,
+      "psnr_vs_raw": 32.15805929981029,
+      "raw_grad_mean": 0.018154585734009743,
+      "final_grad_mean": 0.02195858396589756,
+      "grad_mean_ratio": 1.209533672543569,
+      "raw_luma_std": 4.794126510620117,
+      "final_luma_std": 5.102356910705566,
+      "luma_std_ratio": 1.064293384552002
+    },
+    {
+      "stem": "zhaixi.3",
+      "mean_abs_bgr_delta": 9.830989837646484,
+      "mean_abs_luma_delta": 0.08506835997104645,
+      "mean_abs_chroma_delta": 7.810346603393555,
+      "psnr_vs_raw": 27.547131591070148,
+      "raw_grad_mean": 0.1909513622522354,
+      "final_grad_mean": 0.19684462249279022,
+      "grad_mean_ratio": 1.0308626193611938,
+      "raw_luma_std": 8.613985061645508,
+      "final_luma_std": 8.932487487792969,
+      "luma_std_ratio": 1.0369750261306763
+    }
+  ],
+  "mean_metrics": {
+    "mean_abs_bgr_delta": 6.879200649261475,
+    "mean_abs_luma_delta": 1.0740058213472365,
+    "mean_abs_chroma_delta": 5.803524398803711,
+    "psnr_vs_raw": 30.759699327206143,
+    "raw_grad_mean": 0.2181141424924135,
+    "final_grad_mean": 0.22265137024223805,
+    "grad_mean_ratio": 1.0628336836741963,
+    "raw_luma_std": 15.071805858612061,
+    "final_luma_std": 15.297036743164062,
+    "luma_std_ratio": 1.0272834777832032
+  },
+  "metrics_csv": "experiments\\full_flow_downstream_stage1_mainline_v1\\full_flow_downstream_stage1_mainline_v1_smoke5_fast_imf_v8_metrics_20260527.csv",
+  "stage_metrics_csv": "experiments\\full_flow_downstream_stage1_mainline_v1\\full_flow_downstream_stage1_mainline_v1_smoke5_fast_imf_v8_stage_metrics_20260527.csv",
+  "visual_panels": [
+    "experiments\\full_flow_downstream_stage1_mainline_v1\\diagnostics\\smoke5_fast_imf_v8\\chazhuang.1_panel.jpg",
+    "experiments\\full_flow_downstream_stage1_mainline_v1\\diagnostics\\smoke5_fast_imf_v8\\haiyangkadun.18_panel.jpg",
+    "experiments\\full_flow_downstream_stage1_mainline_v1\\diagnostics\\smoke5_fast_imf_v8\\lingxinghaixian.6_panel.jpg",
+    "experiments\\full_flow_downstream_stage1_mainline_v1\\diagnostics\\smoke5_fast_imf_v8\\tama.14_panel.jpg",
+    "experiments\\full_flow_downstream_stage1_mainline_v1\\diagnostics\\smoke5_fast_imf_v8\\zhaixi.3_panel.jpg"
+  ]
+}

@@ -41,6 +41,15 @@
 - `docs/experiment_run_sheet_template_cn.md`
 - `docs/stage1_to_myedge_downstream_workflow_cn.md`
 - `docs/evidence_asset_inventory_cn.md`
+- `docs/stage1_full_enhancement_mainline_recovery_plan_cn.md`
+- `docs/stage1_full_flow_failure_audit_and_next_goal_20260527_cn.md`
+- `docs/stage1_full_flow_family_failure_audit_fa01_20260527_cn.md`
+- `docs/stage1_detector_sensitivity_hypotheses_fa01_20260527_cn.md`
+- `docs/fa01_high_risk_sample_evidence_index_20260527_cn.md`
+- `docs/fa01_per_image_correlation_audit_20260527_cn.md`
+- `docs/fa01_visual_error_map_review_20260527_cn.md`
+- `docs/myedge_msfi_stage1_sidecar_adaptation_protocol_fa01_20260527_cn.md`
+- `docs/stage1_sidecar_map_definition_fa01_20260527_cn.md`
 - `metrics/registry_schema_cn.md`
 - `metrics/experiment_registry.csv`
 - `metrics/candidate_registry.csv`
@@ -50,6 +59,9 @@
 - 当前执行优先级是实验治理与候选归档，不是继续派生新的 `Pxx/Dxx` 候选。
 - 没有 method design、run sheet、isolated output root、config、log、status 和 decision，不新增候选。
 - `D01` 当前只能写作 `mechanism-complete weak candidate`，不是正式增强主线、不是 strong pass，也不是 Stage1 稳定下游收益。
+- FF01/FF02 是完整增强主线恢复轨道的诊断失败证据；FF02 已完成机制级重设计但仍是 `candidate_rescues_legacy_but_not_near_raw`，不能继续同族小修或写成 downstream 正收益。
+- TLVC01 是 topology-locked visual-chroma 完整流程纠偏证据；它修正 MyEdge raw input mismatch 但 gate 仍为 `candidate_rescues_legacy_but_not_near_raw`，不得继续 TLVC02/FF03/P29/D02 小修或写成 downstream 正收益。
+- FA01 visual/error-map review 与 sidecar map smoke 是诊断/导出准备，不是新候选、训练结果或 fixed-detector 正收益证据。
 - `candidate_rescues_legacy_but_not_near_raw`、`candidate_metric_near_raw_structure_mixed`、proxy-only、readiness-only 或 2770 full-pool readiness 都不能标记为目标完成。
 - 168 张带 GT split 是 fixed-detector downstream validation 核心；502/496 只用于 Stage1 增强指标和 complete-case 对照；2770 不能替代 168 downstream validation。
 - 不要继续连续派生同族 `guard` / `fallback` / `raw-pullback` 小变体。连续 mixed/weak 后必须停止、审计、归档或重写 method design。

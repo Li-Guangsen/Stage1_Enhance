@@ -34,7 +34,7 @@
 
 ## 2. 当前一句话状态
 
-Stage1Codex 已完成 formal enhancement source asset、502 阶段表和 496 complete-case 主比较；但 locked Stage1 `Final` 在 MyEdge 168 fixed-detector downstream 口径下是 negative control。P12-P28/D01 已归档为 downstream diagnostic candidates，没有 strong pass。当前应先做治理、归档、证据边界和 MyEdge/MSFI 主论文支撑，而不是继续派生 P29/D02。
+Stage1Codex 已完成 formal enhancement source asset、502 阶段表和 496 complete-case 主比较；但 locked Stage1 `Final` 在 MyEdge 168 fixed-detector downstream 口径下是 negative control。P12-P28/D01/FF01/FF02/TLVC01 已归档为 downstream diagnostic candidates，没有 strong pass。当前长期目标已转向 raw 主输入 + Stage1 sidecar evidence + MyEdge/MSFI adaptation，而不是继续派生 P29/D02/FF03/TLVC02。
 
 ## 3. Formal Source Asset vs Paper Metric
 
@@ -91,6 +91,8 @@ Stage1Codex 已完成 formal enhancement source asset、502 阶段表和 496 com
 - P12-P28：diagnostic candidates / archived evidence。
 - P28：pending audit，不得继续迭代。
 - D01：mechanism-complete weak diagnostic candidate，不是 strong pass 或正式主线。
+- FF01/FF02/TLVC01：完整流程恢复与 topology-lock 纠偏证据，均为 `candidate_rescues_legacy_but_not_near_raw`，不得写成下游正收益或进入 502/496/2770 candidate-passing route。
+- TLVC01 后长期目标：`docs/stage1_long_horizon_goal_after_tlvc01_20260527_cn.md`。
 
 继续实验前必须满足：
 

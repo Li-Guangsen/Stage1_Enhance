@@ -264,6 +264,9 @@
 - Registry 字段和枚举必须遵守 `metrics/registry_schema_cn.md`；字段数错位时不得提交。
 - `candidate_rescues_legacy_but_not_near_raw`、`candidate_metric_near_raw_structure_mixed`、`mechanism-complete weak candidate`、proxy-only 和 readiness-only 不能写成目标完成。
 - D01 `d01_structure_flow_v1` 当前只能写成 `mechanism-complete weak candidate`，不是正式增强主线。
+- FF01/FF02 是完整增强主线恢复轨道的诊断失败证据；FF02 已完成 detector-compatible 机制级重设计，但 gate 仍为 `candidate_rescues_legacy_but_not_near_raw`，不得继续同族 FF03 小修或写成 downstream 正收益。
+- TLVC01 是 topology-locked visual-chroma 完整流程纠偏证据；它修正了 MyEdge raw input mismatch，但 gate 仍为 `candidate_rescues_legacy_but_not_near_raw`，不得继续 TLVC02/FF03/P29/D02 小修或写成 downstream 正收益。
+- FA01 visual/error-map review 与 Stage1 sidecar map smoke 只能写成诊断/导出准备；它们没有训练、没有 detector adaptation、没有 fixed-detector rerun，不能写成 downstream 正收益。
 - 连续两个同族候选为 mixed/weak 时，必须停止同族派生，先做 method review 或归档。
 - 168 张带 GT split 是 fixed-detector downstream validation 核心；502/496 只用于 Stage1 增强指标和 complete-case 对照；2770 full-pool 不能替代 downstream validation。
 - 失败候选必须保留为有效证据，不删除、不覆盖、不用下一轮结果掩盖。

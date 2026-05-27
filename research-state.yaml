@@ -3441,3 +3441,576 @@ repository_reorganization_20260527:
     - "No formal results were overwritten."
     - "full506_final_mainline is a source asset path, not the paper metric count."
     - "D01 remains a mechanism-complete weak diagnostic candidate, not a strong result."
+
+stage1_full_enhancement_mainline_recovery_20260527:
+  date: "2026-05-27"
+  status: "goal_correction_and_long_term_plan_added_no_experiments"
+  plan_doc: "docs/stage1_full_enhancement_mainline_recovery_plan_cn.md"
+  correction:
+    - "D01 did not achieve the original full enhancement mainline goal."
+    - "D01 has no full502/compare496 external enhancement comparison."
+    - "D01 does not provide clear stable downstream positive gain."
+    - "D01 output is near-raw and cannot be presented as a reference-paper-like complete enhancement flow."
+    - "D01 remains only a mechanism-complete weak diagnostic candidate."
+  restored_goal: "Build a complete innovative Stage1 enhancement flow with visible enhancement, competitive 502/496 enhancement metrics potential, and strict 168 fixed-detector downstream validation."
+  required_stage1_backbone:
+    - "gray-pixel guided BPH / color formation"
+    - "IMF1-Rayleigh or frequency/detail branch"
+    - "white-balance-safe contrast branch"
+    - "CLAHE-guided local visibility branch"
+    - "downstream-aware gated multi-branch fusion"
+    - "bounded filtering / illumination / contrast closure"
+  forbidden_next_patterns:
+    - "raw-near-only candidate"
+    - "single low-amplitude photometric adjustment as main contribution"
+    - "guard/fallback/raw-pullback patch loop"
+    - "claiming weak/mixed gates as project completion"
+  next_phase_outputs:
+    - "docs/full_flow_downstream_stage1_mainline_v1_method_design_cn.md"
+    - "experiments/full_flow_downstream_stage1_mainline_v1/run_sheet_v1.md"
+  validation_order:
+    - "method design and run sheet before code"
+    - "isolated code/config/output roots"
+    - "smoke and visual/enhancement sanity gate"
+    - "168 fixed MSFI/DiffusionEdge validation"
+    - "502/496 enhancement metrics only after valid gate or for explicit failure analysis"
+    - "2770 readiness/smoke only after candidate/strong gate and explicit authorization"
+  boundaries:
+    - "No experiments were run."
+    - "No code was changed."
+    - "No new candidate id was created."
+    - "No formal source asset or official metric output was overwritten."
+    - "This block corrects the project goal and defines the next long-term implementation track."
+
+full_flow_downstream_stage1_mainline_v1_phase1_20260527:
+  date: "2026-05-27"
+  status: "method_design_and_run_sheet_added_not_executed"
+  method_design: "docs/full_flow_downstream_stage1_mainline_v1_method_design_cn.md"
+  run_sheet: "experiments/full_flow_downstream_stage1_mainline_v1/run_sheet_v1.md"
+  planned_candidate_id: "full_flow_downstream_stage1_mainline_v1"
+  planned_code_entry: "main.py final.mode=full_flow_downstream_stage1_mainline_v1"
+  planned_module: "stage1_full_flow_mainline.py"
+  planned_config: "experiments/full_flow_downstream_stage1_mainline_v1/configs/full_flow_downstream_stage1_mainline_v1.json"
+  design_goal: "Recover a complete innovative Stage1 enhancement flow with visible enhancement and strict 168 fixed-detector downstream validation."
+  required_modules:
+    - "degradation diagnosis"
+    - "gray-pixel color formation"
+    - "IMF / frequency detail branch"
+    - "white-balance-safe contrast branch"
+    - "local visibility branch"
+    - "downstream-aware gated fusion"
+    - "bounded filtering and illumination closure"
+  current_decision: "method_design_ready_for_code_design_after_human_review"
+  boundaries:
+    - "No experiments were run."
+    - "No enhancement code was changed."
+    - "No config was generated yet."
+    - "No candidate output root was populated."
+    - "No MyEdge sampling/eval/show was run."
+    - "No 502/496 or 2770 processing was run."
+
+full_flow_downstream_stage1_mainline_v1_phase2_code_20260527:
+  date: "2026-05-27"
+  status: "isolated_code_entry_added_not_executed"
+  module: "stage1_full_flow_mainline.py"
+  config: "experiments/full_flow_downstream_stage1_mainline_v1/configs/full_flow_downstream_stage1_mainline_v1.json"
+  main_entry: "main.py final.mode=full_flow_downstream_stage1_mainline_v1"
+  implementation_summary:
+    - "Added an explicit full-flow downstream-aware Stage1 prototype module."
+    - "The code keeps the original Stage1 backbone: BPH, IMF/detail, WB-safe contrast, CLAHE/local visibility, multi-branch fusion, final closure."
+    - "The entry is isolated and only runs when the new config explicitly sets final.mode=full_flow_downstream_stage1_mainline_v1."
+    - "The locked formal mainline config and output roots are unchanged."
+  planned_next_validation:
+    - "py_compile only"
+    - "human review"
+    - "small smoke before any 168 or 502/496 run"
+  boundaries:
+    - "No experiments were run."
+    - "No images were processed."
+    - "No MyEdge sampling/eval/show was run."
+    - "No official outputs were overwritten."
+
+full_flow_downstream_stage1_mainline_v1_smoke_20260527:
+  date: "2026-05-27"
+  status: "stage1_only_smoke25_v8_complete_ready_for_168_enhancement_preflight"
+  module: "stage1_full_flow_mainline.py"
+  config: "experiments/full_flow_downstream_stage1_mainline_v1/configs/full_flow_downstream_stage1_mainline_v1.json"
+  manifest: "experiments/full_flow_downstream_stage1_mainline_v1/manifests/smoke5_v1.txt"
+  current_output_root: "experiments/full_flow_downstream_stage1_mainline_v1/outputs/smoke5_v1_fast_imf_v8"
+  current_status_report: "experiments/full_flow_downstream_stage1_mainline_v1/full_flow_downstream_stage1_mainline_v1_smoke5_fast_imf_v8_status_20260527.md"
+  current_stage_metrics: "experiments/full_flow_downstream_stage1_mainline_v1/full_flow_downstream_stage1_mainline_v1_smoke5_fast_imf_v8_stage_metrics_20260527.csv"
+  current_visual_panels: "experiments/full_flow_downstream_stage1_mainline_v1/diagnostics/smoke5_fast_imf_v8"
+  broader_smoke_manifest: "experiments/full_flow_downstream_stage1_mainline_v1/manifests/smoke25_v1.txt"
+  broader_smoke_output_root: "experiments/full_flow_downstream_stage1_mainline_v1/outputs/smoke25_v1_fast_imf_v8"
+  broader_smoke_status_report: "experiments/full_flow_downstream_stage1_mainline_v1/full_flow_downstream_stage1_mainline_v1_smoke25_fast_imf_v8_status_20260527.md"
+  broader_smoke_visual_panels: "experiments/full_flow_downstream_stage1_mainline_v1/diagnostics/smoke25_fast_imf_v8"
+  implementation_updates:
+    - "Added robust edge confidence based on high-percentile raw gradients for downstream-aware diagnosis."
+    - "Added configurable support floors and flat pullback hooks for branch-level ablations."
+    - "Added direct_weighted fusion backend as the default, with the legacy Laplacian fusion kept as an ablation backend."
+    - "Disabled entropy final closure by default because smoke showed it reintroduced background pseudo-structure."
+    - "Added a local smoke summarizer script for output completeness, proxy metrics and visual panels."
+  smoke_sequence:
+    smoke5_v1: "complete but too slow; about 35.98 sec/image and tama.14 blocky pseudo-edge risk."
+    smoke5_fast_imf_v2: "runtime acceptable; tama.14 Final grad ratio about 2.131 and visual risk remained."
+    smoke5_fast_imf_v3_to_v6: "diagnostic iterations; support pullback, low-block RGHS/CLAHE and stricter support floors did not stabilize Final."
+    smoke5_fast_imf_v7: "direct_weighted Fused suppressed tama.14 to about 1.210 grad ratio, but entropy Final closure reintroduced artifacts."
+    smoke5_fast_imf_v8: "current smoke version; Final equals direct_weighted Fused plus bounded selection, output complete and visually cleaner on smoke5."
+  smoke5_v8_metrics:
+    expected_images: 5
+    final_png_count: 5
+    final_jpg_count: 5
+    decode_failures: 0
+    runtime_sec_total: 3.0
+    sec_per_image: 0.60
+    projected_168_runtime_min: 1.7
+    mean_abs_bgr_delta: 6.8792
+    mean_abs_luma_delta: 1.0740
+    mean_abs_chroma_delta: 5.8035
+    grad_mean_ratio: 1.0628
+    luma_std_ratio: 1.0273
+    tama14_final_grad_ratio: 1.2095
+    tama14_final_luma_std_ratio: 1.0643
+  smoke25_v8_metrics:
+    expected_images: 25
+    final_png_count: 25
+    final_jpg_count: 25
+    decode_failures: 0
+    runtime_sec_total: 11.6
+    sec_per_image: 0.46
+    projected_168_runtime_min: 1.3
+    mean_abs_bgr_delta: 7.0538
+    mean_abs_luma_delta: 1.0849
+    mean_abs_chroma_delta: 4.8567
+    grad_mean_ratio: 1.0366
+    luma_std_ratio: 1.0443
+    max_grad_ratio: 1.0992
+    max_grad_ratio_stem: "tama.13"
+  current_decision: "ready_for_168_enhancement_preflight_not_downstream_claim"
+  required_next_steps:
+    - "Locate the current MyEdge 168 split manifest."
+    - "Run 168 Stage1 enhancement into an isolated output root."
+    - "Run fixed-detector MyEdge validation only after output completeness and preflight pass."
+  boundaries:
+    - "No 168 fixed-detector validation was run."
+    - "No MyEdge sampling/eval/show was run."
+    - "No 502/496 enhancement metrics were run."
+    - "No 2770 full-pool processing was run."
+    - "No official Stage1 source asset or previous candidate output was overwritten."
+    - "Smoke5 v8 is not downstream evidence and cannot be claimed as positive downstream gain."
+
+full_flow_downstream_stage1_mainline_v1_fixed_detector_v8_20260527:
+  date: "2026-05-27"
+  status: "complete_rescue_only_archived_diagnostic"
+  candidate_id: "FF01"
+  variant: "full_flow_downstream_stage1_mainline_v1_v8"
+  protocol: "full_flow_downstream_stage1_mainline_v1"
+  final_mode: "full_flow_downstream_stage1_mainline_v1"
+  role: "Complete full-flow Stage1 enhancement prototype restoring BPH IMF/detail WB-safe contrast CLAHE/local visibility direct-weighted fusion and bounded selection."
+  assets:
+    method_design: "docs/full_flow_downstream_stage1_mainline_v1_method_design_cn.md"
+    run_sheet: "experiments/full_flow_downstream_stage1_mainline_v1/run_sheet_v1.md"
+    config: "experiments/full_flow_downstream_stage1_mainline_v1/configs/full_flow_downstream_stage1_mainline_v1.json"
+    stage1_status_md: "experiments/full_flow_downstream_stage1_mainline_v1/full_flow_downstream_stage1_mainline_v1_myedge168_v8_status_20260527.md"
+    stage1_status_json: "experiments/full_flow_downstream_stage1_mainline_v1/full_flow_downstream_stage1_mainline_v1_myedge168_v8_status_20260527.json"
+    fixed_detector_status: "experiments/full_flow_downstream_stage1_mainline_v1/full_flow_downstream_stage1_mainline_v1_fixed_detector_v8_status_20260527.md"
+    stage1_output_root: "experiments/full_flow_downstream_stage1_mainline_v1/outputs/myedge168/full_flow_downstream_stage1_mainline_v1_v8"
+    myedge_preflight: "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/full_flow_downstream_stage1_mainline_v1_v8_preflight_20260527.md"
+    myedge_results: "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/full_flow_downstream_stage1_mainline_v1_v8_results_20260527.md"
+    myedge_structure_proxy: "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/full_flow_downstream_stage1_mainline_v1_v8_structure_metrics_20260527.md"
+    myedge_downstream_gate: "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/full_flow_downstream_stage1_mainline_v1_v8_downstream_gate_20260527.md"
+    myedge_eval_show_script: "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/run_full_flow_downstream_stage1_mainline_v1_v8_eval_show_20260527.sh"
+  readiness:
+    stage1_myedge168_final_png: 168
+    stage1_myedge168_final_jpg: 168
+    decode_failures: 0
+    stage1_runtime_sec_total: 74.9
+    stage1_sec_per_image: 0.45
+    myedge_sampling_executed: true
+    wsl_eval_show_executed: true
+    result_intake_status: "complete_with_report_assets"
+    structure_proxy_status: "complete"
+    downstream_gate_decision: "candidate_rescues_legacy_but_not_near_raw"
+    archive_status: "archive_diagnostic"
+  stage1_metrics_168:
+    mean_abs_bgr_delta: 8.6772
+    mean_abs_luma_delta: 2.0101
+    mean_abs_chroma_delta: 5.8024
+    psnr: 29.9656
+    grad_mean_ratio: 1.0646
+    luma_std_ratio: 1.0798
+    high_risk_sample: "weixiaoyuanjia.21"
+    high_risk_sample_grad_ratio: 1.9137
+  fixed_detector_metrics:
+    msfi_raw_anchor:
+      ods: 0.783527
+      ois: 0.794213
+      ap: 0.345899
+      ac: 0.796846
+    msfi_ff01_v8:
+      ods: 0.739726
+      ois: 0.753251
+      ap: 0.310442
+      ac: 0.790100
+      delta_ods_vs_raw: -0.043801
+      delta_ap_vs_raw: -0.035457
+    diffusionedge_baseline_raw_anchor:
+      ods: 0.770521
+      ois: 0.779986
+      ap: 0.363065
+      ac: 0.796900
+    diffusionedge_baseline_ff01_v8:
+      ods: 0.717475
+      ois: 0.727626
+      ap: 0.336548
+      ac: 0.794400
+      delta_ods_vs_raw: -0.053046
+      delta_ap_vs_raw: -0.026517
+  structure_proxy_delta_vs_raw:
+    msfi:
+      dF1: -0.053426
+      dFalse_edge_ratio: 0.079593
+      dEndpoints_per_1k_skel_px: 1.891529
+      structure_non_worse: false
+    diffusionedge_baseline:
+      dF1: -0.067472
+      dFalse_edge_ratio: 0.095084
+      dEndpoints_per_1k_skel_px: 4.291561
+      structure_non_worse: false
+  comparison:
+    relative_to_legacy: "rescues legacy Stage1 Final collapse on both fixed detectors"
+    relative_to_raw: "not near raw on either detector"
+    relative_to_p27_p28: "worse than P27 and P28 metric-near-raw mixed candidates"
+    relative_to_d01: "same strict gate family but weaker fixed-detector and structure evidence"
+  interpretation:
+    - "FF01/v8 forms a complete method skeleton but not a successful downstream-driven enhancement mainline."
+    - "The full enhancement chain still causes frozen-detector distribution shift and worsens structure proxy against raw."
+    - "Do not run 502/496 or 2770 as candidate promotion from this gate."
+    - "Only continue with a method-level redesign; do not continue threshold guard fallback or raw-pullback tuning."
+  boundaries:
+    - "No MyEdge checkpoint was changed."
+    - "No GT or eval protocol was changed."
+    - "No formal Stage1 locked mainline asset was overwritten."
+    - "No 502/496 enhancement comparison was run for FF01/v8."
+    - "No 2770 full-pool enhancement was run."
+
+full_flow_downstream_stage1_mainline_v2_fixed_detector_ff02_20260527:
+  date: "2026-05-27"
+  status: "complete_rescue_only_archived_diagnostic"
+  candidate_id: "FF02"
+  variant: "full_flow_downstream_stage1_mainline_v2"
+  protocol: "full_flow_downstream_stage1_mainline_v2"
+  final_mode: "full_flow_downstream_stage1_mainline_v2"
+  role: "Detector-compatible full-flow Stage1 redesign with color-structure decoupling topology-compatible fusion and bounded closure after FF01 failure."
+  assets:
+    method_design: "docs/full_flow_downstream_stage1_mainline_v2_method_design_cn.md"
+    run_sheet: "experiments/full_flow_downstream_stage1_mainline_v2/run_sheet_v1.md"
+    config: "experiments/full_flow_downstream_stage1_mainline_v2/configs/full_flow_downstream_stage1_mainline_v2.json"
+    smoke25_status: "experiments/full_flow_downstream_stage1_mainline_v2/full_flow_downstream_stage1_mainline_v2_ff02_smoke25_v1_status_20260527.md"
+    stage1_status_md: "experiments/full_flow_downstream_stage1_mainline_v2/full_flow_downstream_stage1_mainline_v2_ff02_myedge168_v1_status_20260527.md"
+    fixed_detector_status: "experiments/full_flow_downstream_stage1_mainline_v2/full_flow_downstream_stage1_mainline_v2_fixed_detector_ff02_status_20260527.md"
+    stage1_output_root: "experiments/full_flow_downstream_stage1_mainline_v2/outputs/myedge168/full_flow_downstream_stage1_mainline_v2"
+    myedge_preflight: "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/full_flow_downstream_stage1_mainline_v2_ff02_preflight_20260527.md"
+    myedge_results: "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/full_flow_downstream_stage1_mainline_v2_ff02_results_20260527.md"
+    myedge_structure_proxy: "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/full_flow_downstream_stage1_mainline_v2_ff02_structure_metrics_20260527.md"
+    myedge_downstream_gate: "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/full_flow_downstream_stage1_mainline_v2_ff02_downstream_gate_20260527.md"
+    myedge_eval_show_script: "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/run_full_flow_downstream_stage1_mainline_v2_ff02_eval_show_20260527.sh"
+  readiness:
+    stage1_myedge168_final_png: 168
+    stage1_myedge168_final_jpg: 168
+    decode_failures: 0
+    stage1_runtime_sec_total: 77.5
+    stage1_sec_per_image: 0.46
+    myedge_sampling_executed: true
+    wsl_eval_show_executed: true
+    result_intake_status: "complete_with_report_assets"
+    structure_proxy_status: "complete"
+    downstream_gate_decision: "candidate_rescues_legacy_but_not_near_raw"
+    archive_status: "archive_diagnostic"
+  stage1_metrics_168:
+    mean_abs_bgr_delta: 11.7138
+    mean_abs_luma_delta: 1.3708
+    mean_abs_chroma_delta: 7.9785
+    psnr_vs_raw: 27.2740
+    grad_mean_ratio: 0.9450
+    luma_std_ratio: 1.0132
+    high_risk_samples:
+      - "tama.14"
+      - "weixiaoyuanjia.21"
+  fixed_detector_metrics:
+    msfi_raw_anchor:
+      ods: 0.783527
+      ois: 0.794213
+      ap: 0.345899
+      ac: 0.796846
+    msfi_ff02:
+      ods: 0.737952
+      ois: 0.751109
+      ap: 0.303208
+      ac: 0.792000
+      delta_ods_vs_raw: -0.045575
+      delta_ap_vs_raw: -0.042691
+    diffusionedge_baseline_raw_anchor:
+      ods: 0.770521
+      ois: 0.779986
+      ap: 0.363065
+      ac: 0.796900
+    diffusionedge_baseline_ff02:
+      ods: 0.711020
+      ois: 0.720141
+      ap: 0.320951
+      ac: 0.794000
+      delta_ods_vs_raw: -0.059501
+      delta_ap_vs_raw: -0.042114
+  structure_proxy_delta_vs_raw:
+    msfi:
+      dF1: -0.0507
+      dFalse_edge_ratio: 0.0734
+      dEndpoints_per_1k_skel_px: 2.0630
+      structure_non_worse: false
+    diffusionedge_baseline:
+      dF1: -0.0666
+      dFalse_edge_ratio: 0.0890
+      dEndpoints_per_1k_skel_px: 3.7585
+      structure_non_worse: false
+  comparison:
+    relative_to_legacy: "rescues legacy Stage1 Final collapse on both fixed detectors"
+    relative_to_raw: "not near raw on either detector"
+    relative_to_ff01: "slightly less bad structure proxy but worse ODS OIS AP on both fixed detectors"
+    relative_to_p27_p28: "below metric-near-raw mixed diagnostic family"
+    relative_to_d01: "more complete enhancement-flow mechanism but still no downstream positive gain"
+  interpretation:
+    - "FF02 completed the correction from small guard fallback variants to a mechanism-level full-flow redesign."
+    - "The result is still a rescue-only diagnostic failure and cannot support a downstream-positive Stage1 claim."
+    - "Do not run 502/496 or 2770 as candidate promotion from this gate."
+    - "Do not continue FF03 as threshold guard fallback or raw-pullback tuning."
+    - "Next valid step is failure audit or MyEdge/MSFI-side adaptation planning."
+  boundaries:
+    - "No MyEdge checkpoint was changed."
+    - "No GT or eval protocol was changed."
+    - "No formal Stage1 locked mainline asset was overwritten."
+    - "No 502/496 enhancement comparison was run for FF02."
+    - "No 2770 full-pool enhancement was run."
+
+topology_locked_visual_chroma_full_flow_tlvc01_20260527:
+  date: "2026-05-27"
+  status: "complete_rescue_only_archived_diagnostic"
+  candidate_id: "TLVC01"
+  variant: "topology_locked_visual_chroma_full_flow_v1"
+  protocol: "topology_locked_visual_chroma_full_flow_v1"
+  final_mode: "topology_locked_visual_chroma_full_flow_v1"
+  role: "FA01 correction-run preserving a complete Stage1 enhancement skeleton while locking final gray topology to the exact MyEdge raw input."
+  assets:
+    method_design: "docs/topology_locked_visual_chroma_full_flow_v1_method_design_cn.md"
+    long_horizon_goal: "docs/stage1_long_horizon_goal_after_tlvc01_20260527_cn.md"
+    run_sheet: "experiments/topology_locked_visual_chroma_full_flow_v1/run_sheet_v1.md"
+    config: "experiments/topology_locked_visual_chroma_full_flow_v1/configs/topology_locked_visual_chroma_full_flow_v1.json"
+    stage1_status_md: "experiments/topology_locked_visual_chroma_full_flow_v1/topology_locked_visual_chroma_full_flow_v1_myedge168_v1_myedgeinput_grayplane090_anchorfix_status_20260527.md"
+    fixed_detector_status: "experiments/topology_locked_visual_chroma_full_flow_v1/topology_locked_visual_chroma_full_flow_v1_fixed_detector_tlvc01_status_20260527.md"
+    stage1_output_root: "experiments/topology_locked_visual_chroma_full_flow_v1/outputs/myedge168_v1_myedgeinput_grayplane090_anchorfix"
+    stage1_proxy_prescreen: "docs/stage1_myedge168_gt_edge_proxy_prescreen_topology_locked_visual_chroma_v1_myedgeinput_grayplane090_anchorfix_20260527_cn.md"
+    myedge_preflight: "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/topology_locked_visual_chroma_tlvc01_preflight_20260527.md"
+    myedge_results: "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/topology_locked_visual_chroma_tlvc01_results_20260527.md"
+    myedge_structure_proxy: "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/topology_locked_visual_chroma_tlvc01_structure_metrics_20260527.md"
+    myedge_downstream_gate: "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/topology_locked_visual_chroma_tlvc01_downstream_gate_20260527.md"
+    myedge_eval_show_script: "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/run_topology_locked_visual_chroma_tlvc01_eval_show_20260527.sh"
+    result_intake_script: "metrics/scripts/sync_myedge_single_candidate_result_intake.py"
+  protocol_correction:
+    - "168 direct-replacement candidates must be generated from D:/Desktop/MyEdgeCodex/input_test/algae, not Stage1 data/inputImg/Original, because the Stage1 copy is not equivalent to the fixed-detector raw anchor."
+    - "Using the Stage1 raw copy reproduces the same negative proxy as the failed gray-plane output; using the exact MyEdge raw input makes the TLVC01 image-gradient proxy raw-equivalent."
+  readiness:
+    stage1_myedge168_final_png: 168
+    stage1_myedge168_final_jpg: 168
+    decode_failures: 0
+    stage1_runtime_sec_total: 92.9
+    stage1_sec_per_image: 0.55
+    myedge_sampling_executed: true
+    wsl_eval_show_executed: true
+    result_intake_status: "complete_with_report_assets"
+    structure_proxy_status: "complete"
+    downstream_gate_decision: "candidate_rescues_legacy_but_not_near_raw"
+    archive_status: "archive_diagnostic"
+  stage1_metrics_168:
+    mean_abs_bgr_delta: 10.7667
+    mean_abs_luma_delta: 1.7113
+    mean_abs_chroma_delta: 7.3842
+    psnr_vs_raw: 27.9651
+    grad_mean_ratio: 0.9956
+    luma_std_ratio: 1.0000
+  image_gradient_proxy:
+    raw_anchor_f1: 0.581331
+    tlvc01_f1: 0.581331
+    raw_anchor_false_edge_ratio: 0.523693
+    tlvc01_false_edge_ratio: 0.523693
+    raw_anchor_endpoints_per_1k_skel_px: 56.100962
+    tlvc01_endpoints_per_1k_skel_px: 56.100962
+    decision: "proxy_positive_candidate_but_raw_equivalent_safety_only"
+  fixed_detector_metrics:
+    msfi_raw_anchor:
+      ods: 0.783527
+      ois: 0.794213
+      ap: 0.345899
+      ac: 0.796846
+    msfi_tlvc01:
+      ods: 0.782936
+      ois: 0.794718
+      ap: 0.345209
+      ac: 0.793200
+      delta_ods_vs_raw: -0.000591
+      delta_ap_vs_raw: -0.000690
+      delta_ac_vs_raw: -0.003646
+    diffusionedge_baseline_raw_anchor:
+      ods: 0.770521
+      ois: 0.779986
+      ap: 0.363065
+      ac: 0.796900
+    diffusionedge_baseline_tlvc01:
+      ods: 0.768593
+      ois: 0.779518
+      ap: 0.362225
+      ac: 0.798500
+      delta_ods_vs_raw: -0.001928
+      delta_ap_vs_raw: -0.000840
+      delta_ac_vs_raw: 0.001600
+  structure_proxy_delta_vs_raw:
+    msfi:
+      dF1: 0.0002
+      dFalse_edge_ratio: -0.0088
+      dEndpoints_per_1k_skel_px: -1.4481
+      structure_non_worse: true
+    diffusionedge_baseline:
+      dF1: -0.0030
+      dFalse_edge_ratio: 0.0047
+      dEndpoints_per_1k_skel_px: 0.3836
+      structure_non_worse: false
+  comparison:
+    relative_to_legacy: "rescues legacy Stage1 Final collapse on both fixed detectors"
+    relative_to_raw: "close to raw but not a strict candidate pass; no clear positive downstream gain"
+    relative_to_p27: "more complete visual-chroma flow but lower DiffusionEdge AP than P27"
+    relative_to_d01: "more complete visual-chroma flow but lower DiffusionEdge AP than D01"
+    relative_to_ff01_ff02: "substantially safer than full-flow direct replacement failures"
+  interpretation:
+    - "TLVC01 corrects the raw-input protocol problem and proves that topology lock can avoid the severe FF01/FF02 detector collapse."
+    - "TLVC01 still does not meet the user's original target of a reference-paper-like complete enhancement flow with clear downstream positive gain."
+    - "Do not continue TLVC02 as small threshold guard fallback or raw-pullback tuning."
+    - "Next valid route is raw main input plus Stage1 complete enhancement sidecar maps and MyEdge/MSFI adaptation under a separate protocol."
+  boundaries:
+    - "No MyEdge checkpoint was changed."
+    - "No detector training or adaptation was executed."
+    - "No GT or eval protocol was changed."
+    - "No formal Stage1 locked mainline asset was overwritten."
+    - "No 502/496 enhancement comparison was run for TLVC01."
+    - "No 2770 full-pool enhancement was run."
+
+fa01_full_flow_family_failure_audit_20260527:
+  date: "2026-05-27"
+  status: "wp1_complete_wp2_pre_registered_no_new_experiment"
+  protocol: "FA01 full-flow failure audit and adaptation decision"
+  role: "Read-only family-level audit explaining why P27 D01 FF01 and FF02 do not satisfy the original full-enhancement downstream-positive goal."
+  assets:
+    next_goal: "docs/stage1_full_flow_failure_audit_and_next_goal_20260527_cn.md"
+    family_audit: "docs/stage1_full_flow_family_failure_audit_fa01_20260527_cn.md"
+    detector_hypotheses: "docs/stage1_detector_sensitivity_hypotheses_fa01_20260527_cn.md"
+    high_risk_index_doc: "docs/fa01_high_risk_sample_evidence_index_20260527_cn.md"
+    high_risk_index_json: "docs/fa01_high_risk_sample_index_20260527/fa01_high_risk_index.json"
+    high_risk_stage1_paths: "docs/fa01_high_risk_sample_index_20260527/fa01_high_risk_stage1_paths.csv"
+    high_risk_detector_paths: "docs/fa01_high_risk_sample_index_20260527/fa01_high_risk_detector_paths.csv"
+    correlation_audit_doc: "docs/fa01_per_image_correlation_audit_20260527_cn.md"
+    correlation_index: "docs/fa01_per_image_correlation_audit_20260527/fa01_per_image_correlation_index.json"
+    correlation_merged_table: "docs/fa01_per_image_correlation_audit_20260527/fa01_per_image_enhancement_structure_merged.csv"
+    correlation_top_cases: "docs/fa01_per_image_correlation_audit_20260527/fa01_top_adverse_per_image_cases.csv"
+    myedge_msfi_sidecar_protocol: "docs/myedge_msfi_stage1_sidecar_adaptation_protocol_fa01_20260527_cn.md"
+    asset_index: "docs/fa01_stage1_full_flow_family_audit_tables_20260527/fa01_asset_index.json"
+    fixed_detector_table: "docs/fa01_stage1_full_flow_family_audit_tables_20260527/fa01_fixed_detector_metrics.csv"
+    structure_proxy_table: "docs/fa01_stage1_full_flow_family_audit_tables_20260527/fa01_structure_proxy_metrics.csv"
+    enhancement_proxy_summary: "docs/fa01_stage1_full_flow_family_audit_tables_20260527/fa01_enhancement_proxy_168_summary.csv"
+    enhancement_proxy_per_image: "docs/fa01_stage1_full_flow_family_audit_tables_20260527/fa01_enhancement_proxy_168_per_image.csv"
+    paper_metric_boundary: "docs/fa01_stage1_full_flow_family_audit_tables_20260527/fa01_502_496_boundary.csv"
+  core_findings:
+    - "Legacy Stage1 Final is a severe downstream negative baseline: MSFI dODS -0.195240 and DiffusionEdge dODS -0.240427 versus raw."
+    - "P27 and D01 are near-raw or weak diagnostic candidates because their 168 enhancement proxy is small and their detector metrics stay close to raw, but they do not satisfy the requested full visual enhancement flow."
+    - "FF01 and FF02 restore a fuller enhancement-flow direction, but both are far below raw on fixed-detector ODS/AP and both are structure-proxy worse than raw."
+    - "FF02 has higher chroma/BGR change than FF01 and lower mean grad ratio, yet worse ODS/AP, so failure is not only global gradient amplification."
+    - "The current evidence supports detector raw-distribution bias and argues against FF03 same-family patching."
+    - "High-risk index now covers 57 stems including top enhancement-risk and top detector-adverse cases, with paths to raw, GT, Stage1 outputs, MyEdge overlays and error maps."
+    - "Per-image correlation audit shows only moderate and inconsistent correlations; single enhancement proxies cannot explain FF01/FF02 failures."
+    - "FF01/FF02 adverse false-edge clusters include weixiaoyuanjia.26, xuehong.9, xuehong.13, xuehong.11, donghaiyuanjia.26, and weixiaoyuanjia.21."
+    - "A MyEdge/MSFI sidecar adaptation protocol has been drafted but not executed; it is a separate adaptation route, not fixed-detector evidence."
+  selected_metrics:
+    p27:
+      enhancement_bgr_delta_168: 2.1238
+      enhancement_chroma_delta_168: 0.8445
+      msfi_delta_ods_vs_raw: -0.000198
+      diffusionedge_delta_ods_vs_raw: 0.002066
+    d01:
+      enhancement_bgr_delta_168: 2.7677
+      enhancement_chroma_delta_168: 1.2302
+      msfi_delta_ods_vs_raw: 0.000344
+      diffusionedge_delta_ods_vs_raw: 0.001209
+    ff01:
+      enhancement_bgr_delta_168: 8.6772
+      enhancement_chroma_delta_168: 5.8024
+      msfi_delta_ods_vs_raw: -0.043801
+      diffusionedge_delta_ods_vs_raw: -0.053046
+    ff02:
+      enhancement_bgr_delta_168: 11.7138
+      enhancement_chroma_delta_168: 7.9785
+      msfi_delta_ods_vs_raw: -0.045575
+      diffusionedge_delta_ods_vs_raw: -0.059501
+  next_steps:
+    - "High-risk sample path index completed."
+    - "Per-image correlation audit completed."
+    - "High-risk visual/error-map review completed."
+    - "Stage1 sidecar maps and no-training export smoke completed."
+    - "If user authorizes training, move the MyEdge/MSFI sidecar protocol into a MyEdge-side run sheet; otherwise do not execute adaptation."
+    - "Do not create FF03 P29 or D02 before the FA01 audit is reviewed."
+  boundaries:
+    - "No new enhancement run was executed."
+    - "No MyEdge sampling or WSL eval/show was executed."
+    - "No training or detector adaptation was executed."
+    - "No 502/496 rerun was executed."
+    - "No 2770 full-pool run was executed."
+
+fa01_visual_error_map_review_and_sidecar_smoke_20260527:
+  date: "2026-05-27"
+  status: "visual_review_complete_sidecar_export_smoke_complete_no_training"
+  protocol: "FA01 full-flow failure audit and adaptation decision"
+  role: "Diagnostic evidence organization and no-training sidecar export preparation; not a new Stage1 candidate and not downstream positive evidence."
+  assets:
+    visual_review_doc: "docs/fa01_visual_error_map_review_20260527_cn.md"
+    visual_review_index: "docs/fa01_visual_error_map_review_20260527/fa01_visual_error_map_review_index.json"
+    visual_review_panels_csv: "docs/fa01_visual_error_map_review_20260527/fa01_visual_error_map_panels.csv"
+    visual_review_pattern_tags_csv: "docs/fa01_visual_error_map_review_20260527/fa01_visual_error_map_pattern_tags.csv"
+    visual_review_panels_dir: "docs/fa01_visual_error_map_review_20260527/panels"
+    sidecar_definition_doc: "docs/stage1_sidecar_map_definition_fa01_20260527_cn.md"
+    sidecar_smoke_index: "docs/fa01_stage1_sidecar_map_smoke_20260527/fa01_stage1_sidecar_map_smoke_index.json"
+    sidecar_manifest: "docs/fa01_stage1_sidecar_map_smoke_20260527/fa01_stage1_sidecar_map_manifest.csv"
+    sidecar_maps_dir: "docs/fa01_stage1_sidecar_map_smoke_20260527/maps"
+    sidecar_panels_dir: "docs/fa01_stage1_sidecar_map_smoke_20260527/panels"
+    visual_review_script: "metrics/scripts/build_fa01_visual_error_map_review.py"
+    sidecar_export_script: "metrics/scripts/export_fa01_stage1_sidecar_maps.py"
+  generated:
+    visual_review_panel_count: 11
+    sidecar_smoke_stem_count: 5
+    sidecar_map_count: 35
+    sidecar_panel_count: 5
+  sidecar_maps:
+    - "topology_anchor_luma"
+    - "color_compensation_magnitude"
+    - "frequency_detail_evidence"
+    - "contrast_visibility_evidence"
+    - "fusion_luma_delta_risk"
+    - "background_false_edge_risk"
+    - "weak_boundary_support"
+  findings:
+    - "Visual/error-map review supports the FA01 diagnosis that FF01/FF02 failures combine boundary F1 loss, false-edge increase, endpoint fragmentation, luma/detail topology drift and color/chroma shift."
+    - "weixiaoyuanjia.26, xuehong.9, xuehong.13, xuehong.11, donghaiyuanjia.26 and weixiaoyuanjia.21 remain high-risk adverse clusters for direct Stage1 image replacement."
+    - "Sidecar smoke demonstrates that gray-pixel/BPH, IMF/frequency, RGHS/CLAHE visibility and fusion-risk signals can be exported as separate maps while raw remains the topology anchor."
+  next_steps:
+    - "Draft a MyEdge-side adaptation run sheet before any training."
+    - "Keep fixed-detector direct replacement results and future adaptation results strictly separated."
+    - "Do not create FF03 P29 or D02 as same-family patching."
+  boundaries:
+    - "No new enhancement candidate was created."
+    - "No MyEdge sampling, WSL eval/show, training or checkpoint change was executed."
+    - "No GT, detector protocol, formal Stage1 mainline, 502/496 result, or 2770 full-pool asset was changed."

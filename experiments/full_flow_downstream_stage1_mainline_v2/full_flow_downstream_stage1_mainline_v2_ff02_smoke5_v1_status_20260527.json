@@ -1,0 +1,119 @@
+{
+  "run_id": "ff02_smoke5_v1",
+  "status": "complete_smoke_review_pending",
+  "decision": "review_before_168",
+  "manifest": "experiments\\full_flow_downstream_stage1_mainline_v1\\manifests\\smoke5_v1.txt",
+  "output_root": "experiments\\full_flow_downstream_stage1_mainline_v2\\outputs\\smoke5_v1",
+  "expected_images": 5,
+  "runtime_sec": 2.73,
+  "sec_per_image": 0.546,
+  "projected_168_min": 1.5288000000000002,
+  "stage_counts": {
+    "jpg": {
+      "BPH": 5,
+      "IMF1Ray": 5,
+      "RGHS": 5,
+      "CLAHE": 5,
+      "Fused": 5,
+      "Final": 5
+    },
+    "png": {
+      "BPH": 5,
+      "IMF1Ray": 5,
+      "RGHS": 5,
+      "CLAHE": 5,
+      "Fused": 5,
+      "Final": 5
+    }
+  },
+  "missing_files": [],
+  "decode_failures": [],
+  "final_rows": [
+    {
+      "stem": "chazhuang.1",
+      "mean_abs_bgr_delta": 6.836142539978027,
+      "mean_abs_luma_delta": 1.0811327695846558,
+      "mean_abs_chroma_delta": 5.296953201293945,
+      "psnr_vs_raw": 28.70239000972813,
+      "raw_grad_mean": 0.5767266750335693,
+      "final_grad_mean": 0.5151687860488892,
+      "grad_mean_ratio": 0.8932633211835391,
+      "raw_luma_std": 41.07143783569336,
+      "final_luma_std": 40.93146514892578,
+      "luma_std_ratio": 0.9965919852256775
+    },
+    {
+      "stem": "haiyangkadun.18",
+      "mean_abs_bgr_delta": 3.6111555099487305,
+      "mean_abs_luma_delta": 1.0811035633087158,
+      "mean_abs_chroma_delta": 2.801753044128418,
+      "psnr_vs_raw": 36.181161214069256,
+      "raw_grad_mean": 0.1305627077817917,
+      "final_grad_mean": 0.11977091431617737,
+      "grad_mean_ratio": 0.9173439754252453,
+      "raw_luma_std": 12.904595375061035,
+      "final_luma_std": 12.961637496948242,
+      "luma_std_ratio": 1.004420280456543
+    },
+    {
+      "stem": "lingxinghaixian.6",
+      "mean_abs_bgr_delta": 12.998261451721191,
+      "mean_abs_luma_delta": 0.27657225728034973,
+      "mean_abs_chroma_delta": 14.007885932922363,
+      "psnr_vs_raw": 23.90294055312588,
+      "raw_grad_mean": 0.17417538166046143,
+      "final_grad_mean": 0.16970659792423248,
+      "grad_mean_ratio": 0.9743431897896822,
+      "raw_luma_std": 7.974884510040283,
+      "final_luma_std": 7.845822334289551,
+      "luma_std_ratio": 0.9838164448738098
+    },
+    {
+      "stem": "tama.14",
+      "mean_abs_bgr_delta": 6.249840259552002,
+      "mean_abs_luma_delta": 0.9014453291893005,
+      "mean_abs_chroma_delta": 3.4246485233306885,
+      "psnr_vs_raw": 30.242645671559227,
+      "raw_grad_mean": 0.018154585734009743,
+      "final_grad_mean": 0.02624308317899704,
+      "grad_mean_ratio": 1.4455345948379414,
+      "raw_luma_std": 4.794126510620117,
+      "final_luma_std": 4.916334629058838,
+      "luma_std_ratio": 1.0254912376403809
+    },
+    {
+      "stem": "zhaixi.3",
+      "mean_abs_bgr_delta": 10.942102432250977,
+      "mean_abs_luma_delta": 0.3351367115974426,
+      "mean_abs_chroma_delta": 8.933080673217773,
+      "psnr_vs_raw": 26.7153638696433,
+      "raw_grad_mean": 0.1909513622522354,
+      "final_grad_mean": 0.17429275810718536,
+      "grad_mean_ratio": 0.9127599569789663,
+      "raw_luma_std": 8.613985061645508,
+      "final_luma_std": 8.512434959411621,
+      "luma_std_ratio": 0.9882110357284546
+    }
+  ],
+  "mean_metrics": {
+    "mean_abs_bgr_delta": 8.127500438690186,
+    "mean_abs_luma_delta": 0.7350781261920929,
+    "mean_abs_chroma_delta": 6.8928642749786375,
+    "psnr_vs_raw": 29.14890026362516,
+    "raw_grad_mean": 0.2181141424924135,
+    "final_grad_mean": 0.2010364279150963,
+    "grad_mean_ratio": 1.0286490076430748,
+    "raw_luma_std": 15.071805858612061,
+    "final_luma_std": 15.033538913726806,
+    "luma_std_ratio": 0.9997061967849732
+  },
+  "metrics_csv": "experiments\\full_flow_downstream_stage1_mainline_v1\\full_flow_downstream_stage1_mainline_v1_ff02_smoke5_v1_metrics_20260527.csv",
+  "stage_metrics_csv": "experiments\\full_flow_downstream_stage1_mainline_v2\\full_flow_downstream_stage1_mainline_v2_ff02_smoke5_v1_stage_metrics_20260527.csv",
+  "visual_panels": [
+    "experiments\\full_flow_downstream_stage1_mainline_v2\\diagnostics\\ff02_smoke5_v1\\chazhuang.1_panel.jpg",
+    "experiments\\full_flow_downstream_stage1_mainline_v2\\diagnostics\\ff02_smoke5_v1\\haiyangkadun.18_panel.jpg",
+    "experiments\\full_flow_downstream_stage1_mainline_v2\\diagnostics\\ff02_smoke5_v1\\lingxinghaixian.6_panel.jpg",
+    "experiments\\full_flow_downstream_stage1_mainline_v2\\diagnostics\\ff02_smoke5_v1\\tama.14_panel.jpg",
+    "experiments\\full_flow_downstream_stage1_mainline_v2\\diagnostics\\ff02_smoke5_v1\\zhaixi.3_panel.jpg"
+  ]
+}

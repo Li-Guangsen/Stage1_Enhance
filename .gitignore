@@ -22,6 +22,9 @@ metrics/manifests/**/previews/**
 metrics/manifests/**/*.png
 metrics/manifests/**/*.tsv
 docs/*.per_image.csv
+experiments/**/diagnostics/**/*.jpg
+experiments/**/diagnostics/**/*.jpeg
+experiments/**/diagnostics/**/*.png
 
 # IDE, caches, logs
 .idea/

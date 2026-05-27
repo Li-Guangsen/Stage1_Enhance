@@ -16,7 +16,7 @@ from skimage.morphology import skeletonize
 PROJECT_ROOT = Path("D:/Desktop/Stage1Codex")
 MYEDGE_ROOT = Path("D:/Desktop/MyEdgeCodex")
 MANIFEST = MYEDGE_ROOT / "docs/paper_assets/stage1_coupling/stage1_myedge_168_coupling_manifest_20260524.csv"
-OUT_PREFIX = PROJECT_ROOT / "docs/stage1_myedge168_gt_edge_proxy_prescreen_d01_20260526_cn"
+OUT_PREFIX = PROJECT_ROOT / "docs/stage1_myedge168_gt_edge_proxy_prescreen_topology_locked_visual_chroma_v1_myedgeinput_grayplane090_anchorfix_20260527_cn"
 TOLERANCE_PX = 2
 
 DOWNSTREAM_ROOT = PROJECT_ROOT / "experiments/downstream_driven_v1/outputs/myedge168"
@@ -26,6 +26,11 @@ VARIANTS = [
         "label": "raw_input_anchor",
         "kind": "raw",
         "role": "raw MyEdge detector-domain input anchor",
+    },
+    {
+        "label": "stage1_original_copy",
+        "kind": "stage1_original",
+        "role": "Stage1 repo input copy at data/inputImg/Original; protocol diagnostic for raw-copy mismatch",
     },
     {
         "label": "legacy_stage1_final",
@@ -144,6 +149,36 @@ VARIANTS = [
         "root": "experiments/downstream_driven_v2/outputs/myedge168/d01_structure_flow_v1",
         "role": "D01 downstream_driven_v2 modular structure-flow candidate, Stage1 output only",
     },
+    {
+        "label": "topology_locked_visual_chroma_full_flow_v1",
+        "kind": "downstream_variant",
+        "root": "experiments/topology_locked_visual_chroma_full_flow_v1/outputs/myedge168_v1",
+        "role": "FA01-follow-up Stage1-only new method family: full branch evidence with raw-topology-locked visual chroma output",
+    },
+    {
+        "label": "topology_locked_visual_chroma_full_flow_v1_cvgraylock092",
+        "kind": "downstream_variant",
+        "root": "experiments/topology_locked_visual_chroma_full_flow_v1/outputs/myedge168_v1_cvgraylock092",
+        "role": "Current topology-locked visual-chroma flow with final cv-gray projection lock for raw-compatible fixed-detector edge topology",
+    },
+    {
+        "label": "topology_locked_visual_chroma_full_flow_v1_grayplane090",
+        "kind": "downstream_variant",
+        "root": "experiments/topology_locked_visual_chroma_full_flow_v1/outputs/myedge168_v1_grayplane090",
+        "role": "Current topology-locked visual-chroma flow with raw-gray-plane chroma projection, preserving cv2 BGR2GRAY topology while retaining branch chroma evidence",
+    },
+    {
+        "label": "topology_locked_visual_chroma_full_flow_v1_grayplane090_anchorfix",
+        "kind": "downstream_variant",
+        "root": "experiments/topology_locked_visual_chroma_full_flow_v1/outputs/myedge168_v1_grayplane090_anchorfix",
+        "role": "Raw-gray-plane chroma projection after fixing bounded output selection to use original anchor and final post-bound projection",
+    },
+    {
+        "label": "topology_locked_visual_chroma_full_flow_v1_myedgeinput_grayplane090_anchorfix",
+        "kind": "downstream_variant",
+        "root": "experiments/topology_locked_visual_chroma_full_flow_v1/outputs/myedge168_v1_myedgeinput_grayplane090_anchorfix",
+        "role": "Raw-gray-plane chroma projection generated from the exact MyEdge fixed-detector raw input copy",
+    },
 ]
 
 HIGHER_IS_BETTER = {
@@ -202,6 +237,8 @@ def variant_path(row: dict[str, str], variant: dict[str, str]) -> Path:
     kind = variant["kind"]
     if kind == "raw":
         return Path(row["raw_input_path"])
+    if kind == "stage1_original":
+        return PROJECT_ROOT / "data/inputImg/Original" / f"{row['stem']}.jpg"
     if kind == "manifest_path":
         return Path(row[variant["manifest_column"]])
     if kind == "downstream_variant":

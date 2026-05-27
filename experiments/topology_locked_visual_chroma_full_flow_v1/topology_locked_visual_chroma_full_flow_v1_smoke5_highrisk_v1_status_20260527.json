@@ -1,0 +1,119 @@
+{
+  "run_id": "smoke5_highrisk_v1",
+  "status": "smoke_complete",
+  "decision": "pass_to_broader_smoke_not_168_yet",
+  "manifest": "experiments\\topology_locked_visual_chroma_full_flow_v1\\manifests\\smoke5_highrisk_v1.txt",
+  "output_root": "experiments\\topology_locked_visual_chroma_full_flow_v1\\outputs\\smoke5_highrisk_v1",
+  "expected_images": 5,
+  "runtime_sec": 2.474,
+  "sec_per_image": 0.4948,
+  "projected_168_min": 1.38544,
+  "stage_counts": {
+    "jpg": {
+      "BPH": 5,
+      "IMF1Ray": 5,
+      "RGHS": 5,
+      "CLAHE": 5,
+      "Fused": 5,
+      "Final": 5
+    },
+    "png": {
+      "BPH": 5,
+      "IMF1Ray": 5,
+      "RGHS": 5,
+      "CLAHE": 5,
+      "Fused": 5,
+      "Final": 5
+    }
+  },
+  "missing_files": [],
+  "decode_failures": [],
+  "final_rows": [
+    {
+      "stem": "weixiaoyuanjia.26",
+      "mean_abs_bgr_delta": 31.013063430786133,
+      "mean_abs_luma_delta": 0.9966406226158142,
+      "mean_abs_chroma_delta": 15.180039405822754,
+      "psnr_vs_raw": 16.435254230691406,
+      "raw_grad_mean": 0.07389680296182632,
+      "final_grad_mean": 0.07364627718925476,
+      "grad_mean_ratio": 0.996609775265775,
+      "raw_luma_std": 5.069031238555908,
+      "final_luma_std": 5.065505504608154,
+      "luma_std_ratio": 0.9993044558652073
+    },
+    {
+      "stem": "xuehong.9",
+      "mean_abs_bgr_delta": 7.7305827140808105,
+      "mean_abs_luma_delta": 0.9617089629173279,
+      "mean_abs_chroma_delta": 4.351723670959473,
+      "psnr_vs_raw": 28.271447503395745,
+      "raw_grad_mean": 0.22281330823898315,
+      "final_grad_mean": 0.22375521063804626,
+      "grad_mean_ratio": 1.004227312103932,
+      "raw_luma_std": 14.461981773376465,
+      "final_luma_std": 14.46788501739502,
+      "luma_std_ratio": 1.0004081904617674
+    },
+    {
+      "stem": "donghaiyuanjia.26",
+      "mean_abs_bgr_delta": 29.980703353881836,
+      "mean_abs_luma_delta": 0.9948534965515137,
+      "mean_abs_chroma_delta": 14.596762657165527,
+      "psnr_vs_raw": 16.581987058962063,
+      "raw_grad_mean": 0.11046558618545532,
+      "final_grad_mean": 0.11012023687362671,
+      "grad_mean_ratio": 0.996873684188644,
+      "raw_luma_std": 3.8546574115753174,
+      "final_luma_std": 3.8501384258270264,
+      "luma_std_ratio": 0.9988276554140587
+    },
+    {
+      "stem": "tama.14",
+      "mean_abs_bgr_delta": 7.769020080566406,
+      "mean_abs_luma_delta": 0.9254687428474426,
+      "mean_abs_chroma_delta": 3.995537042617798,
+      "psnr_vs_raw": 28.573526020356105,
+      "raw_grad_mean": 0.018154585734009743,
+      "final_grad_mean": 0.02093043178319931,
+      "grad_mean_ratio": 1.1529004812866086,
+      "raw_luma_std": 4.794126510620117,
+      "final_luma_std": 4.816369533538818,
+      "luma_std_ratio": 1.0046396401648534
+    },
+    {
+      "stem": "jianci.4",
+      "mean_abs_bgr_delta": 14.410764694213867,
+      "mean_abs_luma_delta": 0.0979296863079071,
+      "mean_abs_chroma_delta": 14.145282745361328,
+      "psnr_vs_raw": 23.992349828037316,
+      "raw_grad_mean": 0.047591790556907654,
+      "final_grad_mean": 0.04834601283073425,
+      "grad_mean_ratio": 1.0158477176242617,
+      "raw_luma_std": 2.3706016540527344,
+      "final_luma_std": 2.4380502700805664,
+      "luma_std_ratio": 1.028452108300891
+    }
+  ],
+  "mean_metrics": {
+    "mean_abs_bgr_delta": 18.18082685470581,
+    "mean_abs_luma_delta": 0.7953203022480011,
+    "mean_abs_chroma_delta": 10.453869104385376,
+    "psnr_vs_raw": 22.770912928288528,
+    "raw_grad_mean": 0.09458441473543644,
+    "final_grad_mean": 0.09535963386297226,
+    "grad_mean_ratio": 1.033291794093844,
+    "raw_luma_std": 6.110079717636109,
+    "final_luma_std": 6.127589750289917,
+    "luma_std_ratio": 1.0063264100413556
+  },
+  "metrics_csv": "experiments\\topology_locked_visual_chroma_full_flow_v1\\topology_locked_visual_chroma_full_flow_v1_smoke5_highrisk_v1_metrics_20260527.csv",
+  "stage_metrics_csv": "experiments\\topology_locked_visual_chroma_full_flow_v1\\topology_locked_visual_chroma_full_flow_v1_smoke5_highrisk_v1_stage_metrics_20260527.csv",
+  "visual_panels": [
+    "experiments\\topology_locked_visual_chroma_full_flow_v1\\diagnostics\\smoke5_highrisk_v1\\weixiaoyuanjia.26_panel.jpg",
+    "experiments\\topology_locked_visual_chroma_full_flow_v1\\diagnostics\\smoke5_highrisk_v1\\xuehong.9_panel.jpg",
+    "experiments\\topology_locked_visual_chroma_full_flow_v1\\diagnostics\\smoke5_highrisk_v1\\donghaiyuanjia.26_panel.jpg",
+    "experiments\\topology_locked_visual_chroma_full_flow_v1\\diagnostics\\smoke5_highrisk_v1\\tama.14_panel.jpg",
+    "experiments\\topology_locked_visual_chroma_full_flow_v1\\diagnostics\\smoke5_highrisk_v1\\jianci.4_panel.jpg"
+  ]
+}

@@ -116,6 +116,8 @@ P12-P28/D01 不是正式增强主线，而是 downstream diagnostic candidates /
 - P12-P27：已完成候选或诊断，均未形成 strong pass。
 - P28：`pending_audit`，不得继续迭代。
 - D01：`mechanism-complete weak diagnostic candidate`，gate 为 `candidate_rescues_legacy_but_not_near_raw`，未运行 `full502_clean_v1`、`compare9_complete496_v1` 或 2770 full-pool。
+- FF01/FF02：完整增强主线恢复轨道的两轮 full-flow 诊断。FF01/v8 和 FF02 都完成 168 fixed-detector validation，gate 均为 `candidate_rescues_legacy_but_not_near_raw`；FF02 是机制级重设计但仍低于 raw 且 structure proxy worse than raw，必须停止同族小修。
+- TLVC01：topology-locked visual-chroma 完整流程纠偏候选，修正了 MyEdge raw input mismatch，完成 168 fixed-detector validation，gate 仍为 `candidate_rescues_legacy_but_not_near_raw`；比 FF01/FF02 安全，但没有超过 P27/D01 的 DiffusionEdge AP 证据，必须停止 Stage1-only direct replacement 小修。
 
 后续若要新增候选，必须先创建候选专属 run sheet，来源模板为：
 
@@ -145,6 +147,7 @@ P12-P28/D01 不是正式增强主线，而是 downstream diagnostic candidates /
 - 数据采集条件、物种覆盖、公开性和运行资源说明。
 - paper-ready qualitative panel。
 - 若未来继续 Stage1 候选，必须先 method review，而不是继续小参数 patch。
+- FF01/FF02/P27/D01 family-level failure audit 已完成 WP1，入口为 `docs/stage1_full_flow_family_failure_audit_fa01_20260527_cn.md`；high-risk sample index、per-image correlation audit 和 visual/error-map review 也已完成，入口为 `docs/fa01_high_risk_sample_evidence_index_20260527_cn.md`、`docs/fa01_per_image_correlation_audit_20260527_cn.md` 与 `docs/fa01_visual_error_map_review_20260527_cn.md`。MyEdge/MSFI sidecar adaptation protocol 草案见 `docs/myedge_msfi_stage1_sidecar_adaptation_protocol_fa01_20260527_cn.md`；Stage1 sidecar map definition 和 no-training export smoke 见 `docs/stage1_sidecar_map_definition_fa01_20260527_cn.md`；TLVC01 后长期目标见 `docs/stage1_long_horizon_goal_after_tlvc01_20260527_cn.md`，尚未授权训练。
 
 不缺的是：
 

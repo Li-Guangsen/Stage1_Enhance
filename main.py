@@ -23,6 +23,10 @@ from clahe_guided_visibility import clahe_3ch_wb_safe
 from fusion_three import fuse_three_images_bgr
 from lvbo import Gaussian_lvbo, entropy_boost_Lab
 from lgsbph import lgs_accc_bgr_improved
+from stage1_full_flow_mainline import (
+    is_full_flow_mainline_mode,
+    run_full_flow_downstream_stage1_mainline,
+)
 from stage1_downstream_candidates import _final_source_requirements, run_downstream_final_mode
 
 
@@ -167,6 +171,9 @@ def _load_params(params_json):
       `ac_guarded_weak_boundary_bph` /
       `dual_anchor_false_edge_floor_bph` /
       `raw_detail_lowfreq_chroma_bph` /
+      `full_flow_downstream_stage1_mainline_v1` /
+      `full_flow_downstream_stage1_mainline_v2` /
+      `topology_locked_visual_chroma_full_flow_v1` /
       `degradation_aware_pyramid_frequency_bph` /
       `weak_boundary_pyramid_fusion_bph`
     - `pipeline.save_intermediate_stages=false` 可用于只输出 `Final` 的诊断变体
@@ -259,7 +266,11 @@ def process_one_image(img_path, results_dir, params, resize_to=(320, 320), skip_
     final_params = params.get("final", {})
     pipeline_params = params.get("pipeline", {})
     save_intermediate_stages = bool(pipeline_params.get("save_intermediate_stages", True))
-    requirements = _final_source_requirements(final_params)
+    final_mode = str(final_params.get("mode", "homomorphic"))
+    if is_full_flow_mainline_mode(final_mode):
+        requirements = {"bph": True, "fused": False}
+    else:
+        requirements = _final_source_requirements(final_params)
     need_bph = save_intermediate_stages or requirements["bph"] or requirements["fused"]
     need_fused = save_intermediate_stages or requirements["fused"]
 
@@ -271,6 +282,28 @@ def process_one_image(img_path, results_dir, params, resize_to=(320, 320), skip_
         if save_intermediate_stages:
             save_result_variants(bph_uint8, results_dir, "BPH", src_rel_path)
         print("白平衡完成")
+
+    if is_full_flow_mainline_mode(final_mode):
+        full_flow_params = dict(final_params)
+        full_flow_params.pop("mode", None)
+        full_flow_params.pop("enabled", None)
+        full_flow_params["_mode"] = final_mode
+        full_flow_stages = run_full_flow_downstream_stage1_mainline(
+            original_uint8,
+            bph_uint8=bph_uint8,
+            imf1ray_params=params.get("imf1ray", {}),
+            rghs_params=params.get("rghs", {}),
+            clahe_params=params.get("clahe", {}),
+            fusion_params=params.get("fusion", {}),
+            full_flow_params=full_flow_params,
+        )
+        if save_intermediate_stages:
+            for stage_name in ["IMF1Ray", "RGHS", "CLAHE", "Fused"]:
+                save_result_variants(full_flow_stages[stage_name], results_dir, stage_name, src_rel_path)
+                print(f"{stage_name} full-flow stage 完成")
+        save_result_variants(full_flow_stages["Final"], results_dir, "Final", src_rel_path)
+        print("增强完成:", stem + "_Final")
+        return
 
     fused_uint8 = original_uint8
     if need_fused:

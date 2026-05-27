@@ -1,0 +1,26 @@
+{
+  "name": "fa01_stage1_sidecar_map_smoke_20260527",
+  "date": "2026-05-27",
+  "stage_root": "experiments/full_flow_downstream_stage1_mainline_v2/outputs/myedge168/full_flow_downstream_stage1_mainline_v2/png",
+  "stage_paths_csv": "docs/fa01_high_risk_sample_index_20260527/fa01_high_risk_stage1_paths.csv",
+  "output_dir": "docs/fa01_stage1_sidecar_map_smoke_20260527",
+  "requested_stems": [
+    "weixiaoyuanjia.26",
+    "xuehong.9",
+    "donghaiyuanjia.26",
+    "tama.14",
+    "jianci.4"
+  ],
+  "generated_count": 5,
+  "failures": [],
+  "map_definitions": {
+    "topology_anchor_luma": "Raw Lab-L luma; keeps raw topology as the primary edge-distribution anchor.",
+    "color_compensation_magnitude": "Robust-normalized Lab ab magnitude between BPH and raw; highlights where gray-pixel/BPH color formation acts.",
+    "frequency_detail_evidence": "Robust-normalized absolute luma difference between IMF1Ray and BPH; captures IMF/frequency detail evidence.",
+    "contrast_visibility_evidence": "Robust-normalized max luma change from RGHS/CLAHE against BPH; captures contrast and local-visibility evidence.",
+    "fusion_luma_delta_risk": "Robust-normalized absolute luma difference between Final and raw; marks where direct replacement changes raw topology.",
+    "background_false_edge_risk": "Final-gradient gain in weak raw-gradient regions, weighted by Final-vs-raw luma delta; flags possible new background edges.",
+    "weak_boundary_support": "Frequency detail retained outside background-risk regions; sidecar signal for weak-boundary support."
+  },
+  "scope": "no-training sidecar export smoke; no detector run; no candidate gate"
+}
