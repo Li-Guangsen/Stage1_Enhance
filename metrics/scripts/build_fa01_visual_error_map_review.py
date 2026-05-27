@@ -364,17 +364,17 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build FA01 high-risk visual/error-map review panels.")
     parser.add_argument(
         "--stage-paths-csv",
-        default="docs/fa01_high_risk_sample_index_20260527/fa01_high_risk_stage1_paths.csv",
+        default="docs/evidence/fa01_family_audit/fa01_high_risk_sample_index_20260527/fa01_high_risk_stage1_paths.csv",
     )
     parser.add_argument(
         "--detector-paths-csv",
-        default="docs/fa01_high_risk_sample_index_20260527/fa01_high_risk_detector_paths.csv",
+        default="docs/evidence/fa01_family_audit/fa01_high_risk_sample_index_20260527/fa01_high_risk_detector_paths.csv",
     )
     parser.add_argument(
         "--merged-metrics-csv",
-        default="docs/fa01_per_image_correlation_audit_20260527/fa01_per_image_enhancement_structure_merged.csv",
+        default="docs/evidence/fa01_family_audit/fa01_per_image_correlation_audit_20260527/fa01_per_image_enhancement_structure_merged.csv",
     )
-    parser.add_argument("--output-dir", default="docs/fa01_visual_error_map_review_20260527")
+    parser.add_argument("--output-dir", default="docs/evidence/fa01_family_audit/fa01_visual_error_map_review_20260527")
     parser.add_argument("--stem", action="append", default=None, help="Stem to include. Repeatable.")
     parser.add_argument("--tile-width", type=int, default=220)
     parser.add_argument("--tile-height", type=int, default=170)
@@ -424,7 +424,7 @@ def main() -> int:
         json.dumps(index, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
-    write_markdown(PROJECT_ROOT / "docs/fa01_visual_error_map_review_20260527_cn.md", pattern_rows, panel_rows)
+    write_markdown(PROJECT_ROOT / "docs/evidence/fa01_family_audit/fa01_visual_error_map_review_20260527_cn.md", pattern_rows, panel_rows)
     print(json.dumps(index, ensure_ascii=False, indent=2))
     return 0
 

@@ -89,7 +89,7 @@ Do not enter 502/496 or 2770 as a candidate-passing route from FF02. Do not cont
 
 ## Evidence Files
 
-- Method design: `docs/full_flow_downstream_stage1_mainline_v2_method_design_cn.md`
+- Method design: `docs/evidence/full_flow_recovery/full_flow_downstream_stage1_mainline_v2_method_design_cn.md`
 - Run sheet: `experiments/full_flow_downstream_stage1_mainline_v2/run_sheet_v1.md`
 - Config: `experiments/full_flow_downstream_stage1_mainline_v2/configs/full_flow_downstream_stage1_mainline_v2.json`
 - Stage1 168 status: `experiments/full_flow_downstream_stage1_mainline_v2/full_flow_downstream_stage1_mainline_v2_ff02_myedge168_v1_status_20260527.md`

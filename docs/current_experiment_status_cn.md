@@ -24,19 +24,20 @@
 
 新的长期目标入口：
 
-- `docs/stage1_full_enhancement_mainline_recovery_plan_cn.md`
-- `docs/stage1_full_flow_failure_audit_and_next_goal_20260527_cn.md`
-- `docs/stage1_full_flow_family_failure_audit_fa01_20260527_cn.md`
-- `docs/stage1_detector_sensitivity_hypotheses_fa01_20260527_cn.md`
-- `docs/fa01_high_risk_sample_evidence_index_20260527_cn.md`
-- `docs/fa01_per_image_correlation_audit_20260527_cn.md`
-- `docs/fa01_visual_error_map_review_20260527_cn.md`
-- `docs/myedge_msfi_stage1_sidecar_adaptation_protocol_fa01_20260527_cn.md`
-- `docs/stage1_sidecar_map_definition_fa01_20260527_cn.md`
-- `docs/stage1_long_horizon_goal_after_tlvc01_20260527_cn.md`
-- `docs/full_flow_downstream_stage1_mainline_v1_method_design_cn.md`
+- `docs/evidence_index_cn.md`
+- `docs/evidence/full_flow_recovery/stage1_full_enhancement_mainline_recovery_plan_cn.md`
+- `docs/evidence/full_flow_recovery/stage1_full_flow_failure_audit_and_next_goal_20260527_cn.md`
+- `docs/evidence/fa01_family_audit/stage1_full_flow_family_failure_audit_fa01_20260527_cn.md`
+- `docs/evidence/fa01_family_audit/stage1_detector_sensitivity_hypotheses_fa01_20260527_cn.md`
+- `docs/evidence/fa01_family_audit/fa01_high_risk_sample_evidence_index_20260527_cn.md`
+- `docs/evidence/fa01_family_audit/fa01_per_image_correlation_audit_20260527_cn.md`
+- `docs/evidence/fa01_family_audit/fa01_visual_error_map_review_20260527_cn.md`
+- `docs/evidence/stage1_myedge_coupling/myedge_msfi_stage1_sidecar_adaptation_protocol_fa01_20260527_cn.md`
+- `docs/evidence/stage1_myedge_coupling/stage1_sidecar_map_definition_fa01_20260527_cn.md`
+- `docs/evidence/stage1_myedge_coupling/stage1_long_horizon_goal_after_tlvc01_20260527_cn.md`
+- `docs/evidence/full_flow_recovery/full_flow_downstream_stage1_mainline_v1_method_design_cn.md`
 - `experiments/full_flow_downstream_stage1_mainline_v1/run_sheet_v1.md`
-- `docs/topology_locked_visual_chroma_full_flow_v1_method_design_cn.md`
+- `docs/evidence/tlvc01_topology_locked/topology_locked_visual_chroma_full_flow_v1_method_design_cn.md`
 - `experiments/topology_locked_visual_chroma_full_flow_v1/run_sheet_v1.md`
 
 后续新主线必须从灰像素白平衡、IMF/频域细节、多分支可见性/对比、特征门控融合和滤波收口等完整增强流程出发，同时加入 downstream-aware 约束。若视觉增强接近 raw 或没有 502/496 增强指标对照潜力，不得写成完整增强主线。
@@ -108,12 +109,12 @@
 
 FA01 当前进度：
 
-- WP1 family-level failure audit 已完成只读聚合，入口为 `docs/stage1_full_flow_family_failure_audit_fa01_20260527_cn.md`。
-- 机器可读表位于 `docs/fa01_stage1_full_flow_family_audit_tables_20260527/`，覆盖 fixed-detector 主指标、structure proxy、168 raw-vs-Final enhancement proxy、502/496 边界。
-- WP2 detector-sensitivity hypotheses 已预注册，入口为 `docs/stage1_detector_sensitivity_hypotheses_fa01_20260527_cn.md`。
-- high-risk sample evidence index 已完成，入口为 `docs/fa01_high_risk_sample_evidence_index_20260527_cn.md`，覆盖 `57` 个增强风险与 detector-adverse stems。
-- per-image correlation audit 已完成，入口为 `docs/fa01_per_image_correlation_audit_20260527_cn.md`。结论：单一增强 proxy 无法解释 FF01/FF02 失败，FF02 在 mean grad ratio 低于 `1` 时仍掉 ODS/AP，色度/低频分布迁移、局部 topology drift 和 raw-distribution bias 需要联合解释。
-- high-risk visual/error-map review 已完成，入口为 `docs/fa01_visual_error_map_review_20260527_cn.md`，生成 `11` 个重点样本 panel 和 pattern tag 表。它只整理既有证据，不是新候选或 detector rerun。
-- MyEdge/MSFI sidecar adaptation protocol 草案已写入 `docs/myedge_msfi_stage1_sidecar_adaptation_protocol_fa01_20260527_cn.md`，但未授权训练、未执行 adaptation。
-- Stage1 sidecar map definition 与 no-training export smoke 已完成，入口为 `docs/stage1_sidecar_map_definition_fa01_20260527_cn.md`；5 个样本导出 topology anchor、color compensation、frequency detail、visibility、luma risk、false-edge risk 和 weak-boundary support maps。它只是导出准备，不是 downstream gain。
+- WP1 family-level failure audit 已完成只读聚合，入口为 `docs/evidence/fa01_family_audit/stage1_full_flow_family_failure_audit_fa01_20260527_cn.md`。
+- 机器可读表位于 `docs/evidence/fa01_family_audit/fa01_stage1_full_flow_family_audit_tables_20260527/`，覆盖 fixed-detector 主指标、structure proxy、168 raw-vs-Final enhancement proxy、502/496 边界。
+- WP2 detector-sensitivity hypotheses 已预注册，入口为 `docs/evidence/fa01_family_audit/stage1_detector_sensitivity_hypotheses_fa01_20260527_cn.md`。
+- high-risk sample evidence index 已完成，入口为 `docs/evidence/fa01_family_audit/fa01_high_risk_sample_evidence_index_20260527_cn.md`，覆盖 `57` 个增强风险与 detector-adverse stems。
+- per-image correlation audit 已完成，入口为 `docs/evidence/fa01_family_audit/fa01_per_image_correlation_audit_20260527_cn.md`。结论：单一增强 proxy 无法解释 FF01/FF02 失败，FF02 在 mean grad ratio 低于 `1` 时仍掉 ODS/AP，色度/低频分布迁移、局部 topology drift 和 raw-distribution bias 需要联合解释。
+- high-risk visual/error-map review 已完成，入口为 `docs/evidence/fa01_family_audit/fa01_visual_error_map_review_20260527_cn.md`，生成 `11` 个重点样本 panel 和 pattern tag 表。它只整理既有证据，不是新候选或 detector rerun。
+- MyEdge/MSFI sidecar adaptation protocol 草案已写入 `docs/evidence/stage1_myedge_coupling/myedge_msfi_stage1_sidecar_adaptation_protocol_fa01_20260527_cn.md`，但未授权训练、未执行 adaptation。
+- Stage1 sidecar map definition 与 no-training export smoke 已完成，入口为 `docs/evidence/stage1_myedge_coupling/stage1_sidecar_map_definition_fa01_20260527_cn.md`；5 个样本导出 topology anchor、color compensation、frequency detail、visibility、luma risk、false-edge risk 和 weak-boundary support maps。它只是导出准备，不是 downstream gain。
 - 当前仍不新增 FF03/P29/D02。

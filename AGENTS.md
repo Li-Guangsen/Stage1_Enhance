@@ -41,18 +41,21 @@
 - `docs/experiment_run_sheet_template_cn.md`
 - `docs/stage1_to_myedge_downstream_workflow_cn.md`
 - `docs/evidence_asset_inventory_cn.md`
-- `docs/stage1_full_enhancement_mainline_recovery_plan_cn.md`
-- `docs/stage1_full_flow_failure_audit_and_next_goal_20260527_cn.md`
-- `docs/stage1_full_flow_family_failure_audit_fa01_20260527_cn.md`
-- `docs/stage1_detector_sensitivity_hypotheses_fa01_20260527_cn.md`
-- `docs/fa01_high_risk_sample_evidence_index_20260527_cn.md`
-- `docs/fa01_per_image_correlation_audit_20260527_cn.md`
-- `docs/fa01_visual_error_map_review_20260527_cn.md`
-- `docs/myedge_msfi_stage1_sidecar_adaptation_protocol_fa01_20260527_cn.md`
-- `docs/stage1_sidecar_map_definition_fa01_20260527_cn.md`
+- `docs/evidence_index_cn.md`
+- `docs/evidence/full_flow_recovery/stage1_full_enhancement_mainline_recovery_plan_cn.md`
+- `docs/evidence/full_flow_recovery/stage1_full_flow_failure_audit_and_next_goal_20260527_cn.md`
+- `docs/evidence/fa01_family_audit/stage1_full_flow_family_failure_audit_fa01_20260527_cn.md`
+- `docs/evidence/fa01_family_audit/stage1_detector_sensitivity_hypotheses_fa01_20260527_cn.md`
+- `docs/evidence/fa01_family_audit/fa01_high_risk_sample_evidence_index_20260527_cn.md`
+- `docs/evidence/fa01_family_audit/fa01_per_image_correlation_audit_20260527_cn.md`
+- `docs/evidence/fa01_family_audit/fa01_visual_error_map_review_20260527_cn.md`
+- `docs/evidence/stage1_myedge_coupling/myedge_msfi_stage1_sidecar_adaptation_protocol_fa01_20260527_cn.md`
+- `docs/evidence/stage1_myedge_coupling/stage1_sidecar_map_definition_fa01_20260527_cn.md`
+- `docs/evidence/stage1_myedge_coupling/stage1_long_horizon_goal_after_tlvc01_20260527_cn.md`
 - `metrics/registry_schema_cn.md`
 - `metrics/experiment_registry.csv`
 - `metrics/candidate_registry.csv`
+- `experiments/experiment_index_cn.md`
 
 ## 3. 实验治理硬规则
 

@@ -1,6 +1,6 @@
 # 项目执行规则（中文）
 
-更新时间：2026-05-25
+更新时间：2026-05-27
 
 本文档用于把本项目中反复踩坑的地方沉淀成仓库内可见规则。它面向下一次接手本项目的人类或智能体，尤其是 Codex / AI。根目录 `AGENTS.md` 是短入口，本文件是完整规则来源。
 
@@ -32,7 +32,8 @@
 3. `docs/project_execution_rules_cn.md`
 4. `docs/project_handoff_guide_cn.md`
 5. `docs/project_status_overview_cn.md`
-6. `research-state.yaml`
+6. `docs/evidence_index_cn.md`
+7. `research-state.yaml`
 
 如果任务涉及正式结果、baseline、对比方法、主表解释，必须再读：
 

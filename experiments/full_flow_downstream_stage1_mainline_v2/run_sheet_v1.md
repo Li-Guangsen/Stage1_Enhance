@@ -22,7 +22,7 @@
 
 ## 3. 方法设计
 
-- method design: `docs/full_flow_downstream_stage1_mainline_v2_method_design_cn.md`
+- method design: `docs/evidence/full_flow_recovery/full_flow_downstream_stage1_mainline_v2_method_design_cn.md`
 - method summary: `Original -> detector-sensitive diagnosis -> BPH color lane -> IMF/RGHS/CLAHE evidence branches -> color/structure decoupling -> topology-compatible fusion -> bounded filtering closure -> Final`
 - why this is not FF01 patching: FF02 不从 FF01 Final 做回拉，不调 FF01 阈值；它改写分支进入 Final 的机制，先拆 color lane / structure lane，再限制 detector-sensitive luma topology。
 

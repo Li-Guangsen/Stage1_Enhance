@@ -279,9 +279,9 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--stage-paths-csv",
-        default="docs/fa01_high_risk_sample_index_20260527/fa01_high_risk_stage1_paths.csv",
+        default="docs/evidence/fa01_family_audit/fa01_high_risk_sample_index_20260527/fa01_high_risk_stage1_paths.csv",
     )
-    parser.add_argument("--output-dir", default="docs/fa01_stage1_sidecar_map_smoke_20260527")
+    parser.add_argument("--output-dir", default="docs/evidence/stage1_myedge_coupling/fa01_stage1_sidecar_map_smoke_20260527")
     parser.add_argument("--stem", action="append", default=None)
     return parser.parse_args()
 
@@ -322,7 +322,7 @@ def main() -> int:
         json.dumps(index, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
-    write_markdown(PROJECT_ROOT / "docs/stage1_sidecar_map_definition_fa01_20260527_cn.md", index, rows)
+    write_markdown(PROJECT_ROOT / "docs/evidence/stage1_myedge_coupling/stage1_sidecar_map_definition_fa01_20260527_cn.md", index, rows)
     print(json.dumps(index, ensure_ascii=False, indent=2))
     return 1 if failures else 0
 

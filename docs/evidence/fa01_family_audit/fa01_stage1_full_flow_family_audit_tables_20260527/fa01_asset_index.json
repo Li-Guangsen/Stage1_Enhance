@@ -1,0 +1,12 @@
+{
+  "date": "2026-05-27",
+  "status": "complete_analysis_tables_no_new_experiment",
+  "outputs": {
+    "enhancement_proxy_summary": "docs/evidence/fa01_family_audit/fa01_stage1_full_flow_family_audit_tables_20260527/fa01_enhancement_proxy_168_summary.csv",
+    "enhancement_proxy_per_image": "docs/evidence/fa01_family_audit/fa01_stage1_full_flow_family_audit_tables_20260527/fa01_enhancement_proxy_168_per_image.csv",
+    "fixed_detector_metrics": "docs/evidence/fa01_family_audit/fa01_stage1_full_flow_family_audit_tables_20260527/fa01_fixed_detector_metrics.csv",
+    "structure_proxy_metrics": "docs/evidence/fa01_family_audit/fa01_stage1_full_flow_family_audit_tables_20260527/fa01_structure_proxy_metrics.csv",
+    "paper_metric_boundary": "docs/evidence/fa01_family_audit/fa01_stage1_full_flow_family_audit_tables_20260527/fa01_502_496_boundary.csv"
+  },
+  "boundary": "Read-only aggregation from existing Stage1 outputs and MyEdge result assets. No enhancement sampling eval show training 502/496 rerun or 2770 run was executed."
+}

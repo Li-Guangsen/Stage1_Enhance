@@ -13,10 +13,12 @@
 3. `docs/project_execution_rules_cn.md`
 4. `docs/current_experiment_status_cn.md`
 5. `docs/evidence_asset_inventory_cn.md`
-6. `metrics/experiment_registry.csv`
-7. `metrics/candidate_registry.csv`
-8. `docs/project_status_overview_cn.md`
-9. `research-state.yaml`
+6. `docs/evidence_index_cn.md`
+7. `metrics/experiment_registry.csv`
+8. `metrics/candidate_registry.csv`
+9. `experiments/experiment_index_cn.md`
+10. `docs/project_status_overview_cn.md`
+11. `research-state.yaml`
 
 涉及主表和 baseline 时，再读：
 
@@ -92,7 +94,7 @@ Stage1Codex 已完成 formal enhancement source asset、502 阶段表和 496 com
 - P28：pending audit，不得继续迭代。
 - D01：mechanism-complete weak diagnostic candidate，不是 strong pass 或正式主线。
 - FF01/FF02/TLVC01：完整流程恢复与 topology-lock 纠偏证据，均为 `candidate_rescues_legacy_but_not_near_raw`，不得写成下游正收益或进入 502/496/2770 candidate-passing route。
-- TLVC01 后长期目标：`docs/stage1_long_horizon_goal_after_tlvc01_20260527_cn.md`。
+- TLVC01 后长期目标：`docs/evidence/stage1_myedge_coupling/stage1_long_horizon_goal_after_tlvc01_20260527_cn.md`。
 
 继续实验前必须满足：
 

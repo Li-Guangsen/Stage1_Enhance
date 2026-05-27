@@ -1,0 +1,12 @@
+{
+  "date": "2026-05-27",
+  "status": "complete_correlation_audit_no_new_experiment",
+  "files": {
+    "merged": "docs/evidence/fa01_family_audit/fa01_per_image_correlation_audit_20260527/fa01_per_image_enhancement_structure_merged.csv",
+    "correlations": "docs/evidence/fa01_family_audit/fa01_per_image_correlation_audit_20260527/fa01_per_image_correlations.csv",
+    "top_correlations": "docs/evidence/fa01_family_audit/fa01_per_image_correlation_audit_20260527/fa01_top_correlations.csv",
+    "top_adverse_cases": "docs/evidence/fa01_family_audit/fa01_per_image_correlation_audit_20260527/fa01_top_adverse_per_image_cases.csv",
+    "variant_summary": "docs/evidence/fa01_family_audit/fa01_per_image_correlation_audit_20260527/fa01_per_image_correlation_variant_summary.csv"
+  },
+  "boundary": "Read-only correlation analysis from existing enhancement proxy and structure proxy per-image CSVs. Proxy only, not ODS/OIS/AP/AC recomputation."
+}

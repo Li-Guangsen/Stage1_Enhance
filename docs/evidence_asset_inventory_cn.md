@@ -4,6 +4,8 @@
 
 本文件是 Stage1Codex 的证据边界主表，用于避免把 source asset、paper metric、downstream diagnostic、proxy、readiness 或候选输出误写成同一类事实。
 
+导航索引见 `docs/evidence_index_cn.md`；过程性证据已按主题归入 `docs/evidence/`。
+
 ## 1. 标签定义
 
 | 标签 | 含义 |
@@ -31,13 +33,13 @@
 | D01 | `experiments/downstream_driven_v2` | `downstream diagnostic` / `historical / archived` | mechanism-complete weak diagnostic candidate | strong pass、正式主线、稳定下游收益 |
 | FF01/FF02 | `experiments/full_flow_downstream_stage1_mainline_v1`、`experiments/full_flow_downstream_stage1_mainline_v2` | `downstream diagnostic` / `historical / archived` | 完整增强主线恢复轨道的失败诊断证据 | 下游正收益、candidate pass、502/496 或 2770 推广入口 |
 | TLVC01 | `experiments/topology_locked_visual_chroma_full_flow_v1` | `downstream diagnostic` / `historical / archived` | topology-locked 完整流程纠偏候选；证明 exact MyEdge raw topology lock 可降低 direct replacement 风险 | 下游正收益、candidate pass、502/496 或 2770 推广入口 |
-| FA01 failure audit | `docs/stage1_full_flow_family_failure_audit_fa01_20260527_cn.md`、`docs/fa01_stage1_full_flow_family_audit_tables_20260527/` | `downstream diagnostic` / `proxy only` | FF01/FF02/P27/D01 family-level 失败归因与下一阶段假设来源 | 新候选、训练结果、downstream 正收益 |
-| FA01 high-risk index | `docs/fa01_high_risk_sample_evidence_index_20260527_cn.md`、`docs/fa01_high_risk_sample_index_20260527/` | `downstream diagnostic` / `proxy only` | high-risk stem 到 raw、GT、Stage1、MyEdge white/overlay/error_map 的路径索引 | 人工结论、训练结果、正收益证据 |
-| FA01 correlation audit | `docs/fa01_per_image_correlation_audit_20260527_cn.md`、`docs/fa01_per_image_correlation_audit_20260527/` | `proxy only` | per-image enhancement proxy 与 detector structure proxy 的相关诊断 | ODS/OIS/AP/AC 重算、因果证明 |
-| FA01 visual/error-map review | `docs/fa01_visual_error_map_review_20260527_cn.md`、`docs/fa01_visual_error_map_review_20260527/` | `downstream diagnostic` / `proxy only` | 11 个 high-risk 样本的 raw/GT/Stage1/fixed-detector error-map 审查面板和失败模式标签 | 新实验、人工最终判读、下游正收益 |
-| MyEdge/MSFI sidecar protocol | `docs/myedge_msfi_stage1_sidecar_adaptation_protocol_fa01_20260527_cn.md` | `readiness only` / `not claimable` | adaptation run sheet 草案输入 | 已训练、已验证、fixed-detector 结果 |
-| Stage1 sidecar map smoke | `docs/stage1_sidecar_map_definition_fa01_20260527_cn.md`、`docs/fa01_stage1_sidecar_map_smoke_20260527/` | `readiness only` / `not claimable` | no-training sidecar evidence/risk map 导出格式和 5 样本 smoke | MyEdge adaptation 结果、fixed-detector 结果、论文正收益 |
-| TLVC01 后长期计划 | `docs/stage1_long_horizon_goal_after_tlvc01_20260527_cn.md` | `readiness only` / `not claimable` | 从 Stage1 direct replacement 转向 raw+sidecar adaptation 的执行计划 | 已训练、已验证、downstream 正收益 |
+| FA01 failure audit | `docs/evidence/fa01_family_audit/stage1_full_flow_family_failure_audit_fa01_20260527_cn.md`、`docs/evidence/fa01_family_audit/fa01_stage1_full_flow_family_audit_tables_20260527/` | `downstream diagnostic` / `proxy only` | FF01/FF02/P27/D01 family-level 失败归因与下一阶段假设来源 | 新候选、训练结果、downstream 正收益 |
+| FA01 high-risk index | `docs/evidence/fa01_family_audit/fa01_high_risk_sample_evidence_index_20260527_cn.md`、`docs/evidence/fa01_family_audit/fa01_high_risk_sample_index_20260527/` | `downstream diagnostic` / `proxy only` | high-risk stem 到 raw、GT、Stage1、MyEdge white/overlay/error_map 的路径索引 | 人工结论、训练结果、正收益证据 |
+| FA01 correlation audit | `docs/evidence/fa01_family_audit/fa01_per_image_correlation_audit_20260527_cn.md`、`docs/evidence/fa01_family_audit/fa01_per_image_correlation_audit_20260527/` | `proxy only` | per-image enhancement proxy 与 detector structure proxy 的相关诊断 | ODS/OIS/AP/AC 重算、因果证明 |
+| FA01 visual/error-map review | `docs/evidence/fa01_family_audit/fa01_visual_error_map_review_20260527_cn.md`、`docs/evidence/fa01_family_audit/fa01_visual_error_map_review_20260527/` | `downstream diagnostic` / `proxy only` | 11 个 high-risk 样本的 raw/GT/Stage1/fixed-detector error-map 审查面板和失败模式标签 | 新实验、人工最终判读、下游正收益 |
+| MyEdge/MSFI sidecar protocol | `docs/evidence/stage1_myedge_coupling/myedge_msfi_stage1_sidecar_adaptation_protocol_fa01_20260527_cn.md` | `readiness only` / `not claimable` | adaptation run sheet 草案输入 | 已训练、已验证、fixed-detector 结果 |
+| Stage1 sidecar map smoke | `docs/evidence/stage1_myedge_coupling/stage1_sidecar_map_definition_fa01_20260527_cn.md`、`docs/evidence/stage1_myedge_coupling/fa01_stage1_sidecar_map_smoke_20260527/` | `readiness only` / `not claimable` | no-training sidecar evidence/risk map 导出格式和 5 样本 smoke | MyEdge adaptation 结果、fixed-detector 结果、论文正收益 |
+| TLVC01 后长期计划 | `docs/evidence/stage1_myedge_coupling/stage1_long_horizon_goal_after_tlvc01_20260527_cn.md` | `readiness only` / `not claimable` | 从 Stage1 direct replacement 转向 raw+sidecar adaptation 的执行计划 | 已训练、已验证、downstream 正收益 |
 | 168 downstream | MyEdge Stage1 coupling run dirs | `downstream diagnostic` | fixed-detector downstream validation 核心 | 可被 502/496/2770 替代 |
 | structure proxy | `stage1_myedge168_gt_edge_proxy_prescreen*`、P6/P6B、Sobel/Otsu proxy | `proxy only` | 筛查、选图和结构诊断 | ODS/OIS/AP/AC 或 downstream accuracy |
 | full-pool manifests | `full_algae_dewatermark_v1*` | `readiness only` | cv2-readable full-pool candidate / qualitative engineering pool | 正式 full-pool result |

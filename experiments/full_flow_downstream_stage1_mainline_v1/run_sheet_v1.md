@@ -24,8 +24,8 @@
 
 - method summary: `Original -> degradation diagnosis -> gray-pixel color formation -> IMF/frequency detail branch -> WB-safe contrast branch -> local visibility branch -> downstream-aware gated fusion -> bounded filtering/illumination closure -> Final`
 - reference inputs:
-  - `docs/full_flow_downstream_stage1_mainline_v1_method_design_cn.md`
-  - `docs/stage1_full_enhancement_mainline_recovery_plan_cn.md`
+  - `docs/evidence/full_flow_recovery/full_flow_downstream_stage1_mainline_v1_method_design_cn.md`
+  - `docs/evidence/full_flow_recovery/stage1_full_enhancement_mainline_recovery_plan_cn.md`
   - `docs/downstream_driven_v1_method_design_inputs_20260526.md`
   - `docs/downstream_driven_v1_method_design_synthesis_20260526_cn.md`
   - `docs/stage1_downstream_edge_harm_degradation_diagnostic_20260525_cn.md`

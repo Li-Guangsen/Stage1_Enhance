@@ -147,7 +147,7 @@ P12-P28/D01 不是正式增强主线，而是 downstream diagnostic candidates /
 - 数据采集条件、物种覆盖、公开性和运行资源说明。
 - paper-ready qualitative panel。
 - 若未来继续 Stage1 候选，必须先 method review，而不是继续小参数 patch。
-- FF01/FF02/P27/D01 family-level failure audit 已完成 WP1，入口为 `docs/stage1_full_flow_family_failure_audit_fa01_20260527_cn.md`；high-risk sample index、per-image correlation audit 和 visual/error-map review 也已完成，入口为 `docs/fa01_high_risk_sample_evidence_index_20260527_cn.md`、`docs/fa01_per_image_correlation_audit_20260527_cn.md` 与 `docs/fa01_visual_error_map_review_20260527_cn.md`。MyEdge/MSFI sidecar adaptation protocol 草案见 `docs/myedge_msfi_stage1_sidecar_adaptation_protocol_fa01_20260527_cn.md`；Stage1 sidecar map definition 和 no-training export smoke 见 `docs/stage1_sidecar_map_definition_fa01_20260527_cn.md`；TLVC01 后长期目标见 `docs/stage1_long_horizon_goal_after_tlvc01_20260527_cn.md`，尚未授权训练。
+- FF01/FF02/P27/D01 family-level failure audit 已完成 WP1，入口为 `docs/evidence/fa01_family_audit/stage1_full_flow_family_failure_audit_fa01_20260527_cn.md`；high-risk sample index、per-image correlation audit 和 visual/error-map review 也已完成，入口为 `docs/evidence/fa01_family_audit/fa01_high_risk_sample_evidence_index_20260527_cn.md`、`docs/evidence/fa01_family_audit/fa01_per_image_correlation_audit_20260527_cn.md` 与 `docs/evidence/fa01_family_audit/fa01_visual_error_map_review_20260527_cn.md`。MyEdge/MSFI sidecar adaptation protocol 草案见 `docs/evidence/stage1_myedge_coupling/myedge_msfi_stage1_sidecar_adaptation_protocol_fa01_20260527_cn.md`；Stage1 sidecar map definition 和 no-training export smoke 见 `docs/evidence/stage1_myedge_coupling/stage1_sidecar_map_definition_fa01_20260527_cn.md`；TLVC01 后长期目标见 `docs/evidence/stage1_myedge_coupling/stage1_long_horizon_goal_after_tlvc01_20260527_cn.md`，尚未授权训练。
 
 不缺的是：
 

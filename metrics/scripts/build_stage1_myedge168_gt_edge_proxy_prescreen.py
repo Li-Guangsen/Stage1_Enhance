@@ -16,7 +16,7 @@ from skimage.morphology import skeletonize
 PROJECT_ROOT = Path("D:/Desktop/Stage1Codex")
 MYEDGE_ROOT = Path("D:/Desktop/MyEdgeCodex")
 MANIFEST = MYEDGE_ROOT / "docs/paper_assets/stage1_coupling/stage1_myedge_168_coupling_manifest_20260524.csv"
-OUT_PREFIX = PROJECT_ROOT / "docs/stage1_myedge168_gt_edge_proxy_prescreen_topology_locked_visual_chroma_v1_myedgeinput_grayplane090_anchorfix_20260527_cn"
+OUT_PREFIX = PROJECT_ROOT / "docs/evidence/tlvc01_topology_locked/proxy_prescreen/stage1_myedge168_gt_edge_proxy_prescreen_topology_locked_visual_chroma_v1_myedgeinput_grayplane090_anchorfix_20260527_cn"
 TOLERANCE_PX = 2
 
 DOWNSTREAM_ROOT = PROJECT_ROOT / "experiments/downstream_driven_v1/outputs/myedge168"

@@ -1,0 +1,37 @@
+{
+  "stem": "xuehong.9",
+  "raw_path": "D:\\Desktop\\Stage1Codex\\data\\inputImg\\Original\\xuehong.9.jpg",
+  "stage_root": "D:\\Desktop\\Stage1Codex\\experiments\\full_flow_downstream_stage1_mainline_v2\\outputs\\myedge168\\full_flow_downstream_stage1_mainline_v2\\png",
+  "source_paths": {
+    "raw": "D:\\Desktop\\Stage1Codex\\data\\inputImg\\Original\\xuehong.9.jpg",
+    "BPH": "D:\\Desktop\\Stage1Codex\\experiments\\full_flow_downstream_stage1_mainline_v2\\outputs\\myedge168\\full_flow_downstream_stage1_mainline_v2\\png\\BPH\\xuehong.9_BPH.png",
+    "IMF1Ray": "D:\\Desktop\\Stage1Codex\\experiments\\full_flow_downstream_stage1_mainline_v2\\outputs\\myedge168\\full_flow_downstream_stage1_mainline_v2\\png\\IMF1Ray\\xuehong.9_IMF1Ray.png",
+    "RGHS": "D:\\Desktop\\Stage1Codex\\experiments\\full_flow_downstream_stage1_mainline_v2\\outputs\\myedge168\\full_flow_downstream_stage1_mainline_v2\\png\\RGHS\\xuehong.9_RGHS.png",
+    "CLAHE": "D:\\Desktop\\Stage1Codex\\experiments\\full_flow_downstream_stage1_mainline_v2\\outputs\\myedge168\\full_flow_downstream_stage1_mainline_v2\\png\\CLAHE\\xuehong.9_CLAHE.png",
+    "Final": "D:\\Desktop\\Stage1Codex\\experiments\\full_flow_downstream_stage1_mainline_v2\\outputs\\myedge168\\full_flow_downstream_stage1_mainline_v2\\png\\Final\\xuehong.9_Final.png"
+  },
+  "map_paths": {
+    "topology_anchor_luma": "docs/evidence/stage1_myedge_coupling/fa01_stage1_sidecar_map_smoke_20260527/maps/xuehong.9/xuehong.9_topology_anchor_luma.png",
+    "color_compensation_magnitude": "docs/evidence/stage1_myedge_coupling/fa01_stage1_sidecar_map_smoke_20260527/maps/xuehong.9/xuehong.9_color_compensation_magnitude.png",
+    "frequency_detail_evidence": "docs/evidence/stage1_myedge_coupling/fa01_stage1_sidecar_map_smoke_20260527/maps/xuehong.9/xuehong.9_frequency_detail_evidence.png",
+    "contrast_visibility_evidence": "docs/evidence/stage1_myedge_coupling/fa01_stage1_sidecar_map_smoke_20260527/maps/xuehong.9/xuehong.9_contrast_visibility_evidence.png",
+    "fusion_luma_delta_risk": "docs/evidence/stage1_myedge_coupling/fa01_stage1_sidecar_map_smoke_20260527/maps/xuehong.9/xuehong.9_fusion_luma_delta_risk.png",
+    "background_false_edge_risk": "docs/evidence/stage1_myedge_coupling/fa01_stage1_sidecar_map_smoke_20260527/maps/xuehong.9/xuehong.9_background_false_edge_risk.png",
+    "weak_boundary_support": "docs/evidence/stage1_myedge_coupling/fa01_stage1_sidecar_map_smoke_20260527/maps/xuehong.9/xuehong.9_weak_boundary_support.png"
+  },
+  "panel_path": "docs/evidence/stage1_myedge_coupling/fa01_stage1_sidecar_map_smoke_20260527/panels/xuehong.9_sidecar_smoke_panel.jpg",
+  "image_shape_hw": [
+    320,
+    320
+  ],
+  "map_definitions": {
+    "topology_anchor_luma": "Raw Lab-L luma; keeps raw topology as the primary edge-distribution anchor.",
+    "color_compensation_magnitude": "Robust-normalized Lab ab magnitude between BPH and raw; highlights where gray-pixel/BPH color formation acts.",
+    "frequency_detail_evidence": "Robust-normalized absolute luma difference between IMF1Ray and BPH; captures IMF/frequency detail evidence.",
+    "contrast_visibility_evidence": "Robust-normalized max luma change from RGHS/CLAHE against BPH; captures contrast and local-visibility evidence.",
+    "fusion_luma_delta_risk": "Robust-normalized absolute luma difference between Final and raw; marks where direct replacement changes raw topology.",
+    "background_false_edge_risk": "Final-gradient gain in weak raw-gradient regions, weighted by Final-vs-raw luma delta; flags possible new background edges.",
+    "weak_boundary_support": "Frequency detail retained outside background-risk regions; sidecar signal for weak-boundary support."
+  },
+  "scope": "no-training sidecar export smoke; not a downstream detector result"
+}
