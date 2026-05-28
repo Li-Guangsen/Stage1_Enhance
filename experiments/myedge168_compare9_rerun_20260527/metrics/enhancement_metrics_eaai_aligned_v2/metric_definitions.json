@@ -1,0 +1,48 @@
+{
+  "created_at": "2026-05-28T01:50:32",
+  "metric_policy": "EAAI-aligned enhancement baseline plus existing Stage1 diagnostic metrics",
+  "main_enhancement_metrics": [
+    "UIQM",
+    "UCIQE",
+    "SSEQ",
+    "SIFT_MATCH_RATIO"
+  ],
+  "diagnostic_metrics": [
+    "EME",
+    "EMEE",
+    "Entropy",
+    "Contrast",
+    "AvgGra"
+  ],
+  "structure_guard_metrics": [
+    "MS_SSIM",
+    "PSNR"
+  ],
+  "sift_match": {
+    "definition": "raw-enhanced grayscale OpenCV SIFT matching with Lowe ratio test",
+    "lowe_ratio": 0.75,
+    "ratio_formula": "SIFT_GOOD_MATCHES / max(min(raw_keypoints, enhanced_keypoints), 1)",
+    "raw_anchor_policy": "raw SIFT_MATCH_RATIO is NA and is excluded from SIFT_MATCH ranking"
+  },
+  "sseq": {
+    "column": "SSEQ",
+    "implementation": "SSEQ_reimplementation_feature_mean",
+    "reference": "Liu et al. 2014, No-reference image quality assessment based on spatial and spectral entropies",
+    "note": "The original SSEQ release also uses a learned quality predictor. This script extracts SSEQ-style spatial/spectral entropy features and reports the mean of spatial/spectral entropy means across three scales as a transparent scalar. It is not claimed to be the EAAI authors' private code.",
+    "block_size": 8,
+    "feature_columns": [
+      "SSEQ_S1_SPATIAL_MEAN",
+      "SSEQ_S1_SPATIAL_SKEW",
+      "SSEQ_S1_SPECTRAL_MEAN",
+      "SSEQ_S1_SPECTRAL_SKEW",
+      "SSEQ_S2_SPATIAL_MEAN",
+      "SSEQ_S2_SPATIAL_SKEW",
+      "SSEQ_S2_SPECTRAL_MEAN",
+      "SSEQ_S2_SPECTRAL_SKEW",
+      "SSEQ_S3_SPATIAL_MEAN",
+      "SSEQ_S3_SPATIAL_SKEW",
+      "SSEQ_S3_SPECTRAL_MEAN",
+      "SSEQ_S3_SPECTRAL_SKEW"
+    ]
+  }
+}

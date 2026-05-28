@@ -1,0 +1,112 @@
+# Protocol v2 image enhancement evaluation
+Created at: 2026-05-27T22:23:14
+Original dir: D:\Desktop\Stage1Codex\experiments\myedge168_compare9_rerun_20260527\inputs\raw
+Summary policy: complete_cases_across_all_methods
+Planned stems: 168
+Complete success stems: 168
+Failures: 0
+
+## Ours
+Directory: D:\Desktop\Stage1Codex\experiments\myedge168_compare9_rerun_20260527\outputs_normalized\Ours
+Count: 168
+EME: mean=14.586335, std=9.455063
+EMEE: mean=1.118368, std=0.534423
+Entropy: mean=5.961697, std=0.856126
+Contrast: mean=764.302267, std=588.220319
+AvgGra: mean=21.978223, std=12.809230
+MS_SSIM: mean=0.729894, std=0.175609
+PSNR: mean=17.118827, std=3.697061
+UCIQE: mean=3.987137, std=2.575816
+UIQM: mean=31.922498, std=16.577778
+
+## HVDualformer
+Directory: D:\Desktop\Stage1Codex\experiments\myedge168_compare9_rerun_20260527\outputs_normalized\HVDualformer
+Count: 168
+EME: mean=2.492640, std=1.808270
+EMEE: mean=0.436965, std=0.099904
+Entropy: mean=3.953729, std=0.933037
+Contrast: mean=24.683363, std=29.034470
+AvgGra: mean=3.185410, std=2.060595
+MS_SSIM: mean=0.991783, std=0.005683
+PSNR: mean=33.894578, std=6.425775
+UCIQE: mean=1.643290, std=1.327011
+UIQM: mean=8.088469, std=4.931807
+
+## ABC-Former
+Directory: D:\Desktop\Stage1Codex\experiments\myedge168_compare9_rerun_20260527\outputs_normalized\ABC-Former
+Count: 168
+EME: mean=2.322184, std=1.776643
+EMEE: mean=0.427525, std=0.098012
+Entropy: mean=3.881582, std=0.977080
+Contrast: mean=24.534750, std=29.211238
+AvgGra: mean=3.130708, std=2.085148
+MS_SSIM: mean=0.998406, std=0.000903
+PSNR: mean=42.214009, std=7.329369
+UCIQE: mean=2.061382, std=1.636980
+UIQM: mean=7.472417, std=5.042869
+
+## GDCP
+Directory: D:\Desktop\Stage1Codex\experiments\myedge168_compare9_rerun_20260527\outputs_normalized\GDCP
+Count: 168
+EME: mean=6.708524, std=4.931418
+EMEE: mean=0.676463, std=0.280233
+Entropy: mean=5.338502, std=0.841138
+Contrast: mean=96.927694, std=107.578163
+AvgGra: mean=7.458232, std=4.760440
+MS_SSIM: mean=0.879038, std=0.058763
+PSNR: mean=24.055124, std=4.944476
+UCIQE: mean=3.477062, std=2.211852
+UIQM: mean=18.736207, std=9.083001
+
+## CBF
+Directory: D:\Desktop\Stage1Codex\experiments\myedge168_compare9_rerun_20260527\outputs_normalized\CBF
+Count: 168
+EME: mean=8.053077, std=4.365687
+EMEE: mean=0.745188, std=0.244311
+Entropy: mean=6.637485, std=0.240025
+Contrast: mean=119.689242, std=107.288834
+AvgGra: mean=9.465060, std=4.717296
+MS_SSIM: mean=0.737686, std=0.088976
+PSNR: mean=17.413929, std=1.222716
+UCIQE: mean=2.829168, std=1.679565
+UIQM: mean=21.173660, std=7.787986
+
+## HLRP
+Directory: D:\Desktop\Stage1Codex\experiments\myedge168_compare9_rerun_20260527\outputs_normalized\HLRP
+Count: 168
+EME: mean=14.911352, std=3.333219
+EMEE: mean=1.124476, std=0.193167
+Entropy: mean=6.820690, std=0.487157
+Contrast: mean=216.592931, std=63.742237
+AvgGra: mean=15.877334, std=1.397286
+MS_SSIM: mean=0.390266, std=0.081144
+PSNR: mean=13.457266, std=3.622387
+UCIQE: mean=2.746885, std=2.099979
+UIQM: mean=33.231156, std=5.915831
+
+## SGUIE-Net
+Directory: D:\Desktop\Stage1Codex\experiments\myedge168_compare9_rerun_20260527\outputs_normalized\SGUIE-Net
+Count: 168
+EME: mean=6.075659, std=5.851669
+EMEE: mean=0.641058, std=0.333154
+Entropy: mean=4.821514, std=1.328130
+Contrast: mean=104.036937, std=156.343454
+AvgGra: mean=6.940316, std=6.466517
+MS_SSIM: mean=0.898321, std=0.103016
+PSNR: mean=24.356255, std=6.085605
+UCIQE: mean=2.998805, std=2.237789
+UIQM: mean=15.897283, std=11.988785
+
+## Histoformer
+Directory: D:\Desktop\Stage1Codex\experiments\myedge168_compare9_rerun_20260527\outputs_normalized\Histoformer
+Count: 168
+EME: mean=22.303532, std=7.435144
+EMEE: mean=1.549356, std=0.422345
+Entropy: mean=7.237022, std=0.301644
+Contrast: mean=743.399612, std=445.167476
+AvgGra: mean=28.236470, std=9.917488
+MS_SSIM: mean=0.397822, std=0.171436
+PSNR: mean=15.448387, std=2.331586
+UCIQE: mean=5.244977, std=1.338184
+UIQM: mean=47.116807, std=12.291756
+

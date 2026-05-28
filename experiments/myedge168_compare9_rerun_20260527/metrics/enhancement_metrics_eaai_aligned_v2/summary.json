@@ -1,0 +1,89 @@
+{
+  "created_at": "2026-05-28T01:50:32",
+  "run_root": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527",
+  "output_dir": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\metrics\\enhancement_metrics_eaai_aligned_v2",
+  "raw_manifest": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\manifests\\myedge168_input_manifest.csv",
+  "raw_count": 168,
+  "method_output_counts": {
+    "Ours": 168,
+    "HVDualformer": 168,
+    "ABC-Former": 168,
+    "GDCP": 168,
+    "CBF": 168,
+    "HLRP": 168,
+    "SGUIE-Net": 168,
+    "Histoformer": 168,
+    "WWPF": 166
+  },
+  "complete_case_166_count": 166,
+  "main_table_excluded_stems": [
+    "chazhuang.3",
+    "chazhuang.6"
+  ],
+  "main_table_excluded_source_paths": [
+    "D:\\Desktop\\MyEdgeCodex\\input_test\\algae\\chazhuang.3.jpg",
+    "D:\\Desktop\\MyEdgeCodex\\input_test\\algae\\chazhuang.6.jpg"
+  ],
+  "diagnostic_not_primary_screening": [
+    "HLRP",
+    "Histoformer"
+  ],
+  "downstream_validation_policy": "Future Stage1 candidates should use this same 166 complete-case stem set for fixed-detector DiffusionEdge/MSFI validation.",
+  "no_wwpf_168_count": 168,
+  "methods": [
+    "Ours",
+    "HVDualformer",
+    "ABC-Former",
+    "GDCP",
+    "CBF",
+    "HLRP",
+    "SGUIE-Net",
+    "Histoformer",
+    "WWPF"
+  ],
+  "raw_anchor_included": true,
+  "metrics": {
+    "all": [
+      "EME",
+      "EMEE",
+      "Entropy",
+      "Contrast",
+      "AvgGra",
+      "MS_SSIM",
+      "PSNR",
+      "UCIQE",
+      "UIQM",
+      "SSEQ",
+      "SIFT_GOOD_MATCHES",
+      "SIFT_MATCH_RATIO"
+    ],
+    "main": [
+      "UIQM",
+      "UCIQE",
+      "SSEQ",
+      "SIFT_MATCH_RATIO"
+    ],
+    "diagnostic": [
+      "EME",
+      "EMEE",
+      "Entropy",
+      "Contrast",
+      "AvgGra"
+    ],
+    "structure_guards": [
+      "MS_SSIM",
+      "PSNR"
+    ]
+  },
+  "sseq_policy": "SSEQ_reimplementation_feature_mean; not EAAI private code",
+  "sift_policy": "raw-enhanced SIFT with Lowe ratio 0.75; raw anchor SIFT_MATCH_RATIO is NA",
+  "outputs": {
+    "mean_166_csv": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\metrics\\enhancement_metrics_eaai_aligned_v2\\mean_metrics_9method_complete_case_166.csv",
+    "mean_168_no_wwpf_csv": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\metrics\\enhancement_metrics_eaai_aligned_v2\\mean_metrics_8method_no_wwpf_168.csv",
+    "per_image_166_csv": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\metrics\\enhancement_metrics_eaai_aligned_v2\\per_image_metrics_166.csv",
+    "per_image_168_no_wwpf_csv": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\metrics\\enhancement_metrics_eaai_aligned_v2\\per_image_metrics_168_no_wwpf.csv",
+    "rank_summary_csv": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\metrics\\enhancement_metrics_eaai_aligned_v2\\rank_summary_166.csv",
+    "screening_rule_summary_csv": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\metrics\\enhancement_metrics_eaai_aligned_v2\\screening_rule_summary_166.csv",
+    "run_report": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\metrics\\enhancement_metrics_eaai_aligned_v2\\run_report.md"
+  }
+}

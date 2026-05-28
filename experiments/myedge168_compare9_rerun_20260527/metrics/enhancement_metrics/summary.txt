@@ -1,0 +1,128 @@
+# Protocol v2 image enhancement evaluation
+Created at: 2026-05-27T22:14:52
+Original dir: D:\Desktop\Stage1Codex\experiments\myedge168_compare9_rerun_20260527\inputs\raw
+Summary policy: complete_cases_across_all_methods
+Planned stems: 166
+Complete success stems: 166
+Failures: 2
+
+## ABC-Former
+Directory: D:\Desktop\Stage1Codex\experiments\myedge168_compare9_rerun_20260527\outputs_normalized\ABC-Former
+Count: 166
+EME: mean=2.325672, std=1.786507
+EMEE: mean=0.427719, std=0.098556
+Entropy: mean=3.876955, std=0.981279
+Contrast: mean=24.490630, std=29.381053
+AvgGra: mean=3.124351, std=2.096710
+MS_SSIM: mean=0.998390, std=0.000898
+PSNR: mean=42.065348, std=7.234089
+UCIQE: mean=2.084921, std=1.632618
+UIQM: mean=7.492111, std=5.069021
+
+## CBF
+Directory: D:\Desktop\Stage1Codex\experiments\myedge168_compare9_rerun_20260527\outputs_normalized\CBF
+Count: 166
+EME: mean=8.092497, std=4.377021
+EMEE: mean=0.747381, std=0.244956
+Entropy: mean=6.638911, std=0.240082
+Contrast: mean=119.889667, std=107.903570
+AvgGra: mean=9.491936, std=4.737606
+MS_SSIM: mean=0.736280, std=0.088524
+PSNR: mean=17.415596, std=1.218303
+UCIQE: mean=2.861794, std=1.662983
+UIQM: mean=21.277105, std=7.774115
+
+## GDCP
+Directory: D:\Desktop\Stage1Codex\experiments\myedge168_compare9_rerun_20260527\outputs_normalized\GDCP
+Count: 166
+EME: mean=6.723473, std=4.958680
+EMEE: mean=0.677683, std=0.281679
+Entropy: mean=5.340885, std=0.836679
+Contrast: mean=95.952878, std=107.843199
+AvgGra: mean=7.438025, std=4.785424
+MS_SSIM: mean=0.880054, std=0.058376
+PSNR: mean=24.167069, std=4.863571
+UCIQE: mean=3.515717, std=2.196752
+UIQM: mean=18.795177, std=9.121246
+
+## Histoformer
+Directory: D:\Desktop\Stage1Codex\experiments\myedge168_compare9_rerun_20260527\outputs_normalized\Histoformer
+Count: 166
+EME: mean=22.402766, std=7.423877
+EMEE: mean=1.554896, std=0.421808
+Entropy: mean=7.246868, std=0.263837
+Contrast: mean=749.045653, std=444.838527
+AvgGra: mean=28.407479, std=9.844250
+MS_SSIM: mean=0.395405, std=0.170871
+PSNR: mean=15.502570, std=2.290793
+UCIQE: mean=5.272677, std=1.321398
+UIQM: mean=47.315469, std=12.229265
+
+## HLRP
+Directory: D:\Desktop\Stage1Codex\experiments\myedge168_compare9_rerun_20260527\outputs_normalized\HLRP
+Count: 166
+EME: mean=15.017295, std=3.199429
+EMEE: mean=1.131202, std=0.183537
+Entropy: mean=6.836404, std=0.422759
+Contrast: mean=216.753618, std=64.104313
+AvgGra: mean=15.932814, std=1.244606
+MS_SSIM: mean=0.389840, std=0.081537
+PSNR: mean=13.534514, std=3.574602
+UCIQE: mean=2.776673, std=2.094877
+UIQM: mean=33.447743, std=5.558705
+
+## HVDualformer
+Directory: D:\Desktop\Stage1Codex\experiments\myedge168_compare9_rerun_20260527\outputs_normalized\HVDualformer
+Count: 166
+EME: mean=2.495164, std=1.817772
+EMEE: mean=0.437108, std=0.100429
+Entropy: mean=3.949305, std=0.937246
+Contrast: mean=24.609660, std=29.193929
+AvgGra: mean=3.178527, std=2.071802
+MS_SSIM: mean=0.991756, std=0.005683
+PSNR: mean=33.808306, std=6.283988
+UCIQE: mean=1.659048, std=1.327134
+UIQM: mean=8.106332, std=4.957022
+
+## Ours
+Directory: D:\Desktop\Stage1Codex\experiments\myedge168_compare9_rerun_20260527\outputs_normalized\Ours
+Count: 166
+EME: mean=14.636039, std=9.500929
+EMEE: mean=1.121159, std=0.537023
+Entropy: mean=5.967017, std=0.855958
+Contrast: mean=765.315589, std=591.002457
+AvgGra: mean=22.048497, std=12.865449
+MS_SSIM: mean=0.729076, std=0.176251
+PSNR: mean=17.188509, std=3.625861
+UCIQE: mean=4.030983, std=2.559932
+UIQM: mean=32.050956, std=16.635706
+
+## SGUIE-Net
+Directory: D:\Desktop\Stage1Codex\experiments\myedge168_compare9_rerun_20260527\outputs_normalized\SGUIE-Net
+Count: 166
+EME: mean=6.097298, std=5.883472
+EMEE: mean=0.642317, std=0.334956
+Entropy: mean=4.824860, std=1.333291
+Contrast: mean=103.958161, std=157.249680
+AvgGra: mean=6.949132, std=6.504503
+MS_SSIM: mean=0.897676, std=0.103437
+PSNR: mean=24.352270, std=6.121234
+UCIQE: mean=3.009450, std=2.248944
+UIQM: mean=15.956166, std=12.048455
+
+## WWPF
+Directory: D:\Desktop\Stage1Codex\experiments\myedge168_compare9_rerun_20260527\outputs_normalized\WWPF
+Count: 166
+EME: mean=13.029312, std=8.142520
+EMEE: mean=1.038339, std=0.468787
+Entropy: mean=6.554662, std=0.748831
+Contrast: mean=446.403694, std=355.581063
+AvgGra: mean=19.799018, std=9.658411
+MS_SSIM: mean=0.573232, std=0.164240
+PSNR: mean=15.236047, std=3.114222
+UCIQE: mean=2.614191, std=1.623376
+UIQM: mean=29.731667, std=14.138739
+
+## Failed files
+matching	WWPF	chazhuang.3	missing image for manifest entry
+matching	WWPF	chazhuang.6	missing image for manifest entry

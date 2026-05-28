@@ -1,0 +1,821 @@
+{
+  "created_at": "2026-05-27T22:14:52",
+  "project_root": "D:\\Desktop\\Stage1Codex",
+  "original_dir": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\inputs\\raw",
+  "resize_to": [
+    320,
+    320
+  ],
+  "summary_policy": "complete_cases_across_all_methods",
+  "planned_stem_count": 166,
+  "complete_success_count": 166,
+  "failure_count": 2,
+  "methods": {
+    "ABC-Former": {
+      "directory": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\outputs_normalized\\ABC-Former",
+      "complete_case_count": 166,
+      "metrics": {
+        "EME": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 2.325672396948952,
+          "std": 1.786507206960648,
+          "median": 1.5004509548846414,
+          "min": 0.5119009589697782,
+          "max": 8.15234532305514
+        },
+        "EMEE": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 0.4277193345658705,
+          "std": 0.09855621570651671,
+          "median": 0.3821249187481888,
+          "min": 0.3280594039918489,
+          "max": 0.7536948327663604
+        },
+        "Entropy": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 3.876955371517293,
+          "std": 0.9812786256847018,
+          "median": 3.7524433529171297,
+          "min": 1.9756939742852155,
+          "max": 6.736340841580093
+        },
+        "Contrast": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 24.490629662065185,
+          "std": 29.38105336173584,
+          "median": 13.932908013322884,
+          "min": 1.323324843260188,
+          "max": 169.12408894984327
+        },
+        "AvgGra": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 3.1243509629001625,
+          "std": 2.0967101521918696,
+          "median": 2.2881923175977423,
+          "min": 0.8584043075527747,
+          "max": 10.637783170998965
+        },
+        "MS_SSIM": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 0.9983904968543225,
+          "std": 0.0008981088969499185,
+          "median": 0.9986149668693542,
+          "min": 0.9940873384475708,
+          "max": 0.9998708367347717
+        },
+        "PSNR": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 42.06534797341837,
+          "std": 7.234088520628636,
+          "median": 42.23627431434451,
+          "min": 24.55774124865874,
+          "max": 58.50853499641865
+        },
+        "UCIQE": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 2.0849212424790267,
+          "std": 1.6326180524811422,
+          "median": 1.6556705810390415,
+          "min": 0.27871686320491135,
+          "max": 8.46344463004172
+        },
+        "UIQM": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 7.492110666818451,
+          "std": 5.069020999113432,
+          "median": 5.308186071791044,
+          "min": 1.3210407884796995,
+          "max": 20.91528863937677
+        }
+      }
+    },
+    "CBF": {
+      "directory": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\outputs_normalized\\CBF",
+      "complete_case_count": 166,
+      "metrics": {
+        "EME": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 8.092497309879164,
+          "std": 4.3770209805174884,
+          "median": 6.567554780742331,
+          "min": 1.8274814845488672,
+          "max": 22.775077151469418
+        },
+        "EMEE": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 0.7473807140119969,
+          "std": 0.2449559977865024,
+          "median": 0.660496410541656,
+          "min": 0.4003485949218127,
+          "max": 1.5632441116109628
+        },
+        "Entropy": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 6.6389114817409585,
+          "std": 0.24008162777060524,
+          "median": 6.568605129852703,
+          "min": 6.039014636794966,
+          "max": 7.476030929522373
+        },
+        "Contrast": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 119.88966691609697,
+          "std": 107.90357049646859,
+          "median": 79.2806205916928,
+          "min": 12.934864811912226,
+          "max": 611.8152821316614
+        },
+        "AvgGra": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 9.491935734115915,
+          "std": 4.737606016896666,
+          "median": 8.009750329991299,
+          "min": 2.913614356472989,
+          "max": 29.64946033498942
+        },
+        "MS_SSIM": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 0.7362801529556872,
+          "std": 0.08852399671509059,
+          "median": 0.7441555261611938,
+          "min": 0.5105791687965393,
+          "max": 0.9493546485900879
+        },
+        "PSNR": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 17.415596336130918,
+          "std": 1.2183033691783707,
+          "median": 17.20818606087567,
+          "min": 15.16068784827812,
+          "max": 20.979045616463218
+        },
+        "UCIQE": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 2.861794428668441,
+          "std": 1.6629828753664078,
+          "median": 2.3694682946413756,
+          "min": 0.833889406245947,
+          "max": 11.348250395479798
+        },
+        "UIQM": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 21.27710488758474,
+          "std": 7.774114929075437,
+          "median": 19.03911223703267,
+          "min": 8.895115622060363,
+          "max": 46.49631309112719
+        }
+      }
+    },
+    "GDCP": {
+      "directory": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\outputs_normalized\\GDCP",
+      "complete_case_count": 166,
+      "metrics": {
+        "EME": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 6.723472957346681,
+          "std": 4.958679539163724,
+          "median": 5.105406961422815,
+          "min": 0.8616473005623759,
+          "max": 23.71979309501153
+        },
+        "EMEE": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 0.6776828628229512,
+          "std": 0.2816791379821511,
+          "median": 0.5852341516370125,
+          "min": 0.34806786713790444,
+          "max": 1.6255606919178414
+        },
+        "Entropy": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 5.340884537335435,
+          "std": 0.8366790321305149,
+          "median": 5.2783733245376565,
+          "min": 3.6583963244396362,
+          "max": 7.022759822120363
+        },
+        "Contrast": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 95.95287794005175,
+          "std": 107.84319867751411,
+          "median": 58.63250146943574,
+          "min": 6.568074059561129,
+          "max": 630.4310785658307
+        },
+        "AvgGra": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 7.438024655751446,
+          "std": 4.78542429323154,
+          "median": 5.892238006158905,
+          "min": 1.1013422581523227,
+          "max": 27.625033989011353
+        },
+        "MS_SSIM": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 0.8800537259463804,
+          "std": 0.05837597169384488,
+          "median": 0.8977155089378357,
+          "min": 0.7111046314239502,
+          "max": 0.9788499474525452
+        },
+        "PSNR": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 24.167068776419395,
+          "std": 4.863570570198129,
+          "median": 24.62032337855743,
+          "min": 11.507071612689598,
+          "max": 37.994224452589414
+        },
+        "UCIQE": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 3.5157171432106566,
+          "std": 2.1967521721843877,
+          "median": 3.1089765986606483,
+          "min": 0.6014816386908294,
+          "max": 14.269842792153359
+        },
+        "UIQM": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 18.7951774845641,
+          "std": 9.121245800366154,
+          "median": 15.88004950768736,
+          "min": 2.974564119820049,
+          "max": 48.27814832559726
+        }
+      }
+    },
+    "Histoformer": {
+      "directory": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\outputs_normalized\\Histoformer",
+      "complete_case_count": 166,
+      "metrics": {
+        "EME": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 22.402766021869795,
+          "std": 7.423877097228117,
+          "median": 21.687520291717323,
+          "min": 7.43540020274654,
+          "max": 44.473055823442756
+        },
+        "EMEE": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 1.554895967431697,
+          "std": 0.4218079938491029,
+          "median": 1.515585266071025,
+          "min": 0.709431412378378,
+          "max": 2.8315188489245733
+        },
+        "Entropy": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 7.246867553824512,
+          "std": 0.26383741499002433,
+          "median": 7.302165878364038,
+          "min": 6.376892537135631,
+          "max": 7.782615089957818
+        },
+        "Contrast": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 749.0456533618801,
+          "std": 444.8385273306685,
+          "median": 657.2507739028213,
+          "min": 86.73782327586207,
+          "max": 2125.6211696708465
+        },
+        "AvgGra": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 28.40747942803939,
+          "std": 9.844249742615869,
+          "median": 27.291029161608723,
+          "min": 5.710857371754121,
+          "max": 53.00952461311488
+        },
+        "MS_SSIM": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 0.39540533465613803,
+          "std": 0.17087126974933656,
+          "median": 0.3834630697965622,
+          "min": 0.11676543951034546,
+          "max": 0.8680200576782227
+        },
+        "PSNR": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 15.502570102708267,
+          "std": 2.2907934506769907,
+          "median": 15.361103403028451,
+          "min": 10.784367909594437,
+          "max": 22.703989626915323
+        },
+        "UCIQE": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 5.272677162298669,
+          "std": 1.3213983500892519,
+          "median": 5.184736189979315,
+          "min": 2.288172784483433,
+          "max": 9.444978653669358
+        },
+        "UIQM": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 47.31546926545565,
+          "std": 12.229265045558588,
+          "median": 46.04414188817793,
+          "min": 20.45011926715772,
+          "max": 82.04689935314036
+        }
+      }
+    },
+    "HLRP": {
+      "directory": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\outputs_normalized\\HLRP",
+      "complete_case_count": 166,
+      "metrics": {
+        "EME": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 15.017294548622042,
+          "std": 3.19942879337228,
+          "median": 14.384199998786134,
+          "min": 9.914390687353222,
+          "max": 27.479144168956594
+        },
+        "EMEE": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 1.131202070923338,
+          "std": 0.1835365845718487,
+          "median": 1.0940116356012222,
+          "min": 0.8066115246990408,
+          "max": 1.8455175620664148
+        },
+        "Entropy": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 6.83640447420951,
+          "std": 0.4227586512237054,
+          "median": 6.762852574515038,
+          "min": 6.010280485821117,
+          "max": 7.909348422285098
+        },
+        "Contrast": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 216.75361823469427,
+          "std": 64.10431255871835,
+          "median": 200.88216839733542,
+          "min": 127.71235795454545,
+          "max": 505.2900274294671
+        },
+        "AvgGra": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 15.932813963443595,
+          "std": 1.2446064232257792,
+          "median": 15.921128473429551,
+          "min": 11.44279165882461,
+          "max": 20.688274040519474
+        },
+        "MS_SSIM": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 0.38984043016491166,
+          "std": 0.0815374305401196,
+          "median": 0.37796787917613983,
+          "min": 0.19356444478034973,
+          "max": 0.5904248952865601
+        },
+        "PSNR": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 13.534514386731967,
+          "std": 3.5746015273418505,
+          "median": 12.497088401680958,
+          "min": 5.7889442598075505,
+          "max": 22.360134904305966
+        },
+        "UCIQE": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 2.7766729940769905,
+          "std": 2.094876934541906,
+          "median": 2.1470441176444295,
+          "min": 0.792990850186348,
+          "max": 13.820591874694825
+        },
+        "UIQM": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 33.44774257106161,
+          "std": 5.558704888343632,
+          "median": 32.56540693590553,
+          "min": 23.868049782813713,
+          "max": 52.54380336111805
+        }
+      }
+    },
+    "HVDualformer": {
+      "directory": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\outputs_normalized\\HVDualformer",
+      "complete_case_count": 166,
+      "metrics": {
+        "EME": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 2.4951641749267033,
+          "std": 1.817771744625221,
+          "median": 1.6368842502761032,
+          "min": 0.46063944743033614,
+          "max": 8.938832339351903
+        },
+        "EMEE": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 0.43710762564711286,
+          "std": 0.10042917903923892,
+          "median": 0.38955068856187514,
+          "min": 0.32524005463801453,
+          "max": 0.7994457937000218
+        },
+        "Entropy": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 3.94930473082791,
+          "std": 0.9372458088088033,
+          "median": 3.792298766102889,
+          "min": 2.0354634160413116,
+          "max": 6.639374259383719
+        },
+        "Contrast": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 24.609660300685505,
+          "std": 29.19392885398482,
+          "median": 14.138112264890282,
+          "min": 1.3449843260188088,
+          "max": 165.71683973354232
+        },
+        "AvgGra": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 3.178526726687428,
+          "std": 2.0718022221716983,
+          "median": 2.3583306634777013,
+          "min": 0.7644743076136654,
+          "max": 10.568345409549257
+        },
+        "MS_SSIM": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 0.9917557516011847,
+          "std": 0.005683327140315043,
+          "median": 0.9929101467132568,
+          "min": 0.9565674066543579,
+          "max": 0.9984762072563171
+        },
+        "PSNR": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 33.80830572275915,
+          "std": 6.283988191753121,
+          "median": 34.3831743837141,
+          "min": 18.77936801049602,
+          "max": 50.3351768746134
+        },
+        "UCIQE": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 1.6590482521706096,
+          "std": 1.3271335967237474,
+          "median": 1.3387899605788292,
+          "min": 0.2911158738210798,
+          "max": 8.891732200676204
+        },
+        "UIQM": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 8.106332211912749,
+          "std": 4.957021977637691,
+          "median": 6.222082743185991,
+          "min": 1.577720256616987,
+          "max": 20.991755254245636
+        }
+      }
+    },
+    "Ours": {
+      "directory": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\outputs_normalized\\Ours",
+      "complete_case_count": 166,
+      "metrics": {
+        "EME": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 14.636039027477592,
+          "std": 9.50092897052347,
+          "median": 10.950661267485641,
+          "min": 3.442791330715808,
+          "max": 44.48836551179296
+        },
+        "EMEE": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 1.1211589509088216,
+          "std": 0.5370233981722684,
+          "median": 0.9157899737951243,
+          "min": 0.4907756468407137,
+          "max": 2.8308401681961475
+        },
+        "Entropy": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 5.967016941739801,
+          "std": 0.8559583966863846,
+          "median": 5.926831860518224,
+          "min": 4.1357911233093025,
+          "max": 7.486625729622425
+        },
+        "Contrast": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 765.3155887067078,
+          "std": 591.0024565418928,
+          "median": 524.8496032523511,
+          "min": 87.48066222570533,
+          "max": 2623.2741722178685
+        },
+        "AvgGra": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 22.04849736228782,
+          "std": 12.865449407370342,
+          "median": 16.827186665546897,
+          "min": 7.890595892582347,
+          "max": 59.353064650486616
+        },
+        "MS_SSIM": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 0.7290759858596756,
+          "std": 0.1762506128220302,
+          "median": 0.776530921459198,
+          "min": 0.2632908225059509,
+          "max": 0.9350960850715637
+        },
+        "PSNR": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 17.18850902393353,
+          "std": 3.6258606207162285,
+          "median": 17.617764599000004,
+          "min": 8.134891530573027,
+          "max": 25.25186406495504
+        },
+        "UCIQE": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 4.030983272628594,
+          "std": 2.559932082240448,
+          "median": 3.546753255209327,
+          "min": 0.998342269074917,
+          "max": 14.09704291252494
+        },
+        "UIQM": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 32.050956495402616,
+          "std": 16.635706430559228,
+          "median": 26.43179390463404,
+          "min": 7.932522502521322,
+          "max": 82.41106274799398
+        }
+      }
+    },
+    "SGUIE-Net": {
+      "directory": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\outputs_normalized\\SGUIE-Net",
+      "complete_case_count": 166,
+      "metrics": {
+        "EME": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 6.0972980015491105,
+          "std": 5.883472131881933,
+          "median": 3.976833586579983,
+          "min": 0.5293824912483762,
+          "max": 28.819432295653566
+        },
+        "EMEE": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 0.6423166405152959,
+          "std": 0.33495623485818327,
+          "median": 0.5213501315792246,
+          "min": 0.32928457367558966,
+          "max": 1.9511089550832685
+        },
+        "Entropy": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 4.824859577224484,
+          "std": 1.3332908488270052,
+          "median": 4.890114397824035,
+          "min": 2.298787341618251,
+          "max": 7.466665393559595
+        },
+        "Contrast": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 103.95816106313973,
+          "std": 157.2496804868437,
+          "median": 45.205765086206895,
+          "min": 3.1349529780564263,
+          "max": 897.905569161442
+        },
+        "AvgGra": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 6.9491324604073546,
+          "std": 6.504503117023779,
+          "median": 4.78048505047424,
+          "min": 0.6025399119636551,
+          "max": 36.21721954267866
+        },
+        "MS_SSIM": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 0.8976758549730461,
+          "std": 0.10343708288549597,
+          "median": 0.9520493149757385,
+          "min": 0.544182300567627,
+          "max": 0.9929659366607666
+        },
+        "PSNR": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 24.352269724177333,
+          "std": 6.121234045834114,
+          "median": 22.670708563947464,
+          "min": 13.352523921882543,
+          "max": 39.46818411765365
+        },
+        "UCIQE": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 3.0094501142552987,
+          "std": 2.2489439757951,
+          "median": 2.2671406332477932,
+          "min": 0.6028302665896714,
+          "max": 11.940918197655678
+        },
+        "UIQM": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 15.956165899502292,
+          "std": 12.048455115473635,
+          "median": 13.884764461831569,
+          "min": 1.4594618718502943,
+          "max": 58.17332550730822
+        }
+      }
+    },
+    "WWPF": {
+      "directory": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\outputs_normalized\\WWPF",
+      "complete_case_count": 166,
+      "metrics": {
+        "EME": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 13.02931236272654,
+          "std": 8.142519962659877,
+          "median": 11.640245525257983,
+          "min": 1.4151855787874548,
+          "max": 59.08574426300524
+        },
+        "EMEE": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 1.0383390142237108,
+          "std": 0.46878683912051744,
+          "median": 0.9546945673361504,
+          "min": 0.3795550948618486,
+          "max": 3.7559010656585725
+        },
+        "Entropy": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 6.554662392415303,
+          "std": 0.7488314954438271,
+          "median": 6.632304482127363,
+          "min": 4.518864546877,
+          "max": 7.7917041049698295
+        },
+        "Contrast": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 446.40369430307436,
+          "std": 355.58106268170224,
+          "median": 370.9504334835423,
+          "min": 22.718216105015674,
+          "max": 1915.4603497257053
+        },
+        "AvgGra": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 19.79901758143527,
+          "std": 9.658410801398611,
+          "median": 19.279446198214387,
+          "min": 2.2257777401014986,
+          "max": 45.89999766294703
+        },
+        "MS_SSIM": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 0.5732323741876936,
+          "std": 0.16424016976207118,
+          "median": 0.5668557286262512,
+          "min": 0.2146231085062027,
+          "max": 0.9543734788894653
+        },
+        "PSNR": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 15.23604654746823,
+          "std": 3.11422173508139,
+          "median": 15.506519019214014,
+          "min": 9.324261129738398,
+          "max": 24.57857964809946
+        },
+        "UCIQE": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 2.6141906452118007,
+          "std": 1.6233763486941348,
+          "median": 2.175295007632673,
+          "min": 0.49923840263187885,
+          "max": 9.435773600894214
+        },
+        "UIQM": {
+          "count": 166,
+          "nonfinite": 0,
+          "mean": 29.731667043088592,
+          "std": 14.13873896151736,
+          "median": 27.742607918753528,
+          "min": 4.440131100453048,
+          "max": 107.16516788532587
+        }
+      }
+    }
+  },
+  "outputs": {
+    "output_dir": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\metrics\\enhancement_metrics",
+    "per_image_csv": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\metrics\\enhancement_metrics\\per_image_metrics.csv",
+    "summary_txt": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\metrics\\enhancement_metrics\\summary.txt",
+    "summary_json": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\metrics\\enhancement_metrics\\summary.json",
+    "failed_csv": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\metrics\\enhancement_metrics\\failed_files.csv",
+    "planned_manifest": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\metrics\\enhancement_metrics\\planned_manifest.txt",
+    "complete_case_manifest": "D:\\Desktop\\Stage1Codex\\experiments\\myedge168_compare9_rerun_20260527\\metrics\\enhancement_metrics\\complete_case_manifest.txt"
+  },
+  "failures": [
+    {
+      "phase": "matching",
+      "stem": "chazhuang.3",
+      "method": "WWPF",
+      "error": "missing image for manifest entry"
+    },
+    {
+      "phase": "matching",
+      "stem": "chazhuang.6",
+      "method": "WWPF",
+      "error": "missing image for manifest entry"
+    }
+  ]
+}

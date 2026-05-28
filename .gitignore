@@ -3,6 +3,10 @@ data/
 results/
 results_optimized_c25/
 experiments/**/outputs/**
+experiments/**/inputs/
+experiments/**/outputs_normalized/
+experiments/**/outputs_raw/
+experiments/**/matlab_wrappers/
 metrics/outputs/**
 
 # Allow compact experiment summaries to be versioned
