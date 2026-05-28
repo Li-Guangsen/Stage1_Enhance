@@ -1,0 +1,62 @@
+{
+  "date": "2026-05-27",
+  "candidate": "E01-B",
+  "variant": "e01_b_wavelet_pyramid_weak_boundary_v1",
+  "scope": "168-image MyEdge ALGAE fixed-detector validation only",
+  "e01_classification": "failure",
+  "decision": "archive_failure_close_e01_family_phase",
+  "reason": "DiffusionEdge baseline is detector-positive by AP, but MSFI AP is 0.337598 versus raw 0.345899, delta -0.008301, exceeding the locked E01 AP raw-near tolerance of -0.003. Structure proxy is not collapsed, but acceptable success requires the other detector to be strict raw-near.",
+  "thresholds": {
+    "raw_near": {
+      "ods_drop_max": 0.002,
+      "ois_drop_max": 0.002,
+      "ap_drop_max": 0.003,
+      "ac_drop_max": 0.003
+    },
+    "detector_positive": {
+      "ods_gain_min": 0.002,
+      "ap_gain_min": 0.003,
+      "requires_ap_ac_strict_raw_near": true
+    },
+    "structure_not_collapsed": {
+      "df1_min": -0.005,
+      "dfalse_edge_max": 0.01,
+      "dendpoints_per_kpx_max": 1.0
+    }
+  },
+  "detectors": {
+    "msfi_50k": {
+      "raw": {"ods": 0.783527, "ois": 0.794213, "ap": 0.345899, "ac": 0.796846},
+      "legacy_stage1_final": {"ods": 0.588287, "ois": 0.671357, "ap": 0.263997, "ac": 0.7403},
+      "candidate": {"ods": 0.782154, "ois": 0.79333, "ap": 0.337598, "ac": 0.7957},
+      "delta_vs_raw": {"ods": -0.001373, "ois": -0.000883, "ap": -0.008301, "ac": -0.001146},
+      "strict_raw_near": false,
+      "detector_positive": false,
+      "structure_delta_vs_raw": {"f1_tol": 0.0013, "false_edge_ratio": -0.0018, "endpoints_per_1k_skel_px": -0.2791},
+      "structure_not_collapsed": true
+    },
+    "diffusionedge_baseline_50k": {
+      "raw": {"ods": 0.770521, "ois": 0.779986, "ap": 0.363065, "ac": 0.7969},
+      "legacy_stage1_final": {"ods": 0.530094, "ois": 0.56791, "ap": 0.224073, "ac": 0.7349},
+      "candidate": {"ods": 0.770284, "ois": 0.780779, "ap": 0.372567, "ac": 0.7948},
+      "delta_vs_raw": {"ods": -0.000237, "ois": 0.000793, "ap": 0.009502, "ac": -0.0021},
+      "strict_raw_near": true,
+      "detector_positive": true,
+      "structure_delta_vs_raw": {"f1_tol": -0.0014, "false_edge_ratio": 0.0036, "endpoints_per_1k_skel_px": -0.0882},
+      "structure_not_collapsed": true
+    }
+  },
+  "comparison": {
+    "e01_a": "E01-B improves DiffusionEdge AP over E01-A but loses MSFI AP, so it is not a safer family candidate.",
+    "p27_current_archived_reference": "E01-B does not exceed P27 overall because P27 remains metric-near-raw structure-mixed while E01-B misses MSFI raw-near by AP.",
+    "ff01_ff02_tlvc01": "E01-B is safer than FF01/FF02 full-flow failures but remains a direct image-replacement failure; it is not a TLVC01 replacement or downstream gain."
+  },
+  "evidence": {
+    "stage1_smoke_status": "experiments/e01_task_guided_family/e01_b_wavelet_pyramid_weak_boundary_v1_smoke7_highrisk_e01b_v1_status_20260527.md",
+    "stage1_168_status": "experiments/e01_task_guided_family/e01_b_wavelet_pyramid_weak_boundary_v1_myedge168_stage1_outputs_e01b_v1_status_20260527.md",
+    "myedge_results_md": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/e01_b_wavelet_pyramid_weak_boundary_e01b_results_20260527.md",
+    "myedge_structure_md": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/e01_b_wavelet_pyramid_weak_boundary_e01b_structure_metrics_20260527.md",
+    "myedge_gate_md": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/e01_b_wavelet_pyramid_weak_boundary_e01b_downstream_gate_20260527.md"
+  },
+  "next_step": "close E01 family phase after two mechanism-distinct gates; recommend MyEdge/MSFI sidecar adaptation over E01-A/E01-B patching"
+}

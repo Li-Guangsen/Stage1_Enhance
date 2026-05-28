@@ -27,6 +27,10 @@ from stage1_full_flow_mainline import (
     is_full_flow_mainline_mode,
     run_full_flow_downstream_stage1_mainline,
 )
+from stage1_e01_task_guided_family import (
+    is_e01_task_guided_mode,
+    run_e01_task_guided_family,
+)
 from stage1_downstream_candidates import _final_source_requirements, run_downstream_final_mode
 
 
@@ -171,6 +175,8 @@ def _load_params(params_json):
       `ac_guarded_weak_boundary_bph` /
       `dual_anchor_false_edge_floor_bph` /
       `raw_detail_lowfreq_chroma_bph` /
+      `e01_a_color_illumination_task_guided_v1` /
+      `e01_b_wavelet_pyramid_weak_boundary_v1` /
       `full_flow_downstream_stage1_mainline_v1` /
       `full_flow_downstream_stage1_mainline_v2` /
       `topology_locked_visual_chroma_full_flow_v1` /
@@ -267,7 +273,7 @@ def process_one_image(img_path, results_dir, params, resize_to=(320, 320), skip_
     pipeline_params = params.get("pipeline", {})
     save_intermediate_stages = bool(pipeline_params.get("save_intermediate_stages", True))
     final_mode = str(final_params.get("mode", "homomorphic"))
-    if is_full_flow_mainline_mode(final_mode):
+    if is_full_flow_mainline_mode(final_mode) or is_e01_task_guided_mode(final_mode):
         requirements = {"bph": True, "fused": False}
     else:
         requirements = _final_source_requirements(final_params)
@@ -302,6 +308,22 @@ def process_one_image(img_path, results_dir, params, resize_to=(320, 320), skip_
                 save_result_variants(full_flow_stages[stage_name], results_dir, stage_name, src_rel_path)
                 print(f"{stage_name} full-flow stage 完成")
         save_result_variants(full_flow_stages["Final"], results_dir, "Final", src_rel_path)
+        print("增强完成:", stem + "_Final")
+        return
+
+    if is_e01_task_guided_mode(final_mode):
+        e01_params = dict(final_params)
+        e01_params["_mode"] = final_mode
+        e01_stages = run_e01_task_guided_family(
+            original_uint8,
+            bph_uint8=bph_uint8,
+            e01_params=e01_params,
+        )
+        if save_intermediate_stages:
+            for stage_name in ["IMF1Ray", "RGHS", "CLAHE", "Fused"]:
+                save_result_variants(e01_stages[stage_name], results_dir, stage_name, src_rel_path)
+                print(f"{stage_name} E01 stage 完成")
+        save_result_variants(e01_stages["Final"], results_dir, "Final", src_rel_path)
         print("增强完成:", stem + "_Final")
         return
 

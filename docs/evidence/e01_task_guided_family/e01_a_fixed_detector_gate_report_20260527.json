@@ -1,0 +1,57 @@
+{
+  "date": "2026-05-27",
+  "candidate": "E01-A",
+  "variant": "e01_a_color_illumination_task_guided_v1",
+  "scope": "168-image MyEdge ALGAE fixed-detector validation only",
+  "e01_classification": "failure",
+  "decision": "archive_failure_continue_e01_b",
+  "reason": "MSFI AC misses strict raw-near tolerance by 0.000846 beyond the allowed 0.003 drop; DiffusionEdge is raw-near and structure proxy is not collapsed, but E01 minimum-safe requires both detectors strict raw-near.",
+  "thresholds": {
+    "raw_near": {
+      "ods_drop_max": 0.002,
+      "ois_drop_max": 0.002,
+      "ap_drop_max": 0.003,
+      "ac_drop_max": 0.003
+    },
+    "detector_positive": {
+      "ods_gain_min": 0.002,
+      "ap_gain_min": 0.003,
+      "requires_ap_ac_strict_raw_near": true
+    },
+    "structure_not_collapsed": {
+      "df1_min": -0.005,
+      "dfalse_edge_max": 0.01,
+      "dendpoints_per_kpx_max": 1.0
+    }
+  },
+  "detectors": {
+    "msfi_50k": {
+      "raw": {"ods": 0.783527, "ois": 0.794213, "ap": 0.345899, "ac": 0.796846},
+      "legacy_stage1_final": {"ods": 0.588287, "ois": 0.671357, "ap": 0.263997, "ac": 0.7403},
+      "candidate": {"ods": 0.782764, "ois": 0.794572, "ap": 0.345966, "ac": 0.793},
+      "delta_vs_raw": {"ods": -0.000763, "ois": 0.000359, "ap": 0.000067, "ac": -0.003846},
+      "strict_raw_near": false,
+      "detector_positive": false,
+      "structure_delta_vs_raw": {"f1_tol": 0.0011, "false_edge_ratio": -0.0106, "endpoints_per_1k_skel_px": -1.6609},
+      "structure_not_collapsed": true
+    },
+    "diffusionedge_baseline_50k": {
+      "raw": {"ods": 0.770521, "ois": 0.779986, "ap": 0.363065, "ac": 0.7969},
+      "legacy_stage1_final": {"ods": 0.530094, "ois": 0.56791, "ap": 0.224073, "ac": 0.7349},
+      "candidate": {"ods": 0.7698, "ois": 0.780356, "ap": 0.362762, "ac": 0.7949},
+      "delta_vs_raw": {"ods": -0.000721, "ois": 0.00037, "ap": -0.000303, "ac": -0.002},
+      "strict_raw_near": true,
+      "detector_positive": false,
+      "structure_delta_vs_raw": {"f1_tol": -0.0019, "false_edge_ratio": 0.0047, "endpoints_per_1k_skel_px": 0.571},
+      "structure_not_collapsed": true
+    }
+  },
+  "evidence": {
+    "stage1_smoke_status": "experiments/e01_task_guided_family/e01_a_color_illumination_task_guided_v1_smoke7_highrisk_v1_status_20260527.md",
+    "stage1_168_status": "experiments/e01_task_guided_family/e01_a_color_illumination_task_guided_v1_myedge168_stage1_outputs_v1_status_20260527.md",
+    "myedge_results_md": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/e01_a_color_illumination_task_guided_e01a_results_20260527.md",
+    "myedge_structure_md": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/e01_a_color_illumination_task_guided_e01a_structure_metrics_20260527.md",
+    "myedge_gate_md": "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/e01_a_color_illumination_task_guided_e01a_downstream_gate_20260527.md"
+  },
+  "next_step": "continue E01-B multi-scale / pyramid / wavelet fusion dominant mechanism route"
+}

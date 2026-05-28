@@ -1,0 +1,147 @@
+{
+  "run_id": "smoke7_highrisk_v1",
+  "status": "smoke_completed_visual_risk_accepted",
+  "decision": "proceed_to_168_fixed_detector_preflight",
+  "manifest": "experiments\\e01_task_guided_family\\manifests\\smoke7_highrisk_v1.txt",
+  "output_root": "experiments\\e01_task_guided_family\\outputs\\smoke7_highrisk_v1\\e01_a_color_illumination_task_guided_v1",
+  "expected_images": 7,
+  "runtime_sec": 5.43,
+  "sec_per_image": 0.7757142857142857,
+  "projected_168_min": 2.1719999999999997,
+  "stage_counts": {
+    "jpg": {
+      "BPH": 7,
+      "IMF1Ray": 7,
+      "RGHS": 7,
+      "CLAHE": 7,
+      "Fused": 7,
+      "Final": 7
+    },
+    "png": {
+      "BPH": 7,
+      "IMF1Ray": 7,
+      "RGHS": 7,
+      "CLAHE": 7,
+      "Fused": 7,
+      "Final": 7
+    }
+  },
+  "missing_files": [],
+  "decode_failures": [],
+  "final_rows": [
+    {
+      "stem": "donghaiyuanjia.26",
+      "mean_abs_bgr_delta": 17.893701553344727,
+      "mean_abs_luma_delta": 1.3181445598602295,
+      "mean_abs_chroma_delta": 7.923393726348877,
+      "psnr_vs_raw": 21.061223613503724,
+      "raw_grad_mean": 0.1369740515947342,
+      "final_grad_mean": 0.13554801046848297,
+      "grad_mean_ratio": 0.989588961564345,
+      "raw_luma_std": 3.7566277980804443,
+      "final_luma_std": 3.753779888153076,
+      "luma_std_ratio": 0.9992418969672573
+    },
+    {
+      "stem": "jianci.4",
+      "mean_abs_bgr_delta": 6.923831462860107,
+      "mean_abs_luma_delta": 0.8688671588897705,
+      "mean_abs_chroma_delta": 7.012470722198486,
+      "psnr_vs_raw": 30.548499420033785,
+      "raw_grad_mean": 0.09206895530223846,
+      "final_grad_mean": 0.09397344291210175,
+      "grad_mean_ratio": 1.0206854371587677,
+      "raw_luma_std": 2.3525359630584717,
+      "final_luma_std": 2.4065849781036377,
+      "luma_std_ratio": 1.02297478757856
+    },
+    {
+      "stem": "tama.14",
+      "mean_abs_bgr_delta": 4.123899936676025,
+      "mean_abs_luma_delta": 0.9994823932647705,
+      "mean_abs_chroma_delta": 2.071030378341675,
+      "psnr_vs_raw": 34.013210584627075,
+      "raw_grad_mean": 0.07134579867124557,
+      "final_grad_mean": 0.07131940871477127,
+      "grad_mean_ratio": 0.9996300979651793,
+      "raw_luma_std": 4.83247709274292,
+      "final_luma_std": 4.828764915466309,
+      "luma_std_ratio": 0.9992318270310235
+    },
+    {
+      "stem": "weixiaoyuanjia.21",
+      "mean_abs_bgr_delta": 18.039989471435547,
+      "mean_abs_luma_delta": 1.7868750095367432,
+      "mean_abs_chroma_delta": 8.381455421447754,
+      "psnr_vs_raw": 21.14105293680174,
+      "raw_grad_mean": 0.09525825828313828,
+      "final_grad_mean": 0.09966638684272766,
+      "grad_mean_ratio": 1.0462755418035408,
+      "raw_luma_std": 2.1033055782318115,
+      "final_luma_std": 2.110011339187622,
+      "luma_std_ratio": 1.003188200526839
+    },
+    {
+      "stem": "weixiaoyuanjia.26",
+      "mean_abs_bgr_delta": 18.81846046447754,
+      "mean_abs_luma_delta": 1.9207714796066284,
+      "mean_abs_chroma_delta": 8.412749290466309,
+      "psnr_vs_raw": 20.797050291533957,
+      "raw_grad_mean": 0.10864543169736862,
+      "final_grad_mean": 0.10667107254266739,
+      "grad_mean_ratio": 0.9818274905287477,
+      "raw_luma_std": 4.623152732849121,
+      "final_luma_std": 4.565031051635742,
+      "luma_std_ratio": 0.9874281284743565
+    },
+    {
+      "stem": "xuehong.13",
+      "mean_abs_bgr_delta": 5.175230979919434,
+      "mean_abs_luma_delta": 0.9497949481010437,
+      "mean_abs_chroma_delta": 2.793086051940918,
+      "psnr_vs_raw": 32.178889109260346,
+      "raw_grad_mean": 0.20626169443130493,
+      "final_grad_mean": 0.2070396989583969,
+      "grad_mean_ratio": 1.0037719244257404,
+      "raw_luma_std": 13.63573932647705,
+      "final_luma_std": 13.64234447479248,
+      "luma_std_ratio": 1.0004843996468984
+    },
+    {
+      "stem": "xuehong.9",
+      "mean_abs_bgr_delta": 5.172311305999756,
+      "mean_abs_luma_delta": 0.9500488042831421,
+      "mean_abs_chroma_delta": 2.7928760051727295,
+      "psnr_vs_raw": 32.17120661262848,
+      "raw_grad_mean": 0.21068525314331055,
+      "final_grad_mean": 0.21134743094444275,
+      "grad_mean_ratio": 1.0031429669998726,
+      "raw_luma_std": 14.086190223693848,
+      "final_luma_std": 14.093844413757324,
+      "luma_std_ratio": 1.0005433824860648
+    }
+  ],
+  "mean_metrics": {
+    "mean_abs_bgr_delta": 10.878203596387591,
+    "mean_abs_luma_delta": 1.2562834790774755,
+    "mean_abs_chroma_delta": 5.626723085130964,
+    "psnr_vs_raw": 27.415876081198444,
+    "raw_grad_mean": 0.1316056347319058,
+    "final_grad_mean": 0.13222363591194153,
+    "grad_mean_ratio": 1.0064174886351704,
+    "raw_luma_std": 6.484289816447666,
+    "final_luma_std": 6.485765865870884,
+    "luma_std_ratio": 1.001870374673
+  },
+  "metrics_csv": "experiments\\e01_task_guided_family\\e01_a_color_illumination_task_guided_v1_smoke7_highrisk_v1_metrics_20260527.csv",
+  "stage_metrics_csv": "experiments\\e01_task_guided_family\\e01_a_color_illumination_task_guided_v1_smoke7_highrisk_v1_stage_metrics_20260527.csv",
+  "visual_panels": [
+    "experiments\\e01_task_guided_family\\diagnostics\\smoke7_highrisk_v1\\donghaiyuanjia.26_panel.jpg",
+    "experiments\\e01_task_guided_family\\diagnostics\\smoke7_highrisk_v1\\jianci.4_panel.jpg",
+    "experiments\\e01_task_guided_family\\diagnostics\\smoke7_highrisk_v1\\tama.14_panel.jpg",
+    "experiments\\e01_task_guided_family\\diagnostics\\smoke7_highrisk_v1\\weixiaoyuanjia.21_panel.jpg",
+    "experiments\\e01_task_guided_family\\diagnostics\\smoke7_highrisk_v1\\weixiaoyuanjia.26_panel.jpg",
+    "experiments\\e01_task_guided_family\\diagnostics\\smoke7_highrisk_v1\\xuehong.13_panel.jpg",
+    "experiments\\e01_task_guided_family\\diagnostics\\smoke7_highrisk_v1\\xuehong.9_panel.jpg"
+  ]
+}

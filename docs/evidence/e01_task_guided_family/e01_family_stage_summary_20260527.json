@@ -1,0 +1,42 @@
+{
+  "date": "2026-05-27",
+  "family": "E01 HAB task-guided complete enhancement family",
+  "scope": "168 fixed-detector validation only",
+  "phase_completion_condition_met": true,
+  "completion_basis": "completed two mechanism-distinct candidate gates: E01-A color-illumination dominant and E01-B wavelet-pyramid weak-boundary dominant",
+  "overall_result": "two-candidate fixed-detector diagnostic completed without E01 success",
+  "best_success_candidate": null,
+  "best_diagnostic_signal": "E01-B has DiffusionEdge AP positive signal but fails overall because MSFI AP is below raw-near",
+  "current_archived_reference": "P27 remains stronger overall as candidate_metric_near_raw_structure_mixed",
+  "candidates": [
+    {
+      "candidate": "E01-A",
+      "variant": "e01_a_color_illumination_task_guided_v1",
+      "primary_hypothesis": "color-illumination correction dominant",
+      "classification": "failure",
+      "gate_result": "candidate_rescues_legacy_but_not_near_raw",
+      "reason": "MSFI AC misses strict raw-near tolerance by 0.000846 beyond allowed drop; no detector-positive result."
+    },
+    {
+      "candidate": "E01-B",
+      "variant": "e01_b_wavelet_pyramid_weak_boundary_v1",
+      "primary_hypothesis": "multi-scale / wavelet weak-boundary fusion dominant",
+      "classification": "failure",
+      "gate_result": "candidate_rescues_legacy_but_not_near_raw",
+      "reason": "DiffusionEdge AP is detector-positive but MSFI AP is below strict raw-near by 0.005301 beyond allowed drop."
+    }
+  ],
+  "failure_attribution": [
+    "Direct Stage1 image replacement can rescue legacy Final collapse but does not produce robust dual-detector raw-near or positive gain.",
+    "E01-A suggests color/illumination reconstruction stresses MSFI AC.",
+    "E01-B suggests wavelet weak-boundary reconstruction helps DiffusionEdge AP while hurting MSFI AP.",
+    "Failures are not FF01/FF02-style structure collapse; they likely reflect detector-specific raw-distribution and ranking-calibration sensitivity."
+  ],
+  "recommended_next_step": "stop E01-A/E01-B patching and move to separately authorized MyEdge/MSFI sidecar adaptation with raw as primary input",
+  "forbidden_claims": [
+    "Do not claim E01 strong success, acceptable success, or minimum safety.",
+    "Do not claim 502/496 enhancement superiority.",
+    "Do not claim 2770 full-pool completion.",
+    "Do not claim MyEdge/MSFI adaptation was trained or completed."
+  ]
+}
