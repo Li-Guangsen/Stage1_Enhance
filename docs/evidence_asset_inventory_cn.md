@@ -24,10 +24,10 @@
 | --- | --- | --- | --- | --- |
 | locked config | `experiments/optimization_v1/configs/locked_full506_final_mainline.json` | `formal source asset` | Stage1 locked enhancement 配置 | 当前总体论文主创新 |
 | formal output root | `experiments/h2-full506-direct/outputs/full506/runs/full506_final_mainline` | `formal source asset` | 502/496 paper metrics 的源结果资产 | `full506` 主表样本口径 |
-| locked Final | `.../png/Final` | `formal source asset` / `downstream diagnostic` | 增强主表中的 formal output；MyEdge 168 fixed-detector 中的 legacy negative control | 稳定提升 downstream ODS/OIS/AP/AC |
+| locked Final | `.../png/Final` | `formal source asset` / `downstream diagnostic` | 增强主表中的 formal output；历史 MyEdge 168 fixed-detector 中的 legacy negative control | 稳定提升 downstream ODS/OIS/AP/AC |
 | stage metrics | `full502_clean_v1` | `paper metric` | 502 张阶段进度表 | downstream validation |
 | comparison metrics | `compare9_complete496_v1` | `paper metric` | 496 张 9 方法 complete-case 主比较 | full506 主表或 downstream validation |
-| raw anchor | MyEdge 168 raw input | `downstream diagnostic` | fixed-detector 强 anchor | Stage1 方法结果 |
+| raw anchor | MyEdge raw input | `downstream diagnostic` | fixed-detector 强 anchor；后续主验证使用 166 complete-case | Stage1 方法结果 |
 | negative baseline | locked Final -> fixed MSFI/DiffusionEdge | `downstream diagnostic` | 旧主线负向下游证据 | 新候选失败的重复任务 |
 | P12-P28 | `experiments/downstream_driven_v1` | `downstream diagnostic` / `historical / archived` | 候选、对照、失败或诊断证据 | 正式增强主线、strong pass |
 | D01 | `experiments/downstream_driven_v2` | `downstream diagnostic` / `historical / archived` | mechanism-complete weak diagnostic candidate | strong pass、正式主线、稳定下游收益 |
@@ -40,7 +40,7 @@
 | MyEdge/MSFI sidecar protocol | `docs/evidence/stage1_myedge_coupling/myedge_msfi_stage1_sidecar_adaptation_protocol_fa01_20260527_cn.md` | `readiness only` / `not claimable` | adaptation run sheet 草案输入 | 已训练、已验证、fixed-detector 结果 |
 | Stage1 sidecar map smoke | `docs/evidence/stage1_myedge_coupling/stage1_sidecar_map_definition_fa01_20260527_cn.md`、`docs/evidence/stage1_myedge_coupling/fa01_stage1_sidecar_map_smoke_20260527/` | `readiness only` / `not claimable` | no-training sidecar evidence/risk map 导出格式和 5 样本 smoke | MyEdge adaptation 结果、fixed-detector 结果、论文正收益 |
 | TLVC01 后长期计划 | `docs/evidence/stage1_myedge_coupling/stage1_long_horizon_goal_after_tlvc01_20260527_cn.md` | `readiness only` / `not claimable` | 从 Stage1 direct replacement 转向 raw+sidecar adaptation 的执行计划 | 已训练、已验证、downstream 正收益 |
-| 168 downstream | MyEdge Stage1 coupling run dirs | `downstream diagnostic` | fixed-detector downstream validation 核心 | 可被 502/496/2770 替代 |
+| 166 downstream | MyEdge Stage1 coupling run dirs | `downstream diagnostic` | 当前 fixed-detector downstream validation 主口径；排除 `chazhuang.3.jpg` 与 `chazhuang.6.jpg` | 可被 502/496/2770 或历史 168 诊断替代 |
 | structure proxy | `stage1_myedge168_gt_edge_proxy_prescreen*`、P6/P6B、Sobel/Otsu proxy | `proxy only` | 筛查、选图和结构诊断 | ODS/OIS/AP/AC 或 downstream accuracy |
 | full-pool manifests | `full_algae_dewatermark_v1*` | `readiness only` | cv2-readable full-pool candidate / qualitative engineering pool | 正式 full-pool result |
 | full-pool review sheets | `metrics/manifests/full_algae_dewatermark_v1_manual_review/` | `readiness only` / `not claimable` | 人工复核入口，当前 pending | clean manifest 或人工结论 |
@@ -53,7 +53,7 @@
 
 - `full506_final_mainline` 是 source asset path，不是 paper metric count。
 - `full502_clean_v1` 和 `compare9_complete496_v1` 才是当前正式论文统计口径。
-- MyEdge 168 结论只覆盖 fixed MSFI 50k、fixed DiffusionEdge baseline 50k 和 168 张带 GT split。
+- 历史 MyEdge 168 结论只覆盖 fixed MSFI 50k、fixed DiffusionEdge baseline 50k 和 168 张带 GT split；后续新增 candidate 的主验证口径是 MyEdge 166 complete-case。
 - Sobel/Otsu proxy、structure proxy、paired proxy 必须标注为 `diagnostic only, not downstream accuracy`。
 - `candidate_rescues_legacy_but_not_near_raw`、`candidate_metric_near_raw_structure_mixed` 和 `mechanism-complete weak candidate` 不能写成完成或成功。
 - 2770 full-pool readiness 不是正式 full-pool result，也不是 downstream validation。
@@ -65,7 +65,7 @@
 
 - Stage1 已有 formal enhancement source asset。
 - `full502_clean_v1` 阶段表和 `compare9_complete496_v1` 主比较表已经形成。
-- locked Stage1 `Final` 在 168 fixed-detector downstream 诊断中是 negative control。
+- locked Stage1 `Final` 在历史 168 fixed-detector downstream 诊断中是 negative control。
 - P12-P28/D01 是归档候选和诊断证据。
 - Stage1 当前定位为 MyEdge/MSFI 的结构保持增强输入支撑。
 
@@ -75,7 +75,7 @@
 - HLRP/Histoformer 的失败现象。
 - WWPF 的强基线表现。
 - Pxx/D01 相对 legacy Final 的 recovery。
-- 任何 168 split 的 downstream 结论。
+- 任何 downstream 结论，必须标明是历史 168 诊断还是当前 166 complete-case 主验证。
 
 不能写：
 

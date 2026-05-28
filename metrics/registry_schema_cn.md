@@ -13,7 +13,7 @@
 | `run_id` | 运行编号，例如 `P12`、`D01` | 必填，唯一 |
 | `candidate_id` | 候选唯一名称 | 必填 |
 | `protocol` | 协议族，例如 `downstream_driven_v1` | 必填 |
-| `input_split` | 输入口径，例如 `myedge168` | 必填 |
+| `input_split` | 输入口径，例如 `myedge166_complete_case`；历史记录可保留 `myedge168` | 必填 |
 | `config_path` | 候选配置路径 | 必填；未知写 `pending_audit` |
 | `output_root` | 输出根目录 | 必填；未知写 `pending_audit` |
 | `code_entry` | 代码入口或 `final.mode` | 必填；未知写 `pending_audit` |

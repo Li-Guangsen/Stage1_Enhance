@@ -36,7 +36,7 @@
 
 ## 2. 当前一句话状态
 
-Stage1Codex 已完成 formal enhancement source asset、502 阶段表和 496 complete-case 主比较；但 locked Stage1 `Final` 在 MyEdge 168 fixed-detector downstream 口径下是 negative control。P12-P28/D01/FF01/FF02/TLVC01 已归档为 downstream diagnostic candidates，没有 strong pass。当前长期目标已转向 raw 主输入 + Stage1 sidecar evidence + MyEdge/MSFI adaptation，而不是继续派生 P29/D02/FF03/TLVC02。
+Stage1Codex 已完成 formal enhancement source asset、502 阶段表和 496 complete-case 主比较；但 locked Stage1 `Final` 在历史 MyEdge 168 fixed-detector downstream 口径下是 negative control。当前新增 candidate 的主筛选/主验证口径已统一为 MyEdge 166 complete-case，排除 `chazhuang.3.jpg` 与 `chazhuang.6.jpg`。P12-P28/D01/FF01/FF02/TLVC01 已归档为 downstream diagnostic candidates，没有 strong pass。当前长期目标已转向 raw 主输入 + Stage1 sidecar evidence + MyEdge/MSFI adaptation，而不是继续派生 P29/D02/FF03/TLVC02。
 
 ## 3. Formal Source Asset vs Paper Metric
 
@@ -68,7 +68,7 @@ Stage1Codex 已完成 formal enhancement source asset、502 阶段表和 496 com
 
 ## 5. Downstream 结论边界
 
-当前 downstream 诊断只覆盖：
+历史 downstream 诊断只覆盖：
 
 - MyEdge 168 张带 GT split
 - fixed MSFI 50k
@@ -77,6 +77,7 @@ Stage1Codex 已完成 formal enhancement source asset、502 阶段表和 496 com
 已锁定结论：
 
 - locked Stage1 `Final` 在该口径下明显降低 ODS/OIS/AP/AC。
+- 后续新增 Stage1 candidate 的主验证口径必须改为 MyEdge 166 complete-case，与增强指标主表一致。
 - Raw 是当前 fixed-detector 强 anchor。
 - Pxx/D01 可以写成相对 legacy Final 的 diagnostic recovery，但不能写成 Stage1-specific stable downstream improvement。
 - Sobel/Otsu proxy、structure proxy、paired proxy 均为 `diagnostic only, not downstream accuracy`。
@@ -124,7 +125,7 @@ run sheet 模板：
 - clean manifest 未生成
 - full run intake 为 `not_started`
 
-不能写成正式 full-pool result，也不能替代 168 downstream validation。
+不能写成正式 full-pool result，也不能替代当前 166 downstream validation。
 
 ## 8. 两篇 Wu 2026 论文怎么用
 
@@ -161,6 +162,18 @@ run sheet 模板：
 - `HVDualformer` / `ABC-Former` 是白平衡方法。
 
 不能写“全面领先 SOTA”或“所有指标最优”。
+
+## 9.1 MyEdge 166 主筛选口径
+
+后续若需要给 Stage1 candidate 做增强指标预筛，优先使用：
+
+- `experiments/myedge168_compare9_rerun_20260527/metrics/enhancement_metrics_eaai_aligned_v2/run_report.md`
+- `experiments/myedge168_compare9_rerun_20260527/metrics/enhancement_metrics_eaai_aligned_v2/mean_metrics_9method_complete_case_166.md`
+- `experiments/myedge168_compare9_rerun_20260527/metrics/enhancement_metrics_eaai_aligned_v2/screening_rule_summary_166.md`
+
+该 v2 基线补齐 `SSEQ` 和 raw-enhanced `SIFT_MATCH_RATIO`，主表使用 9 增强方法的 166 complete-case，并统一排除 `chazhuang.3.jpg` 与 `chazhuang.6.jpg`；附表使用排除 WWPF 的 168 全量口径。`HLRP` / `Histoformer` 只作为 high-noise diagnostic reference，不纳入主筛选结论。后续 Stage1 candidate 的增强指标筛选和 fixed-detector downstream validation 都必须使用这同一 166 complete-case；历史 168 fixed-detector 结果只作为历史诊断证据。
+
+主口径 manifest：`metrics/manifests/myedge166_complete_case_20260528.csv`。
 
 ## 10. 历史资产
 

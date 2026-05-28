@@ -94,18 +94,51 @@
 - Stage1 conclusion file: `experiments/topology_locked_visual_chroma_full_flow_v1/topology_locked_visual_chroma_full_flow_v1_fixed_detector_tlvc01_status_20260527.md`。
 - TLVC01 的 gate 是 `candidate_rescues_legacy_but_not_near_raw`。它比 FF01/FF02 安全，但没有超过 P27/D01 的 DiffusionEdge AP 证据；不得进入 502/496 或 2770 作为 candidate-passing route。
 
+当前 E01 task-guided complete enhancement family 进度：
+
+- E01 family design 已写入 `docs/evidence/e01_task_guided_family/e01_task_guided_complete_enhancement_family_design_cn.md`，包含 E01-A/B/C/D 四个机制不同的 candidate 路线；E01-A/B 的历史阶段只看 168 fixed-detector validation，未进入 502/496 或 2770。后续新增 candidate 改用 166 complete-case 主口径。
+- E01-A `e01_a_color_illumination_task_guided_v1` 是 color-illumination dominant task-guided reconstruction，不是 FF03/TLVC02/P29/D02，也不是低幅度 raw-near 修补；method design 位于 `docs/evidence/e01_task_guided_family/e01_a_color_illumination_task_guided_design_cn.md`。
+- E01-A 已完成 smoke、168 Stage1 enhancement、fixed MSFI 50k / DiffusionEdge baseline 50k validation、structure proxy 和 gate 归档。
+- E01-A fixed-detector 指标：MSFI `0.782764/0.794572/0.345966/0.793000`，DiffusionEdge baseline `0.769800/0.780356/0.362762/0.794900`。
+- E01-A structure proxy 未崩：MSFI dF1 `+0.0011`、dFalse-edge `-0.0106`、dEndpoints `-1.6609`；DiffusionEdge dF1 `-0.0019`、dFalse-edge `+0.0047`、dEndpoints `+0.5710`。
+- 按 E01 预先锁定阈值，E01-A 归档为 `failure / rescues legacy but misses E01 minimum-safe by MSFI AC`：MSFI AC 相对 raw `0.796846` 下降 `0.003846`，超过 strict raw-near AC 容差 `0.003`。DiffusionEdge raw-near，但两个 detector 都没有 detector-positive。
+- E01-A conclusion file：`docs/evidence/e01_task_guided_family/e01_a_fixed_detector_gate_report_20260527_cn.md`。下一步应继续机制不同的 E01-B multi-scale / pyramid / wavelet fusion dominant route，不做 E01-A 低幅度 raw-near patch。
+- E01-B `e01_b_wavelet_pyramid_weak_boundary_v1` 是 multi-scale / wavelet weak-boundary fusion dominant 路线，不是 E01-A 参数小修，也不是 FF03/TLVC02/P29/D02。它已完成 smoke、168 Stage1 enhancement、fixed MSFI 50k / DiffusionEdge baseline 50k validation、structure proxy 和 gate 归档。
+- E01-B fixed-detector 指标：MSFI `0.782154/0.793330/0.337598/0.795700`，DiffusionEdge baseline `0.770284/0.780779/0.372567/0.794800`。
+- E01-B structure proxy 未崩：MSFI dF1 `+0.0013`、dFalse-edge `-0.0018`、dEndpoints `-0.2791`；DiffusionEdge dF1 `-0.0014`、dFalse-edge `+0.0036`、dEndpoints `-0.0882`。
+- 按 E01 预先锁定阈值，E01-B 归档为 `failure / rescues legacy but not near raw`：DiffusionEdge AP 相对 raw 增加 `+0.009502`，但 MSFI AP 相对 raw 下降 `0.008301`，超过 strict raw-near AP 容差 `0.003`。因此它不是可接受成功。
+- E01-B conclusion file：`docs/evidence/e01_task_guided_family/e01_b_fixed_detector_gate_report_20260527_cn.md`。
+- E01 family stage summary：`docs/evidence/e01_task_guided_family/e01_family_stage_summary_20260527_cn.md`。E01 family 已完成两个机制不同 candidate 的 168 fixed-detector gate，满足本阶段 family-level 完成条件，但没有强成功、可接受成功或最低安全 candidate。P27 仍是更强的 archived diagnostic reference；E01-A/E01-B 不应继续做轻微参数、guard、fallback、raw pullback 或 topology-lock 修补。
+
 ## 数据口径
 
 | 口径 | 当前用途 | 不能替代什么 |
 | --- | --- | --- |
-| 168 张带 GT split | fixed DiffusionEdge/MSFI 下游验证核心口径 | 不能被 502/496 或 2770 替代 |
+| MyEdge 166 complete-case | 后续 Stage1 candidate 增强指标筛选与 fixed DiffusionEdge/MSFI 下游验证的统一主口径；从 MyEdge 168 raw split 中排除 `chazhuang.3.jpg` 与 `chazhuang.6.jpg` | 不能被 502/496、2770 或历史 168 诊断替代 |
+| MyEdge 168 raw split | 原始输入池与历史 fixed-detector 诊断口径 | 不再作为后续主筛选/主验证口径 |
 | full502_clean_v1 | Stage1 正式小口径增强指标、阶段输出和历史主线资产 | 不能替代下游边缘验证 |
 | compare9_complete496_v1 | 与外部增强方法 complete-case 对照 | 不能替代下游边缘验证 |
 | 2770/cv2-readable full-pool | 工程稳定性、qualitative pool、后续可选全量增强 | clean protocol 未冻结前不能作为正式统计结果 |
 
+## MyEdge 166 主筛选与下游验证口径
+
+`experiments/myedge168_compare9_rerun_20260527` 已完成 MyEdge raw split 上的 `raw + 9` 增强结果重跑，并在 v2 中补齐 EAAI-aligned 增强指标。当前主表和后续主筛选/主验证统一使用 166 complete-case：
+
+- 主口径 manifest：`metrics/manifests/myedge166_complete_case_20260528.csv`
+- stem 列表：`metrics/manifests/myedge166_complete_case_20260528.txt`
+- v2 输出：`experiments/myedge168_compare9_rerun_20260527/metrics/enhancement_metrics_eaai_aligned_v2`
+- 主表：9 个增强方法的 166 complete-case，统一排除 WWPF 缺失的 `chazhuang.3.jpg` 与 `chazhuang.6.jpg`，见 `mean_metrics_9method_complete_case_166.md`
+- 附表：排除 WWPF 的 8 方法 168 全量表，见 `mean_metrics_8method_no_wwpf_168.md`
+- 新增指标：`SSEQ` 与 raw-enhanced `SIFT_MATCH_RATIO`
+- 指标解释：`SSEQ` 是 `SSEQ_reimplementation_feature_mean`，不声称复现 EAAI 作者私有代码；`SIFT_MATCH_RATIO` 是 OpenCV SIFT raw-enhanced matching
+
+该基线只作为后续 Stage1 candidate 的增强指标第一道筛选，不能写成 fixed-detector downstream result。后续 candidate 在 `UIQM/UCIQE/SSEQ/SIFT_MATCH_RATIO` 中若有 3 项及以上落入后 1/3，应直接视为增强指标筛选失败，除非另有明确人工理由；通过筛选后的 fixed-detector downstream validation 也必须使用同一 166 complete-case。
+
+`HLRP` 与 `Histoformer` 虽保留在数值表中以保证可追溯，但因噪点/伪纹理明显，只作为 high-noise diagnostic reference，不纳入主筛选结论。
+
 ## 当前停止点
 
-当前停止点是 FF01/v8、FF02 与 TLVC01 均已归档为 diagnostic failure / rescue-only。下一步不能继续给 full-flow / topology-lock family 做小幅 threshold、guard、fallback 或 raw-pullback 修补；也不能把 TLVC01 写成完整增强主线成功。有效下一步只有两类：一是提出真正不同的新方法族并先过 method review；二是承认 fixed detector 当前更偏好 raw 分布，把 Stage1 完整增强证据改为 sidecar / auxiliary maps，并把正向收益目标转向 MyEdge/MSFI 侧适配。502/496 和 2770 仍阻塞，除非后续明确作为失败分析对照而非候选通过路径。
+当前停止点是 FF01/v8、FF02、TLVC01 以及 E01-A/E01-B 均已归档为 diagnostic failure / rescue-only。下一步不能继续给 full-flow / topology-lock / E01-A / E01-B 做小幅 threshold、guard、fallback 或 raw-pullback 修补；也不能把 E01-B 的单 detector AP 增益写成稳定 downstream success。有效下一步只有两类：一是提出真正不同的新方法族并先过 method review；二是承认 fixed detector 当前更偏好 raw 分布，把 Stage1 完整增强证据改为 sidecar / auxiliary maps，并把正向收益目标转向 MyEdge/MSFI 侧适配。基于当前 E01 两机制结果，更推荐后者。502/496 和 2770 仍阻塞，除非后续明确作为失败分析对照而非候选通过路径。
 
 FA01 当前进度：
 

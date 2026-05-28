@@ -19,7 +19,8 @@ experiment_governance:
     - "proxy-only"
     - "readiness-only"
   validation_roles:
-    myedge168_gt_split: "core fixed-detector downstream validation"
+    myedge166_complete_case: "current primary fixed-detector downstream validation and enhancement screening split; excludes chazhuang.3 and chazhuang.6 from MyEdge 168"
+    myedge168_gt_split: "historical fixed-detector downstream diagnostic split and raw source pool; no longer the primary future screening/validation protocol"
     full502_clean_v1: "Stage1 enhancement metrics and legacy formal small-scope assets only"
     compare9_complete496_v1: "external-method complete-case enhancement comparison only"
     full2770_pool: "engineering/qualitative full-pool extension only after readiness and clean protocol; not a substitute for downstream validation"
@@ -40,6 +41,49 @@ experiment_governance:
     registry_schema: "metrics/registry_schema_cn.md"
     experiment_registry: "metrics/experiment_registry.csv"
     candidate_registry: "metrics/candidate_registry.csv"
+
+myedge168_enhancement_metric_baseline:
+  updated: "2026-05-28"
+  status: "eaai_aligned_v2_complete"
+  run_root: "experiments/myedge168_compare9_rerun_20260527"
+  output_dir: "experiments/myedge168_compare9_rerun_20260527/metrics/enhancement_metrics_eaai_aligned_v2"
+  raw_count: 168
+  primary_manifest_csv: "metrics/manifests/myedge166_complete_case_20260528.csv"
+  primary_manifest_txt: "metrics/manifests/myedge166_complete_case_20260528.txt"
+  main_table_policy: "9 enhancement methods on 166 complete-case stems; chazhuang.3.jpg and chazhuang.6.jpg are excluded from all methods because WWPF has no outputs for them"
+  main_table_excluded_stems:
+    - "chazhuang.3"
+    - "chazhuang.6"
+  main_table_excluded_source_paths:
+    - "D:/Desktop/MyEdgeCodex/input_test/algae/chazhuang.3.jpg"
+    - "D:/Desktop/MyEdgeCodex/input_test/algae/chazhuang.6.jpg"
+  supplement_table_policy: "8 complete methods without WWPF on all 168 stems"
+  main_table: "experiments/myedge168_compare9_rerun_20260527/metrics/enhancement_metrics_eaai_aligned_v2/mean_metrics_9method_complete_case_166.md"
+  supplement_table: "experiments/myedge168_compare9_rerun_20260527/metrics/enhancement_metrics_eaai_aligned_v2/mean_metrics_8method_no_wwpf_168.md"
+  screening_summary: "experiments/myedge168_compare9_rerun_20260527/metrics/enhancement_metrics_eaai_aligned_v2/screening_rule_summary_166.md"
+  metric_definitions: "experiments/myedge168_compare9_rerun_20260527/metrics/enhancement_metrics_eaai_aligned_v2/metric_definitions.json"
+  main_enhancement_metrics:
+    - "UIQM"
+    - "UCIQE"
+    - "SSEQ"
+    - "SIFT_MATCH_RATIO"
+  diagnostic_metrics:
+    - "EME"
+    - "EMEE"
+    - "Entropy"
+    - "Contrast"
+    - "AvgGra"
+  structure_guard_metrics:
+    - "MS_SSIM"
+    - "PSNR"
+  sseq_policy: "SSEQ_reimplementation_feature_mean; not an EAAI private-code reproduction"
+  sift_match_policy: "raw-enhanced OpenCV SIFT matching with Lowe ratio 0.75; raw anchor SIFT_MATCH_RATIO is NA"
+  future_candidate_screening_rule: "A candidate should not have 3 or more of UIQM/UCIQE/SSEQ/SIFT_MATCH_RATIO in the bottom third; this is only the first enhancement metric screen, not downstream validation."
+  diagnostic_not_primary_screening:
+    - "HLRP"
+    - "Histoformer"
+  downstream_validation_policy: "Future Stage1 candidates must use the same 166 complete-case stems for fixed-detector downstream validation; historical 168 runs remain historical diagnostics."
+  boundary: "No DiffusionEdge/MSFI inference, eval.py, show.py, 502/496, or 2770 was run in this metric baseline update."
 
 literature:
   key_papers:
@@ -4014,6 +4058,111 @@ fa01_visual_error_map_review_and_sidecar_smoke_20260527:
     - "No new enhancement candidate was created."
     - "No MyEdge sampling, WSL eval/show, training or checkpoint change was executed."
     - "No GT, detector protocol, formal Stage1 mainline, 502/496 result, or 2770 full-pool asset was changed."
+
+e01_a_fixed_detector_gate_20260527:
+  date: "2026-05-27"
+  status: "archived_failure_continue_e01_b"
+  protocol: "E01 HAB task-guided complete enhancement family, 168 fixed-detector validation only"
+  candidate: "E01-A"
+  variant: "e01_a_color_illumination_task_guided_v1"
+  primary_hypothesis: "color-illumination dominant task-guided reconstruction can rescue legacy Stage1 Final while preserving raw-compatible edge structure"
+  classification: "failure"
+  decision: "archive_failure_continue_e01_b"
+  reason: "MSFI AC is 0.793000 versus raw 0.796846, delta -0.003846, which exceeds the locked E01 AC raw-near tolerance of -0.003. DiffusionEdge is strict raw-near and structure proxy is not collapsed, but E01 minimum-safe requires both detectors strict raw-near."
+  assets:
+    family_design: "docs/evidence/e01_task_guided_family/e01_task_guided_complete_enhancement_family_design_cn.md"
+    method_design: "docs/evidence/e01_task_guided_family/e01_a_color_illumination_task_guided_design_cn.md"
+    run_sheet: "experiments/e01_task_guided_family/run_sheet_e01_a.md"
+    gate_report: "docs/evidence/e01_task_guided_family/e01_a_fixed_detector_gate_report_20260527_cn.md"
+    gate_report_json: "docs/evidence/e01_task_guided_family/e01_a_fixed_detector_gate_report_20260527.json"
+    smoke_status: "experiments/e01_task_guided_family/e01_a_color_illumination_task_guided_v1_smoke7_highrisk_v1_status_20260527.md"
+    stage1_168_status: "experiments/e01_task_guided_family/e01_a_color_illumination_task_guided_v1_myedge168_stage1_outputs_v1_status_20260527.md"
+    myedge_results: "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/e01_a_color_illumination_task_guided_e01a_results_20260527.md"
+    myedge_structure_proxy: "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/e01_a_color_illumination_task_guided_e01a_structure_metrics_20260527.md"
+    myedge_gate_aid: "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/e01_a_color_illumination_task_guided_e01a_downstream_gate_20260527.md"
+    e01_b_method_design: "docs/evidence/e01_task_guided_family/e01_b_wavelet_pyramid_weak_boundary_design_cn.md"
+    e01_b_run_sheet: "experiments/e01_task_guided_family/run_sheet_e01_b.md"
+    e01_b_config: "experiments/e01_task_guided_family/configs/e01_b_wavelet_pyramid_weak_boundary_v1.json"
+  detector_metrics:
+    msfi_50k:
+      raw: "0.783527/0.794213/0.345899/0.796846"
+      legacy_final: "0.588287/0.671357/0.263997/0.740300"
+      e01_a: "0.782764/0.794572/0.345966/0.793000"
+      strict_raw_near: false
+      detector_positive: false
+    diffusionedge_baseline_50k:
+      raw: "0.770521/0.779986/0.363065/0.796900"
+      legacy_final: "0.530094/0.567910/0.224073/0.734900"
+      e01_a: "0.769800/0.780356/0.362762/0.794900"
+      strict_raw_near: true
+      detector_positive: false
+  structure_proxy_delta_vs_raw:
+    msfi_50k: "dF1 +0.0011, dFalse-edge -0.0106, dEndpoints -1.6609"
+    diffusionedge_baseline_50k: "dF1 -0.0019, dFalse-edge +0.0047, dEndpoints +0.5710"
+  next_steps:
+    - "E01-B has now been completed and archived as a second mechanism-distinct failure."
+    - "Do not patch E01-A with low-amplitude raw-near tuning."
+    - "Do not claim E01-A success, minimum safety, stable downstream gain, 502/496 enhancement superiority, or MyEdge/MSFI adaptation completion."
+    - "Use docs/evidence/e01_task_guided_family/e01_family_stage_summary_20260527_cn.md as the current E01 family-stage summary."
+  boundaries:
+    - "No 502/496 enhancement comparison was run."
+    - "No 2770 full-pool run was run."
+    - "No MyEdge/MSFI training or checkpoint change was executed."
+
+e01_b_fixed_detector_gate_20260527:
+  date: "2026-05-27"
+  status: "archived_failure_close_e01_family_phase"
+  protocol: "E01 HAB task-guided complete enhancement family, 168 fixed-detector validation only"
+  candidate: "E01-B"
+  variant: "e01_b_wavelet_pyramid_weak_boundary_v1"
+  primary_hypothesis: "multi-scale / wavelet weak-boundary fusion dominant reconstruction can improve weak-boundary edge ranking while suppressing background texture"
+  classification: "failure"
+  decision: "archive_failure_close_e01_family_phase"
+  reason: "DiffusionEdge baseline AP is detector-positive at 0.372567 versus raw 0.363065, delta +0.009502, but MSFI AP is 0.337598 versus raw 0.345899, delta -0.008301, which exceeds the locked E01 AP raw-near tolerance of -0.003. Structure proxy is not collapsed, but acceptable success requires the other detector to be strict raw-near."
+  assets:
+    family_design: "docs/evidence/e01_task_guided_family/e01_task_guided_complete_enhancement_family_design_cn.md"
+    method_design: "docs/evidence/e01_task_guided_family/e01_b_wavelet_pyramid_weak_boundary_design_cn.md"
+    run_sheet: "experiments/e01_task_guided_family/run_sheet_e01_b.md"
+    gate_report: "docs/evidence/e01_task_guided_family/e01_b_fixed_detector_gate_report_20260527_cn.md"
+    gate_report_json: "docs/evidence/e01_task_guided_family/e01_b_fixed_detector_gate_report_20260527.json"
+    family_stage_summary: "docs/evidence/e01_task_guided_family/e01_family_stage_summary_20260527_cn.md"
+    family_stage_summary_json: "docs/evidence/e01_task_guided_family/e01_family_stage_summary_20260527.json"
+    smoke_status: "experiments/e01_task_guided_family/e01_b_wavelet_pyramid_weak_boundary_v1_smoke7_highrisk_e01b_v1_status_20260527.md"
+    stage1_168_status: "experiments/e01_task_guided_family/e01_b_wavelet_pyramid_weak_boundary_v1_myedge168_stage1_outputs_e01b_v1_status_20260527.md"
+    myedge_results: "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/e01_b_wavelet_pyramid_weak_boundary_e01b_results_20260527.md"
+    myedge_structure_proxy: "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/e01_b_wavelet_pyramid_weak_boundary_e01b_structure_metrics_20260527.md"
+    myedge_gate_aid: "D:/Desktop/MyEdgeCodex/docs/paper_assets/stage1_coupling/e01_b_wavelet_pyramid_weak_boundary_e01b_downstream_gate_20260527.md"
+  detector_metrics:
+    msfi_50k:
+      raw: "0.783527/0.794213/0.345899/0.796846"
+      legacy_final: "0.588287/0.671357/0.263997/0.740300"
+      e01_b: "0.782154/0.793330/0.337598/0.795700"
+      strict_raw_near: false
+      detector_positive: false
+    diffusionedge_baseline_50k:
+      raw: "0.770521/0.779986/0.363065/0.796900"
+      legacy_final: "0.530094/0.567910/0.224073/0.734900"
+      e01_b: "0.770284/0.780779/0.372567/0.794800"
+      strict_raw_near: true
+      detector_positive: true
+  structure_proxy_delta_vs_raw:
+    msfi_50k: "dF1 +0.0013, dFalse-edge -0.0018, dEndpoints -0.2791"
+    diffusionedge_baseline_50k: "dF1 -0.0014, dFalse-edge +0.0036, dEndpoints -0.0882"
+  family_stage_result:
+    completion_condition_met: true
+    basis: "E01-A and E01-B are two mechanism-distinct candidates with completed 168 fixed-detector gates."
+    success_candidate: "none"
+    best_diagnostic_signal: "E01-B has DiffusionEdge AP positive signal but fails overall due MSFI AP raw-near miss."
+    current_archived_reference: "P27 remains stronger overall than E01-A/E01-B because it is metric-near-raw structure-mixed."
+  next_steps:
+    - "Do not patch E01-A or E01-B with low-amplitude parameter tuning, guard, fallback, raw pullback, or topology lock."
+    - "Prefer separately authorized MyEdge/MSFI sidecar adaptation with raw as the primary input."
+    - "If image replacement is reopened, require a genuinely different E01-C method design before any code or 168 run."
+  boundaries:
+    - "No 502/496 enhancement comparison was run."
+    - "No 2770 full-pool run was run."
+    - "No MyEdge/MSFI training or checkpoint change was executed."
+    - "E01-B single-detector AP gain is not stable downstream success."
 
 cleanup_navigation_restructure_20260527:
   date: "2026-05-27"

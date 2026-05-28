@@ -36,7 +36,7 @@
 - `method-underwater-enhancement-paper-ready.md`
 - `related-work-underwater-enhancement.md`
 
-涉及 Stage1 -> MyEdge downstream-driven 候选、Pxx/Dxx、168 split、502/496 或 2770 时，还必须读：
+涉及 Stage1 -> MyEdge downstream-driven 候选、Pxx/Dxx、166/168 split、502/496 或 2770 时，还必须读：
 
 - `docs/experiment_run_sheet_template_cn.md`
 - `docs/stage1_to_myedge_downstream_workflow_cn.md`
@@ -66,7 +66,7 @@
 - TLVC01 是 topology-locked visual-chroma 完整流程纠偏证据；它修正 MyEdge raw input mismatch 但 gate 仍为 `candidate_rescues_legacy_but_not_near_raw`，不得继续 TLVC02/FF03/P29/D02 小修或写成 downstream 正收益。
 - FA01 visual/error-map review 与 sidecar map smoke 是诊断/导出准备，不是新候选、训练结果或 fixed-detector 正收益证据。
 - `candidate_rescues_legacy_but_not_near_raw`、`candidate_metric_near_raw_structure_mixed`、proxy-only、readiness-only 或 2770 full-pool readiness 都不能标记为目标完成。
-- 168 张带 GT split 是 fixed-detector downstream validation 核心；502/496 只用于 Stage1 增强指标和 complete-case 对照；2770 不能替代 168 downstream validation。
+- 当前主筛选口径统一为 MyEdge 166 complete-case：从 MyEdge 168 raw split 中排除 `chazhuang.3.jpg` 与 `chazhuang.6.jpg`。后续 Stage1 candidate 的增强指标筛选和 fixed-detector downstream validation 都必须使用这 166 张；历史 168 结果只能作为历史诊断证据。502/496 只用于 Stage1 增强指标和 complete-case 对照；2770 不能替代 166 downstream validation。
 - 不要继续连续派生同族 `guard` / `fallback` / `raw-pullback` 小变体。连续 mixed/weak 后必须停止、审计、归档或重写 method design。
 - `experiments/` 下还有近场规则 `experiments/AGENTS.override.md`。在该目录工作时必须同时遵守。
 

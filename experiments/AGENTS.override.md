@@ -17,7 +17,7 @@ Do not add another `Pxx`, `Dxx`, `guard`, `fallback`, `raw-pullback`, or same-fa
 1. A method design note explaining the mechanism and why it differs from the last family.
 2. A filled run sheet based on `docs/experiment_run_sheet_template_cn.md`.
 3. A config path and an isolated output root that will not overwrite legacy assets.
-4. A fixed validation plan: smoke, 168 split enhancement, fixed detector handoff, result intake, structure proxy, decision.
+4. A fixed validation plan: smoke, MyEdge 166 complete-case enhancement, fixed detector handoff, result intake, structure proxy, decision. The 166 set excludes `chazhuang.3.jpg` and `chazhuang.6.jpg`; historical 168 runs remain historical diagnostics only.
 5. A stop condition that defines when to archive the candidate instead of deriving another nearby variant.
 
 ## 3. Forbidden Patterns

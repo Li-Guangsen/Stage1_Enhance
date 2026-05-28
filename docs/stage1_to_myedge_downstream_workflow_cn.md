@@ -6,7 +6,7 @@
 
 ## 标准链路
 
-1. Stage1 生成 168 张带 GT split 的 candidate Final 输出。
+1. Stage1 从 MyEdge raw split 生成 candidate Final 输出，并按当前主口径筛出 166 complete-case：排除 `chazhuang.3.jpg` 与 `chazhuang.6.jpg`。主口径 manifest 是 `metrics/manifests/myedge166_complete_case_20260528.csv`。
 2. 只读检查 stem、数量、decode 和 manifest。
 3. MyEdge 侧按同 stem staging 到 Stage1 coupling run。
 4. 使用固定 MSFI 50k 和固定 DiffusionEdge baseline 50k detector。
@@ -18,7 +18,7 @@
 
 ## 口径边界
 
-- 168 张带 GT split 是 downstream validation 核心。
+- 当前主筛选口径是 MyEdge 166 complete-case。增强指标筛选和 fixed-detector downstream validation 必须使用同一 166 stem set；历史 168 结果只作为历史诊断证据。
 - 502/496 只用于 Stage1 增强指标与 complete-case 对照。
 - 2770 full-pool 不能替代带 GT downstream validation。
 - fixed detector 期间不得改 detector、权重、GT、MAT、eval protocol 或 MyEdge 正式结果资产。

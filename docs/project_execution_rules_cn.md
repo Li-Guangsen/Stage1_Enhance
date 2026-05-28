@@ -269,7 +269,7 @@
 - TLVC01 是 topology-locked visual-chroma 完整流程纠偏证据；它修正了 MyEdge raw input mismatch，但 gate 仍为 `candidate_rescues_legacy_but_not_near_raw`，不得继续 TLVC02/FF03/P29/D02 小修或写成 downstream 正收益。
 - FA01 visual/error-map review 与 Stage1 sidecar map smoke 只能写成诊断/导出准备；它们没有训练、没有 detector adaptation、没有 fixed-detector rerun，不能写成 downstream 正收益。
 - 连续两个同族候选为 mixed/weak 时，必须停止同族派生，先做 method review 或归档。
-- 168 张带 GT split 是 fixed-detector downstream validation 核心；502/496 只用于 Stage1 增强指标和 complete-case 对照；2770 full-pool 不能替代 downstream validation。
+- 当前主筛选口径统一为 MyEdge 166 complete-case：从 MyEdge 168 raw split 中排除 `chazhuang.3.jpg` 与 `chazhuang.6.jpg`。后续 Stage1 candidate 的增强指标筛选和 fixed-detector downstream validation 都必须使用这 166 张；历史 168 结果只能作为历史诊断证据。502/496 只用于 Stage1 增强指标和 complete-case 对照；2770 full-pool 不能替代 downstream validation。
 - 失败候选必须保留为有效证据，不删除、不覆盖、不用下一轮结果掩盖。
 
 ## 12. Codex 指令加载与命令环境规则

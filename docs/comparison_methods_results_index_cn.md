@@ -84,6 +84,20 @@
 - 当前正式增强对比结果是“增强指标总表”，还不是“增强 + 下游边缘验证”的完整闭环
 - `WWPF` 的 496 样本实现边界必须在论文里如实说明
 
+## 5.1 MyEdge 166 EAAI-Aligned 指标补充
+
+除正式 496 complete-case 主表外，MyEdge raw split 已建立单独的 166 complete-case 增强指标基线：
+
+- Run root：`experiments/myedge168_compare9_rerun_20260527`
+- v2 输出：`experiments/myedge168_compare9_rerun_20260527/metrics/enhancement_metrics_eaai_aligned_v2`
+- 主表：`mean_metrics_9method_complete_case_166.md`，覆盖 9 个增强方法共同 166 张样本；`chazhuang.3.jpg` 与 `chazhuang.6.jpg` 在主表中对所有方法统一排除
+- 附表：`mean_metrics_8method_no_wwpf_168.md`，排除 WWPF 后覆盖 168 张样本
+- 主增强指标：`UIQM`、`UCIQE`、`SSEQ`、`SIFT_MATCH_RATIO`
+
+该补充表的用途是给后续 MyEdge 166 complete-case Stage1 candidate 提供增强指标预筛基线，不替代正式 496 主表，也不替代 fixed-detector ODS/OIS/AP/AC。后续下游验证也应使用同一 166 complete-case。`SSEQ` 为标准特征重实现口径，`SIFT_MATCH_RATIO` 为 raw-enhanced OpenCV SIFT matching；二者均已在 v2 `metric_definitions.json` 中说明。
+
+`HLRP` 与 `Histoformer` 在 MyEdge 168 v2 表中保留数值，但只作为 high-noise diagnostic reference，不纳入主筛选结论。
+
 ## 6. 下游边缘结构代理补充
 
 当前已经额外生成一版无 GT 边缘结构代理结果，用于 Stage1 到 MyEdge 的衔接准备：

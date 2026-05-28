@@ -15,7 +15,7 @@
 - readiness-only result
 - 只接近 raw，但没有可解释增强强度、消融和 downstream 证据
 - 只在一个 detector 上涨点，另一个 detector 出现 AP、AC、false-edge、endpoints 或 F1 proxy 崩坏
-- 2770 full-pool 只跑通，但 168 fixed-detector 没有 strong/pass 证据
+- 2770 full-pool 只跑通，但当前 MyEdge 166 complete-case fixed-detector 没有 strong/pass 证据
 
 ## 最低完成条件
 
@@ -23,7 +23,7 @@
 
 1. 有明确 method design，不是继续小修小补。
 2. 有完整 run sheet，包含 hypothesis、code entry、config、input split、output root、commands、runtime、metrics、stop condition 和 decision。
-3. 168 张带 GT split 完成 fixed DiffusionEdge/MSFI downstream validation。
+3. MyEdge 166 complete-case 完成 fixed DiffusionEdge/MSFI downstream validation；该 166 口径从 MyEdge 168 raw split 中统一排除 `chazhuang.3.jpg` 与 `chazhuang.6.jpg`。
 4. 结果包含 ODS/OIS/AP/AC、结构 proxy、false-edge ratio、endpoints、F1 proxy 和 visual notes。
 5. 与 raw、legacy Stage1 Final、当前最好候选都有明确比较。
 6. 结论写清楚属于最低通过、候选通过、强通过还是失败。
